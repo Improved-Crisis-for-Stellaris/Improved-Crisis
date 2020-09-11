@@ -1,0 +1,16 @@
+version="1"
+tags={
+	"Balance"
+	"Events"
+	"Fixes"
+	"Gameplay"
+	"Graphics"
+	"Military"
+	"Overhaul"
+	"Spaceships"
+	"Technologies"
+	"Utilities"
+}
+name="Crisis Improvements"
+picture="thumbnail.png"
+supported_version="2.7.*"
