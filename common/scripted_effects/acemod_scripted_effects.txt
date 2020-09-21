@@ -1,0 +1,201 @@
+@acemod_var_solar_system_target_value_tier1 = 10
+@acemod_var_solar_system_target_value_tier2 = 100
+@acemod_var_solar_system_target_value_tier3 = 200
+@acemod_var_solar_system_target_value_tier4 = 400
+#Scope: country
+acemod_set_fleets_piloted = {
+	every_owned_fleet = {
+		limit = {
+			is_ship_class = shipclass_military
+		}
+		set_variable = {
+			which = acemod_var_fleet_piloted
+			value = 1
+		}
+	}
+}
+
+#Scope: country
+acemod_set_fleets_not_piloted = {
+	every_owned_fleet = {
+		limit = {
+			is_ship_class = shipclass_military
+		}
+		set_variable = {
+			which = acemod_var_fleet_piloted
+			value = 0
+		}
+	}
+}
+
+#Scope: solar_system
+acemod_recalculate_solar_system_target_value = {
+	set_variable = {
+		which = acemod_var_solar_system_target_value
+		value = 0
+	}
+	acemod_calculate_solar_system_target_value = yes
+}
+
+#Scope: solar_system
+acemod_calculate_solar_system_target_value = {
+	if = {
+		limit = {
+			exists = owner
+		}
+		change_variable = {
+			which = acemod_var_solar_system_target_value
+			value = @acemod_var_solar_system_target_value_tier1
+		}
+	}
+	every_system_planet = {
+		limit = {
+			exists = owner
+			OR = {
+				is_colony = yes
+				is_under_colonization = yes
+			}
+		}
+		prev = {
+			change_variable = {
+				which = acemod_var_solar_system_target_value
+				value = @acemod_var_solar_system_target_value_tier2
+			}
+		}
+		if = {
+			limit = {
+				is_capital = yes
+			}
+			prev = {
+				change_variable = {
+					which = acemod_var_solar_system_target_value
+					value = @acemod_var_solar_system_target_value_tier4
+				}
+			}
+		}
+	}
+}
+
+#Scope: fleet ship
+acemod_find_solar_system_target_neighbor = {
+	if = {
+		limit = {
+			solar_system = {
+				any_neighbor_system = {
+					ignore_hyperlanes = no
+					NOT = {
+						has_star_flag = acemod_star_flag_solar_system_target
+					}
+					# check_variable = {
+					# 	which = acemod_var_solar_system_target_value
+					# 	value > 0
+					# }
+					OR = {
+						AND = {
+							exists = owner
+							owner = {
+								NOT = {
+									is_same_value = prev.root
+								}
+							}
+						}
+						any_system_planet = {
+							exists = owner
+							owner = {
+								NOT = {
+									is_same_value = prev.root
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		solar_system = {
+			random_neighbor_system = {
+				ignore_hyperlanes = no
+				limit = {
+					# check_variable = {
+					# 	which = acemod_var_solar_system_target_value
+					# 	value > 0
+					# }
+					NOT = {
+						has_star_flag = acemod_star_flag_solar_system_target
+					}
+					OR = {
+						AND = {
+							exists = owner
+							owner = {
+								NOT = {
+									is_same_value = prev.root
+								}
+							}
+						}
+						any_system_planet = {
+							exists = owner
+							owner = {
+								NOT = {
+									is_same_value = prev.root
+								}
+							}
+						}
+					}
+				}
+				set_timed_star_flag = {
+					flag = acemod_star_flag_solar_system_target
+					days = 60
+				}
+				random_system_planet = {
+					limit = {
+						OR = {
+							is_planet_class = pc_black_hole
+							is_star = yes
+						}
+					}
+					save_event_target_as = acemod_event_target_invader_target
+				}
+			}
+		}
+		save_event_target_as = acemod_event_target_invader_fleet
+		auto_move_to_planet = {
+			target = event_target:acemod_event_target_invader_target
+			clear_auto_move_on_arrival = yes
+			#			arrival_effect = kill_planet_scripted_effect
+		}
+	}
+	else = {
+		solar_system = {
+			random_neighbor_system = {
+				ignore_hyperlanes = no
+				limit = {
+					# check_variable = {
+					# 	which = acemod_var_solar_system_target_value
+					# 	value > 0
+					# }
+					NOT = {
+						has_star_flag = acemod_star_flag_solar_system_target
+					}
+				}
+				set_timed_star_flag = {
+					flag = acemod_star_flag_solar_system_target
+					days = 60
+				}
+				random_system_planet = {
+					limit = {
+						OR = {
+							is_planet_class = pc_black_hole
+							is_star = yes
+						}
+					}
+					save_event_target_as = acemod_event_target_invader_target
+				}
+			}
+		}
+		save_event_target_as = acemod_event_target_invader_fleet
+		auto_move_to_planet = {
+			target = event_target:acemod_event_target_invader_target
+			clear_auto_move_on_arrival = yes
+			#			arrival_effect = kill_planet_scripted_effect
+		}
+	}
+}

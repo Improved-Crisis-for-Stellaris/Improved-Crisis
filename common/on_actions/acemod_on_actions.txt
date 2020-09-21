@@ -1,0 +1,18 @@
+on_game_start = {
+	events = {
+		acemod_core.1
+	}
+}
+
+on_yearly_pulse_country = {
+	events = {
+		# acemod_core.3
+		acemod_core.4
+	}
+}
+
+on_entering_system_fleet = {
+	events = {
+		acemod_core.100
+	}
+}
