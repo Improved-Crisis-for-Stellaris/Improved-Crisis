@@ -83,8 +83,9 @@ acemod_find_solar_system_target_neighbor = {
 			solar_system = {
 				any_neighbor_system = {
 					ignore_hyperlanes = no
-					NOT = {
+					NOR = {
 						has_star_flag = acemod_star_flag_solar_system_target
+						has_star_flag = extradimensional_origin_system
 					}
 					# check_variable = {
 					# 	which = acemod_var_solar_system_target_value
@@ -119,8 +120,9 @@ acemod_find_solar_system_target_neighbor = {
 					# 	which = acemod_var_solar_system_target_value
 					# 	value > 0
 					# }
-					NOT = {
+					NOR = {
 						has_star_flag = acemod_star_flag_solar_system_target
+						has_star_flag = extradimensional_origin_system
 					}
 					OR = {
 						AND = {
@@ -157,6 +159,107 @@ acemod_find_solar_system_target_neighbor = {
 			}
 		}
 		save_event_target_as = acemod_event_target_invader_fleet
+		set_timed_fleet_flag = {
+			flag = acemod_event_target_invader_fleet_active
+			days = 60
+		}
+		auto_move_to_planet = {
+			target = event_target:acemod_event_target_invader_target
+			clear_auto_move_on_arrival = yes
+			#			arrival_effect = kill_planet_scripted_effect
+		}
+	}
+	else_if = {
+		limit = {
+			solar_system = {
+				any_neighbor_system = {
+					ignore_hyperlanes = no
+					# NOT = {
+					# 	has_star_flag = acemod_star_flag_solar_system_target
+					# }
+					# check_variable = {
+					# 	which = acemod_var_solar_system_target_value
+					# 	value > 0
+					# }
+					any_neighbor_system = {
+						ignore_hyperlanes = no
+						NOT = {
+							has_star_flag = extradimensional_origin_system
+						}
+						# NOT = {
+						# 	has_star_flag = acemod_star_flag_solar_system_target
+						# }
+						# check_variable = {
+						# 	which = acemod_var_solar_system_target_value
+						# 	value > 0
+						# }
+						exists = owner
+						owner = {
+							NOT = {
+								is_same_value = prev.root
+							}
+						}
+					}
+				}
+			}
+		}
+		solar_system = {
+			random_neighbor_system = {
+				ignore_hyperlanes = no
+				limit = {
+					# check_variable = {
+					# 	which = acemod_var_solar_system_target_value
+					# 	value > 0
+					# }
+					# NOT = {
+					# 	has_star_flag = acemod_star_flag_solar_system_target
+					# }
+					# exists = owner
+					# owner = {
+					# 	NOT = {
+					# 		is_same_value = prev.root
+					# 	}
+					# }
+				}
+				solar_system = {
+					random_neighbor_system = {
+						ignore_hyperlanes = no
+						limit = {
+							# check_variable = {
+							# 	which = acemod_var_solar_system_target_value
+							# 	value > 0
+							# }
+							# NOT = {
+							# 	has_star_flag = acemod_star_flag_solar_system_target
+							# }
+							NOT = {
+								has_star_flag = extradimensional_origin_system
+							}
+							exists = owner
+							owner = {
+								NOT = {
+									is_same_value = prev.root
+								}
+							}
+						}
+						random_system_planet = {
+							limit = {
+								OR = {
+									is_planet_class = pc_black_hole
+									is_star = yes
+								}
+							}
+							save_event_target_as = acemod_event_target_invader_target
+						}
+					}
+				}
+			}
+		}
+		save_event_target_as = acemod_event_target_invader_fleet
+		set_timed_fleet_flag = {
+			flag = acemod_event_target_invader_fleet_active
+			days = 60
+		}
 		auto_move_to_planet = {
 			target = event_target:acemod_event_target_invader_target
 			clear_auto_move_on_arrival = yes
@@ -165,15 +268,18 @@ acemod_find_solar_system_target_neighbor = {
 	}
 	else = {
 		solar_system = {
-			random_neighbor_system = {
-				ignore_hyperlanes = no
+			closest_system = {
+				min_steps = 1
+				max_steps = 20
 				limit = {
-					# check_variable = {
-					# 	which = acemod_var_solar_system_target_value
-					# 	value > 0
-					# }
 					NOT = {
-						has_star_flag = acemod_star_flag_solar_system_target
+						has_star_flag = extradimensional_origin_system
+					}
+					exists = owner
+					owner = {
+						NOT = {
+							is_same_value = prev.root
+						}
 					}
 				}
 				set_timed_star_flag = {
@@ -192,6 +298,10 @@ acemod_find_solar_system_target_neighbor = {
 			}
 		}
 		save_event_target_as = acemod_event_target_invader_fleet
+		set_timed_fleet_flag = {
+			flag = acemod_event_target_invader_fleet_active
+			days = 60
+		}
 		auto_move_to_planet = {
 			target = event_target:acemod_event_target_invader_target
 			clear_auto_move_on_arrival = yes

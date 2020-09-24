@@ -40,32 +40,46 @@ country_event = {
 }
 
 # test event - launch all fleets
-country_event = {
+event = {
 	id = acemod_core.4
 	hide_window = yes
 	is_triggered_only = yes
 	trigger = {
 		has_global_flag = acemod_activated
-		OR = {
-			is_country_type = swarm
-			is_country_type = extradimensional
-			is_country_type = extradimensional_2
-			is_country_type = extradimensional_3
-			is_country_type = ai_empire
-			is_country_type = gray
-			is_country_type = gray_goo			# A Deadly Tempest mod
-		}
 	}
 	immediate = {
-		every_owned_fleet = {
+		every_country = {
 			limit = {
 				OR = {
-					has_fleet_order = aggressive_stance_fleet_order
-					has_fleet_order = evade_hostiles_order
+					is_country_type = swarm
+					is_country_type = extradimensional
+					is_country_type = extradimensional_2
+					is_country_type = extradimensional_3
+					is_country_type = ai_empire
+					is_country_type = gray
+					is_country_type = gray_goo					# A Deadly Tempest mod
 				}
 			}
-			acemod_find_solar_system_target_neighbor = yes
+			every_owned_fleet = {
+				limit = {
+					NOR = {
+						has_fleet_flag = acemod_event_target_invader_fleet_active
+					}
+					is_ship_class = shipclass_military
+				}
+				acemod_find_solar_system_target_neighbor = yes
+			}
 		}
+	}
+}
+
+# test event - activate custom AI
+event = {
+	id = acemod_core.5
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		set_global_flag = acemod_activated
 	}
 }
 
@@ -113,7 +127,7 @@ fleet_event = {
 	hide_window = yes
 	is_triggered_only = yes
 	immediate = {
-		from = {
+		solar_system = {
 			every_neighbor_system = {
 				ignore_hyperlanes = yes
 				limit = {

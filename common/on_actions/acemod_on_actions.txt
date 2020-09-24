@@ -4,7 +4,7 @@ on_game_start = {
 	}
 }
 
-on_yearly_pulse_country = {
+on_yearly_pulse = {
 	events = {
 		# acemod_core.3
 		acemod_core.4
