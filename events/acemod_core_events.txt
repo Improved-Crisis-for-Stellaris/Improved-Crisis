@@ -62,7 +62,7 @@ event = {
 			}
 			every_owned_fleet = {
 				limit = {
-					NOR = {
+					NOT = {
 						has_fleet_flag = acemod_event_target_invader_fleet_active
 					}
 					is_ship_class = shipclass_military
@@ -103,11 +103,12 @@ fleet_event = {
 				is_country_type = gray_goo				# A Deadly Tempest mod
 			}
 		}
+		is_ship_class = shipclass_military
 	}
 	immediate = {
 		fleet_event = {
 			id = acemod_core.101
-			days = 45
+			days = 75
 		}
 		solar_system = {
 			# for testing purposes
@@ -127,16 +128,73 @@ fleet_event = {
 	hide_window = yes
 	is_triggered_only = yes
 	immediate = {
-		solar_system = {
-			every_neighbor_system = {
-				ignore_hyperlanes = yes
-				limit = {
-					exists = owner
+		if = {
+			limit = {
+				solar_system = {
+					has_star_flag = acemod_star_flag_solar_system_target
 				}
-				acemod_recalculate_solar_system_target_value = yes
 			}
+			clear_fleet_actions = this
 		}
-		clear_orders = yes
 		acemod_find_solar_system_target_neighbor = yes
 	}
 }
+
+# redirect fleet
+# fleet_event = {
+# 	id = acemod_core.102
+# 	hide_window = yes
+# 	is_triggered_only = yes
+# 	trigger = {
+# 		NOR = {
+# 			has_fleet_flag = acemod_event_target_invader_fleet_active
+# 			has_fleet_order = move_to_system_point_order
+# 			has_fleet_order = orbit_planet_order
+# 			has_fleet_order = follow_order
+# 		}
+# 	}
+# 	immediate = {
+# 		clear_fleet_actions = this
+# 		solar_system = {
+# 			closest_system = {
+# 				min_steps = 1
+# 				max_steps = 10
+# 				limit = {
+# 					has_access_fleet = root.owner
+# 					NOT = {
+# 						has_star_flag = extradimensional_origin_system
+# 					}
+# 					any_fleet_in_system = {
+# 						count = 1
+# 						owner = {
+# 							is_same_value = prev.root
+# 						}
+# 					}
+# 				}
+# 				random_fleet_in_system = {
+# 					limit = {
+# 						OR = {
+# 							AND = {
+# 								owner = {
+# 									is_same_value = prev.root
+# 								}
+# 								OR = {
+# 									is_in_combat = yes
+# 									has_fleet_order = combat_order
+# 								}
+# 							}
+# 							owner = {
+# 								is_same_value = prev.root
+# 							}
+# 						}
+# 					}
+# 					save_event_target_as = acemod_event_target_invader_reinforcement_target
+# 				}
+# 			}
+# 		}
+# 		auto_follow_fleet = {
+# 			target = event_target:acemod_event_target_invader_reinforcement_target
+# 			attack_fleet = no
+# 		}
+# 	}
+# }
