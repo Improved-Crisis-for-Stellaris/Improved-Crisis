@@ -1,34 +1,25 @@
+# Defaults for solar system strategic value scoring.
 @acemod_var_solar_system_target_value_tier1 = 10
 @acemod_var_solar_system_target_value_tier2 = 100
 @acemod_var_solar_system_target_value_tier3 = 200
 @acemod_var_solar_system_target_value_tier4 = 400
-#Scope: country
-acemod_set_fleets_piloted = {
-	every_owned_fleet = {
-		limit = {
-			is_ship_class = shipclass_military
-		}
-		set_variable = {
-			which = acemod_var_fleet_piloted
-			value = 1
-		}
+# Prevents ACEMOD from piloting marked fleets.
+# Scope: fleet ship
+acemod_set_fleet_piloted_exclusion_on = {
+	set_variable = {
+		which = acemod_var_fleet_piloted_exclusion
+		value = 1
 	}
 }
 
-#Scope: country
-acemod_set_fleets_not_piloted = {
-	every_owned_fleet = {
-		limit = {
-			is_ship_class = shipclass_military
-		}
-		set_variable = {
-			which = acemod_var_fleet_piloted
-			value = 0
-		}
+acemod_set_fleet_piloted_exclusion_off = {
+	set_variable = {
+		which = acemod_var_fleet_piloted_exclusion
+		value = 0
 	}
 }
 
-#Scope: solar_system
+# Scope: solar_system
 acemod_recalculate_solar_system_target_value = {
 	set_variable = {
 		which = acemod_var_solar_system_target_value
@@ -37,7 +28,7 @@ acemod_recalculate_solar_system_target_value = {
 	acemod_calculate_solar_system_target_value = yes
 }
 
-#Scope: solar_system
+# Scope: solar_system
 acemod_calculate_solar_system_target_value = {
 	if = {
 		limit = {
@@ -74,87 +65,4 @@ acemod_calculate_solar_system_target_value = {
 			}
 		}
 	}
-}
-
-#Scope: fleet ship
-acemod_find_solar_system_target_neighbor = {
-	solar_system = {
-		closest_system = {
-			min_steps = 1
-			max_steps = 10
-			limit = {
-				has_access_fleet = root.owner
-				NOR = {
-					has_star_flag = acemod_star_flag_solar_system_target
-					has_star_flag = extradimensional_origin_system
-				}
-				OR = {
-					AND = {
-						exists = owner
-						owner = {
-							NOR = {
-								is_same_value = prev.root
-								is_country_type = fallen_empire
-							}
-						}
-					}
-					any_system_planet = {
-						exists = owner
-						owner = {
-							NOR = {
-								is_same_value = prev.root
-								is_country_type = fallen_empire
-							}
-						}
-					}
-					# needs review
-					# any_fleet_in_system = {
-					# 	owner = {
-					# 		is_hostile_to = prev.root
-					# 		NOT = {
-					# 			is_country_type = fallen_empire
-					# 		}
-					# 	}
-					# }
-				}
-			}
-			set_timed_star_flag = {
-				flag = acemod_star_flag_solar_system_target
-				days = 75
-			}
-			random_system_planet = {
-				limit = {
-					OR = {
-						is_star = yes
-						is_planet_class = pc_black_hole
-					}
-				}
-				save_event_target_as = acemod_event_target_invader_target
-			}
-		}
-	}
-	save_event_target_as = acemod_event_target_invader_fleet
-	set_timed_fleet_flag = {
-		flag = acemod_event_target_invader_fleet_active
-		days = 75
-	}
-	set_fleet_stance = aggressive
-	set_fleet_bombardment_stance = indiscriminate
-	set_aggro_range_measure_from = self
-	set_aggro_range = 800
-	# auto_move_to_planet = {
-	# 	target = event_target:acemod_event_target_invader_target
-	# 	clear_auto_move_on_arrival = yes
-	# }
-	queue_actions = {
-		move_to = event_target:acemod_event_target_invader_target
-		#	effect = {
-		#		id = "acemod_queue_actions_continue_search"
-		#		acemod_find_solar_system_target_neighbor = yes
-		#	}
-	}
-	# fleet_event = {
-	# 	id = acemod_core.102
-	# 	days = 2
-	# }
 }

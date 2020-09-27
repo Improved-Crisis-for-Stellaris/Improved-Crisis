@@ -1,17 +1,23 @@
 on_game_start = {
 	events = {
-		acemod_core.1
+		acemod_core.1	# Marks Aggresive Crisis Engine mod as present. Other mods can check against this flag to see if ACEMOD is installed.
 	}
 }
 
-on_yearly_pulse = {
+# on_yearly_pulse = {
+# 	events = {
+# 		acemod_core.4	# Main fleet hunter-seeker event.
+# 	}
+# }
+
+on_monthly_pulse = {
 	events = {
-		acemod_core.4
+		acemod_core.4	# Main fleet hunter-seeker event.
 	}
 }
 
 on_entering_system_fleet = {
 	events = {
-		acemod_core.100
+		acemod_core.110	# Destroys all colonies when crisis fleet enters the system. This is a debug event.
 	}
 }
