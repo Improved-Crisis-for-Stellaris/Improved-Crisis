@@ -1,0 +1,245 @@
+namespace = acemod_fleet
+# Calculates strategic value of systems.
+country_event = {
+	id = acemod_fleet.2
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		every_system_within_border = {
+			limit = {
+				exists = owner
+			}
+			acemod_calculate_solar_system_target_value = yes
+		}
+	}
+}
+
+# Recalculates strategic value of systems.
+# country_event = {
+# 	id = acemod_fleet.3
+# 	hide_window = yes
+# 	is_triggered_only = yes
+# 	immediate = {
+# 		every_system_within_border = {
+# 			limit = {
+# 				exists = owner
+# 			}
+# 			acemod_recalculate_solar_system_target_value = yes
+# 		}
+# 	}
+# }
+# Orders idle crisis fleets to seek target systems and move to them.
+event = {
+	id = acemod_fleet.4
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		has_global_flag = acemod_activated
+	}
+	immediate = {
+		every_country = {
+			limit = {
+				has_country_flag = acemod_assisted_ai				# Only countries with this flag will have their fleets piloted by ACEMOD.
+				# OR = {
+				# 	is_country_type = swarm
+				# 	is_country_type = extradimensional
+				# 	is_country_type = extradimensional_2
+				# 	is_country_type = extradimensional_3
+				# 	is_country_type = ai_empire
+				# 	is_country_type = gray
+				# 	is_country_type = gray_goo					# A Deadly Tempest mod.
+				# }
+			}
+			every_owned_fleet = {
+				limit = {
+					NOT = {
+						check_variable = {
+							which = acemod_var_fleet_piloted_exclusion
+							value = 1
+						}
+					}
+					is_fleet_idle = yes
+					is_ship_class = shipclass_military
+				}
+				fleet_event = {
+					id = acemod_fleet.100
+				}
+			}
+		}
+	}
+}
+
+# Activates ACEMOD AI. Without this flag fleets won't seek targets.
+event = {
+	id = acemod_fleet.10
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		set_global_flag = acemod_activated
+	}
+}
+
+# Applies ACEMOD AI to a specific country. Without this flag fleets won't seek targets.
+country_event = {
+	id = acemod_fleet.11
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		set_country_flag = acemod_assisted_ai
+	}
+}
+
+# Main fleet hunter-seeker event.
+fleet_event = {
+	id = acemod_fleet.100
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		solar_system = {
+			closest_system = {
+				min_steps = 1
+				max_steps = 20
+				limit = {
+					has_access_fleet = root.owner
+					NOR = {
+						has_star_flag = acemod_star_flag_solar_system_target
+						has_star_flag = extradimensional_origin_system
+					}
+					# OR = {
+					# 	AND = {
+					exists = owner
+					owner = {
+						NOR = {
+							is_same_value = prev.root
+							is_country_type = fallen_empire
+						}
+					}
+					# }
+					# probably too resource intensive, can use global, annual evaluation instead
+					# any_system_planet = {
+					# 	exists = owner
+					# 	owner = {
+					# 		NOR = {
+					# 			is_same_value = prev.root
+					# 			is_country_type = fallen_empire
+					# 		}
+					# 	}
+					# }
+					# needs review
+					# any_fleet_in_system = {
+					# 	owner = {
+					# 		is_hostile_to = prev.root
+					# 		NOT = {
+					# 			is_country_type = fallen_empire
+					# 		}
+					# 	}
+					# }
+					# }
+				}
+				save_event_target_as = acemod_event_target_invader_target
+				set_timed_star_flag = {
+					flag = acemod_star_flag_solar_system_target
+					days = 120
+				}
+			}
+		}
+		save_event_target_as = acemod_event_target_invader_fleet
+		set_fleet_stance = aggressive
+		set_fleet_bombardment_stance = indiscriminate		# Vanilla has selective on default
+		set_aggro_range_measure_from = self
+		set_aggro_range = 800		# Longer aggro range, same as for pirate systems (default 500)
+		queue_actions = {
+			find_closest_system = {
+				trigger = {
+					id = "acemod.1111.t1"
+					is_same_value = event_target:acemod_event_target_invader_target
+				}
+				found_system = {
+					move_to = this
+					# effect = {
+					# 	id = acemod.1111.e1
+					# 	root = {
+					# 		fleet_event = {
+					# 			id = acemod_fleet.101
+					# 			days = 5
+					# 		}
+					# 	}
+					# }
+				}
+				# failed = {
+				# 	effect = {
+				# 		id = acemod.1111.e2
+				# 		root = {
+				# 			fleet_event = {
+				# 				id = acemod_fleet.101
+				# 				days = 5
+				# 			}
+				# 		}
+				# 	}
+				# }
+			}
+		}
+	}
+}
+
+# Checks if the fleet is idle and applies a timed fleet_flag.
+# Doesn't work as expected.
+fleet_event = {
+	id = acemod_fleet.101
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		if = {
+			limit = {
+				is_fleet_idle = no
+			}
+			set_timed_fleet_flag = {
+				flag = acemod_event_target_invader_fleet_active
+				days = 85
+			}
+		}
+		else = {
+			set_timed_fleet_flag = {
+				flag = acemod_event_target_invader_fleet_idle
+				days = 85
+			}
+		}
+	}
+}
+
+# Destroys all colonies when crisis fleet enters the system. This is a debug event and should be commented out in the release version.
+fleet_event = {
+	id = acemod_fleet.110
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		has_global_flag = acemod_activated
+		owner = {
+			OR = {
+				is_country_type = swarm
+				is_country_type = extradimensional
+				is_country_type = extradimensional_2
+				is_country_type = extradimensional_3
+				is_country_type = ai_empire
+				is_country_type = gray
+				is_country_type = gray_goo				# A Deadly Tempest mod
+			}
+		}
+		is_ship_class = shipclass_military
+	}
+	immediate = {
+		# fleet_event = {
+		# 	id = acemod_fleet.101
+		# 	days = 75
+		# }
+		solar_system = {
+			# for testing purposes
+			every_system_planet = {
+				limit = {
+					is_colony = yes
+				}
+				destroy_colony = yes
+			}
+		}
+	}
+}
