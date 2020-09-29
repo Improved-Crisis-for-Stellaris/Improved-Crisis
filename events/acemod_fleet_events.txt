@@ -159,6 +159,39 @@ fleet_event = {
 	}
 }
 
+# Finds random accessible bypass system. Barebone event for expansion. Do not use.
+fleet_event = {
+	id = acemod_fleet.6
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		queue_actions = {
+			find_random_system = {
+				trigger = {
+					id = "acemod.3333.t1"
+					has_access_fleet = root.owner
+					NOT = {
+						any_fleet_in_system = {
+							is_same_value = root
+						}
+					}
+					OR = {
+						any_system_megastructure = {
+							is_megastructure_type = gateway_final
+							is_megastructure_type = gateway_restored
+							is_megastructure_type = lgate_base
+						}
+						has_natural_wormhole = yes
+					}
+				}
+				found_system = {
+					move_to = this
+				}
+			}
+		}
+	}
+}
+
 # Activates ACEMOD AI. Without this flag fleets won't seek targets.
 event = {
 	id = acemod_fleet.10
