@@ -62,8 +62,98 @@ event = {
 					is_ship_class = shipclass_military
 				}
 				fleet_event = {
-					id = acemod_fleet.100
+					id = acemod_fleet.5
+					# id = acemod_fleet.100
 				}
+			}
+		}
+	}
+}
+
+# Seeks valid target to bombard, skips if not found.
+fleet_event = {
+	id = acemod_fleet.5
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		if = {
+			limit = {
+				solar_system = {
+					exists = owner
+					any_system_planet = {
+						has_orbital_bombardment = yes
+						any_fleet_in_orbit = {
+							is_same_value = root
+						}
+					}
+				}
+			}
+			break = yes
+		}
+		if = {
+			limit = {
+				solar_system = {
+					exists = owner
+					any_system_planet = {
+						OR = {
+							is_colony = yes
+							is_under_colonization = yes
+						}
+						NOR = {
+							has_planet_flag = acemod_planet_flag_bombardment_target
+							has_orbital_bombardment = yes
+						}
+						NOT = {
+							is_owned_by = prevprevprev
+						}
+					}
+				}
+			}
+			queue_actions = {
+				find_closest_planet = {
+					trigger = {
+						id = "acemod.2222.t1"
+						OR = {
+							is_colony = yes
+							is_under_colonization = yes
+						}
+						NOT = {
+							has_planet_flag = acemod_planet_flag_bombardment_target
+						}
+						NOT = {
+							is_owned_by = prevprevprev
+						}
+						# is_same_value = event_target:acemod_event_target_invader_bombardment_target
+					}
+					found_planet = {
+						effect = {
+							id = "acemod.2222.e1"
+							save_event_target_as = acemod_event_target_invader_bombardment_target
+							set_timed_planet_flag = {
+								flag = acemod_planet_flag_bombardment_target
+								days = 120
+							}
+						}
+						move_to = this
+						wait = 5
+						orbit_planet = this
+					}
+					failed = {
+						effect = {
+							id = "acemod.2222.e2"
+							root = {
+								fleet_event = {
+									id = acemod_fleet.100
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		else = {
+			fleet_event = {
+				id = acemod_fleet.100
 			}
 		}
 	}
