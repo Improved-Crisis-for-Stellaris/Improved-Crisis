@@ -183,6 +183,16 @@ fleet_event = {
 						}
 						has_natural_wormhole = yes
 					}
+					distance = {
+						source = root
+					#	max_distance <= 1000
+					#	min_distance >= 1
+						type = hyperlane
+					#	uses_bypass = yes
+						bypass_empire = root.owner
+						min_jumps = 1
+						max_jumps = 1
+					}
 				}
 				found_system = {
 					move_to = this
