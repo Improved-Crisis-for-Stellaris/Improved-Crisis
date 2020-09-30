@@ -143,7 +143,8 @@ fleet_event = {
 							id = "acemod.2222.e2"
 							root = {
 								fleet_event = {
-									id = acemod_fleet.100
+									id = acemod_fleet.6
+									# id = acemod_fleet.100
 								}
 							}
 						}
@@ -153,50 +154,89 @@ fleet_event = {
 		}
 		else = {
 			fleet_event = {
-				id = acemod_fleet.100
+				id = acemod_fleet.6
+				# id = acemod_fleet.100
 			}
 		}
 	}
 }
 
-# Finds random accessible bypass system. Barebone event for expansion. Do not use.
+# Finds connected and accessible bypass system.
 fleet_event = {
 	id = acemod_fleet.6
 	hide_window = yes
 	is_triggered_only = yes
 	immediate = {
-		queue_actions = {
-			find_random_system = {
-				trigger = {
-					id = "acemod.3333.t1"
-					has_access_fleet = root.owner
-					NOT = {
-						any_fleet_in_system = {
-							is_same_value = root
-						}
-					}
+		if = {
+			limit = {
+				solar_system = {
 					OR = {
+						has_natural_wormhole = yes
 						any_system_megastructure = {
 							is_megastructure_type = gateway_final
 							is_megastructure_type = gateway_restored
 							is_megastructure_type = lgate_base
 						}
-						has_natural_wormhole = yes
-					}
-					distance = {
-						source = root
-					#	max_distance <= 1000
-					#	min_distance >= 1
-						type = hyperlane
-					#	uses_bypass = yes
-						bypass_empire = root.owner
-						min_jumps = 1
-						max_jumps = 1
 					}
 				}
-				found_system = {
-					move_to = this
+			}
+			random_list = {
+				50 = {
+					queue_actions = {
+						find_random_system = {
+							trigger = {
+								id = "acemod.3333.t1"
+								distance = {
+									source = root
+									#	max_distance <= 1000
+									#	min_distance >= 1
+									type = hyperlane
+									#	uses_bypass = yes
+									bypass_empire = root.owner
+									min_jumps = 1
+									max_jumps = 1
+								}
+								OR = {
+									has_natural_wormhole = yes
+									any_system_megastructure = {
+										is_megastructure_type = gateway_final
+										is_megastructure_type = gateway_restored
+										is_megastructure_type = lgate_base
+									}
+								}
+								has_access_fleet = root.owner
+								NOT = {
+									any_fleet_in_system = {
+										is_same_value = root
+									}
+								}
+							}
+							found_system = {
+								move_to = this
+							}
+							failed = {
+								effect = {
+									id = "acemod.3333.e1"
+									root = {
+										fleet_event = {
+											id = acemod_fleet.100
+										}
+									}
+								}
+							}
+						}
+					}
 				}
+				50 = {
+					fleet_event = {
+						id = acemod_fleet.100
+					}
+				}
+			}
+		}
+		else = {
+			fleet_event = {
+				id = acemod_fleet.100
 			}
 		}
 	}
