@@ -1,4 +1,12 @@
 namespace = acemod_fleet
+# 
+# Instructions:
+# 
+# set_global_flag = acemod_activated			global		Activates ACEMOD fleet AI.
+# set_country_flag = acemod_assisted_ai			country		Only countries with this flag will have their fleets piloted by ACEMOD.
+# acemod_set_fleet_piloted_exclusion_on = yes	fleet ship	Prevents ACEMOD from piloting marked fleets.
+# acemod_set_fleet_piloted_exclusion_off = yes	fleet ship	Resumes default operation.
+#		
 # Calculates strategic value of systems.
 country_event = {
 	id = acemod_fleet.2
@@ -210,6 +218,11 @@ fleet_event = {
 										is_same_value = root
 									}
 								}
+								owner = {
+									NOT = {
+										is_country_type = fallen_empire
+									}
+								}
 							}
 							found_system = {
 								move_to = this
@@ -283,7 +296,7 @@ fleet_event = {
 					exists = owner
 					owner = {
 						NOR = {
-							is_same_value = prev.root
+							is_same_value = root.owner
 							is_country_type = fallen_empire
 						}
 					}
@@ -293,7 +306,7 @@ fleet_event = {
 					# 	exists = owner
 					# 	owner = {
 					# 		NOR = {
-					# 			is_same_value = prev.root
+					# 			is_same_value = root.owner
 					# 			is_country_type = fallen_empire
 					# 		}
 					# 	}
@@ -301,7 +314,7 @@ fleet_event = {
 					# needs review
 					# any_fleet_in_system = {
 					# 	owner = {
-					# 		is_hostile_to = prev.root
+					# 		is_hostile_to = root.owner
 					# 		NOT = {
 					# 			is_country_type = fallen_empire
 					# 		}
@@ -339,6 +352,7 @@ fleet_event = {
 					# 	}
 					# }
 				}
+				# Maybe increase seek range on failed.
 				# failed = {
 				# 	effect = {
 				# 		id = acemod.1111.e2
@@ -380,38 +394,274 @@ fleet_event = {
 	}
 }
 
-# Destroys all colonies when crisis fleet enters the system. This is a debug event and should be commented out in the release version.
-fleet_event = {
-	id = acemod_fleet.110
+# Destroys all colonies when crisis fleet enters the system. This is a debug event and should be disabled in the release version.
+# fleet_event = {
+# 	id = acemod_fleet.110
+# 	hide_window = yes
+# 	is_triggered_only = yes
+# 	trigger = {
+# 		has_global_flag = acemod_activated
+# 		owner = {
+# 			OR = {
+# 				is_country_type = swarm
+# 				is_country_type = extradimensional
+# 				is_country_type = extradimensional_2
+# 				is_country_type = extradimensional_3
+# 				is_country_type = ai_empire
+# 				is_country_type = gray
+# 				is_country_type = gray_goo				# A Deadly Tempest mod
+# 			}
+# 		}
+# 		is_ship_class = shipclass_military
+# 	}
+# 	immediate = {
+# 		# fleet_event = {
+# 		# 	id = acemod_fleet.101
+# 		# 	days = 75
+# 		# }
+# 		solar_system = {
+# 			# for testing purposes
+# 			every_system_planet = {
+# 				limit = {
+# 					is_colony = yes
+# 				}
+# 				destroy_colony = yes
+# 			}
+# 		}
+# 	}
+# }
+# Main starbase constructor event.
+event = {
+	id = acemod_fleet.300
 	hide_window = yes
 	is_triggered_only = yes
 	trigger = {
 		has_global_flag = acemod_activated
-		owner = {
-			OR = {
-				is_country_type = swarm
-				is_country_type = extradimensional
-				is_country_type = extradimensional_2
-				is_country_type = extradimensional_3
-				is_country_type = ai_empire
-				is_country_type = gray
-				is_country_type = gray_goo				# A Deadly Tempest mod
-			}
-		}
-		is_ship_class = shipclass_military
 	}
 	immediate = {
-		# fleet_event = {
-		# 	id = acemod_fleet.101
-		# 	days = 75
-		# }
-		solar_system = {
-			# for testing purposes
-			every_system_planet = {
+		every_country = {
+			limit = {
+				has_country_flag = acemod_assisted_ai				# Only countries with this flag will have their fleets piloted by ACEMOD.
+				# OR = {
+				# 	is_country_type = swarm
+				# 	is_country_type = extradimensional
+				# 	is_country_type = extradimensional_2
+				# 	is_country_type = extradimensional_3
+				# 	is_country_type = ai_empire
+				# 	is_country_type = gray
+				# 	is_country_type = gray_goo					# A Deadly Tempest mod.
+				# }
+			}
+			every_owned_fleet = {
 				limit = {
-					is_colony = yes
+					NOT = {
+						check_variable = {
+							which = acemod_var_fleet_piloted_exclusion
+							value = 1
+						}
+					}
+					is_fleet_idle = yes
+					is_ship_class = shipclass_constructor
 				}
-				destroy_colony = yes
+				fleet_event = {
+					id = acemod_fleet.305
+				}
+			}
+		}
+	}
+}
+
+# Checks if starbase (owner) is present or under construction and orders building it if not.
+fleet_event = {
+	id = acemod_fleet.305
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		if = {
+			limit = {
+				has_fleet_flag = acemod_planet_flag_starbase_construction_fleet
+			}
+			break = yes
+		}
+		else_if = {
+			limit = {
+				solar_system = {
+					NOR = {
+						exists = owner
+						has_star_flag = acemod_star_flag_starbase_construction_system
+					}
+					NOT = {
+						# any_ship_in_system = {
+						any_fleet_in_system = {
+							OR = {
+								is_constructing = starbase
+								has_fleet_flag = acemod_planet_flag_starbase_construction_fleet
+							}
+							owner = {
+								is_same_value = root.owner
+							}
+						}
+					}
+				}
+			}
+			queue_actions = {
+				find_closest_planet = {
+					trigger = {
+						id = "acemod.305.t1"
+						is_primary_star = yes
+					}
+					found_planet = {
+						move_to = this
+						wait = 5
+						orbit_planet = this
+						effect = {
+							id = "acemod.305.e1"
+							solar_system = {
+								set_timed_star_flag = {
+									flag = acemod_star_flag_starbase_construction_system
+									days = 100
+								}
+							}
+							root = {
+								set_timed_fleet_flag = {
+									flag = acemod_planet_flag_starbase_construction_fleet
+									days = 100
+								}
+								fleet_event = {
+									id = acemod_fleet.306
+									days = 100
+								}
+							}
+						}
+					}
+					failed = {
+						effect = {
+							id = "acemod.305.e2"
+							root = {
+								fleet_event = {
+									id = acemod_fleet.310
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		else = {
+			fleet_event = {
+				id = acemod_fleet.310
+			}
+		}
+	}
+}
+
+# Builds starbase, currently only set up for Unbidden
+fleet_event = {
+	id = acemod_fleet.306
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		if = {
+			limit = {
+				is_in_combat = no
+			}
+			random_list = {
+				50 = {
+					solar_system = {
+						create_starbase = {
+							size = starbase_exd_0
+							owner = root.owner
+						}
+					}
+				}
+				50 = {
+					solar_system = {
+						create_starbase = {
+							size = starbase_exd
+							owner = root.owner
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+fleet_event = {
+	id = acemod_fleet.310
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		solar_system = {
+			closest_system = {
+				min_steps = 1
+				max_steps = 20
+				limit = {
+					has_access_fleet = root.owner
+					NOR = {
+						has_star_flag = acemod_star_flag_solar_system_constructor_target
+						has_star_flag = acemod_star_flag_starbase_construction_system
+						has_star_flag = extradimensional_origin_system
+					}
+					NOT = {
+						exists = owner
+					}
+					NOR = {
+						# any_ship_in_system = {
+						any_fleet_in_system = {
+							OR = {
+								is_constructing = starbase
+								has_fleet_flag = acemod_planet_flag_starbase_construction_fleet
+							}
+							owner = {
+								is_same_value = root.owner
+							}
+						}
+						any_fleet_in_system = {
+							owner = {
+								is_hostile = root.owner
+							}
+						}
+					}
+				}
+				save_event_target_as = acemod_star_flag_solar_system_constructor_target
+				set_timed_star_flag = {
+					flag = acemod_star_flag_solar_system_constructor_target
+					days = 120
+				}
+			}
+		}
+		save_event_target_as = acemod_event_target_constructor_fleet
+		set_fleet_stance = evasive
+		queue_actions = {
+			find_closest_system = {
+				trigger = {
+					id = "acemod.310.t1"
+					is_same_value = event_target:acemod_star_flag_solar_system_constructor_target
+				}
+				found_system = {
+					move_to = this
+					# effect = {
+					# 	id = acemod.1111.e1
+					# 	root = {
+					# 		fleet_event = {
+					# 			id = acemod_fleet.101
+					# 			days = 5
+					# 		}
+					# 	}
+					# }
+				}
+				# failed = {
+				# 	effect = {
+				# 		id = acemod.1111.e2
+				# 		root = {
+				# 			fleet_event = {
+				# 				id = acemod_fleet.101
+				# 				days = 5
+				# 			}
+				# 		}
+				# 	}
+				# }
 			}
 		}
 	}
