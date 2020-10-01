@@ -4,19 +4,15 @@ on_game_start = {
 	}
 }
 
-# on_yearly_pulse = {
-# 	events = {
-# 		acemod_fleet.4	# Main fleet hunter-seeker event.
-# 	}
-# }
 on_monthly_pulse = {
 	events = {
 		acemod_fleet.4		# Main fleet hunter-seeker event.
+		acemod_fleet.300		# Main starbase constructor event.
 	}
 }
 
 on_entering_system_fleet = {
 	events = {
-		acemod_fleet.110		# Destroys all colonies when crisis fleet enters the system. This is a debug event.
+		# acemod_fleet.110		# Destroys all colonies when crisis fleet enters the system. This is a debug event.
 	}
 }

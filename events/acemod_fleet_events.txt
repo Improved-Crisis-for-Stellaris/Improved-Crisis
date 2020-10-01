@@ -2,10 +2,12 @@ namespace = acemod_fleet
 # 
 # Instructions:
 # 
-# set_global_flag = acemod_activated			global		Activates ACEMOD fleet AI.
-# set_country_flag = acemod_assisted_ai			country		Only countries with this flag will have their fleets piloted by ACEMOD.
-# acemod_set_fleet_piloted_exclusion_on = yes	fleet ship	Prevents ACEMOD from piloting marked fleets.
-# acemod_set_fleet_piloted_exclusion_off = yes	fleet ship	Resumes default operation.
+# set_global_flag = acemod_activated								global			Activates ACEMOD fleet AI.
+# set_country_flag = acemod_assisted_ai								country			Only countries with this flag will have their fleets piloted by ACEMOD.
+# acemod_set_fleet_piloted_exclusion_on = yes						fleet ship		Prevents ACEMOD from piloting marked fleets.
+# acemod_set_fleet_piloted_exclusion_off = yes						fleet ship		Resumes default operation.
+# set_country_flag = acemod_country_flag_custom_starbase_outpost	country			ACEMOD AI constructors will spawn normal starbases (outpost) using empire's graphical culture.
+# set_country_flag = acemod_country_flag_custom_starbase_citadel	country			ACEMOD AI constructors will spawn normal starbases (citadel) using empire's graphical culture.
 #		
 # Calculates strategic value of systems.
 country_event = {
@@ -120,7 +122,7 @@ fleet_event = {
 			queue_actions = {
 				find_closest_planet = {
 					trigger = {
-						id = "acemod.2222.t1"
+						id = "acemod.5.t1"
 						OR = {
 							is_colony = yes
 							is_under_colonization = yes
@@ -135,7 +137,7 @@ fleet_event = {
 					}
 					found_planet = {
 						effect = {
-							id = "acemod.2222.e1"
+							id = "acemod.5.e1"
 							save_event_target_as = acemod_event_target_invader_bombardment_target
 							set_timed_planet_flag = {
 								flag = acemod_planet_flag_bombardment_target
@@ -148,7 +150,7 @@ fleet_event = {
 					}
 					failed = {
 						effect = {
-							id = "acemod.2222.e2"
+							id = "acemod.5.e2"
 							root = {
 								fleet_event = {
 									id = acemod_fleet.6
@@ -193,7 +195,7 @@ fleet_event = {
 					queue_actions = {
 						find_random_system = {
 							trigger = {
-								id = "acemod.3333.t1"
+								id = "acemod.6.t1"
 								distance = {
 									source = root
 									#	max_distance <= 1000
@@ -229,7 +231,7 @@ fleet_event = {
 							}
 							failed = {
 								effect = {
-									id = "acemod.3333.e1"
+									id = "acemod.6.e1"
 									root = {
 										fleet_event = {
 											id = acemod_fleet.100
@@ -272,6 +274,26 @@ country_event = {
 	is_triggered_only = yes
 	immediate = {
 		set_country_flag = acemod_assisted_ai
+	}
+}
+
+# ACEMOD AI constructors will spawn normal starbases (outpost) using empire's graphical culture.
+country_event = {
+	id = acemod_fleet.12
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		set_country_flag = acemod_country_flag_custom_starbase_outpost
+	}
+}
+
+# ACEMOD AI constructors will spawn normal starbases (citadel) using empire's graphical culture.
+country_event = {
+	id = acemod_fleet.13
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		set_country_flag = acemod_country_flag_custom_starbase_citadel
 	}
 }
 
@@ -337,13 +359,13 @@ fleet_event = {
 		queue_actions = {
 			find_closest_system = {
 				trigger = {
-					id = "acemod.1111.t1"
+					id = "acemod.100.t1"
 					is_same_value = event_target:acemod_event_target_invader_target
 				}
 				found_system = {
 					move_to = this
 					# effect = {
-					# 	id = acemod.1111.e1
+					# 	id = acemod.100.e1
 					# 	root = {
 					# 		fleet_event = {
 					# 			id = acemod_fleet.101
@@ -355,7 +377,7 @@ fleet_event = {
 				# Maybe increase seek range on failed.
 				# failed = {
 				# 	effect = {
-				# 		id = acemod.1111.e2
+				# 		id = acemod.100.e2
 				# 		root = {
 				# 			fleet_event = {
 				# 				id = acemod_fleet.101
@@ -555,38 +577,227 @@ fleet_event = {
 	}
 }
 
-# Builds starbase, currently only set up for Unbidden
+# Builds starbase. Apply one of custom_starbase country flags if you are using custom country type or empire.
 fleet_event = {
 	id = acemod_fleet.306
 	hide_window = yes
 	is_triggered_only = yes
 	immediate = {
+		# Vanilla empire types are listed below.
 		if = {
 			limit = {
 				is_in_combat = no
-			}
-			random_list = {
-				50 = {
-					solar_system = {
-						create_starbase = {
-							size = starbase_exd_0
-							owner = root.owner
-						}
-					}
-				}
-				50 = {
-					solar_system = {
-						create_starbase = {
-							size = starbase_exd
-							owner = root.owner
-						}
+				owner = {
+					NOR = {
+						has_country_flag = acemod_country_flag_custom_starbase_outpost
+						has_country_flag = acemod_country_flag_custom_starbase_citadel
 					}
 				}
 			}
+			# Including default and rebel for future-proofing.
+			if = {
+				limit = {
+					owner = {
+						OR = {
+							is_country_type = default
+							is_country_type = rebel
+						}
+					}
+				}
+				solar_system = {
+					create_starbase = {
+						size = starbase_outpost
+						owner = root.owner
+					}
+				}
+				break = yes
+			}
+			if = {
+				limit = {
+					owner = {
+						is_country_type = ai_empire
+					}
+				}
+				solar_system = {
+					create_starbase = {
+						size = starbase_ai
+						owner = root.owner
+					}
+				}
+				break = yes
+			}
+			if = {
+				limit = {
+					owner = {
+						OR = {
+							is_country_type = extradimensional
+							is_country_type = extradimensional_2
+							is_country_type = extradimensional_3
+						}
+					}
+				}
+				random_list = {
+					50 = {
+						solar_system = {
+							create_starbase = {
+								size = starbase_exd_0
+								owner = root.owner
+							}
+						}
+					}
+					50 = {
+						solar_system = {
+							create_starbase = {
+								size = starbase_exd
+								owner = root.owner
+							}
+							# Make sure anchors are accounted for and effect invincibility of portal for each Unbidden faction.
+							random_fleet_in_system = {
+								limit = {
+									is_ship_size = starbase_exd
+								}
+								random_owned_ship = {
+									limit = {
+										is_ship_size = starbase_exd
+									}
+									ship_event = {
+										id = crisis.1280
+									}
+								}
+							}
+						}
+					}
+				}
+				break = yes
+			}
+			if = {
+				limit = {
+					owner = {
+						is_country_type = swarm
+					}
+				}
+				solar_system = {
+					create_starbase = {
+						size = starbase_swarm
+						owner = root.owner
+					}
+				}
+				break = yes
+			}
+			if = {
+				limit = {
+					owner = {
+						OR = {
+							is_country_type = awakened_marauders
+							is_country_type = dormant_marauders
+							is_country_type = pirate
+							is_country_type = ruined_marauders
+						}
+					}
+				}
+				solar_system = {
+					create_starbase = {
+						size = starbase_marauder
+						owner = root.owner
+					}
+				}
+				break = yes
+			}
+			if = {
+				limit = {
+					owner = {
+						OR = {
+							is_country_type = fallen_empire
+							is_country_type = awakened_fallen_empire
+						}
+					}
+				}
+				solar_system = {
+					create_starbase = {
+						size = starbase_fe_outpost
+						owner = root.owner
+					}
+				}
+				break = yes
+			}
+			if = {
+				limit = {
+					owner = {
+						OR = {
+							is_country_type = gate_builders
+							is_country_type = gray
+							is_country_type = gray_goo
+						}
+					}
+				}
+				solar_system = {
+					create_starbase = {
+						size = starbase_gatebuilders
+						owner = root.owner
+					}
+				}
+				break = yes
+			}
+			else = {
+				break = yes
+			}
+		}
+		# Below for non-vanilla use. Apply one of custom_starbase country flags if you are using custom country type or empire.
+		else_if = {
+			limit = {
+				is_in_combat = no
+				owner = {
+					OR = {
+						has_country_flag = acemod_country_flag_custom_starbase_outpost
+						has_country_flag = acemod_country_flag_custom_starbase_citadel
+					}
+				}
+			}
+			if = {
+				limit = {
+					owner = {
+						has_country_flag = acemod_country_flag_custom_starbase_outpost
+						NOT = {
+							has_country_flag = acemod_country_flag_custom_starbase_citadel
+						}
+					}
+				}
+				solar_system = {
+					create_starbase = {
+						size = starbase_outpost
+						owner = root.owner
+					}
+				}
+				break = yes
+			}
+			if = {
+				limit = {
+					owner = {
+						has_country_flag = acemod_country_flag_custom_starbase_citadel
+						NOT = {
+							has_country_flag = acemod_country_flag_custom_starbase_outpost
+						}
+					}
+				}
+				solar_system = {
+					create_starbase = {
+						size = starbase_citadel
+						owner = root.owner
+					}
+				}
+				break = yes
+			}
+			else = {
+				break = yes
+			}
+		}
+		else = {
+			break = yes
 		}
 	}
 }
 
+# Seeks valid solar system to build starbase in.
 fleet_event = {
 	id = acemod_fleet.310
 	hide_window = yes
@@ -642,7 +853,7 @@ fleet_event = {
 				found_system = {
 					move_to = this
 					# effect = {
-					# 	id = acemod.1111.e1
+					# 	id = acemod.310.e1
 					# 	root = {
 					# 		fleet_event = {
 					# 			id = acemod_fleet.101
@@ -653,7 +864,7 @@ fleet_event = {
 				}
 				# failed = {
 				# 	effect = {
-				# 		id = acemod.1111.e2
+				# 		id = acemod.310.e2
 				# 		root = {
 				# 			fleet_event = {
 				# 				id = acemod_fleet.101
