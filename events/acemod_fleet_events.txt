@@ -8,6 +8,8 @@ namespace = acemod_fleet
 # acemod_set_fleet_piloted_exclusion_off = yes						fleet ship		Resumes default operation.
 # set_country_flag = acemod_country_flag_custom_starbase_outpost	country			ACEMOD AI constructors will spawn normal starbases (outpost) using empire's graphical culture.
 # set_country_flag = acemod_country_flag_custom_starbase_citadel	country			ACEMOD AI constructors will spawn normal starbases (citadel) using empire's graphical culture.
+# set_country_flag = acemod_country_flag_disabled_military_ai		country			Disables ACEMOD AI for military fleets.
+# set_country_flag = acemod_country_flag_disabled_constructor_ai	country			Disables ACEMOD AI for constructor fleets.
 #		
 # Calculates strategic value of systems.
 country_event = {
@@ -50,6 +52,9 @@ event = {
 		every_country = {
 			limit = {
 				has_country_flag = acemod_assisted_ai				# Only countries with this flag will have their fleets piloted by ACEMOD.
+				NOT = {
+					has_country_flag = acemod_country_flag_disabled_military_ai
+				}
 				# OR = {
 				# 	is_country_type = swarm
 				# 	is_country_type = extradimensional
@@ -297,6 +302,26 @@ country_event = {
 	}
 }
 
+# Disables ACEMOD AI for military fleets.
+country_event = {
+	id = acemod_fleet.20
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		set_country_flag = acemod_country_flag_disabled_military_ai
+	}
+}
+
+# Disables ACEMOD AI for constructor fleets.
+country_event = {
+	id = acemod_fleet.21
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		set_country_flag = acemod_country_flag_disabled_constructor_ai
+	}
+}
+
 # Main fleet hunter-seeker event.
 fleet_event = {
 	id = acemod_fleet.100
@@ -464,6 +489,9 @@ event = {
 		every_country = {
 			limit = {
 				has_country_flag = acemod_assisted_ai				# Only countries with this flag will have their fleets piloted by ACEMOD.
+				NOT = {
+					has_country_flag = acemod_country_flag_disabled_constructor_ai
+				}
 				# OR = {
 				# 	is_country_type = swarm
 				# 	is_country_type = extradimensional
