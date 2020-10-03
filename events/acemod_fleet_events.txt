@@ -12,6 +12,7 @@ namespace = acemod_fleet
 # set_country_flag = acemod_country_flag_disabled_constructor_ai	country			Disables ACEMOD AI for constructor fleets.
 # set_country_flag = acemod_country_flag_disabled_army_ai			country			Disables ACEMOD AI for army fleets.
 # set_global_flag = acemod_technology_disabled						global			Prevents ACEMOD technologies from rolling.
+# set_star_flag = acemod_is_active_bypass							solar_system	Marks system as having an accessible bypass (custom modded wormhole, custom modded gateway etc). Used in pathfinding.
 #
 # Calculates strategic value of systems.
 country_event = {
@@ -194,6 +195,7 @@ fleet_event = {
 							is_megastructure_type = gateway_restored
 							is_megastructure_type = lgate_base
 						}
+						has_star_flag = acemod_is_active_bypass
 					}
 				}
 			}
@@ -220,6 +222,7 @@ fleet_event = {
 										is_megastructure_type = gateway_restored
 										is_megastructure_type = lgate_base
 									}
+									has_star_flag = acemod_is_active_bypass
 								}
 								has_access_fleet = root.owner
 								NOT = {
@@ -331,6 +334,16 @@ country_event = {
 	is_triggered_only = yes
 	immediate = {
 		set_country_flag = acemod_country_flag_disabled_army_ai
+	}
+}
+
+# Marks system as having an accessible bypass (custom modded wormhole, custom modded gateway etc). Used in pathfinding.
+event = {
+	id = acemod_fleet.30
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		set_star_flag = acemod_is_active_bypass
 	}
 }
 
@@ -865,6 +878,7 @@ fleet_event = {
 							is_megastructure_type = gateway_restored
 							is_megastructure_type = lgate_base
 						}
+						has_star_flag = acemod_is_active_bypass
 					}
 				}
 			}
@@ -891,6 +905,7 @@ fleet_event = {
 										is_megastructure_type = gateway_restored
 										is_megastructure_type = lgate_base
 									}
+									has_star_flag = acemod_is_active_bypass
 								}
 								has_access_fleet = root.owner
 								NOR = {
@@ -1289,6 +1304,7 @@ fleet_event = {
 							is_megastructure_type = gateway_restored
 							is_megastructure_type = lgate_base
 						}
+						has_star_flag = acemod_is_active_bypass
 					}
 				}
 			}
@@ -1315,6 +1331,7 @@ fleet_event = {
 										is_megastructure_type = gateway_restored
 										is_megastructure_type = lgate_base
 									}
+									has_star_flag = acemod_is_active_bypass
 								}
 								has_access_fleet = root.owner
 								NOT = {
