@@ -627,6 +627,9 @@ fleet_event = {
 		if = {
 			limit = {
 				is_in_combat = no
+				NOT = {
+					has_fleet_order = evade_hostiles_order
+				}
 				owner = {
 					NOR = {
 						has_country_flag = acemod_country_flag_custom_starbase_outpost
@@ -786,6 +789,9 @@ fleet_event = {
 		else_if = {
 			limit = {
 				is_in_combat = no
+				NOT = {
+					has_fleet_order = evade_hostiles_order
+				}
 				owner = {
 					OR = {
 						has_country_flag = acemod_country_flag_custom_starbase_outpost
