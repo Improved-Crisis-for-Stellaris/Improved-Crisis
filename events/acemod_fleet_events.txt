@@ -1114,6 +1114,11 @@ fleet_event = {
 							is_controlled_by = root.owner
 						}
 						# is_under_colonization =  yes	#	Cannot be invaded.
+						# Crisis worlds cannot (legally) and shouldn't (to avoid the bug) be invaded.
+						NOR = {
+							is_planet_class = pc_infested
+							is_planet_class = pc_ai
+						}
 					}
 				}
 			}
@@ -1132,7 +1137,11 @@ fleet_event = {
 						NOT = {
 							is_controlled_by = root.owner
 						}
-						# is_same_value = event_target:acemod_event_target_invader_army_target
+						# Crisis worlds cannot (legally) and shouldn't (to avoid the bug) be invaded.
+						NOR = {
+							is_planet_class = pc_infested
+							is_planet_class = pc_ai
+						}
 					}
 					found_planet = {
 						effect = {
@@ -1146,11 +1155,73 @@ fleet_event = {
 						move_to = this
 						wait = 5
 						orbit_planet = this
-						#	Placeholder effect
 						effect = {
 							id = "acemod.405.e2"
-							set_controller = root.owner
+							root = {
+								if = {
+									limit = {
+										owner = {
+											is_country_type = swarm
+										}
+									}
+									owner = {
+										owner_species = {
+											save_event_target_as = prethoryn_species
+										}
+									}
+									prev = {
+										while = {
+											count = 20											#	Need to implement transport count
+											create_army = {
+												name = "NAME_Prethoryn_Invaders"
+												owner = root.owner
+												type = "swarm_army"
+												species = event_target:prethoryn_species
+											}
+										}
+									}
+									# root = {
+									# 	set_event_locked = yes
+									# }
+									break = yes
+								}
+								if = {
+									limit = {
+										owner = {
+											is_country_type = ai_empire
+										}
+									}
+									owner = {
+										owner_species = {
+											save_event_target_as = custodian_bot
+										}
+									}
+									prev = {
+										while = {
+											count = 20											#	Need to implement transport count
+											create_army = {
+												name = "NAME_Contingency"
+												owner = root.owner
+												type = "robotic_army"
+												species = event_target:custodian_bot
+											}
+										}
+									}
+									# root = {
+									# 	set_event_locked = yes
+									# }
+									break = yes
+								}
+								else = {
+									set_controller = root.owner									#	Placeholder effect
+								}
+							}
 						}
+						#	Placeholder effect
+						# effect = {
+						# 	id = "acemod.405.e3"
+						# 	set_controller = root.owner
+						# }
 					}
 					failed = {
 						effect = {

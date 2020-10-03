@@ -17,3 +17,15 @@ on_entering_system_fleet = {
 		# acemod_fleet.110		# Destroys all colonies when crisis fleet enters the system. This is a debug event.
 	}
 }
+
+# on_planet_attackers_win = {
+# 	events = {
+# 		acemod_fleet.406		# Invasion army fleet unclock after battle.
+# 	}
+# }
+
+# on_planet_attackers_lose = {
+# 	events = {
+# 		acemod_fleet.407		# Invasion army fleet removal after battle.
+# 	}
+# }
