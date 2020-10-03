@@ -17,8 +17,9 @@ tech_acemod_crisis_1a = {
 	weight_modifier = {
 		modifier = {
 			factor = 0
-			NOT = {
+			NOR = {
 				has_global_flag = prethoryn_invasion_happened
+				has_global_flag = acemod_technology_disabled
 			}
 		}
 		modifier = {
@@ -64,8 +65,9 @@ tech_acemod_crisis_2a = {
 	weight_modifier = {
 		modifier = {
 			factor = 0
-			NOT = {
+			NOR = {
 				has_global_flag = prethoryn_invasion_happened
+				has_global_flag = acemod_technology_disabled
 			}
 		}
 		modifier = {
@@ -111,8 +113,9 @@ tech_acemod_crisis_3a = {
 	weight_modifier = {
 		modifier = {
 			factor = 0
-			NOT = {
+			NOR = {
 				has_global_flag = prethoryn_invasion_happened
+				has_global_flag = acemod_technology_disabled
 			}
 		}
 		modifier = {
@@ -160,8 +163,9 @@ tech_acemod_crisis_1b = {
 	weight_modifier = {
 		modifier = {
 			factor = 0
-			NOT = {
+			NOR = {
 				has_global_flag = extradimensional_invasion_happened
+				has_global_flag = acemod_technology_disabled
 			}
 		}
 		modifier = {
@@ -209,8 +213,9 @@ tech_acemod_crisis_2b = {
 	weight_modifier = {
 		modifier = {
 			factor = 0
-			NOT = {
+			NOR = {
 				has_global_flag = extradimensional_invasion_happened
+				has_global_flag = acemod_technology_disabled
 			}
 		}
 		modifier = {
@@ -258,8 +263,9 @@ tech_acemod_crisis_3b = {
 	weight_modifier = {
 		modifier = {
 			factor = 0
-			NOT = {
+			NOR = {
 				has_global_flag = extradimensional_invasion_happened
+				has_global_flag = acemod_technology_disabled
 			}
 		}
 		modifier = {
@@ -305,8 +311,9 @@ tech_acemod_crisis_1c = {
 	weight_modifier = {
 		modifier = {
 			factor = 0
-			NOT = {
+			NOR = {
 				has_global_flag = ai_invasion_happened
+				has_global_flag = acemod_technology_disabled
 			}
 		}
 		modifier = {
@@ -352,8 +359,9 @@ tech_acemod_crisis_2c = {
 	weight_modifier = {
 		modifier = {
 			factor = 0
-			NOT = {
+			NOR = {
 				has_global_flag = ai_invasion_happened
+				has_global_flag = acemod_technology_disabled
 			}
 		}
 		modifier = {
@@ -399,8 +407,9 @@ tech_acemod_crisis_3c = {
 	weight_modifier = {
 		modifier = {
 			factor = 0
-			NOT = {
+			NOR = {
 				has_global_flag = ai_invasion_happened
+				has_global_flag = acemod_technology_disabled
 			}
 		}
 		modifier = {
@@ -446,8 +455,9 @@ tech_acemod_crisis_goo = {
 	weight_modifier = {
 		modifier = {
 			factor = 0
-			NOT = {
+			NOR = {
 				has_global_flag = active_gray_goo
+				has_global_flag = acemod_technology_disabled
 			}
 		}
 		modifier = {
@@ -476,47 +486,54 @@ tech_acemod_crisis_goo = {
 }
 
 #END OF THE CYCLE (causes galactic mass destruction)
-#tech_acemod_crisis_eotc = {
-#	cost = @tier5cost3
-#	area = society
-#	tier = 5
-#	category = { psionics }	
-#	prerequisites = { "tech_zero_point_power" }
-#	weight = @tier5weight3
-#	
-#	modifier = {
-#		damage_vs_country_type_shroud_mult = 0.25
-#		damage_vs_country_type_shroud_spirits_mult = 0.25
-#	}
-#	
-#	weight_modifier = {
-#		modifier = {
-#			factor = 0
-#			NOT = { has_global_flag = end_of_the_cycle }
-#		}
-#		modifier = {
-#			factor = 1.25
-#			research_leader = {
-#				area = society
-#				has_trait = "leader_trait_expertise_psionics"
-#			}			
-#		}
-#	}
-#	
-#	ai_weight = {
-#		modifier = {
-#			factor = 0
-#			NOT = { has_country_flag = end_of_the_cycle }
-#		}
-#		modifier = {
-#			factor = 1.25
-#			research_leader = {
-#				area = society
-#				has_trait = "leader_trait_expertise_psionics"
-#			}
-#		}
-#	}
-#}
+# tech_acemod_crisis_eotc = {
+# 	cost = @tier5cost3
+# 	area = society
+# 	tier = 5
+# 	category = {
+# 		psionics
+# 	}
+# 	prerequisites = {
+# 		"tech_zero_point_power"
+# 	}
+# 	weight = @tier5weight3
+# 	modifier = {
+# 		damage_vs_country_type_shroud_mult = 0.25
+# 		damage_vs_country_type_shroud_spirits_mult = 0.25
+# 	}
+# 	weight_modifier = {
+# 		modifier = {
+# 			factor = 0
+# 			NOR = {
+# 				has_global_flag = end_of_the_cycle
+# 				has_global_flag = acemod_technology_disabled
+# 			}
+# 		}
+# 		modifier = {
+# 			factor = 1.25
+# 			research_leader = {
+# 				area = society
+# 				has_trait = "leader_trait_expertise_psionics"
+# 			}
+# 		}
+# 	}
+# 	ai_weight = {
+# 		modifier = {
+# 			factor = 0
+# 			NOT = {
+# 				has_global_flag = end_of_the_cycle
+# 			}
+# 		}
+# 		modifier = {
+# 			factor = 1.25
+# 			research_leader = {
+# 				area = society
+# 				has_trait = "leader_trait_expertise_psionics"
+# 			}
+# 		}
+# 	}
+# }
+
 #Fallen Empires
 tech_acemod_crisis_fe = {
 	cost = @tier5cost3
@@ -534,6 +551,12 @@ tech_acemod_crisis_fe = {
 		damage_vs_country_type_awakened_fallen_empire_mult = 0.25
 	}
 	weight_modifier = {
+		modifier = {
+			factor = 0
+			NOT = {
+				has_global_flag = acemod_technology_disabled
+			}
+		}
 		modifier = {
 			factor = 1.25
 			research_leader = {
