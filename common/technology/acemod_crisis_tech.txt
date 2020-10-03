@@ -11,6 +11,7 @@ tech_acemod_crisis_1a = {
 		"tech_zero_point_power"
 	}
 	weight = @tier5weight3
+	is_rare = yes
 	modifier = {
 		damage_vs_country_type_swarm_mult = 0.25
 	}
@@ -59,6 +60,7 @@ tech_acemod_crisis_2a = {
 		"tech_acemod_crisis_1a"
 	}
 	weight = @tier5weight3
+	is_rare = yes
 	modifier = {
 		damage_vs_country_type_swarm_mult = 0.25
 	}
@@ -107,6 +109,7 @@ tech_acemod_crisis_3a = {
 		"tech_acemod_crisis_2a"
 	}
 	weight = @tier5weight3
+	is_rare = yes
 	modifier = {
 		damage_vs_country_type_swarm_mult = 0.25
 	}
@@ -155,6 +158,7 @@ tech_acemod_crisis_1b = {
 		"tech_zero_point_power"
 	}
 	weight = @tier5weight3
+	is_rare = yes
 	modifier = {
 		damage_vs_country_type_extradimensional_mult = 0.25
 		damage_vs_country_type_extradimensional_2_mult = 0.25
@@ -205,6 +209,7 @@ tech_acemod_crisis_2b = {
 		"tech_acemod_crisis_1b"
 	}
 	weight = @tier5weight3
+	is_rare = yes
 	modifier = {
 		damage_vs_country_type_extradimensional_mult = 0.25
 		damage_vs_country_type_extradimensional_2_mult = 0.25
@@ -255,6 +260,7 @@ tech_acemod_crisis_3b = {
 		"tech_acemod_crisis_2b"
 	}
 	weight = @tier5weight3
+	is_rare = yes
 	modifier = {
 		damage_vs_country_type_extradimensional_mult = 0.25
 		damage_vs_country_type_extradimensional_2_mult = 0.25
@@ -305,6 +311,7 @@ tech_acemod_crisis_1c = {
 		"tech_zero_point_power"
 	}
 	weight = @tier5weight3
+	is_rare = yes
 	modifier = {
 		damage_vs_country_type_ai_empire_mult = 0.25
 	}
@@ -353,6 +360,7 @@ tech_acemod_crisis_2c = {
 		"tech_acemod_crisis_1c"
 	}
 	weight = @tier5weight3
+	is_rare = yes
 	modifier = {
 		damage_vs_country_type_ai_empire_mult = 0.25
 	}
@@ -401,6 +409,7 @@ tech_acemod_crisis_3c = {
 		"tech_acemod_crisis_2c"
 	}
 	weight = @tier5weight3
+	is_rare = yes
 	modifier = {
 		damage_vs_country_type_ai_empire_mult = 0.25
 	}
@@ -449,6 +458,7 @@ tech_acemod_crisis_goo = {
 		"tech_zero_point_power"
 	}
 	weight = @tier5weight3
+	is_rare = yes
 	modifier = {
 		damage_vs_country_type_gray_goo_mult = 0.25
 	}
@@ -497,6 +507,7 @@ tech_acemod_crisis_goo = {
 # 		"tech_zero_point_power"
 # 	}
 # 	weight = @tier5weight3
+# 	is_rare = yes
 # 	modifier = {
 # 		damage_vs_country_type_shroud_mult = 0.25
 # 		damage_vs_country_type_shroud_spirits_mult = 0.25
@@ -546,6 +557,7 @@ tech_acemod_crisis_fe = {
 		"tech_zero_point_power"
 	}
 	weight = @tier5weight3
+	is_rare = yes
 	modifier = {
 		damage_vs_country_type_fallen_empire_mult = 0.25
 		damage_vs_country_type_awakened_fallen_empire_mult = 0.25
