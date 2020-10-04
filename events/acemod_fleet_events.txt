@@ -13,7 +13,7 @@ namespace = acemod_fleet
 # set_country_flag = acemod_country_flag_disabled_army_ai				country			Disables ACEMOD AI for army fleets.
 # set_global_flag = acemod_technology_disabled							global			Prevents ACEMOD technologies from rolling.
 # set_megastructure_flag = acemod_megastructure_flag_is_active_bypass	megastructure	Marks megastructure as being an accessible bypass (custom modded wormhole, custom modded gateway etc). Used in pathfinding. See acemod_is_active_bypass scripted trigger.
-
+# set_star_flag = acemod_star_flag_is_active_bypass						solar_system	Marks star system as being an accessible bypass (custom modded wormhole, custom modded gateway etc). Used in pathfinding. See acemod_is_active_bypass scripted trigger.
 #
 # Calculates strategic value of systems.
 country_event = {
@@ -210,7 +210,7 @@ fleet_event = {
 									source = root
 									#	max_distance <= 1000
 									#	min_distance >= 1
-									type = hyperlane
+									#	type = hyperlane
 									#	uses_bypass = yes
 									bypass_empire = root.owner
 									min_jumps = 1
@@ -226,23 +226,24 @@ fleet_event = {
 									acemod_is_active_bypass = yes
 								}
 								has_access_fleet = root.owner
-								NOT = {
-									any_fleet_in_system = {
-										is_same_value = root
-									}
-								}
-								owner = {
-									NOT = {
+								NOR = {
+									exists = owner
+									owner = {
 										is_country_type = fallen_empire
 									}
 								}
 							}
 							found_system = {
 								move_to = this
+								effect = {
+									id = "acemod.6.e1"
+									log = "ACEMOD_log: acemod.6.e1 Military fleet entered bypass system and found bypass system via bypass script."
+								}
 							}
 							failed = {
 								effect = {
-									id = "acemod.6.e1"
+									id = "acemod.6.e2"
+									log = "ACEMOD_log: acemod.6.e2 Military fleet entered bypass system and failed to find bypass system via bypass script."
 									root = {
 										fleet_event = {
 											id = acemod_fleet.100
@@ -254,6 +255,9 @@ fleet_event = {
 					}
 				}
 				50 = {
+					hidden_effect = {
+						log = "ACEMOD_log: acemod_fleet.6 Military fleet entered bypass system but rolled via bypass script to proceeded with standard script."
+					}
 					fleet_event = {
 						id = acemod_fleet.100
 					}
@@ -348,6 +352,16 @@ event = {
 	}
 }
 
+# Marks solar_system as having an accessible bypass (custom modded wormhole, custom modded gateway etc). Used in pathfinding.
+event = {
+	id = acemod_fleet.31
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		set_star_flag = acemod_star_flag_is_active_bypass
+	}
+}
+
 # Main fleet hunter-seeker event.
 fleet_event = {
 	id = acemod_fleet.100
@@ -415,6 +429,30 @@ fleet_event = {
 				}
 				found_system = {
 					move_to = this
+					effect = {
+						id = "acemod.100.e1"
+						if = {
+							limit = {
+								OR = {
+									has_natural_wormhole = yes
+									any_system_megastructure = {
+										is_megastructure_type = gateway_final
+										is_megastructure_type = gateway_restored
+										is_megastructure_type = lgate_base
+									}
+									acemod_is_active_bypass = yes
+								}
+							}
+							log = "ACEMOD_log: acemod.100.e1 Military fleet found bypass system via standard script."
+						}
+					}
+					# 		id = acemod.100.e2
+					# 		root = {
+					# 			fleet_event = {
+					# 				id = acemod_fleet.101
+					# 				days = 5
+					# 			}
+					# 		}
 					# effect = {
 					# 	id = acemod.100.e1
 					# 	root = {
@@ -893,7 +931,7 @@ fleet_event = {
 									source = root
 									#	max_distance <= 1000
 									#	min_distance >= 1
-									type = hyperlane
+									# 	type = hyperlane
 									#	uses_bypass = yes
 									bypass_empire = root.owner
 									min_jumps = 1
@@ -933,18 +971,18 @@ fleet_event = {
 										}
 									}
 								}
-								NOT = {
-									any_fleet_in_system = {
-										is_same_value = root
-									}
-								}
 							}
 							found_system = {
 								move_to = this
+								effect = {
+									id = "acemod.310.e1"
+									log = "ACEMOD_log: acemod.310.e1 Constructor entered bypass system and found bypass system via bypass script."
+								}
 							}
 							failed = {
 								effect = {
-									id = "acemod.310.e1"
+									id = "acemod.310.e2"
+									log = "ACEMOD_log: acemod.310.e2 Constructor entered bypass system and failed to find bypass system via bypass script."
 									root = {
 										fleet_event = {
 											id = acemod_fleet.311
@@ -956,6 +994,9 @@ fleet_event = {
 					}
 				}
 				50 = {
+					hidden_effect = {
+						log = "ACEMOD_log: acemod_fleet.310 Constructor entered bypass system but rolled via bypass script to proceeded with standard script."
+					}
 					fleet_event = {
 						id = acemod_fleet.311
 					}
@@ -1319,7 +1360,7 @@ fleet_event = {
 									source = root
 									#	max_distance <= 1000
 									#	min_distance >= 1
-									type = hyperlane
+									# 	type = hyperlane
 									#	uses_bypass = yes
 									bypass_empire = root.owner
 									min_jumps = 1
@@ -1336,12 +1377,6 @@ fleet_event = {
 								}
 								has_access_fleet = root.owner
 								NOT = {
-									has_star_flag = extradimensional_origin_system
-								}
-								NOT = {
-									exists = owner
-								}
-								NOT = {
 									# any_ship_in_system = {
 									any_fleet_in_system = {
 										owner = {
@@ -1349,18 +1384,18 @@ fleet_event = {
 										}
 									}
 								}
-								NOT = {
-									any_fleet_in_system = {
-										is_same_value = root
-									}
-								}
 							}
 							found_system = {
 								move_to = this
+								effect = {
+									id = "acemod.410.e1"
+									log = "ACEMOD_log: acemod.410.e1 Army fleet entered bypass system and found bypass system via bypass script."
+								}
 							}
 							failed = {
 								effect = {
-									id = "acemod.410.e1"
+									id = "acemod.410.e2"
+									log = "ACEMOD_log: acemod.410.e2 Army fleet entered bypass system and failed to find bypass system via bypass script."
 									root = {
 										fleet_event = {
 											id = acemod_fleet.411
@@ -1372,6 +1407,9 @@ fleet_event = {
 					}
 				}
 				50 = {
+					hidden_effect = {
+						log = "ACEMOD_log: acemod_fleet.410 Army fleet found bypass system but rolled via bypass script to proceeded with standard script."
+					}
 					fleet_event = {
 						id = acemod_fleet.411
 					}
