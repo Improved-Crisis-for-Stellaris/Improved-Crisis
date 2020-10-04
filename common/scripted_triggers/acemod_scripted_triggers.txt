@@ -1,0 +1,6 @@
+# Scope: solar_system
+acemod_is_active_bypass = {
+	any_system_megastructure = {
+		has_megastructure_flag = acemod_megastructure_flag_is_active_bypass
+	}
+}

@@ -2,17 +2,18 @@ namespace = acemod_fleet
 # 
 # Instructions:
 # 
-# set_global_flag = acemod_activated								global			Activates ACEMOD fleet AI.
-# set_country_flag = acemod_assisted_ai								country			Only countries with this flag will have their fleets piloted by ACEMOD.
-# acemod_set_fleet_piloted_exclusion_on = yes						fleet ship		Prevents ACEMOD from piloting marked fleets.
-# acemod_set_fleet_piloted_exclusion_off = yes						fleet ship		Resumes default operation.
-# set_country_flag = acemod_country_flag_custom_starbase_outpost	country			ACEMOD AI constructors will spawn normal starbases (outpost) using empire's graphical culture.
-# set_country_flag = acemod_country_flag_custom_starbase_citadel	country			ACEMOD AI constructors will spawn normal starbases (citadel) using empire's graphical culture.
-# set_country_flag = acemod_country_flag_disabled_military_ai		country			Disables ACEMOD AI for military fleets.
-# set_country_flag = acemod_country_flag_disabled_constructor_ai	country			Disables ACEMOD AI for constructor fleets.
-# set_country_flag = acemod_country_flag_disabled_army_ai			country			Disables ACEMOD AI for army fleets.
-# set_global_flag = acemod_technology_disabled						global			Prevents ACEMOD technologies from rolling.
-# set_star_flag = acemod_is_active_bypass							solar_system	Marks system as having an accessible bypass (custom modded wormhole, custom modded gateway etc). Used in pathfinding.
+# set_global_flag = acemod_activated									global			Activates ACEMOD fleet AI.
+# set_country_flag = acemod_assisted_ai									country			Only countries with this flag will have their fleets piloted by ACEMOD.
+# acemod_set_fleet_piloted_exclusion_on = yes							fleet ship		Prevents ACEMOD from piloting marked fleets.
+# acemod_set_fleet_piloted_exclusion_off = yes							fleet ship		Resumes default operation.
+# set_country_flag = acemod_country_flag_custom_starbase_outpost		country			ACEMOD AI constructors will spawn normal starbases (outpost) using empire's graphical culture.
+# set_country_flag = acemod_country_flag_custom_starbase_citadel		country			ACEMOD AI constructors will spawn normal starbases (citadel) using empire's graphical culture.
+# set_country_flag = acemod_country_flag_disabled_military_ai			country			Disables ACEMOD AI for military fleets.
+# set_country_flag = acemod_country_flag_disabled_constructor_ai		country			Disables ACEMOD AI for constructor fleets.
+# set_country_flag = acemod_country_flag_disabled_army_ai				country			Disables ACEMOD AI for army fleets.
+# set_global_flag = acemod_technology_disabled							global			Prevents ACEMOD technologies from rolling.
+# set_megastructure_flag = acemod_megastructure_flag_is_active_bypass	megastructure	Marks megastructure as being an accessible bypass (custom modded wormhole, custom modded gateway etc). Used in pathfinding. See acemod_is_active_bypass scripted trigger.
+
 #
 # Calculates strategic value of systems.
 country_event = {
@@ -195,7 +196,7 @@ fleet_event = {
 							is_megastructure_type = gateway_restored
 							is_megastructure_type = lgate_base
 						}
-						has_star_flag = acemod_is_active_bypass
+						acemod_is_active_bypass = yes
 					}
 				}
 			}
@@ -222,7 +223,7 @@ fleet_event = {
 										is_megastructure_type = gateway_restored
 										is_megastructure_type = lgate_base
 									}
-									has_star_flag = acemod_is_active_bypass
+									acemod_is_active_bypass = yes
 								}
 								has_access_fleet = root.owner
 								NOT = {
@@ -337,13 +338,13 @@ country_event = {
 	}
 }
 
-# Marks system as having an accessible bypass (custom modded wormhole, custom modded gateway etc). Used in pathfinding.
+# Marks megastructure as being an accessible bypass (custom modded wormhole, custom modded gateway etc). Used in pathfinding.
 event = {
 	id = acemod_fleet.30
 	hide_window = yes
 	is_triggered_only = yes
 	immediate = {
-		set_star_flag = acemod_is_active_bypass
+		set_megastructure_flag = acemod_megastructure_flag_is_active_bypass
 	}
 }
 
@@ -878,7 +879,7 @@ fleet_event = {
 							is_megastructure_type = gateway_restored
 							is_megastructure_type = lgate_base
 						}
-						has_star_flag = acemod_is_active_bypass
+						acemod_is_active_bypass = yes
 					}
 				}
 			}
@@ -905,7 +906,7 @@ fleet_event = {
 										is_megastructure_type = gateway_restored
 										is_megastructure_type = lgate_base
 									}
-									has_star_flag = acemod_is_active_bypass
+									acemod_is_active_bypass = yes
 								}
 								has_access_fleet = root.owner
 								NOR = {
@@ -1304,7 +1305,7 @@ fleet_event = {
 							is_megastructure_type = gateway_restored
 							is_megastructure_type = lgate_base
 						}
-						has_star_flag = acemod_is_active_bypass
+						acemod_is_active_bypass = yes
 					}
 				}
 			}
@@ -1331,7 +1332,7 @@ fleet_event = {
 										is_megastructure_type = gateway_restored
 										is_megastructure_type = lgate_base
 									}
-									has_star_flag = acemod_is_active_bypass
+									acemod_is_active_bypass = yes
 								}
 								has_access_fleet = root.owner
 								NOT = {
