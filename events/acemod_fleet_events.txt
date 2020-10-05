@@ -1,11 +1,22 @@
 namespace = acemod_fleet
+#
+# Note 1: In order to disable vanilla crisis AI this mod overwrites following keys in 00_country_types.txt:
+# swarm
+# extradimensional
+# extradimensional_2
+# extradimensional_3
+# ai_empire
 # 
+# Note 2: Vanilla crisis countries are piloted by default. See instructions on how to exclude countries, including vanilla crisis countries.
+#
 # Instructions:
 # 
 # set_global_flag = acemod_activated									global			Activates ACEMOD fleet AI.
 # set_country_flag = acemod_assisted_ai									country			Only countries with this flag will have their fleets piloted by ACEMOD.
 # acemod_set_fleet_piloted_exclusion_on = yes							fleet ship		Prevents ACEMOD from piloting marked fleets.
 # acemod_set_fleet_piloted_exclusion_off = yes							fleet ship		Resumes default operation.
+# acemod_set_country_piloted_exclusion_on = yes							country			Prevents ACEMOD from piloting fleets of given country. Use this if you don't want vanilla crisis country to be piloted. See acemod_fleet.9 event.
+# acemod_set_country_piloted_exclusion_off = yes						country			Removes exclusion *and* enables ACEMOD for given country. Does not activate global ACEMOD fleet AI (acemod_activated flag) if you had it off.
 # set_country_flag = acemod_country_flag_custom_starbase_outpost		country			ACEMOD AI constructors will spawn normal starbases (outpost) using empire's graphical culture.
 # set_country_flag = acemod_country_flag_custom_starbase_citadel		country			ACEMOD AI constructors will spawn normal starbases (citadel) using empire's graphical culture.
 # set_country_flag = acemod_country_flag_disabled_military_ai			country			Disables ACEMOD AI for military fleets.
@@ -322,6 +333,12 @@ event = {
 				}
 				NOT = {
 					has_country_flag = acemod_assisted_ai
+				}
+				NOT = {
+					check_variable = {
+						which = acemod_var_country_piloted_exclusion
+						value = 1
+					}
 				}
 				OR = {
 					is_country_type = swarm

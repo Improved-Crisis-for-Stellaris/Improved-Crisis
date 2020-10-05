@@ -12,11 +12,33 @@ acemod_set_fleet_piloted_exclusion_on = {
 	}
 }
 
+# Resumes default operation.
+# Scope: fleet ship
 acemod_set_fleet_piloted_exclusion_off = {
 	set_variable = {
 		which = acemod_var_fleet_piloted_exclusion
 		value = 0
 	}
+}
+
+# Prevents ACEMOD from piloting fleets of given country. Use this if you don't want vanilla crisis country to be piloted. See acemod_fleet.9 event.
+# Scope: country
+acemod_set_country_piloted_exclusion_on = {
+	set_variable = {
+		which = acemod_var_country_piloted_exclusion
+		value = 1
+	}
+	remove_country_flag = acemod_assisted_ai
+}
+
+# Removes exclusion *and* enables ACEMOD for given country. Does not activate global ACEMOD fleet AI (acemod_activated flag) if you had it off.
+# Scope: country
+acemod_set_country_piloted_exclusion_off = {
+	set_variable = {
+		which = acemod_var_country_piloted_exclusion
+		value = 0
+	}
+	set_country_flag = acemod_assisted_ai
 }
 
 # Scope: solar_system
