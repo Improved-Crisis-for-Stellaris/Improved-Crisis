@@ -335,10 +335,10 @@ event = {
 			}
 			set_global_flag = acemod_activated
 			set_country_flag = acemod_assisted_ai
-			set_timed_global_flag = {
-				flag = acemod_activation_cooldown
-				days = 358
-			}
+		}
+		set_timed_global_flag = {
+			flag = acemod_activation_cooldown
+			days = 358
 		}
 	}
 }
