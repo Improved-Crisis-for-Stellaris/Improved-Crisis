@@ -6,7 +6,8 @@ on_game_start = {
 
 on_monthly_pulse = {
 	events = {
-		acemod_fleet.4		# Main fleet hunter-seeker event.
+		acemod_fleet.4			# Main fleet hunter-seeker event.
+		acemod_fleet.9			# ACEMOD AI activation. Required to avoid crisis events overwrites.
 		acemod_fleet.300		# Main starbase constructor event.
 		acemod_fleet.400		# Main army hunter-seeker event.
 	}

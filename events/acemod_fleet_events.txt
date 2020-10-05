@@ -274,7 +274,7 @@ fleet_event = {
 
 # Activates ACEMOD AI. Without this flag fleets won't seek targets.
 event = {
-	id = acemod_fleet.10
+	id = acemod_fleet.7
 	hide_window = yes
 	is_triggered_only = yes
 	immediate = {
@@ -284,7 +284,7 @@ event = {
 
 # Applies ACEMOD AI to a specific country. Without this flag fleets won't seek targets.
 country_event = {
-	id = acemod_fleet.11
+	id = acemod_fleet.8
 	hide_window = yes
 	is_triggered_only = yes
 	immediate = {
@@ -292,9 +292,144 @@ country_event = {
 	}
 }
 
+# ACEMOD AI activation. Required to avoid crisis events overwrites.
+event = {
+	id = acemod_fleet.9
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		OR = {
+			has_global_flag = galactic_crisis_happened
+			has_global_flag = ai_invasion_ongoing			# Contingency crisis_events_3.txt does not set galactic_crisis_happened global flag! Naturally spawning Contingency will set flag via crisis_trigger_events.txt . Manually or by a mod spawned Contingency might lack this global flag.
+		}
+		NOT = {
+			has_global_flag = acemod_activation_cooldown			# Making sure script does not go monthly through all countries unnecesary but still switches ACEMOD AI on within a month.
+		}
+		# OR = {
+		# 	has_global_flag = prethoryn_arrival
+		# 	has_global_flag = prethoryn_main_invasion
+		# 	has_global_flag = ai_invasion_ongoing
+		# 	has_global_flag = extradimensional_invasion_happened
+		# 	has_global_flag = extradimensional_second_portal
+		# 	has_global_flag = extradimensional_third_portal
+		# }
+	}
+	immediate = {
+		every_country = {
+			limit = {
+				NOT = {
+					is_country_type = default
+				}
+				NOT = {
+					has_country_flag = acemod_assisted_ai
+				}
+				OR = {
+					is_country_type = swarm
+					is_country_type = extradimensional
+					is_country_type = extradimensional_2
+					is_country_type = extradimensional_3
+					is_country_type = ai_empire
+				}
+				# is_country_type = gray
+				# is_country_type = gray_goo				# A Deadly Tempest mod.
+			}
+			set_global_flag = acemod_activated
+			set_country_flag = acemod_assisted_ai
+			set_timed_global_flag = {
+				flag = acemod_activation_cooldown
+				days = 358
+			}
+		}
+	}
+}
+
+# # Prethoryn Vanguard ACEMOD AI activation
+# country_event = {
+# 	id = acemod_fleet.12
+# 	hide_window = yes
+# 	is_triggered_only = yes
+# 	trigger = {
+# 		has_global_flag = prethoryn_arrival
+# 		is_country_type = swarm
+# 	}
+# 	immediate = {
+# 		set_global_flag = acemod_activated
+# 		set_country_flag = acemod_assisted_ai
+# 	}
+# }
+# # Prethoryn Main Invasion ACEMOD AI activation
+# country_event = {
+# 	id = acemod_fleet.13
+# 	hide_window = yes
+# 	is_triggered_only = yes
+# 	trigger = {
+# 		has_global_flag = prethoryn_main_invasion
+# 		is_country_type = swarm
+# 	}
+# 	immediate = {
+# 		set_global_flag = acemod_activated
+# 		set_country_flag = acemod_assisted_ai
+# 	}
+# }
+# # Contingency ACEMOD AI activation
+# country_event = {
+# 	id = acemod_fleet.14
+# 	hide_window = yes
+# 	is_triggered_only = yes
+# 	trigger = {
+# 		has_global_flag = ai_invasion_ongoing
+# 		is_country_type = ai_empire
+# 	}
+# 	immediate = {
+# 		set_global_flag = acemod_activated
+# 		set_country_flag = acemod_assisted_ai
+# 	}
+# }
+# # Unbidden ACEMOD AI activation
+# country_event = {
+# 	id = acemod_fleet.15
+# 	hide_window = yes
+# 	is_triggered_only = yes
+# 	trigger = {
+# 		has_global_flag = extradimensional_invasion_happened
+# 		is_country_type = extradimensional
+# 	}
+# 	immediate = {
+# 		set_global_flag = acemod_activated
+# 		set_country_flag = acemod_assisted_ai
+# 	}
+# }
+# # Aberrant ACEMOD AI activation
+# country_event = {
+# 	id = acemod_fleet.16
+# 	hide_window = yes
+# 	is_triggered_only = yes
+# 	trigger = {
+# 		has_global_flag = extradimensional_second_portal
+# 		is_country_type = extradimensional_2
+# 	}
+# 	immediate = {
+# 		set_global_flag = acemod_activated
+# 		set_country_flag = acemod_assisted_ai
+# 	}
+# }
+# # Vehement ACEMOD AI activation
+# country_event = {
+# 	id = acemod_fleet.17
+# 	hide_window = yes
+# 	is_triggered_only = yes
+# 	trigger = {
+# 		has_global_flag = extradimensional_third_portal
+# 		is_country_type = extradimensional_3
+# 	}
+# 	immediate = {
+# 		set_global_flag = acemod_activated
+# 		set_country_flag = acemod_assisted_ai
+# 	}
+# }
 # ACEMOD AI constructors will spawn normal starbases (outpost) using empire's graphical culture.
 country_event = {
-	id = acemod_fleet.12
+	id = acemod_fleet.18
 	hide_window = yes
 	is_triggered_only = yes
 	immediate = {
@@ -304,7 +439,7 @@ country_event = {
 
 # ACEMOD AI constructors will spawn normal starbases (citadel) using empire's graphical culture.
 country_event = {
-	id = acemod_fleet.13
+	id = acemod_fleet.19
 	hide_window = yes
 	is_triggered_only = yes
 	immediate = {
