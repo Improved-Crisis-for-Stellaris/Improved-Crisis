@@ -212,7 +212,7 @@ fleet_event = {
 				}
 			}
 			random_list = {
-				50 = {
+				100 = {
 					queue_actions = {
 						find_random_system = {
 							trigger = {
@@ -237,9 +237,10 @@ fleet_event = {
 									acemod_is_active_bypass = yes
 								}
 								has_access_fleet = root.owner
-								NOR = {
-									exists = owner
-									owner = {
+								exists = owner
+								owner = {
+									NOR = {
+										is_same_value = root.owner
 										is_country_type = fallen_empire
 									}
 								}
@@ -265,7 +266,7 @@ fleet_event = {
 						}
 					}
 				}
-				50 = {
+				0 = {
 					hidden_effect = {
 						log = "ACEMOD_log: acemod_fleet.6 Military fleet entered bypass system but rolled via bypass script to proceeded with standard script."
 					}
