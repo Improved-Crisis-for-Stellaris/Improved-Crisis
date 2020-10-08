@@ -10,6 +10,7 @@ on_monthly_pulse = {
 		acemod_fleet.9			# ACEMOD AI activation. Required to avoid crisis events overwrites.
 		acemod_fleet.300		# Main starbase constructor event.
 		acemod_fleet.400		# Main army hunter-seeker event.
+		acemod_fleet.500		# Main colonizer event.
 	}
 }
 
