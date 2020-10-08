@@ -1604,21 +1604,23 @@ fleet_event = {
 					# OR = {
 					# 	AND = {
 					exists = owner
-					owner = {
-						NOT = {
-							is_same_value = root.owner
-						}
-					}
 					# }
 					any_system_planet = {
-						is_colony = yes
-						owner = {
-							NOT = {
-								is_same_value = root.owner
+						OR = {
+							AND = {
+								is_colony = yes
+								owner = {
+									NOT = {
+										is_same_value = root.owner
+									}
+								}
+								NOT = {
+									is_controlled_by = root.owner
+								}
 							}
-						}
-						NOT = {
-							is_controlled_by = root.owner
+							owner = {
+								is_primitive = yes
+							}
 						}
 						# is_under_colonization =  yes	#	Cannot be invaded.
 					}
