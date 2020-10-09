@@ -1,6 +1,8 @@
 on_game_start = {
 	events = {
 		acemod_core.1		# Marks Aggresive Crisis Engine mod as present. Other mods can check against this flag to see if ACEMOD is installed.
+		acemod_core.3		# Applies anti-crisis damage debuff to all playable empires.
+		acemod_core.5		# Applies anti-relics damage debuff to all playable empires.
 	}
 }
 
@@ -11,6 +13,13 @@ on_monthly_pulse = {
 		acemod_fleet.300		# Main starbase constructor event.
 		acemod_fleet.400		# Main army hunter-seeker event.
 		acemod_fleet.500		# Main colonizer event.
+	}
+}
+
+on_yearly_pulse = {
+	events = {
+		acemod_core.3		# Applies anti-crisis damage debuff to all playable empires.
+		acemod_core.5		# Applies anti-relics damage debuff to all playable empires.
 	}
 }
 
@@ -25,7 +34,6 @@ on_entering_system_fleet = {
 # 		acemod_fleet.406		# Invasion army fleet unclock after battle.
 # 	}
 # }
-
 # on_planet_attackers_lose = {
 # 	events = {
 # 		acemod_fleet.407		# Invasion army fleet removal after battle.

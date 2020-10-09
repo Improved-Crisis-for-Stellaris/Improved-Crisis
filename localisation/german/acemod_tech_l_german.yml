@@ -44,3 +44,9 @@
  tech_acemod_crisis_fe:0 "Dunkle Geheimnisse"
  tech_acemod_crisis_fe_desc:0 "Von den gewaltigen Stolz und Hochmut  getrieben, benutzen die gefallen Imperien geheimnissvolle und theoretisch unmögliche Technologien. Allerdings laufen diese wegen der jahrtausenden Jahren alten Automatiken auf Höchstleistung, was wir ausnutzen können.\n\n"
 
+  # Debuffs------------------------------------
+ acemod_crisis_debuff_modifier:0 "Enemy Unknown"
+ acemod_crisis_debuff_modifier_desc:0 "Galactic threats require dedicated research of efficient containment methods."
+ acemod_fallen_awakened_empire_debuff_modifier:0 "Enigmatic Engineering of the Relics"
+ acemod_fallen_awakened_empire_debuff_modifier_desc:0 "The ancients use shipwright technologies beyond our understanding, it is advisable to avoid direct confrontation."
+ 

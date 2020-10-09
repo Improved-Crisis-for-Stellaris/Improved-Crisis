@@ -43,4 +43,11 @@
  # Fallen Empires (Awakened Empires)------------------------------------
  tech_acemod_crisis_fe:0 "Fallen Empires Dark Secret"
  tech_acemod_crisis_fe_desc:0 "Driven by excessive proud and ego, the old inhabitants of this galaxy use arcane and theoretically impossible to reverse-engineer technology. There is, however, a way to render it useless. Their extensive use of dark matter just barely within safe limits is both effective and dangerous, and we can use it to our advantage.\n\n"
+ 
+  # Debuffs------------------------------------
+ acemod_crisis_debuff_modifier:0 "Enemy Unknown"
+ acemod_crisis_debuff_modifier_desc:0 "Galactic threats require dedicated research of efficient containment methods."
+ acemod_fallen_awakened_empire_debuff_modifier:0 "Enigmatic Engineering of the Relics"
+ acemod_fallen_awakened_empire_debuff_modifier_desc:0 "The ancients use shipwright technologies beyond our understanding, it is advisable to avoid direct confrontation."
+
 
