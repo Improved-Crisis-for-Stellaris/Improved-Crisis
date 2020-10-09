@@ -1349,6 +1349,7 @@ fleet_event = {
 					}
 				}
 			}
+			save_event_target_as = acemod_event_target_invader_army
 			queue_actions = {
 				find_closest_planet = {
 					trigger = {
@@ -1385,6 +1386,12 @@ fleet_event = {
 						effect = {
 							id = "acemod.405.e2"
 							root = {
+								# fleet = {
+								# 	leader = {
+								# 		save_event_target_as = acemod_event_target_invader_army_leader
+								# 		unassign_leader = this
+								# 	}
+								# }
 								if = {
 									limit = {
 										owner = {
@@ -1392,13 +1399,13 @@ fleet_event = {
 										}
 									}
 									owner = {
+										save_event_target_as = invader_owner
 										owner_species = {
 											save_event_target_as = prethoryn_species
 										}
 									}
-									prev = {
-										while = {
-											count = 20											#	Need to implement transport count
+									every_owned_ship = {
+										prevprev = {
 											create_army = {
 												name = "NAME_Prethoryn_Invaders"
 												owner = root.owner
@@ -1407,9 +1414,19 @@ fleet_event = {
 											}
 										}
 									}
-									# root = {
-									# 	set_event_locked = yes
+									# prev = {
+									# 	random_planet_army = {
+									# 		limit = {
+									# 			is_owned_by = event_target:invader_owner
+									# 		}
+									# 		assign_leader = event_target:acemod_event_target_invader_army_leader
+									# 	}
 									# }
+									delete_fleet = {
+										target = this
+										kill_leader = no
+										destroy_template = no
+									}
 									break = yes
 								}
 								if = {
@@ -1423,9 +1440,8 @@ fleet_event = {
 											save_event_target_as = custodian_bot
 										}
 									}
-									prev = {
-										while = {
-											count = 20											#	Need to implement transport count
+									every_owned_ship = {
+										prevprev = {
 											create_army = {
 												name = "NAME_Contingency"
 												owner = root.owner
@@ -1434,21 +1450,54 @@ fleet_event = {
 											}
 										}
 									}
-									# root = {
-									# 	set_event_locked = yes
+									# prev = {
+									# 	random_planet_army = {
+									# 		limit = {
+									# 			is_owned_by = event_target:invader_owner
+									# 		}
+									# 		assign_leader = event_target:acemod_event_target_invader_army_leader
+									# 	}
 									# }
+									delete_fleet = {
+										target = this
+										kill_leader = no
+										destroy_template = no
+									}
 									break = yes
 								}
 								else = {
-									set_controller = root.owner									#	Placeholder effect
+									owner = {
+										owner_species = {
+											save_event_target_as = invader_species
+										}
+									}
+									every_owned_ship = {
+										prevprev = {
+											create_army = {
+												name = "%O% Expeditionary Force"
+												owner = root.owner
+												type = "assault_army"
+												species = event_target:invader_species
+											}
+										}
+									}
+									# prev = {
+									# 	random_planet_army = {
+									# 		limit = {
+									# 			is_owned_by = event_target:invader_owner
+									# 		}
+									# 		assign_leader = event_target:acemod_event_target_invader_army_leader
+									# 	}
+									# }
+									delete_fleet = {
+										target = this
+										kill_leader = no
+										destroy_template = no
+									}
+									break = yes
 								}
 							}
 						}
-						#	Placeholder effect
-						# effect = {
-						# 	id = "acemod.405.e3"
-						# 	set_controller = root.owner
-						# }
 					}
 					failed = {
 						effect = {
@@ -1603,9 +1652,9 @@ fleet_event = {
 					}
 					# OR = {
 					# 	AND = {
-					exists = owner
 					# }
 					any_system_planet = {
+						exists = owner
 						OR = {
 							AND = {
 								is_colony = yes
