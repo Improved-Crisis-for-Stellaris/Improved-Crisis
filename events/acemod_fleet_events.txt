@@ -24,6 +24,7 @@ namespace = acemod_fleet
 # set_country_flag = acemod_country_flag_disabled_army_ai				country			Disables ACEMOD AI for army fleets.
 # set_country_flag = acemod_country_flag_disabled_colonizer_ai			country			Disables ACEMOD AI for colonizer fleets.
 # set_global_flag = acemod_technology_disabled							global			Prevents ACEMOD technologies from rolling.
+# set_country_flag = acemod_country_flag_technology_allowed				country			Enables rolling of ACEMOD technologies for non-default empires. Does not overwrite ACEMOD technology disable global flag.
 # set_megastructure_flag = acemod_megastructure_flag_is_active_bypass	megastructure	Marks megastructure as being an accessible bypass (custom modded wormhole, custom modded gateway etc). Used in pathfinding. See acemod_is_active_bypass scripted trigger.
 # set_star_flag = acemod_star_flag_is_active_bypass						solar_system	Marks star system as being an accessible bypass (custom modded wormhole, custom modded gateway etc). Used in pathfinding. See acemod_is_active_bypass scripted trigger.
 #

@@ -1,1 +1,1 @@
-# Improved-Crisis
+Aggressive Crisis Engine for Stellaris end-game crises.

@@ -116,3 +116,13 @@ country_event = {
 		set_global_flag = acemod_fallen_awakened_empire_debuff_disabled
 	}
 }
+
+# Enables rolling of ACEMOD technologies for non-default empires. Does not overwrite ACEMOD technology disable global flag.
+country_event = {
+	id = acemod_core.11
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		set_country_flag = acemod_country_flag_technology_allowed
+	}
+}
