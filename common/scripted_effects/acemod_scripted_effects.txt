@@ -41,6 +41,24 @@ acemod_set_country_piloted_exclusion_off = {
 	set_country_flag = acemod_assisted_ai
 }
 
+# Prevents ACEMOD technologies from rolling for given country (weight_modifier = 0). Overrides country technology_allowed flag.
+# Scope: country
+acemod_set_country_technology_exclusion_on = {
+	set_variable = {
+		which = acemod_var_country_technology_exclusion
+		value = 1
+	}
+}
+
+# Resumes default operation.
+# Scope: country
+acemod_set_country_technology_exclusion_off = {
+	set_variable = {
+		which = acemod_var_country_technology_exclusion
+		value = 0
+	}
+}
+
 # Scope: solar_system
 acemod_recalculate_solar_system_target_value = {
 	set_variable = {
