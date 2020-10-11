@@ -50,3 +50,16 @@
  acemod_fallen_awakened_empire_debuff_modifier:0 "Enigmatic Engineering of the Relics"
  acemod_fallen_awakened_empire_debuff_modifier_desc:0 "The ancients use shipwright technologies beyond our understanding, it is advisable to avoid direct confrontation."
  
+  # Menu------------------------------------
+ acemod_menu_name:0 "Aggressive Crisis Engine"
+ acemod_menu.1.name:0 "$acemod_menu_name$: $GALAXY_SETTINGS$"
+ acemod_menu.1.desc:0 "Choose additional modules of §RAggressive Crisis Engine§! to be activated. Only game host can set these while in multiplayer."
+ acemod_menu.1.a:0 "£job_researcher£ $TECHNOLOGY$ - [root.GetName_acemod_technology_disabled]"
+ acemod_menu.1.a.tooltip:0 "Additional §RACEMOD§! technologies are added to the deck:\n§G+25%§! crisis damage for each tech tier, up to §G+75%§! total."
+ acemod_menu.1.b:0 "£mod_ship_damage_mult£ $acemod_crisis_debuff_modifier$ - [root.GetName_acemod_crisis_debuff_disabled]"
+ acemod_menu.1.b.tooltip:0 "§G$GALAXY_EMPIRE_VIEW$§!:\n\n$CRISIS_FACTOR$ $COUNTRY_MODIFIER$:\n£mod_ship_damage_mult£ §H$acemod_crisis_debuff_modifier$§!:\n$mod_damage_vs_country_type_swarm_mult$: §R-75%§!\n$mod_damage_vs_country_type_ai_empire_mult$: §R-75%§!\n$mod_damage_vs_country_type_extradimensional_mult$: §R-75%§!\n$mod_damage_vs_country_type_extradimensional_2_mult$: §R-75%§!\n$mod_damage_vs_country_type_extradimensional_3_mult$: §R-75%§!\n$mod_damage_vs_country_type_gray_goo_mult$: §R-25%§!\n---------------\n$acemod_crisis_debuff_modifier_desc$"
+ acemod_menu.1.c:0 "£acemod_mod_fallen_awakened_empire_debuff_modifier£ $acemod_fallen_awakened_empire_debuff_modifier$ - [root.GetName_acemod_fallen_awakened_empire_debuff_disabled]"
+ acemod_menu.1.c.tooltip:0 "§G$GALAXY_EMPIRE_VIEW$§!:\n\n$war_goal_wg_war_in_heaven$ $COUNTRY_MODIFIER$:\n£acemod_mod_fallen_awakened_empire_debuff_modifier£ §H$acemod_fallen_awakened_empire_debuff_modifier$§!:\n$mod_damage_vs_country_type_fallen_empire_mult$: §R-25%§!\n$mod_damage_vs_country_type_awakened_fallen_empire_mult$: §R-25%§!\n---------------\n$acemod_fallen_awakened_empire_debuff_modifier_desc$"
+ acemod_trigger_yes:0 "§G$ACTIVE$§!"
+ acemod_trigger_no:0 "§R$NOT_ACTIVE$§!"
+ acemod_menu.1.z:0 "§Y$SAVE$§!"
