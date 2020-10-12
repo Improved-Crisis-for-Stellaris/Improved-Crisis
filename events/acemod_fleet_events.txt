@@ -991,7 +991,7 @@ fleet_event = {
 					}
 				}
 				random_list = {
-					50 = {
+					75 = {
 						solar_system = {
 							create_starbase = {
 								size = starbase_exd_0
@@ -999,7 +999,7 @@ fleet_event = {
 							}
 						}
 					}
-					50 = {
+					25 = {
 						solar_system = {
 							create_starbase = {
 								size = starbase_exd
