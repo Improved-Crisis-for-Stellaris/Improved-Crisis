@@ -28,7 +28,7 @@ namespace = acemod_fleet
 # acemod_set_country_technology_exclusion_on = yes						country			Prevents ACEMOD technologies from rolling for given country (weight_modifier = 0). Overrides country technology_allowed flag.
 # acemod_set_country_technology_exclusion_off = yes						country			Resumes default operation.
 # set_global_flag = acemod_crisis_debuff_disabled						global			Disable applying anti-crisis damage debuffs. Does not remove the ones in place.
-# set_global_flag = acemod_fallen_awakened_empire_debuff_disabled		global			Disable applying debuffs anti-relics damage debuffs. Does not remove the ones in place.
+# set_global_flag = acemod_fallen_awakened_empire_debuff_disabled		global			Disable applying anti-relics damage debuffs. Does not remove the ones in place.
 # set_megastructure_flag = acemod_megastructure_flag_is_active_bypass	megastructure	Marks megastructure as being an accessible bypass (custom modded wormhole, custom modded gateway etc). Used in pathfinding. See acemod_is_active_bypass scripted trigger.
 # set_star_flag = acemod_star_flag_is_active_bypass						solar_system	Marks star system as being an accessible bypass (custom modded wormhole, custom modded gateway etc). Used in pathfinding. See acemod_is_active_bypass scripted trigger.
 #
@@ -632,18 +632,32 @@ fleet_event = {
 					# 	}
 					# }
 				}
-				# Maybe increase seek range on failed.
 				# failed = {
 				# 	effect = {
 				# 		id = acemod.100.e2
 				# 		root = {
 				# 			fleet_event = {
-				# 				id = acemod_fleet.101
+				# 				id = acemod_fleet.102
 				# 				days = 5
 				# 			}
 				# 		}
 				# 	}
 				# }
+			}
+			effect = {
+				id = acemod.100.e2
+				root = {
+					if = {
+						limit = {
+							is_fleet_idle = yes
+						}
+						log = "ACEMOD_log: acemod.100.e2 Military fleet failed to find system via standard script and executed fallback script."
+						fleet_event = {
+							id = acemod_fleet.102
+							days = 5
+						}
+					}
+				}
 			}
 		}
 	}
@@ -669,6 +683,82 @@ fleet_event = {
 			set_timed_fleet_flag = {
 				flag = acemod_event_target_invader_fleet_idle
 				days = 85
+			}
+		}
+	}
+}
+
+# Seeks any viable target if primary contitions are not met. This is a fallback event.
+fleet_event = {
+	id = acemod_fleet.102
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		solar_system = {
+			closest_system = {
+				min_steps = 1
+				max_steps = 40				#	Increased search range.
+				limit = {
+					has_access_fleet = root.owner
+					NOR = {
+						has_star_flag = acemod_star_flag_solar_system_target
+						has_star_flag = extradimensional_origin_system
+					}
+					exists = owner
+					owner = {
+						NOT = {
+							is_same_value = root.owner							# Removed exclusion for Fallen Empires.
+						}
+					}
+				}
+				save_event_target_as = acemod_event_target_invader_target
+				change_variable = {
+					which = acemod_var_star_fallback_target_countdown					# Initiates countdown to marking system as a valid target. Gives other fleets time to clear inhibitors in other systems first.
+					value = 1
+				}
+			}
+		}
+		save_event_target_as = acemod_event_target_invader_fleet
+		set_fleet_stance = aggressive
+		set_fleet_bombardment_stance = indiscriminate		# Vanilla has selective on default
+		set_aggro_range_measure_from = self
+		set_aggro_range = 800		# Longer aggro range, same as for pirate systems (default 500)
+		queue_actions = {
+			find_closest_system = {
+				trigger = {
+					id = "acemod.102.t1"
+					is_same_value = event_target:acemod_event_target_invader_target
+					check_variable = {
+						which = acemod_var_star_fallback_target_countdown
+						value >= 50
+					}
+				}
+				found_system = {
+					move_to = this
+					effect = {
+						id = "acemod.102.e1"
+						if = {
+							limit = {
+								OR = {
+									has_natural_wormhole = yes
+									any_system_megastructure = {
+										is_megastructure_type = gateway_final
+										is_megastructure_type = gateway_restored
+										is_megastructure_type = lgate_base
+									}
+									acemod_is_active_bypass = yes
+								}
+							}
+							log = "ACEMOD_log: acemod.102.e1 Military fleet found bypass system via fallback script."
+						}
+					}
+				}
+				# failed = {
+				# 	effect = {
+				# 		id = "acemod.102.e2"
+				# 		log = "ACEMOD_log: acemod.102.e2 Military fleet failed to find system via fallback script."
+				# 	}
+				# }
 			}
 		}
 	}
