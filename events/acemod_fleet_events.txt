@@ -977,6 +977,19 @@ fleet_event = {
 						size = starbase_ai
 						owner = root.owner
 					}
+					random_fleet_in_system = {
+						limit = {
+							is_ship_size = starbase_ai
+						}
+						random_owned_ship = {
+							limit = {
+								is_ship_size = starbase_ai
+							}
+							ship_event = {
+								id = crisis.2600								# Spawn System Effect
+							}
+						}
+					}
 				}
 				break = yes
 			}
@@ -997,6 +1010,19 @@ fleet_event = {
 								size = starbase_exd_0
 								owner = root.owner
 							}
+							random_fleet_in_system = {
+								limit = {
+									is_ship_size = starbase_exd_0
+								}
+								random_owned_ship = {
+									limit = {
+										is_ship_size = starbase_exd_0
+									}
+									ship_event = {
+										id = crisis.1310										# Spawn System Effect
+									}
+								}
+							}
 						}
 					}
 					25 = {
@@ -1015,7 +1041,13 @@ fleet_event = {
 										is_ship_size = starbase_exd
 									}
 									ship_event = {
-										id = crisis.1280
+										id = crisis.1267										# Reinforcements Arrive After Building Anchor (HIDDEN)
+									}
+									ship_event = {
+										id = crisis.1280										# Anchor Built (HIDDEN)
+									}
+									ship_event = {
+										id = crisis.1310										# Spawn System Effect
 									}
 								}
 							}
@@ -1034,6 +1066,19 @@ fleet_event = {
 					create_starbase = {
 						size = starbase_swarm
 						owner = root.owner
+					}
+					random_fleet_in_system = {
+						limit = {
+							is_ship_size = starbase_swarm
+						}
+						random_owned_ship = {
+							limit = {
+								is_ship_size = starbase_swarm
+							}
+							ship_event = {
+								id = crisis.260								# Spawn System Effect
+							}
+						}
 					}
 				}
 				break = yes
