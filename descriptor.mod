@@ -1,4 +1,4 @@
-version="1"
+version="0"
 tags={
 	"Balance"
 	"Overhaul"
@@ -7,5 +7,6 @@ tags={
 	"Utilities"
 }
 name="Aggressive Crisis Engine"
-picture="thumbnail.png"
+picture="thumbnails.png"
 supported_version="2.7.*"
+remote_file_id="2254550964"
