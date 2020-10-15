@@ -126,3 +126,33 @@ country_event = {
 		set_country_flag = acemod_country_flag_technology_allowed
 	}
 }
+
+# Enables constructor reinforcements for given country.
+country_event = {
+	id = acemod_core.12
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		set_country_flag = acemod_constructor_reinforcements
+	}
+}
+
+# Designates system to spawn constructor in.
+event = {
+	id = acemod_core.13
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		set_star_flag = acemod_star_flag_is_constructor_reinforcements_system
+	}
+}
+
+# Designates fleet to spawn constructor on.
+event = {
+	id = acemod_core.14
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		set_fleet_flag = acemod_fleet_flag_is_constructor_reinforcements_fleet
+	}
+}

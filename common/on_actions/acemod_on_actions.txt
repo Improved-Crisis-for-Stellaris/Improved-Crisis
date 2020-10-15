@@ -27,6 +27,12 @@ on_yearly_pulse = {
 	}
 }
 
+on_five_year_pulse_country = {
+	events = {
+		acemod_fleet.350	# Constructor reinforcements.
+	}
+}
+
 on_entering_system_fleet = {
 	events = {
 		# acemod_fleet.110		# Destroys all colonies when crisis fleet enters the system. This is a debug event.
