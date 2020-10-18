@@ -156,3 +156,40 @@ event = {
 		set_fleet_flag = acemod_fleet_flag_is_constructor_reinforcements_fleet
 	}
 }
+
+# Enables defensive jumpdrive protocol for given country.
+event = {
+	id = acemod_core.15
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		set_country_flag = acemod_defensive_jumpdrive_protocol
+	}
+}
+
+# Designates defensive jumpdrive protocol protected system.
+event = {
+	id = acemod_core.16
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		solar_system = {
+			set_star_flag = acemod_star_flag_is_defensive_jumpdrive_protocol_system
+		}
+	}
+}
+
+# Designates defensive jumpdrive protocol target system.
+event = {
+	id = acemod_core.17
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		solar_system = {
+			set_timed_star_flag = {
+				flag = acemod_star_flag_defensive_jumpdrive_protocol_target
+				days = 30
+			}
+		}
+	}
+}

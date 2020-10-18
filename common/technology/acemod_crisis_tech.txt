@@ -16,6 +16,9 @@ tech_acemod_crisis_swarm_1 = {
 		damage_vs_country_type_swarm_mult = 0.25
 	}
 	potential = {
+		NOT = {
+			has_global_flag = acemod_technology_disabled
+		}
 		OR = {
 			is_country_type = default
 			has_country_flag = acemod_country_flag_technology_allowed
@@ -24,9 +27,10 @@ tech_acemod_crisis_swarm_1 = {
 	weight_modifier = {
 		modifier = {
 			factor = 0
-			NOR = {
-				has_global_flag = prethoryn_invasion_happened
-				has_global_flag = acemod_technology_disabled
+			OR = {
+				NOT = {
+					has_global_flag = prethoryn_invasion_happened
+				}
 				check_variable = {
 					which = acemod_var_country_technology_exclusion
 					value = 1
@@ -75,6 +79,9 @@ tech_acemod_crisis_swarm_2 = {
 		damage_vs_country_type_swarm_mult = 0.25
 	}
 	potential = {
+		NOT = {
+			has_global_flag = acemod_technology_disabled
+		}
 		OR = {
 			is_country_type = default
 			has_country_flag = acemod_country_flag_technology_allowed
@@ -83,9 +90,10 @@ tech_acemod_crisis_swarm_2 = {
 	weight_modifier = {
 		modifier = {
 			factor = 0
-			NOR = {
-				has_global_flag = prethoryn_invasion_happened
-				has_global_flag = acemod_technology_disabled
+			OR = {
+				NOT = {
+					has_global_flag = prethoryn_invasion_happened
+				}
 				check_variable = {
 					which = acemod_var_country_technology_exclusion
 					value = 1
@@ -134,6 +142,9 @@ tech_acemod_crisis_swarm_3 = {
 		damage_vs_country_type_swarm_mult = 0.25
 	}
 	potential = {
+		NOT = {
+			has_global_flag = acemod_technology_disabled
+		}
 		OR = {
 			is_country_type = default
 			has_country_flag = acemod_country_flag_technology_allowed
@@ -142,9 +153,10 @@ tech_acemod_crisis_swarm_3 = {
 	weight_modifier = {
 		modifier = {
 			factor = 0
-			NOR = {
-				has_global_flag = prethoryn_invasion_happened
-				has_global_flag = acemod_technology_disabled
+			OR = {
+				NOT = {
+					has_global_flag = prethoryn_invasion_happened
+				}
 				check_variable = {
 					which = acemod_var_country_technology_exclusion
 					value = 1
@@ -195,6 +207,9 @@ tech_acemod_crisis_extradimensional_1 = {
 		damage_vs_country_type_extradimensional_3_mult = 0.25
 	}
 	potential = {
+		NOT = {
+			has_global_flag = acemod_technology_disabled
+		}
 		OR = {
 			is_country_type = default
 			has_country_flag = acemod_country_flag_technology_allowed
@@ -203,9 +218,10 @@ tech_acemod_crisis_extradimensional_1 = {
 	weight_modifier = {
 		modifier = {
 			factor = 0
-			NOR = {
-				has_global_flag = extradimensional_invasion_happened
-				has_global_flag = acemod_technology_disabled
+			OR = {
+				NOT = {
+					has_global_flag = extradimensional_invasion_happened
+				}
 				check_variable = {
 					which = acemod_var_country_technology_exclusion
 					value = 1
@@ -256,6 +272,9 @@ tech_acemod_crisis_extradimensional_2 = {
 		damage_vs_country_type_extradimensional_3_mult = 0.25
 	}
 	potential = {
+		NOT = {
+			has_global_flag = acemod_technology_disabled
+		}
 		OR = {
 			is_country_type = default
 			has_country_flag = acemod_country_flag_technology_allowed
@@ -264,9 +283,10 @@ tech_acemod_crisis_extradimensional_2 = {
 	weight_modifier = {
 		modifier = {
 			factor = 0
-			NOR = {
-				has_global_flag = extradimensional_invasion_happened
-				has_global_flag = acemod_technology_disabled
+			OR = {
+				NOT = {
+					has_global_flag = extradimensional_invasion_happened
+				}
 				check_variable = {
 					which = acemod_var_country_technology_exclusion
 					value = 1
@@ -317,6 +337,9 @@ tech_acemod_crisis_extradimensional_3 = {
 		damage_vs_country_type_extradimensional_3_mult = 0.25
 	}
 	potential = {
+		NOT = {
+			has_global_flag = acemod_technology_disabled
+		}
 		OR = {
 			is_country_type = default
 			has_country_flag = acemod_country_flag_technology_allowed
@@ -325,9 +348,10 @@ tech_acemod_crisis_extradimensional_3 = {
 	weight_modifier = {
 		modifier = {
 			factor = 0
-			NOR = {
-				has_global_flag = extradimensional_invasion_happened
-				has_global_flag = acemod_technology_disabled
+			OR = {
+				NOT = {
+					has_global_flag = extradimensional_invasion_happened
+				}
 				check_variable = {
 					which = acemod_var_country_technology_exclusion
 					value = 1
@@ -376,6 +400,9 @@ tech_acemod_crisis_extradimensional_ai_empire_1 = {
 		damage_vs_country_type_ai_empire_mult = 0.25
 	}
 	potential = {
+		NOT = {
+			has_global_flag = acemod_technology_disabled
+		}
 		OR = {
 			is_country_type = default
 			has_country_flag = acemod_country_flag_technology_allowed
@@ -384,9 +411,10 @@ tech_acemod_crisis_extradimensional_ai_empire_1 = {
 	weight_modifier = {
 		modifier = {
 			factor = 0
-			NOR = {
-				has_global_flag = ai_invasion_happened
-				has_global_flag = acemod_technology_disabled
+			OR = {
+				NOT = {
+					has_global_flag = ai_invasion_happened
+				}
 				check_variable = {
 					which = acemod_var_country_technology_exclusion
 					value = 1
@@ -435,6 +463,9 @@ tech_acemod_crisis_extradimensional_ai_empire_2 = {
 		damage_vs_country_type_ai_empire_mult = 0.25
 	}
 	potential = {
+		NOT = {
+			has_global_flag = acemod_technology_disabled
+		}
 		OR = {
 			is_country_type = default
 			has_country_flag = acemod_country_flag_technology_allowed
@@ -443,9 +474,10 @@ tech_acemod_crisis_extradimensional_ai_empire_2 = {
 	weight_modifier = {
 		modifier = {
 			factor = 0
-			NOR = {
-				has_global_flag = ai_invasion_happened
-				has_global_flag = acemod_technology_disabled
+			OR = {
+				NOT = {
+					has_global_flag = ai_invasion_happened
+				}
 				check_variable = {
 					which = acemod_var_country_technology_exclusion
 					value = 1
@@ -494,6 +526,9 @@ tech_acemod_crisis_extradimensional_ai_empire_3 = {
 		damage_vs_country_type_ai_empire_mult = 0.25
 	}
 	potential = {
+		NOT = {
+			has_global_flag = acemod_technology_disabled
+		}
 		OR = {
 			is_country_type = default
 			has_country_flag = acemod_country_flag_technology_allowed
@@ -502,9 +537,10 @@ tech_acemod_crisis_extradimensional_ai_empire_3 = {
 	weight_modifier = {
 		modifier = {
 			factor = 0
-			NOR = {
-				has_global_flag = ai_invasion_happened
-				has_global_flag = acemod_technology_disabled
+			OR = {
+				NOT = {
+					has_global_flag = ai_invasion_happened
+				}
 				check_variable = {
 					which = acemod_var_country_technology_exclusion
 					value = 1
@@ -553,6 +589,9 @@ tech_acemod_crisis_goo = {
 		damage_vs_country_type_gray_goo_mult = 0.25
 	}
 	potential = {
+		NOT = {
+			has_global_flag = acemod_technology_disabled
+		}
 		OR = {
 			is_country_type = default
 			has_country_flag = acemod_country_flag_technology_allowed
@@ -561,9 +600,10 @@ tech_acemod_crisis_goo = {
 	weight_modifier = {
 		modifier = {
 			factor = 0
-			NOR = {
-				has_global_flag = active_gray_goo
-				has_global_flag = acemod_technology_disabled
+			OR = {
+				NOT = {
+					has_global_flag = active_gray_goo
+				}
 				check_variable = {
 					which = acemod_var_country_technology_exclusion
 					value = 1
@@ -595,7 +635,7 @@ tech_acemod_crisis_goo = {
 	}
 }
 
-#END OF THE CYCLE (causes galactic mass destruction)
+# END OF THE CYCLE (causes galactic mass destruction)
 # tech_acemod_crisis_eotc = {
 # 	cost = @tier5cost3
 # 	area = society
@@ -612,22 +652,26 @@ tech_acemod_crisis_goo = {
 # 		damage_vs_country_type_shroud_mult = 0.25
 # 		damage_vs_country_type_shroud_spirits_mult = 0.25
 # 	}
-# potential = {
-# 	OR = {
-# 	is_country_type = default
-# 	has_country_flag = acemod_country_flag_technology_allowed
+# 	potential = {
+# 		NOT = {
+# 			has_global_flag = acemod_technology_disabled
+# 		}
+# 		OR = {
+# 			is_country_type = default
+# 			has_country_flag = acemod_country_flag_technology_allowed
+# 		}
 # 	}
-# }
 # 	weight_modifier = {
 # 		modifier = {
 # 			factor = 0
-# 			NOR = {
-# 				has_global_flag = end_of_the_cycle
-# 				has_global_flag = acemod_technology_disabled
-# check_variable = {
-# 	which = acemod_var_country_technology_exclusion
-# 	value = 1
-# }
+# 			OR = {
+# 				NOT = {
+# 					has_global_flag = end_of_the_cycle
+# 				}
+# 				check_variable = {
+# 					which = acemod_var_country_technology_exclusion
+# 					value = 1
+# 				}
 # 			}
 # 		}
 # 		modifier = {
@@ -672,6 +716,9 @@ tech_acemod_crisis_fe = {
 		damage_vs_country_type_awakened_fallen_empire_mult = 0.25
 	}
 	potential = {
+		NOT = {
+			has_global_flag = acemod_technology_disabled
+		}
 		OR = {
 			is_country_type = default
 			has_country_flag = acemod_country_flag_technology_allowed
@@ -680,12 +727,9 @@ tech_acemod_crisis_fe = {
 	weight_modifier = {
 		modifier = {
 			factor = 0
-			NOR = {
-				has_global_flag = acemod_technology_disabled
-				check_variable = {
-					which = acemod_var_country_technology_exclusion
-					value = 1
-				}
+			check_variable = {
+				which = acemod_var_country_technology_exclusion
+				value = 1
 			}
 		}
 		modifier = {

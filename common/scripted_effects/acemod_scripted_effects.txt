@@ -77,6 +77,24 @@ acemod_set_country_constructor_reinforcements_exclusion_off = {
 	}
 }
 
+# Prevents ACEMOD from issuing defensive jumpdrive protocol.
+# Scope: country
+acemod_set_country_acemod_defensive_jumpdrive_protocol_exclusion_on = {
+	set_variable = {
+		which = acemod_var_country_defensive_jumpdrive_protocol_exclusion
+		value = 1
+	}
+}
+
+# Resumes default operation.
+# Scope: country
+acemod_set_country_acemod_defensive_jumpdrive_protocol_exclusion_off = {
+	set_variable = {
+		which = acemod_var_country_defensive_jumpdrive_protocol_exclusion
+		value = 0
+	}
+}
+
 # Scope: solar_system
 acemod_recalculate_solar_system_target_value = {
 	set_variable = {

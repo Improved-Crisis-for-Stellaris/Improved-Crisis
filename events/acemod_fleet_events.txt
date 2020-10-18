@@ -25,10 +25,14 @@ namespace = acemod_fleet
 # set_country_flag = acemod_country_flag_disabled_colonizer_ai			country			Disables ACEMOD AI for colonizer fleets.
 # set_country_flag = acemod_constructor_reinforcements					country			Enables constructor reinforcements for given country. Vanilla crisis countries receive them by default. Requires acemod_assisted_ai country flag.
 # acemod_set_country_constructor_reinforcements_exclusion_on = yes		country			Prevents ACEMOD from issuing constructor reinforcements.
+# acemod_set_country_constructor_reinforcements_exclusion_off = yes		country			Resumes default operation.
 # set_star_flag = acemod_star_flag_is_constructor_reinforcements_system solar_system	Designates system to spawn constructor in.
 # set_fleet_flag = acemod_fleet_flag_is_constructor_reinforcements_fleet	fleet		Designates fleet to spawn constructor on.
-# acemod_set_country_constructor_reinforcements_exclusion_off = yes		country			Resumes default operation.
-# set_global_flag = acemod_technology_disabled							global			Prevents ACEMOD technologies from rolling (weight_modifier = 0).
+# set_country_flag = acemod_defensive_jumpdrive_protocol				country			Enables defensive jumpdrive protocol for given country. Contingency has it by default. Requires acemod_assisted_ai country flag.
+# acemod_set_country_acemod_defensive_jumpdrive_protocol_exclusion_on = yes			country			Prevents ACEMOD from issuing defensive jumpdrive protocol.
+# acemod_set_country_acemod_defensive_jumpdrive_protocol_exclusion_off = yes		country			Resumes default operation.
+# set_star_flag = acemod_star_flag_is_defensive_jumpdrive_protocol_system	fleet planet	Designates defensive jumpdrive protocol protected system.
+# set_global_flag = acemod_technology_disabled							global			Prevents ACEMOD technologies from rolling (potential).
 # set_country_flag = acemod_country_flag_technology_allowed				country			Enables rolling of ACEMOD technologies for non-default empires (potential). Does not overrride ACEMOD technology disable global flag.
 # acemod_set_country_technology_exclusion_on = yes						country			Prevents ACEMOD technologies from rolling for given country (weight_modifier = 0). Overrides country technology_allowed flag.
 # acemod_set_country_technology_exclusion_off = yes						country			Resumes default operation.
@@ -2444,3 +2448,92 @@ fleet_event = {
 		}
 	}
 }
+
+# Jumps to the capital scope. This is a debug event.
+fleet_event = {
+	id = acemod_fleet.600
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		set_location = {
+			target = owner.capital_scope
+			distance = 5
+			angle = random
+			direction = in_system
+		}
+		clear_orders = yes
+	}
+}
+
+# TO-DO
+# # Activates defensive jumpdrive protocol if protected system is under attack.
+# country_event = {
+# 	id = acemod_fleet.610
+# 	hide_window = yes
+# 	is_triggered_only = yes
+# 	trigger = {
+# 		has_global_flag = acemod_activated
+# 		solar_system = {
+# 			OR = {
+# 				has_star_flag = AI_hub
+# 				has_star_flag = acemod_star_flag_is_defensive_jumpdrive_protocol_system
+# 			}
+# 		}
+# 		this = {
+# 			has_country_flag = acemod_assisted_ai
+# 		}
+# 	}
+# 	immediate = {
+# 		if = {
+# 			limit = {
+# 				FromFromFrom = {
+# 					is_ship_class = shipclass_military
+# 				}
+# 				FromFrom = {
+# 					is_ship_class = shipclass_starbase
+# 				}
+# 			}
+# 			FromFrom = {
+# 				fleet_event = {
+# 					id = acemod_fleet.611
+# 				}
+# 			}
+# 		}
+# 	}
+# }
+
+# # Locks on random military fleet and jumps it to the protected system.
+# fleet_event = {
+# 	id = acemod_fleet.611
+# 	hide_window = yes
+# 	is_triggered_only = yes
+# 	immediate = {
+# 		owner = {
+# 			save_event_target_as = acemod_defensive_jumpdrive_protocol_country
+# 		}
+# 		every_system = {
+# 			limit = {
+# 				distance = {
+# 					source = root
+# 					max_distance = 200
+# 				}
+# 			}
+# 			random_fleet_in_system = {
+# 				limit = {
+# 					exists = owner
+# 					owner = {
+# 						is_same_value = event_target:acemod_defensive_jumpdrive_protocol_country
+# 					}
+# 					# is_ship_class = shipclass_military
+# 				}
+# 				set_location = {
+# 					target = root
+# 					distance = 0
+# 					angle = random
+# 					direction = in_system
+# 				}
+# 				clear_orders = yes
+# 			}
+# 		}
+# 	}
+# }

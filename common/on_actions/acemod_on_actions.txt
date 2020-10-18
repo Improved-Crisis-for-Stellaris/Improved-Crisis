@@ -38,3 +38,9 @@ on_entering_system_fleet = {
 		# acemod_fleet.110		# Destroys all colonies when crisis fleet enters the system. This is a debug event.
 	}
 }
+
+# on_entering_battle = {
+# 	events = {
+# 		acemod_fleet.610		# Activates defensive jumpdrive protocol if protected system is under attack.
+# 	}
+# }
