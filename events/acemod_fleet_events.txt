@@ -57,19 +57,20 @@ country_event = {
 }
 
 # Recalculates strategic value of systems.
-# country_event = {
-# 	id = acemod_fleet.3
-# 	hide_window = yes
-# 	is_triggered_only = yes
-# 	immediate = {
-# 		every_system_within_border = {
-# 			limit = {
-# 				exists = owner
-# 			}
-# 			acemod_recalculate_solar_system_target_value = yes
-# 		}
-# 	}
-# }
+country_event = {
+	id = acemod_fleet.3
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		every_system_within_border = {
+			limit = {
+				exists = owner
+			}
+			acemod_recalculate_solar_system_target_value = yes
+		}
+	}
+}
+
 # Orders idle crisis fleets to seek target systems and move to them.
 event = {
 	id = acemod_fleet.4
@@ -108,7 +109,6 @@ event = {
 				}
 				fleet_event = {
 					id = acemod_fleet.5
-					# id = acemod_fleet.100
 				}
 			}
 		}
@@ -189,7 +189,6 @@ fleet_event = {
 							root = {
 								fleet_event = {
 									id = acemod_fleet.6
-									# id = acemod_fleet.100
 								}
 							}
 						}
@@ -200,7 +199,6 @@ fleet_event = {
 		else = {
 			fleet_event = {
 				id = acemod_fleet.6
-				# id = acemod_fleet.100
 			}
 		}
 	}
@@ -570,7 +568,7 @@ fleet_event = {
 					# needs review
 					# any_fleet_in_system = {
 					# 	owner = {
-					# 		is_hostile_to = root.owner
+					# 		is_hostile = root.owner
 					# 		NOT = {
 					# 			is_country_type = fallen_empire
 					# 		}
@@ -615,22 +613,6 @@ fleet_event = {
 							log = "ACEMOD_log: acemod.100.e1 Military fleet found bypass system via standard script."
 						}
 					}
-					# 		id = acemod.100.e2
-					# 		root = {
-					# 			fleet_event = {
-					# 				id = acemod_fleet.101
-					# 				days = 5
-					# 			}
-					# 		}
-					# effect = {
-					# 	id = acemod.100.e1
-					# 	root = {
-					# 		fleet_event = {
-					# 			id = acemod_fleet.101
-					# 			days = 5
-					# 		}
-					# 	}
-					# }
 				}
 				# failed = {
 				# 	effect = {
@@ -642,7 +624,6 @@ fleet_event = {
 				# 			}
 				# 		}
 				# 	}
-				# }
 			}
 			effect = {
 				id = acemod.100.e2
@@ -864,7 +845,6 @@ fleet_event = {
 						has_star_flag = acemod_star_flag_starbase_construction_system
 					}
 					NOT = {
-						# any_ship_in_system = {
 						any_fleet_in_system = {
 							OR = {
 								is_constructing = starbase
@@ -1272,6 +1252,7 @@ fleet_event = {
 										owner = {
 											is_hostile = root.owner
 										}
+										fleet_power > 0
 									}
 								}
 							}
@@ -1338,16 +1319,21 @@ fleet_event = {
 						# any_ship_in_system = {
 						any_fleet_in_system = {
 							OR = {
-								is_constructing = starbase
-								has_fleet_flag = acemod_planet_flag_starbase_construction_fleet
-							}
-							owner = {
-								is_same_value = root.owner
-							}
-						}
-						any_fleet_in_system = {
-							owner = {
-								is_hostile_to = root.owner
+								AND = {
+									owner = {
+										is_hostile = root.owner
+									}
+									fleet_power > 0
+								}
+								AND = {
+									OR = {
+										is_constructing = starbase
+										has_fleet_flag = acemod_planet_flag_starbase_construction_fleet
+									}
+									owner = {
+										is_same_value = root.owner
+									}
+								}
 							}
 						}
 					}
@@ -1369,16 +1355,8 @@ fleet_event = {
 				}
 				found_system = {
 					move_to = this
-					# effect = {
-					# 	id = acemod.311.e1
-					# 	root = {
-					# 		fleet_event = {
-					# 			id = acemod_fleet.101
-					# 			days = 5
-					# 		}
-					# 	}
-					# }
 				}
+				# TO DO: set up event to move to nearby allied fleet if no target found.
 				# failed = {
 				# 	effect = {
 				# 		id = acemod.311.e2
@@ -1846,6 +1824,7 @@ fleet_event = {
 											}
 										}
 									}
+									# Does not work.
 									# prev = {
 									# 	random_planet_army = {
 									# 		limit = {
@@ -1882,6 +1861,7 @@ fleet_event = {
 											}
 										}
 									}
+									# Does not work.
 									# prev = {
 									# 	random_planet_army = {
 									# 		limit = {
@@ -1913,6 +1893,7 @@ fleet_event = {
 											}
 										}
 									}
+									# Does not work.
 									# prev = {
 									# 	random_planet_army = {
 									# 		limit = {
@@ -2019,14 +2000,15 @@ fleet_event = {
 									acemod_is_active_bypass = yes
 								}
 								has_access_fleet = root.owner
-								NOT = {
-									# any_ship_in_system = {
-									any_fleet_in_system = {
-										owner = {
-											is_hostile = root.owner
-										}
-									}
-								}
+								# Disabled check to make armies more aggresive and follow military fleets closely.
+								# NOT = {
+								# 	any_fleet_in_system = {
+								# 		owner = {
+								# 			is_hostile = root.owner
+								# 		}
+								# 		fleet_power > 0
+								# 	}
+								# }
 							}
 							found_system = {
 								move_to = this
@@ -2082,9 +2064,6 @@ fleet_event = {
 					NOT = {
 						has_star_flag = acemod_star_flag_solar_system_army_target
 					}
-					# OR = {
-					# 	AND = {
-					# }
 					any_system_planet = {
 						exists = owner
 						OR = {
@@ -2105,13 +2084,14 @@ fleet_event = {
 						}
 						# is_under_colonization =  yes	#	Cannot be invaded.
 					}
-					NOT = {
-						any_fleet_in_system = {
-							owner = {
-								is_hostile_to = root.owner
-							}
-						}
-					}
+					# Disabled check to make armies more aggresive and follow military fleets closely.
+					# NOT = {
+					# 	any_fleet_in_system = {
+					# 		owner = {
+					# 			is_hostile = root.owner
+					# 		}
+					# 		fleet_power > 0
+					# 	}
 					# }
 				}
 				save_event_target_as = acemod_event_target_invader_army_target
@@ -2142,6 +2122,7 @@ fleet_event = {
 					# }
 				}
 				# Maybe increase seek range on failed.
+				# TO DO: set up event to move to nearby allied fleet if no target found.
 				# failed = {
 				# 	effect = {
 				# 		id = acemod.411.e2
@@ -2229,6 +2210,8 @@ fleet_event = {
 		# 	}
 		# 	break = yes
 		# }
+		# TO DO: Efficiency clean up and event target save instead of double seek.
+		# TO DO: Fix all colonizers rushing single planet
 		if = {
 			limit = {
 				solar_system = {
@@ -2243,6 +2226,9 @@ fleet_event = {
 						NOR = {
 							is_planet_class = pc_infested
 							is_planet_class = pc_ai
+						}
+						NOT = {
+							has_planet_flag = acemod_planet_flag_colonizer_target
 						}
 					}
 				}
@@ -2274,6 +2260,12 @@ fleet_event = {
 							set_timed_planet_flag = {
 								flag = acemod_planet_flag_colonizer_target
 								days = 360
+							}
+							solar_system = {
+								set_timed_star_flag = {
+									flag = acemod_star_flag_solar_system_colonizer_target
+									days = 360
+								}
 							}
 						}
 						move_to = this
@@ -2371,8 +2363,6 @@ fleet_event = {
 					NOT = {
 						has_star_flag = acemod_star_flag_solar_system_colonizer_target
 					}
-					# OR = {
-					# 	AND = {
 					exists = owner
 					owner = {
 						is_same_value = root.owner
@@ -2385,16 +2375,18 @@ fleet_event = {
 							is_planet_class = pc_infested
 							is_planet_class = pc_ai
 						}
+						NOT = {
+							has_planet_flag = acemod_planet_flag_colonizer_target
+						}
 					}
-					# }
 					NOT = {
 						any_fleet_in_system = {
 							owner = {
-								is_hostile_to = root.owner
+								is_hostile = root.owner
 							}
+							fleet_power > 0
 						}
 					}
-					# }
 				}
 				save_event_target_as = acemod_event_target_invader_colonizer_target
 				set_timed_star_flag = {
@@ -2413,16 +2405,8 @@ fleet_event = {
 				}
 				found_system = {
 					move_to = this
-					# effect = {
-					# 	id = acemod.411.e1
-					# 	root = {
-					# 		fleet_event = {
-					# 			id = acemod_fleet.101
-					# 			days = 5
-					# 		}
-					# 	}
-					# }
 				}
+				# To DO: Move to allied fleet or (base?) if no target found.
 				# Maybe increase seek range on failed.
 				# failed = {
 				# 	effect = {
@@ -2456,73 +2440,130 @@ fleet_event = {
 	}
 }
 
-# TO-DO
-# # Activates defensive jumpdrive protocol if protected system is under attack.
-# country_event = {
+#
+# # Spawns wormhole station for Contingency worlds.
+# event = {
+# 	id = acemod_fleet.605
+# 	hide_window = yes
+# 	is_triggered_only = yes
+# 	trigger = {
+# 		has_global_flag = ai_invasion_ongoing
+# 		has_global_flag = acemod_activated
+# 		NOT = {
+# 			has_global_flag = acemod_all_wormhole_station_spawned
+# 		}
+# 	}
+# 	immediate = {
+# 		every_country = {
+# 			limit = {
+# 				is_country_type = ai_empire
+# 				has_country_flag = acemod_assisted_ai
+# 			}
+# 			every_system_within_border = {
+# 				limit = {
+# 					has_star_flag = AI_hub
+# 					NOT = {
+# 						has_star_flag = acemod_star_flag_wormhole_station_spawned
+# 					}
+# 				}
+# 				every_system_planet = {
+# 					limit = {
+# 						is_planet_class = pc_ai
+# 					}
+# 					save_event_target_as = acemod_pc_ai_scale
+# 					create_ambient_object = {
+# 						type = abandoned_wormhole_station
+# 						scale = 2
+# 						location = this
+# 						entity_offset = {
+# 							min = 20
+# 							max = 30
+# 						}
+# 						entity_offset_height = {
+# 							min = 20
+# 							max = 10
+# 						}
+# 					}
+# 					last_created_ambient_object = {
+# 						set_ambient_object_flag = acemod_ambient_object_flag_defensive_jumpdrive_protocol_target
+# 					}
+# 				}
+# 				set_star_flag = acemod_star_flag_wormhole_station_spawned
+# 			}
+# 			change_variable = {
+# 				which = acemod_var_num_wormhole_station_spawned
+# 				value = 1
+# 			}
+# 			if = {
+# 				limit = {
+# 					check_variable = {
+# 						which = acemod_var_num_wormhole_station_spawned
+# 						value >= 4
+# 					}
+# 				}
+# 				set_global_flag = acemod_all_wormhole_station_spawned
+# 			}
+# 		}
+# 	}
+# }
+# fleet_event = {
 # 	id = acemod_fleet.610
 # 	hide_window = yes
 # 	is_triggered_only = yes
 # 	trigger = {
-# 		has_global_flag = acemod_activated
 # 		solar_system = {
 # 			OR = {
 # 				has_star_flag = AI_hub
 # 				has_star_flag = acemod_star_flag_is_defensive_jumpdrive_protocol_system
 # 			}
 # 		}
-# 		this = {
-# 			has_country_flag = acemod_assisted_ai
-# 		}
 # 	}
 # 	immediate = {
 # 		if = {
 # 			limit = {
-# 				FromFromFrom = {
-# 					is_ship_class = shipclass_military
-# 				}
-# 				FromFrom = {
-# 					is_ship_class = shipclass_starbase
+# 				fleet_power > 0
+# 				owner = {
+# 					is_hostile = from.owner
 # 				}
 # 			}
-# 			FromFrom = {
-# 				fleet_event = {
-# 					id = acemod_fleet.611
-# 				}
-# 			}
-# 		}
-# 	}
-# }
-# # Locks on random military fleet and jumps it to the protected system.
-# fleet_event = {
-# 	id = acemod_fleet.611
-# 	hide_window = yes
-# 	is_triggered_only = yes
-# 	immediate = {
-# 		owner = {
-# 			save_event_target_as = acemod_defensive_jumpdrive_protocol_country
-# 		}
-# 		every_system = {
-# 			limit = {
-# 				distance = {
-# 					source = root
-# 					max_distance = 200
-# 				}
-# 			}
-# 			random_fleet_in_system = {
-# 				limit = {
-# 					exists = owner
-# 					owner = {
-# 						is_same_value = event_target:acemod_defensive_jumpdrive_protocol_country
+# 			solar_system = {
+# 				if = {
+# 					limit = {
+# 						owner = {
+# 							OR = {
+# 								is_country_type = ai_empire
+# 								has_country_flag = acemod_defensive_jumpdrive_protocol
+# 							}
+# 						}
 # 					}
-# 					# is_ship_class = shipclass_military
+# 					random_system_ambient_object = {
+# 						limit = {
+# 							has_ambient_object_flag = acemod_ambient_object_flag_defensive_jumpdrive_protocol_target
+# 						}
+# 						solar_system = {
+# 							owner = {
+# 								random_owned_fleet = {
+# 									limit = {
+# 										is_ship_class = shipclass_military
+# 										is_in_combat = no
+# 										NOT = {
+# 											check_variable = {
+# 												which = acemod_var_fleet_piloted_exclusion
+# 												value = 1
+# 											}
+# 										}
+# 									}
+# 									set_location = {
+# 										target = prevprevprev
+# 										distance = 10
+# 										angle = random
+# 									}
+# 									clear_orders = yes
+# 								}
+# 							}
+# 						}
+# 					}
 # 				}
-# 				set_location = {
-# 					target = root
-# 					distance = 0
-# 					angle = random
-# 					direction = in_system
-# 				}
-# 				clear_orders = yes
 # 			}
 # 		}
 # 	}

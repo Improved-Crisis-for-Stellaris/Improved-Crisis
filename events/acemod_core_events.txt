@@ -193,3 +193,13 @@ event = {
 		}
 	}
 }
+
+# Designates defensive jumpdrive protocol target ambient object.
+event = {
+	id = acemod_core.18
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		set_ambient_object_flag = acemod_ambient_object_flag_defensive_jumpdrive_protocol_target
+	}
+}
