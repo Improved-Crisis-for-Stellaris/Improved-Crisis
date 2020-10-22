@@ -44,6 +44,7 @@ event = {
 	}
 }
 
+# TO DO: Apply modifier to all ships and newly built ships. See on action crisis.2056.
 # Run this event to apply an anti-crisis debuff. Set country flag if you want country excluded.
 country_event = {
 	id = acemod_core.4
@@ -201,5 +202,15 @@ event = {
 	is_triggered_only = yes
 	immediate = {
 		set_ambient_object_flag = acemod_ambient_object_flag_defensive_jumpdrive_protocol_target
+	}
+}
+
+# Disables defensive jumpdrive protocol for all countries.
+event = {
+	id = acemod_core.19
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		set_global_flag = acemod_defensive_jumpdrive_protocol_disabled
 	}
 }

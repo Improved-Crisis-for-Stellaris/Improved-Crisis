@@ -32,6 +32,7 @@ namespace = acemod_fleet
 # acemod_set_country_acemod_defensive_jumpdrive_protocol_exclusion_on = yes			country			Prevents ACEMOD from issuing defensive jumpdrive protocol.
 # acemod_set_country_acemod_defensive_jumpdrive_protocol_exclusion_off = yes		country			Resumes default operation.
 # set_star_flag = acemod_star_flag_is_defensive_jumpdrive_protocol_system	fleet planet	Designates defensive jumpdrive protocol protected system.
+# set_global_flag = acemod_defensive_jumpdrive_protocol_disabled		global			Disables defensive jumpdrive protocol for all countries.
 # set_global_flag = acemod_technology_disabled							global			Prevents ACEMOD technologies from rolling (potential).
 # set_country_flag = acemod_country_flag_technology_allowed				country			Enables rolling of ACEMOD technologies for non-default empires (potential). Does not overrride ACEMOD technology disable global flag.
 # acemod_set_country_technology_exclusion_on = yes						country			Prevents ACEMOD technologies from rolling for given country (weight_modifier = 0). Overrides country technology_allowed flag.
@@ -2440,131 +2441,227 @@ fleet_event = {
 	}
 }
 
-#
-# # Spawns wormhole station for Contingency worlds.
-# event = {
-# 	id = acemod_fleet.605
-# 	hide_window = yes
-# 	is_triggered_only = yes
-# 	trigger = {
-# 		has_global_flag = ai_invasion_ongoing
-# 		has_global_flag = acemod_activated
-# 		NOT = {
-# 			has_global_flag = acemod_all_wormhole_station_spawned
-# 		}
-# 	}
-# 	immediate = {
-# 		every_country = {
-# 			limit = {
-# 				is_country_type = ai_empire
-# 				has_country_flag = acemod_assisted_ai
-# 			}
-# 			every_system_within_border = {
-# 				limit = {
-# 					has_star_flag = AI_hub
-# 					NOT = {
-# 						has_star_flag = acemod_star_flag_wormhole_station_spawned
-# 					}
-# 				}
-# 				every_system_planet = {
-# 					limit = {
-# 						is_planet_class = pc_ai
-# 					}
-# 					save_event_target_as = acemod_pc_ai_scale
-# 					create_ambient_object = {
-# 						type = abandoned_wormhole_station
-# 						scale = 2
-# 						location = this
-# 						entity_offset = {
-# 							min = 20
-# 							max = 30
-# 						}
-# 						entity_offset_height = {
-# 							min = 20
-# 							max = 10
-# 						}
-# 					}
-# 					last_created_ambient_object = {
-# 						set_ambient_object_flag = acemod_ambient_object_flag_defensive_jumpdrive_protocol_target
-# 					}
-# 				}
-# 				set_star_flag = acemod_star_flag_wormhole_station_spawned
-# 			}
-# 			change_variable = {
-# 				which = acemod_var_num_wormhole_station_spawned
-# 				value = 1
-# 			}
-# 			if = {
-# 				limit = {
-# 					check_variable = {
-# 						which = acemod_var_num_wormhole_station_spawned
-# 						value >= 4
-# 					}
-# 				}
-# 				set_global_flag = acemod_all_wormhole_station_spawned
-# 			}
-# 		}
-# 	}
-# }
-# fleet_event = {
-# 	id = acemod_fleet.610
-# 	hide_window = yes
-# 	is_triggered_only = yes
-# 	trigger = {
-# 		solar_system = {
-# 			OR = {
-# 				has_star_flag = AI_hub
-# 				has_star_flag = acemod_star_flag_is_defensive_jumpdrive_protocol_system
-# 			}
-# 		}
-# 	}
-# 	immediate = {
-# 		if = {
-# 			limit = {
-# 				fleet_power > 0
-# 				owner = {
-# 					is_hostile = from.owner
-# 				}
-# 			}
-# 			solar_system = {
-# 				if = {
-# 					limit = {
-# 						owner = {
-# 							OR = {
-# 								is_country_type = ai_empire
-# 								has_country_flag = acemod_defensive_jumpdrive_protocol
-# 							}
-# 						}
-# 					}
-# 					random_system_ambient_object = {
-# 						limit = {
-# 							has_ambient_object_flag = acemod_ambient_object_flag_defensive_jumpdrive_protocol_target
-# 						}
-# 						solar_system = {
-# 							owner = {
-# 								random_owned_fleet = {
-# 									limit = {
-# 										is_ship_class = shipclass_military
-# 										is_in_combat = no
-# 										NOT = {
-# 											check_variable = {
-# 												which = acemod_var_fleet_piloted_exclusion
-# 												value = 1
-# 											}
-# 										}
-# 									}
-# 									set_location = {
-# 										target = prevprevprev
-# 										distance = 10
-# 										angle = random
-# 									}
-# 									clear_orders = yes
-# 								}
-# 							}
-# 						}
-# 					}
-# 				}
-# 			}
-# 		}
-# 	}
-# }
+# Spawns wormhole station for Contingency worlds.
+event = {
+	id = acemod_fleet.605
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		has_global_flag = ai_invasion_ongoing
+		has_global_flag = acemod_activated
+		NOR = {
+			has_global_flag = acemod_defensive_jumpdrive_protocol_disabled
+			has_global_flag = acemod_all_wormhole_station_spawned
+		}
+	}
+	immediate = {
+		every_country = {
+			limit = {
+				is_country_type = ai_empire
+				has_country_flag = acemod_assisted_ai
+				NOT = {
+					check_variable = {
+						which = acemod_var_country_defensive_jumpdrive_protocol_exclusion
+						value = 1
+					}
+				}
+			}
+			every_system_within_border = {
+				limit = {
+					has_star_flag = AI_hub
+					NOT = {
+						has_star_flag = acemod_star_flag_wormhole_station_spawned
+					}
+				}
+				every_system_planet = {
+					limit = {
+						is_planet_class = pc_ai
+					}
+					owner = {
+						change_variable = {
+							which = acemod_var_num_wormhole_station_spawned
+							value = 1
+						}
+						if = {
+							limit = {
+								check_variable = {
+									which = acemod_var_num_wormhole_station_spawned
+									value >= 4
+								}
+							}
+							set_global_flag = acemod_all_wormhole_station_spawned
+						}
+					}
+					save_event_target_as = acemod_pc_ai_scale
+					create_ambient_object = {
+						type = abandoned_wormhole_station
+						scale = 2
+						location = this
+						entity_offset = {
+							min = 20
+							max = 30
+						}
+						entity_offset_height = {
+							min = 20
+							max = 10
+						}
+					}
+					last_created_ambient_object = {
+						set_ambient_object_flag = acemod_ambient_object_flag_defensive_jumpdrive_protocol_target
+					}
+				}
+				set_star_flag = acemod_star_flag_wormhole_station_spawned
+			}
+		}
+	}
+}
+
+# TO DO: Contingency homeworld defense
+# TO DO: Fleet power comparison
+# TO DO: Distance check
+# Activates defensive jumpdrive protocol if protected system is under attack.
+fleet_event = {
+	id = acemod_fleet.610
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		solar_system = {
+			OR = {
+				has_star_flag = AI_hub
+				has_star_flag = acemod_star_flag_is_defensive_jumpdrive_protocol_system
+			}
+			NOT = {
+				has_star_flag = acemod_star_flag_defensive_jumpdrive_protocol_cooldown
+			}
+		}
+		NOT = {
+			has_global_flag = acemod_defensive_jumpdrive_protocol_disabled
+		}
+		owner = {
+			NOT = {
+				check_variable = {
+					which = acemod_var_country_defensive_jumpdrive_protocol_exclusion
+					value = 1
+				}
+			}
+		}
+	}
+	immediate = {
+		if = {
+			limit = {
+				fleet_power > 0
+				owner = {
+					is_hostile = from.owner
+				}
+			}
+			solar_system = {
+				if = {
+					limit = {
+						owner = {
+							OR = {
+								is_country_type = ai_empire
+								has_country_flag = acemod_defensive_jumpdrive_protocol
+							}
+						}
+					}
+					random_system_ambient_object = {
+						limit = {
+							has_ambient_object_flag = acemod_ambient_object_flag_defensive_jumpdrive_protocol_target
+						}
+						solar_system = {
+							set_timed_star_flag = {
+								flag = acemod_star_flag_defensive_jumpdrive_protocol_cooldown
+								days = 200
+							}
+							owner = {
+								random_owned_fleet = {
+									limit = {
+										is_ship_class = shipclass_military
+										is_in_combat = no
+										NOR = {
+											check_variable = {
+												which = acemod_var_fleet_piloted_exclusion
+												value = 1
+											}
+											has_fleet_flag = acemod_fleet_flag_defensive_jumpdrive_protocol_cooldown
+										}
+										# Does not work.
+										# solar_system = {
+										# 	closest_system = {
+										# 		min_steps = 1
+										# 		max_steps = 20
+										# 		has_star_flag = AI_hub
+										# 	}
+										# }
+									}
+									fleet_event = {
+										id = acemod_fleet.611
+										days = 14
+									}
+									# set_location = {
+									# 	target = prevprevprev
+									# 	distance = 10
+									# 	angle = random
+									# }
+									# set_timed_fleet_flag = {
+									# 	flag = acemod_fleet_flag_defensive_jumpdrive_protocol_cooldown
+									# 	days = 200
+									# }
+									# add_modifier = {
+									# 	modifier = acemod_defensive_jumpdrive_protocol_cooldown_modifier
+									# 	days = 200
+									# }
+									# clear_orders = yes
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+# Delayed effect to jump the fleet. Simulates jump windup.
+fleet_event = {
+	id = acemod_fleet.611
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		owner = {
+			random_system_within_border = {
+				limit = {
+					has_star_flag = acemod_star_flag_defensive_jumpdrive_protocol_cooldown
+					NOT = {
+						any_fleet_in_system = {
+							has_fleet_flag = acemod_fleet_flag_defensive_jumpdrive_protocol_cooldown
+							owner = {
+								is_same_value = root.owner
+							}
+						}
+					}
+				}
+				random_system_ambient_object = {
+					limit = {
+						has_ambient_object_flag = acemod_ambient_object_flag_defensive_jumpdrive_protocol_target
+					}
+					save_event_target_as = acemod_solar_system_defensive_jumpdrive_protocol_target
+				}
+			}
+		}
+		set_location = {
+			target = event_target:acemod_solar_system_defensive_jumpdrive_protocol_target
+			distance = 10
+			angle = random
+		}
+		set_timed_fleet_flag = {
+			flag = acemod_fleet_flag_defensive_jumpdrive_protocol_cooldown
+			days = 200
+		}
+		add_modifier = {
+			modifier = acemod_defensive_jumpdrive_protocol_cooldown_modifier
+			days = 200
+		}
+		clear_orders = yes
+	}
+}
