@@ -6,7 +6,7 @@ Galactic empires receive initial massive damage penalty against crisis factions.
 
 [h1]Improvements[/h1]
 
-[IMG]https://i.imgur.com/yRoeNez.png[/IMG]
+[IMG]https://i.imgur.com/5bsQY0a.png[/IMG]
 
 ACEMOD is flexible and modular. Users are able to switch individual components on and off at game start.
 
