@@ -2533,17 +2533,17 @@ fleet_event = {
 			NOT = {
 				has_star_flag = acemod_star_flag_defensive_jumpdrive_protocol_cooldown
 			}
+			owner = {
+				NOT = {
+					check_variable = {
+						which = acemod_var_country_defensive_jumpdrive_protocol_exclusion
+						value = 1
+					}
+				}
+			}
 		}
 		NOT = {
 			has_global_flag = acemod_defensive_jumpdrive_protocol_disabled
-		}
-		owner = {
-			NOT = {
-				check_variable = {
-					which = acemod_var_country_defensive_jumpdrive_protocol_exclusion
-					value = 1
-				}
-			}
 		}
 	}
 	immediate = {
