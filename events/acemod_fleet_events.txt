@@ -2468,7 +2468,10 @@ event = {
 			}
 			every_system_within_border = {
 				limit = {
-					has_star_flag = AI_hub
+					OR = {
+						has_star_flag = AI_hub
+						has_star_flag = AI_lair
+					}
 					NOT = {
 						has_star_flag = acemod_star_flag_wormhole_station_spawned
 					}
@@ -2478,6 +2481,7 @@ event = {
 						is_planet_class = pc_ai
 					}
 					owner = {
+						set_country_flag = acemod_defensive_jumpdrive_protocol
 						change_variable = {
 							which = acemod_var_num_wormhole_station_spawned
 							value = 1
@@ -2492,7 +2496,7 @@ event = {
 							set_global_flag = acemod_all_wormhole_station_spawned
 						}
 					}
-					save_event_target_as = acemod_pc_ai_scale
+					# save_event_target_as = acemod_pc_ai_scale
 					create_ambient_object = {
 						type = abandoned_wormhole_station
 						scale = 2
@@ -2511,12 +2515,12 @@ event = {
 					}
 				}
 				set_star_flag = acemod_star_flag_wormhole_station_spawned
+				set_star_flag = acemod_star_flag_is_defensive_jumpdrive_protocol_system
 			}
 		}
 	}
 }
 
-# TO DO: Contingency homeworld defense
 # TO DO: Fleet power comparison
 # TO DO: Distance check
 # Activates defensive jumpdrive protocol if protected system is under attack.
@@ -2526,10 +2530,7 @@ fleet_event = {
 	is_triggered_only = yes
 	trigger = {
 		solar_system = {
-			OR = {
-				has_star_flag = AI_hub
-				has_star_flag = acemod_star_flag_is_defensive_jumpdrive_protocol_system
-			}
+			has_star_flag = acemod_star_flag_is_defensive_jumpdrive_protocol_system
 			NOT = {
 				has_star_flag = acemod_star_flag_defensive_jumpdrive_protocol_cooldown
 			}
@@ -2558,10 +2559,7 @@ fleet_event = {
 				if = {
 					limit = {
 						owner = {
-							OR = {
-								is_country_type = ai_empire
-								has_country_flag = acemod_defensive_jumpdrive_protocol
-							}
+							has_country_flag = acemod_defensive_jumpdrive_protocol
 						}
 					}
 					random_system_ambient_object = {
@@ -2590,6 +2588,7 @@ fleet_event = {
 										# 	closest_system = {
 										# 		min_steps = 1
 										# 		max_steps = 20
+										#		has_star_flag = AI_lair
 										# 		has_star_flag = AI_hub
 										# 	}
 										# }
