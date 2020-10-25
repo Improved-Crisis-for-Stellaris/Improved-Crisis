@@ -11,316 +11,47 @@ namespace = acemod_fleet
 #
 # Instructions:
 # 
-# set_global_flag = acemod_activated									global			Activates ACEMOD fleet AI.
-# set_country_flag = acemod_assisted_ai									country			Only countries with this flag will have their fleets piloted by ACEMOD.
-# acemod_set_fleet_piloted_exclusion_on = yes							fleet ship		Prevents ACEMOD from piloting marked fleets.
-# acemod_set_fleet_piloted_exclusion_off = yes							fleet ship		Resumes default operation.
-# acemod_set_country_piloted_exclusion_on = yes							country			Prevents ACEMOD from piloting fleets of given country. Use this if you don't want vanilla crisis country to be piloted. See acemod_fleet.9 event.
-# acemod_set_country_piloted_exclusion_off = yes						country			Removes exclusion *and* enables ACEMOD for given country. Does not activate global ACEMOD fleet AI (acemod_activated flag) if you had it off.
-# set_country_flag = acemod_country_flag_custom_starbase_outpost		country			ACEMOD AI constructors will spawn normal starbases (outpost) using empire's graphical culture.
-# set_country_flag = acemod_country_flag_custom_starbase_citadel		country			ACEMOD AI constructors will spawn normal starbases (citadel) using empire's graphical culture.
-# set_country_flag = acemod_country_flag_disabled_military_ai			country			Disables ACEMOD AI for military fleets.
-# set_country_flag = acemod_country_flag_disabled_constructor_ai		country			Disables ACEMOD AI for constructor fleets.
-# set_country_flag = acemod_country_flag_disabled_army_ai				country			Disables ACEMOD AI for army fleets.
-# set_country_flag = acemod_country_flag_disabled_colonizer_ai			country			Disables ACEMOD AI for colonizer fleets.
-# set_country_flag = acemod_constructor_reinforcements					country			Enables constructor reinforcements for given country. Vanilla crisis countries receive them by default. Requires acemod_assisted_ai country flag.
-# acemod_set_country_constructor_reinforcements_exclusion_on = yes		country			Prevents ACEMOD from issuing constructor reinforcements.
-# acemod_set_country_constructor_reinforcements_exclusion_off = yes		country			Resumes default operation.
-# set_star_flag = acemod_star_flag_is_constructor_reinforcements_system solar_system	Designates system to spawn constructor in.
-# set_fleet_flag = acemod_fleet_flag_is_constructor_reinforcements_fleet	fleet		Designates fleet to spawn constructor on.
-# set_country_flag = acemod_defensive_jumpdrive_protocol				country			Enables defensive jumpdrive protocol for given country. Contingency has it by default. Requires acemod_assisted_ai country flag.
-# acemod_set_country_acemod_defensive_jumpdrive_protocol_exclusion_on = yes			country			Prevents ACEMOD from issuing defensive jumpdrive protocol.
-# acemod_set_country_acemod_defensive_jumpdrive_protocol_exclusion_off = yes		country			Resumes default operation.
-# set_star_flag = acemod_star_flag_is_defensive_jumpdrive_protocol_system	fleet planet	Designates defensive jumpdrive protocol protected system.
-# set_global_flag = acemod_defensive_jumpdrive_protocol_disabled		global			Disables defensive jumpdrive protocol for all countries.
-# set_global_flag = acemod_technology_disabled							global			Prevents ACEMOD technologies from rolling (potential).
-# set_country_flag = acemod_country_flag_technology_allowed				country			Enables rolling of ACEMOD technologies for non-default empires (potential). Does not overrride ACEMOD technology disable global flag.
-# acemod_set_country_technology_exclusion_on = yes						country			Prevents ACEMOD technologies from rolling for given country (weight_modifier = 0). Overrides country technology_allowed flag.
-# acemod_set_country_technology_exclusion_off = yes						country			Resumes default operation.
-# set_global_flag = acemod_crisis_debuff_disabled						global			Disable applying anti-crisis damage debuffs. Does not remove the ones in place.
-# set_global_flag = acemod_fallen_awakened_empire_debuff_disabled		global			Disable applying anti-relics damage debuffs. Does not remove the ones in place.
-# set_megastructure_flag = acemod_megastructure_flag_is_active_bypass	megastructure	Marks megastructure as being an accessible bypass (custom modded wormhole, custom modded gateway etc). Used in pathfinding. See acemod_is_active_bypass scripted trigger.
-# set_star_flag = acemod_star_flag_is_active_bypass						solar_system	Marks star system as being an accessible bypass (custom modded wormhole, custom modded gateway etc). Used in pathfinding. See acemod_is_active_bypass scripted trigger.
+# set_global_flag = acemod_activated											global				Activates ACEMOD fleet AI.
+# set_country_flag = acemod_assisted_ai											country				Only countries with this flag will have their fleets piloted by ACEMOD.
+# acemod_set_fleet_piloted_exclusion_on = yes									fleet ship			Prevents ACEMOD from piloting marked fleets.
+# acemod_set_fleet_piloted_exclusion_off = yes									fleet ship			Resumes default operation.
+# acemod_set_country_piloted_exclusion_on = yes									country				Prevents ACEMOD from piloting fleets of given country. Use this if you don't want vanilla crisis country to be piloted. See acemod_fleet.10 event.
+# acemod_set_country_piloted_exclusion_off = yes								country				Removes exclusion *and* enables ACEMOD for given country. Does not activate global ACEMOD fleet AI (acemod_activated flag) if you had it off.
 #
-# Calculates strategic value of systems.
-country_event = {
-	id = acemod_fleet.2
-	hide_window = yes
-	is_triggered_only = yes
-	immediate = {
-		every_system_within_border = {
-			limit = {
-				exists = owner
-			}
-			acemod_calculate_solar_system_target_value = yes
-		}
-	}
-}
-
-# Recalculates strategic value of systems.
-country_event = {
-	id = acemod_fleet.3
-	hide_window = yes
-	is_triggered_only = yes
-	immediate = {
-		every_system_within_border = {
-			limit = {
-				exists = owner
-			}
-			acemod_recalculate_solar_system_target_value = yes
-		}
-	}
-}
-
-# Orders idle crisis fleets to seek target systems and move to them.
-event = {
-	id = acemod_fleet.4
-	hide_window = yes
-	is_triggered_only = yes
-	trigger = {
-		has_global_flag = acemod_activated
-	}
-	immediate = {
-		every_country = {
-			limit = {
-				has_country_flag = acemod_assisted_ai				# Only countries with this flag will have their fleets piloted by ACEMOD.
-				NOT = {
-					has_country_flag = acemod_country_flag_disabled_military_ai
-				}
-				# OR = {
-				# 	is_country_type = swarm
-				# 	is_country_type = extradimensional
-				# 	is_country_type = extradimensional_2
-				# 	is_country_type = extradimensional_3
-				# 	is_country_type = ai_empire
-				# 	is_country_type = gray
-				# 	is_country_type = gray_goo					# A Deadly Tempest mod.
-				# }
-			}
-			every_owned_fleet = {
-				limit = {
-					NOT = {
-						check_variable = {
-							which = acemod_var_fleet_piloted_exclusion
-							value = 1
-						}
-					}
-					is_fleet_idle = yes
-					is_ship_class = shipclass_military
-				}
-				fleet_event = {
-					id = acemod_fleet.5
-				}
-			}
-		}
-	}
-}
-
-# Seeks valid target to bombard, skips if not found.
-fleet_event = {
-	id = acemod_fleet.5
-	hide_window = yes
-	is_triggered_only = yes
-	immediate = {
-		if = {
-			limit = {
-				solar_system = {
-					exists = owner
-					any_system_planet = {
-						has_orbital_bombardment = yes
-						any_fleet_in_orbit = {
-							is_same_value = root
-						}
-					}
-				}
-			}
-			break = yes
-		}
-		if = {
-			limit = {
-				solar_system = {
-					exists = owner
-					any_system_planet = {
-						OR = {
-							is_colony = yes
-							is_under_colonization = yes
-						}
-						NOR = {
-							has_planet_flag = acemod_planet_flag_bombardment_target
-							has_orbital_bombardment = yes
-						}
-						NOT = {
-							is_owned_by = root.owner
-						}
-					}
-				}
-			}
-			queue_actions = {
-				find_closest_planet = {
-					trigger = {
-						id = "acemod.5.t1"
-						OR = {
-							is_colony = yes
-							is_under_colonization = yes
-						}
-						NOT = {
-							has_planet_flag = acemod_planet_flag_bombardment_target
-						}
-						NOT = {
-							is_owned_by = root.owner
-						}
-						# is_same_value = event_target:acemod_event_target_invader_bombardment_target
-					}
-					found_planet = {
-						effect = {
-							id = "acemod.5.e1"
-							save_event_target_as = acemod_event_target_invader_bombardment_target
-							set_timed_planet_flag = {
-								flag = acemod_planet_flag_bombardment_target
-								days = 120
-							}
-						}
-						move_to = this
-						wait = 5
-						orbit_planet = this
-					}
-					failed = {
-						effect = {
-							id = "acemod.5.e2"
-							root = {
-								fleet_event = {
-									id = acemod_fleet.6
-								}
-							}
-						}
-					}
-				}
-			}
-		}
-		else = {
-			fleet_event = {
-				id = acemod_fleet.6
-			}
-		}
-	}
-}
-
-# Finds connected and accessible bypass system.
-fleet_event = {
-	id = acemod_fleet.6
-	hide_window = yes
-	is_triggered_only = yes
-	immediate = {
-		if = {
-			limit = {
-				solar_system = {
-					OR = {
-						has_natural_wormhole = yes
-						any_system_megastructure = {
-							is_megastructure_type = gateway_final
-							is_megastructure_type = gateway_restored
-							is_megastructure_type = lgate_base
-						}
-						acemod_is_active_bypass = yes
-					}
-				}
-			}
-			random_list = {
-				100 = {
-					queue_actions = {
-						find_random_system = {
-							trigger = {
-								id = "acemod.6.t1"
-								distance = {
-									source = root
-									#	max_distance <= 1000
-									#	min_distance >= 1
-									#	type = hyperlane
-									#	uses_bypass = yes
-									bypass_empire = root.owner
-									min_jumps = 1
-									max_jumps = 1
-								}
-								OR = {
-									has_natural_wormhole = yes
-									any_system_megastructure = {
-										is_megastructure_type = gateway_final
-										is_megastructure_type = gateway_restored
-										is_megastructure_type = lgate_base
-									}
-									acemod_is_active_bypass = yes
-								}
-								has_access_fleet = root.owner
-								exists = owner
-								owner = {
-									NOR = {
-										is_same_value = root.owner
-										is_country_type = fallen_empire
-									}
-								}
-							}
-							found_system = {
-								move_to = this
-								effect = {
-									id = "acemod.6.e1"
-									log = "ACEMOD_log: acemod.6.e1 Military fleet entered bypass system and found bypass system via bypass script."
-								}
-							}
-							failed = {
-								effect = {
-									id = "acemod.6.e2"
-									log = "ACEMOD_log: acemod.6.e2 Military fleet entered bypass system and failed to find bypass system via bypass script."
-									root = {
-										fleet_event = {
-											id = acemod_fleet.100
-										}
-									}
-								}
-							}
-						}
-					}
-				}
-				0 = {
-					hidden_effect = {
-						log = "ACEMOD_log: acemod_fleet.6 Military fleet entered bypass system but rolled via bypass script to proceeded with standard script."
-					}
-					fleet_event = {
-						id = acemod_fleet.100
-					}
-				}
-			}
-		}
-		else = {
-			fleet_event = {
-				id = acemod_fleet.100
-			}
-		}
-	}
-}
-
-# Activates ACEMOD AI. Without this flag fleets won't seek targets.
-event = {
-	id = acemod_fleet.7
-	hide_window = yes
-	is_triggered_only = yes
-	immediate = {
-		set_global_flag = acemod_activated
-	}
-}
-
-# Applies ACEMOD AI to a specific country. Without this flag fleets won't seek targets.
-country_event = {
-	id = acemod_fleet.8
-	hide_window = yes
-	is_triggered_only = yes
-	immediate = {
-		set_country_flag = acemod_assisted_ai
-	}
-}
-
+# set_country_flag = acemod_country_flag_disabled_military_ai					country				Disables ACEMOD AI for military fleets.
+# set_country_flag = acemod_country_flag_disabled_constructor_ai				country				Disables ACEMOD AI for constructor fleets.
+# set_country_flag = acemod_country_flag_disabled_army_ai						country				Disables ACEMOD AI for army fleets.
+# set_country_flag = acemod_country_flag_disabled_colonizer_ai					country				Disables ACEMOD AI for colonizer fleets.
+#
+# set_country_flag = acemod_constructor_reinforcements							country				Enables constructor reinforcements for given country. Vanilla crisis countries receive them by default. Requires acemod_assisted_ai country flag.
+# acemod_set_country_constructor_reinforcements_exclusion_on = yes				country				Prevents ACEMOD from issuing constructor reinforcements.
+# acemod_set_country_constructor_reinforcements_exclusion_off = yes				country				Resumes default operation.
+# set_star_flag = acemod_star_flag_is_constructor_reinforcements_system			solar_system		Designates system to spawn constructor in.
+# set_fleet_flag = acemod_fleet_flag_is_constructor_reinforcements_fleet		fleet				Designates fleet to spawn constructor on.
+#
+# set_country_flag = acemod_country_flag_custom_starbase_outpost				country				ACEMOD AI constructors will spawn normal starbases (outpost) using empire's graphical culture.
+# set_country_flag = acemod_country_flag_custom_starbase_citadel				country				ACEMOD AI constructors will spawn normal starbases (citadel) using empire's graphical culture.
+#
+# set_country_flag = acemod_defensive_jumpdrive_protocol						country				Enables defensive jumpdrive protocol for given country. Contingency has it by default. Requires acemod_assisted_ai country flag.
+# acemod_set_country_acemod_defensive_jumpdrive_protocol_exclusion_on = yes		country				Prevents ACEMOD from issuing defensive jumpdrive protocol.
+# acemod_set_country_acemod_defensive_jumpdrive_protocol_exclusion_off = yes	country				Resumes default operation.
+# set_star_flag = acemod_star_flag_is_defensive_jumpdrive_protocol_system		fleet planet		Designates defensive jumpdrive protocol protected system.
+# set_global_flag = acemod_defensive_jumpdrive_protocol_disabled				global				Disables defensive jumpdrive protocol for all countries.
+#
+# set_global_flag = acemod_technology_disabled									global				Prevents ACEMOD technologies from rolling (potential).
+# set_country_flag = acemod_country_flag_technology_allowed						country				Enables rolling of ACEMOD technologies for non-default empires (potential). Does not overrride ACEMOD technology disable global flag.
+# acemod_set_country_technology_exclusion_on = yes								country				Prevents ACEMOD technologies from rolling for given country (weight_modifier = 0). Overrides country technology_allowed flag.
+# acemod_set_country_technology_exclusion_off = yes								country				Resumes default operation.
+#
+# set_global_flag = acemod_crisis_debuff_disabled								global				Disable applying anti-crisis damage debuffs. Does not remove the ones in place.
+# set_global_flag = acemod_fallen_awakened_empire_debuff_disabled				global				Disable applying anti-relics damage debuffs. Does not remove the ones in place.
+#
+# set_megastructure_flag = acemod_megastructure_flag_is_active_bypass			megastructure		Marks megastructure as being an accessible bypass (custom modded wormhole, custom modded gateway etc). Used in pathfinding. See acemod_is_active_bypass scripted trigger.
+# set_star_flag = acemod_star_flag_is_active_bypass								solar_system		Marks star system as being an accessible bypass (custom modded wormhole, custom modded gateway etc). Used in pathfinding. See acemod_is_active_bypass scripted trigger.
+#
 # ACEMOD AI activation. Required to avoid crisis events overwrites.
 event = {
-	id = acemod_fleet.9
+	id = acemod_fleet.10
 	hide_window = yes
 	is_triggered_only = yes
 	trigger = {
@@ -450,89 +181,238 @@ event = {
 # 		set_country_flag = acemod_assisted_ai
 # 	}
 # }
-# ACEMOD AI constructors will spawn normal starbases (outpost) using empire's graphical culture.
-country_event = {
-	id = acemod_fleet.18
-	hide_window = yes
-	is_triggered_only = yes
-	immediate = {
-		set_country_flag = acemod_country_flag_custom_starbase_outpost
-	}
-}
-
-# ACEMOD AI constructors will spawn normal starbases (citadel) using empire's graphical culture.
-country_event = {
-	id = acemod_fleet.19
-	hide_window = yes
-	is_triggered_only = yes
-	immediate = {
-		set_country_flag = acemod_country_flag_custom_starbase_citadel
-	}
-}
-
-# Disables ACEMOD AI for military fleets.
-country_event = {
-	id = acemod_fleet.20
-	hide_window = yes
-	is_triggered_only = yes
-	immediate = {
-		set_country_flag = acemod_country_flag_disabled_military_ai
-	}
-}
-
-# Disables ACEMOD AI for constructor fleets.
-country_event = {
-	id = acemod_fleet.21
-	hide_window = yes
-	is_triggered_only = yes
-	immediate = {
-		set_country_flag = acemod_country_flag_disabled_constructor_ai
-	}
-}
-
-# Disables ACEMOD AI for army fleets.
-country_event = {
-	id = acemod_fleet.22
-	hide_window = yes
-	is_triggered_only = yes
-	immediate = {
-		set_country_flag = acemod_country_flag_disabled_army_ai
-	}
-}
-
-# Disables ACEMOD AI for colonizer fleets.
-country_event = {
-	id = acemod_fleet.23
-	hide_window = yes
-	is_triggered_only = yes
-	immediate = {
-		set_country_flag = acemod_country_flag_disabled_colonizer_ai
-	}
-}
-
-# Marks megastructure as being an accessible bypass (custom modded wormhole, custom modded gateway etc). Used in pathfinding.
+#
+# Orders idle crisis fleets to seek target systems and move to them.
 event = {
-	id = acemod_fleet.30
+	id = acemod_fleet.100
 	hide_window = yes
 	is_triggered_only = yes
+	trigger = {
+		has_global_flag = acemod_activated
+	}
 	immediate = {
-		set_megastructure_flag = acemod_megastructure_flag_is_active_bypass
+		every_country = {
+			limit = {
+				has_country_flag = acemod_assisted_ai				# Only countries with this flag will have their fleets piloted by ACEMOD.
+				NOT = {
+					has_country_flag = acemod_country_flag_disabled_military_ai
+				}
+				# OR = {
+				# 	is_country_type = swarm
+				# 	is_country_type = extradimensional
+				# 	is_country_type = extradimensional_2
+				# 	is_country_type = extradimensional_3
+				# 	is_country_type = ai_empire
+				# 	is_country_type = gray
+				# 	is_country_type = gray_goo					# A Deadly Tempest mod.
+				# }
+			}
+			every_owned_fleet = {
+				limit = {
+					NOT = {
+						check_variable = {
+							which = acemod_var_fleet_piloted_exclusion
+							value = 1
+						}
+					}
+					is_fleet_idle = yes
+					is_ship_class = shipclass_military
+				}
+				fleet_event = {
+					id = acemod_fleet.105
+					days = 2
+					random = 5
+				}
+			}
+		}
 	}
 }
 
-# Marks solar_system as having an accessible bypass (custom modded wormhole, custom modded gateway etc). Used in pathfinding.
-event = {
-	id = acemod_fleet.31
+# Seeks valid target to bombard, skips if not found.
+fleet_event = {
+	id = acemod_fleet.105
 	hide_window = yes
 	is_triggered_only = yes
 	immediate = {
-		set_star_flag = acemod_star_flag_is_active_bypass
+		if = {
+			limit = {
+				solar_system = {
+					exists = owner
+					any_system_planet = {
+						has_orbital_bombardment = yes
+						any_fleet_in_orbit = {
+							is_same_value = root
+						}
+					}
+				}
+			}
+			break = yes
+		}
+		if = {
+			limit = {
+				solar_system = {
+					exists = owner
+					any_system_planet = {
+						OR = {
+							is_colony = yes
+							is_under_colonization = yes
+						}
+						NOR = {
+							has_planet_flag = acemod_planet_flag_bombardment_target
+							has_orbital_bombardment = yes
+						}
+						NOT = {
+							is_owned_by = root.owner
+						}
+					}
+				}
+			}
+			queue_actions = {
+				find_closest_planet = {
+					trigger = {
+						id = "acemod.105.t1"
+						OR = {
+							is_colony = yes
+							is_under_colonization = yes
+						}
+						NOT = {
+							has_planet_flag = acemod_planet_flag_bombardment_target
+						}
+						NOT = {
+							is_owned_by = root.owner
+						}
+						# is_same_value = event_target:acemod_event_target_invader_bombardment_target
+					}
+					found_planet = {
+						effect = {
+							id = "acemod.105.e1"
+							save_event_target_as = acemod_event_target_invader_bombardment_target
+							set_timed_planet_flag = {
+								flag = acemod_planet_flag_bombardment_target
+								days = 120
+							}
+						}
+						move_to = this
+						wait = 5
+						orbit_planet = this
+					}
+					failed = {
+						effect = {
+							id = "acemod.105.e2"
+							root = {
+								fleet_event = {
+									id = acemod_fleet.110
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		else = {
+			fleet_event = {
+				id = acemod_fleet.110
+			}
+		}
+	}
+}
+
+# Finds connected and accessible bypass system.
+fleet_event = {
+	id = acemod_fleet.110
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		if = {
+			limit = {
+				solar_system = {
+					OR = {
+						has_natural_wormhole = yes
+						any_system_megastructure = {
+							is_megastructure_type = gateway_final
+							is_megastructure_type = gateway_restored
+							is_megastructure_type = lgate_base
+						}
+						acemod_is_active_bypass = yes
+					}
+				}
+			}
+			random_list = {
+				100 = {
+					queue_actions = {
+						find_random_system = {
+							trigger = {
+								id = "acemod.110.t1"
+								distance = {
+									source = root
+									#	max_distance <= 1000
+									#	min_distance >= 1
+									#	type = hyperlane
+									#	uses_bypass = yes
+									bypass_empire = root.owner
+									min_jumps = 1
+									max_jumps = 1
+								}
+								OR = {
+									has_natural_wormhole = yes
+									any_system_megastructure = {
+										is_megastructure_type = gateway_final
+										is_megastructure_type = gateway_restored
+										is_megastructure_type = lgate_base
+									}
+									acemod_is_active_bypass = yes
+								}
+								has_access_fleet = root.owner
+								exists = owner
+								owner = {
+									NOR = {
+										is_same_value = root.owner
+										is_country_type = fallen_empire
+									}
+								}
+							}
+							found_system = {
+								move_to = this
+								# effect = {
+								# 	id = "acemod.110.e1"
+								# 	log = "ACEMOD_log: acemod.110.e1 Military fleet entered bypass system and found bypass system via bypass script."
+								# }
+							}
+							failed = {
+								effect = {
+									id = "acemod.110.e2"
+									# log = "ACEMOD_log: acemod.110.e2 Military fleet entered bypass system and failed to find bypass system via bypass script."
+									root = {
+										fleet_event = {
+											id = acemod_fleet.111
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+				0 = {
+					# hidden_effect = {
+					# 	log = "ACEMOD_log: acemod_fleet.110 Military fleet entered bypass system but rolled via bypass script to proceeded with standard script."
+					# }
+					fleet_event = {
+						id = acemod_fleet.111
+					}
+				}
+			}
+		}
+		else = {
+			fleet_event = {
+				id = acemod_fleet.111
+			}
+		}
 	}
 }
 
 # Main fleet hunter-seeker event.
 fleet_event = {
-	id = acemod_fleet.100
+	id = acemod_fleet.111
 	hide_window = yes
 	is_triggered_only = yes
 	immediate = {
@@ -546,8 +426,6 @@ fleet_event = {
 						has_star_flag = acemod_star_flag_solar_system_target
 						has_star_flag = extradimensional_origin_system
 					}
-					# OR = {
-					# 	AND = {
 					exists = owner
 					owner = {
 						NOR = {
@@ -555,27 +433,6 @@ fleet_event = {
 							is_country_type = fallen_empire
 						}
 					}
-					# }
-					# probably too resource intensive, can use global, annual evaluation instead
-					# any_system_planet = {
-					# 	exists = owner
-					# 	owner = {
-					# 		NOR = {
-					# 			is_same_value = root.owner
-					# 			is_country_type = fallen_empire
-					# 		}
-					# 	}
-					# }
-					# needs review
-					# any_fleet_in_system = {
-					# 	owner = {
-					# 		is_hostile = root.owner
-					# 		NOT = {
-					# 			is_country_type = fallen_empire
-					# 		}
-					# 	}
-					# }
-					# }
 				}
 				save_event_target_as = acemod_event_target_invader_target
 				set_timed_star_flag = {
@@ -592,50 +449,40 @@ fleet_event = {
 		queue_actions = {
 			find_closest_system = {
 				trigger = {
-					id = "acemod.100.t1"
+					id = "acemod.111.t1"
 					is_same_value = event_target:acemod_event_target_invader_target
 				}
 				found_system = {
 					move_to = this
-					effect = {
-						id = "acemod.100.e1"
-						if = {
-							limit = {
-								OR = {
-									has_natural_wormhole = yes
-									any_system_megastructure = {
-										is_megastructure_type = gateway_final
-										is_megastructure_type = gateway_restored
-										is_megastructure_type = lgate_base
-									}
-									acemod_is_active_bypass = yes
-								}
-							}
-							log = "ACEMOD_log: acemod.100.e1 Military fleet found bypass system via standard script."
-						}
-					}
+					# effect = {
+					# 	id = "acemod.111.e1"
+					# 	if = {
+					# 		limit = {
+					# 			OR = {
+					# 				has_natural_wormhole = yes
+					# 				any_system_megastructure = {
+					# 					is_megastructure_type = gateway_final
+					# 					is_megastructure_type = gateway_restored
+					# 					is_megastructure_type = lgate_base
+					# 				}
+					# 				acemod_is_active_bypass = yes
+					# 			}
+					# 		}
+					# 		log = "ACEMOD_log: acemod.111.e1 Military fleet found bypass system via standard script."
+					# 	}
+					# }
 				}
-				# failed = {
-				# 	effect = {
-				# 		id = acemod.100.e2
-				# 		root = {
-				# 			fleet_event = {
-				# 				id = acemod_fleet.102
-				# 				days = 5
-				# 			}
-				# 		}
-				# 	}
 			}
 			effect = {
-				id = acemod.100.e2
+				id = acemod.111.e2
 				root = {
 					if = {
 						limit = {
 							is_fleet_idle = yes
 						}
-						log = "ACEMOD_log: acemod.100.e2 Military fleet failed to find system via standard script and executed fallback script."
+						# log = "ACEMOD_log: acemod.111.e2 Military fleet failed to find system via standard script and executed fallback script."
 						fleet_event = {
-							id = acemod_fleet.102
+							id = acemod_fleet.112
 							days = 5
 						}
 					}
@@ -645,34 +492,9 @@ fleet_event = {
 	}
 }
 
-# Checks if the fleet is idle and applies a timed fleet_flag.
-# Doesn't work as expected.
-fleet_event = {
-	id = acemod_fleet.101
-	hide_window = yes
-	is_triggered_only = yes
-	immediate = {
-		if = {
-			limit = {
-				is_fleet_idle = no
-			}
-			set_timed_fleet_flag = {
-				flag = acemod_event_target_invader_fleet_active
-				days = 85
-			}
-		}
-		else = {
-			set_timed_fleet_flag = {
-				flag = acemod_event_target_invader_fleet_idle
-				days = 85
-			}
-		}
-	}
-}
-
 # Seeks any viable target if primary contitions are not met. This is a fallback event.
 fleet_event = {
-	id = acemod_fleet.102
+	id = acemod_fleet.112
 	hide_window = yes
 	is_triggered_only = yes
 	immediate = {
@@ -708,7 +530,7 @@ fleet_event = {
 		queue_actions = {
 			find_closest_system = {
 				trigger = {
-					id = "acemod.102.t1"
+					id = "acemod.112.t1"
 					is_same_value = event_target:acemod_event_target_invader_target
 					check_variable = {
 						which = acemod_var_star_fallback_target_countdown
@@ -717,28 +539,28 @@ fleet_event = {
 				}
 				found_system = {
 					move_to = this
-					effect = {
-						id = "acemod.102.e1"
-						if = {
-							limit = {
-								OR = {
-									has_natural_wormhole = yes
-									any_system_megastructure = {
-										is_megastructure_type = gateway_final
-										is_megastructure_type = gateway_restored
-										is_megastructure_type = lgate_base
-									}
-									acemod_is_active_bypass = yes
-								}
-							}
-							log = "ACEMOD_log: acemod.102.e1 Military fleet found bypass system via fallback script."
-						}
-					}
+					# effect = {
+					# 	id = "acemod.112.e1"
+					# 	if = {
+					# 		limit = {
+					# 			OR = {
+					# 				has_natural_wormhole = yes
+					# 				any_system_megastructure = {
+					# 					is_megastructure_type = gateway_final
+					# 					is_megastructure_type = gateway_restored
+					# 					is_megastructure_type = lgate_base
+					# 				}
+					# 				acemod_is_active_bypass = yes
+					# 			}
+					# 		}
+					# 		log = "ACEMOD_log: acemod.112.e1 Military fleet found bypass system via fallback script."
+					# 	}
+					# }
 				}
 				# failed = {
 				# 	effect = {
-				# 		id = "acemod.102.e2"
-				# 		log = "ACEMOD_log: acemod.102.e2 Military fleet failed to find system via fallback script."
+				# 		id = "acemod.112.e2"
+				# 		log = "ACEMOD_log: acemod.112.e2 Military fleet failed to find system via fallback script."
 				# 	}
 				# }
 			}
@@ -748,7 +570,7 @@ fleet_event = {
 
 # Destroys all colonies when crisis fleet enters the system. This is a debug event and should be disabled in the release version.
 # fleet_event = {
-# 	id = acemod_fleet.110
+# 	id = acemod_fleet.120
 # 	hide_window = yes
 # 	is_triggered_only = yes
 # 	trigger = {
@@ -767,10 +589,6 @@ fleet_event = {
 # 		is_ship_class = shipclass_military
 # 	}
 # 	immediate = {
-# 		# fleet_event = {
-# 		# 	id = acemod_fleet.101
-# 		# 	days = 75
-# 		# }
 # 		solar_system = {
 # 			# for testing purposes
 # 			every_system_planet = {
@@ -820,6 +638,8 @@ event = {
 				}
 				fleet_event = {
 					id = acemod_fleet.305
+					days = 2
+					random = 10
 				}
 			}
 		}
@@ -909,7 +729,7 @@ fleet_event = {
 	}
 }
 
-# Builds starbase. Apply one of custom_starbase country flags if you are using custom country type or empire.
+# Checks if starbase (owner) is present or under construction and orders building it if not.
 fleet_event = {
 	id = acemod_fleet.306
 	hide_window = yes
@@ -1122,7 +942,7 @@ fleet_event = {
 				break = yes
 			}
 		}
-		# Below for non-vanilla use. Apply one of custom_starbase country flags if you are using custom country type or empire.
+		# Below for non-vanilla use. Apply one of custom_starbase country flags if you are using custom country type or empire. Untested, please report any bugs.
 		else_if = {
 			limit = {
 				is_in_combat = no
@@ -1259,15 +1079,15 @@ fleet_event = {
 							}
 							found_system = {
 								move_to = this
-								effect = {
-									id = "acemod.310.e1"
-									log = "ACEMOD_log: acemod.310.e1 Constructor entered bypass system and found bypass system via bypass script."
-								}
+								# effect = {
+								# 	id = "acemod.310.e1"
+								# 	log = "ACEMOD_log: acemod.310.e1 Constructor entered bypass system and found bypass system via bypass script."
+								# }
 							}
 							failed = {
 								effect = {
 									id = "acemod.310.e2"
-									log = "ACEMOD_log: acemod.310.e2 Constructor entered bypass system and failed to find bypass system via bypass script."
+									# log = "ACEMOD_log: acemod.310.e2 Constructor entered bypass system and failed to find bypass system via bypass script."
 									root = {
 										fleet_event = {
 											id = acemod_fleet.311
@@ -1279,9 +1099,9 @@ fleet_event = {
 					}
 				}
 				50 = {
-					hidden_effect = {
-						log = "ACEMOD_log: acemod_fleet.310 Constructor entered bypass system but rolled via bypass script to proceeded with standard script."
-					}
+					# hidden_effect = {
+					# 	log = "ACEMOD_log: acemod_fleet.310 Constructor entered bypass system but rolled via bypass script to proceeded with standard script."
+					# }
 					fleet_event = {
 						id = acemod_fleet.311
 					}
@@ -1317,8 +1137,8 @@ fleet_event = {
 						exists = owner
 					}
 					NOR = {
-						# any_ship_in_system = {
 						any_fleet_in_system = {
+							exists = this
 							OR = {
 								AND = {
 									owner = {
@@ -1348,28 +1168,34 @@ fleet_event = {
 		}
 		save_event_target_as = acemod_event_target_constructor_fleet
 		set_fleet_stance = evasive
-		queue_actions = {
-			find_closest_system = {
-				trigger = {
-					id = "acemod.311.t1"
-					is_same_value = event_target:acemod_star_flag_solar_system_constructor_target
-				}
-				found_system = {
-					move_to = this
-				}
-				# TO DO: set up event to move to nearby allied fleet if no target found.
-				# failed = {
-				# 	effect = {
-				# 		id = acemod.311.e2
-				# 		root = {
-				# 			fleet_event = {
-				# 				id = acemod_fleet.101
-				# 				days = 5
-				# 			}
-				# 		}
-				# 	}
-				# }
+		if = {
+			limit = {
+				exists = event_target:acemod_star_flag_solar_system_constructor_target
 			}
+			queue_actions = {
+				find_closest_system = {
+					trigger = {
+						id = "acemod.311.t1"
+						is_same_value = event_target:acemod_star_flag_solar_system_constructor_target
+					}
+					found_system = {
+						move_to = this
+					}
+					# TO DO: set up event to move to nearby allied fleet if no target found.
+					# failed = {
+					# 	effect = {
+					# 		id = acemod.311.e2
+					# 		root = {
+					# 			fleet_event = {
+					# 				id = acemod_fleet.101
+					# 				days = 5
+					# 			}
+					# 		}
+					# 	}
+					# }
+				}
+			}
+			break = yes
 		}
 	}
 }
@@ -1704,6 +1530,8 @@ event = {
 				}
 				fleet_event = {
 					id = acemod_fleet.405
+					days = 2
+					random = 10
 				}
 			}
 		}
@@ -2013,10 +1841,10 @@ fleet_event = {
 							}
 							found_system = {
 								move_to = this
-								effect = {
-									id = "acemod.410.e1"
-									log = "ACEMOD_log: acemod.410.e1 Army fleet entered bypass system and found bypass system via bypass script."
-								}
+								# effect = {
+								# 	id = "acemod.410.e1"
+								# 	log = "ACEMOD_log: acemod.410.e1 Army fleet entered bypass system and found bypass system via bypass script."
+								# }
 							}
 							failed = {
 								effect = {
@@ -2033,9 +1861,9 @@ fleet_event = {
 					}
 				}
 				50 = {
-					hidden_effect = {
-						log = "ACEMOD_log: acemod_fleet.410 Army fleet found bypass system but rolled via bypass script to proceeded with standard script."
-					}
+					# hidden_effect = {
+					# 	log = "ACEMOD_log: acemod_fleet.410 Army fleet found bypass system but rolled via bypass script to proceeded with standard script."
+					# }
 					fleet_event = {
 						id = acemod_fleet.411
 					}
@@ -2104,38 +1932,44 @@ fleet_event = {
 		}
 		save_event_target_as = acemod_event_target_invader_army
 		set_fleet_stance = evasive
-		queue_actions = {
-			find_closest_system = {
-				trigger = {
-					id = "acemod.411.t1"
-					is_same_value = event_target:acemod_event_target_invader_army_target
-				}
-				found_system = {
-					move_to = this
-					# effect = {
-					# 	id = acemod.411.e1
-					# 	root = {
-					# 		fleet_event = {
-					# 			id = acemod_fleet.101
-					# 			days = 5
+		if = {
+			limit = {
+				exists = event_target:acemod_event_target_invader_army_target
+			}
+			queue_actions = {
+				find_closest_system = {
+					trigger = {
+						id = "acemod.411.t1"
+						is_same_value = event_target:acemod_event_target_invader_army_target
+					}
+					found_system = {
+						move_to = this
+						# effect = {
+						# 	id = acemod.411.e1
+						# 	root = {
+						# 		fleet_event = {
+						# 			id = acemod_fleet.101
+						# 			days = 5
+						# 		}
+						# 	}
+						# }
+					}
+					# Maybe increase seek range on failed.
+					# TO DO: set up event to move to nearby allied fleet if no target found.
+					# failed = {
+					# 	effect = {
+					# 		id = acemod.411.e2
+					# 		root = {
+					# 			fleet_event = {
+					# 				id = acemod_fleet.101
+					# 				days = 5
+					# 			}
 					# 		}
 					# 	}
 					# }
 				}
-				# Maybe increase seek range on failed.
-				# TO DO: set up event to move to nearby allied fleet if no target found.
-				# failed = {
-				# 	effect = {
-				# 		id = acemod.411.e2
-				# 		root = {
-				# 			fleet_event = {
-				# 				id = acemod_fleet.101
-				# 				days = 5
-				# 			}
-				# 		}
-				# 	}
-				# }
 			}
+			break = yes
 		}
 	}
 }
@@ -2178,6 +2012,8 @@ event = {
 				}
 				fleet_event = {
 					id = acemod_fleet.505
+					days = 2
+					random = 10
 				}
 			}
 		}
@@ -2212,7 +2048,6 @@ fleet_event = {
 		# 	break = yes
 		# }
 		# TO DO: Efficiency clean up and event target save instead of double seek.
-		# TO DO: Fix all colonizers rushing single planet
 		if = {
 			limit = {
 				solar_system = {
@@ -2238,6 +2073,12 @@ fleet_event = {
 				find_closest_planet = {
 					trigger = {
 						id = "acemod.505.t1"
+						distance = {
+							source = THIS
+							type = hyperlane
+							max_jumps = 1
+							use_bypasses = yes
+						}
 						habitable_planet = yes
 						is_colony = no
 						is_under_colonization = no
@@ -2257,7 +2098,7 @@ fleet_event = {
 					found_planet = {
 						effect = {
 							id = "acemod.505.e1"
-							save_event_target_as = acemod_event_target_invader_army_target
+							save_event_target_as = acemod_star_flag_solar_system_colonizer_target
 							set_timed_planet_flag = {
 								flag = acemod_planet_flag_colonizer_target
 								days = 360
@@ -2392,35 +2233,41 @@ fleet_event = {
 				save_event_target_as = acemod_event_target_invader_colonizer_target
 				set_timed_star_flag = {
 					flag = acemod_star_flag_solar_system_colonizer_target
-					days = 120
+					days = 360					# Colonizers are slow
 				}
 			}
 		}
 		save_event_target_as = acemod_event_target_invader_colonizer
 		set_fleet_stance = evasive
-		queue_actions = {
-			find_closest_system = {
-				trigger = {
-					id = "acemod.511.t1"
-					is_same_value = event_target:acemod_event_target_invader_colonizer_target
-				}
-				found_system = {
-					move_to = this
-				}
-				# To DO: Move to allied fleet or (base?) if no target found.
-				# Maybe increase seek range on failed.
-				# failed = {
-				# 	effect = {
-				# 		id = acemod.411.e2
-				# 		root = {
-				# 			fleet_event = {
-				# 				id = acemod_fleet.101
-				# 				days = 5
-				# 			}
-				# 		}
-				# 	}
-				# }
+		if = {
+			limit = {
+				exists = event_target:acemod_event_target_invader_colonizer_target
 			}
+			queue_actions = {
+				find_closest_system = {
+					trigger = {
+						id = "acemod.511.t1"
+						is_same_value = event_target:acemod_event_target_invader_colonizer_target
+					}
+					found_system = {
+						move_to = this
+					}
+					# To DO: Move to allied fleet or (base?) if no target found.
+					# Maybe increase seek range on failed.
+					# failed = {
+					# 	effect = {
+					# 		id = acemod.411.e2
+					# 		root = {
+					# 			fleet_event = {
+					# 				id = acemod_fleet.101
+					# 				days = 5
+					# 			}
+					# 		}
+					# 	}
+					# }
+				}
+			}
+			break = yes
 		}
 	}
 }

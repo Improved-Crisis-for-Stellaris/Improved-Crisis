@@ -12,8 +12,8 @@ on_game_start_country = {
 
 on_monthly_pulse = {
 	events = {
-		acemod_fleet.4		# Main fleet hunter-seeker event.
-		acemod_fleet.9		# ACEMOD AI activation. Required to avoid crisis events overwrites.
+		acemod_fleet.10		# ACEMOD AI activation. Required to avoid crisis events overwrites.
+		acemod_fleet.100		# Main fleet hunter-seeker event.
 		acemod_fleet.300		# Main starbase constructor event.
 		acemod_fleet.400		# Main army hunter-seeker event.
 		acemod_fleet.500		# Main colonizer event.
@@ -36,7 +36,7 @@ on_five_year_pulse_country = {
 
 on_entering_system_fleet = {
 	events = {
-		# acemod_fleet.110		# Destroys all colonies when crisis fleet enters the system. This is a debug event.
+		# acemod_fleet.120		# Destroys all colonies when crisis fleet enters the system. This is a debug event.
 	}
 }
 
