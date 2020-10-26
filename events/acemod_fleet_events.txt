@@ -36,6 +36,7 @@ namespace = acemod_fleet
 # acemod_set_country_acemod_defensive_jumpdrive_protocol_exclusion_on = yes		country				Prevents ACEMOD from issuing defensive jumpdrive protocol.
 # acemod_set_country_acemod_defensive_jumpdrive_protocol_exclusion_off = yes	country				Resumes default operation.
 # set_star_flag = acemod_star_flag_is_defensive_jumpdrive_protocol_system		fleet planet		Designates defensive jumpdrive protocol protected system.
+# set_ambient_object_flag = acemod_ambient_object_flag_defensive_jumpdrive_protocol_target			ambient_object			Designates ambient object to move fleet to.
 # set_global_flag = acemod_defensive_jumpdrive_protocol_disabled				global				Disables defensive jumpdrive protocol for all countries.
 #
 # set_global_flag = acemod_technology_disabled									global				Prevents ACEMOD technologies from rolling (potential).
