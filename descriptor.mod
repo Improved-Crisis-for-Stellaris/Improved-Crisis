@@ -7,6 +7,6 @@ tags={
 	"Utilities"
 }
 name="Aggressive Crisis Engine"
-picture="thumbnails.png"
+picture="thumbnail.png"
 supported_version="2.7.*"
-remote_file_id="2254550964"
+remote_file_id="2268189539"

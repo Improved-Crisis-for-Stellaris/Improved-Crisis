@@ -592,6 +592,11 @@ tech_acemod_crisis_goo = {
 		NOT = {
 			has_global_flag = acemod_technology_disabled
 		}
+		has_global_flag = lgates_activated_globally
+		OR = {
+			has_global_flag = gray_goo_empire_set
+			has_global_flag = active_gray_goo
+		}
 		OR = {
 			is_country_type = default
 			has_country_flag = acemod_country_flag_technology_allowed
@@ -602,7 +607,7 @@ tech_acemod_crisis_goo = {
 			factor = 0
 			OR = {
 				NOT = {
-					has_global_flag = active_gray_goo
+					has_global_flag = lgates_activated_globally
 				}
 				check_variable = {
 					which = acemod_var_country_technology_exclusion
@@ -622,7 +627,7 @@ tech_acemod_crisis_goo = {
 		modifier = {
 			factor = 0
 			NOT = {
-				has_global_flag = active_gray_goo
+				has_global_flag = lgates_activated_globally
 			}
 		}
 		modifier = {
