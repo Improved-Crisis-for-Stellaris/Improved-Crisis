@@ -1,4 +1,5 @@
 @acemod_tier5cost4 = 75000
+@acemod_ai_weight_priority = 100000
 #Prethoryn Level 1
 tech_acemod_crisis_swarm_1 = {
 	cost = @tier5cost3
@@ -46,6 +47,7 @@ tech_acemod_crisis_swarm_1 = {
 		}
 	}
 	ai_weight = {
+		weight = @acemod_ai_weight_priority
 		modifier = {
 			factor = 0
 			NOT = {
@@ -109,6 +111,7 @@ tech_acemod_crisis_swarm_2 = {
 		}
 	}
 	ai_weight = {
+		weight = @acemod_ai_weight_priority
 		modifier = {
 			factor = 0
 			NOT = {
@@ -172,6 +175,7 @@ tech_acemod_crisis_swarm_3 = {
 		}
 	}
 	ai_weight = {
+		weight = @acemod_ai_weight_priority
 		modifier = {
 			factor = 0
 			NOT = {
@@ -237,6 +241,7 @@ tech_acemod_crisis_extradimensional_1 = {
 		}
 	}
 	ai_weight = {
+		weight = @acemod_ai_weight_priority
 		modifier = {
 			factor = 0
 			NOT = {
@@ -302,6 +307,7 @@ tech_acemod_crisis_extradimensional_2 = {
 		}
 	}
 	ai_weight = {
+		weight = @acemod_ai_weight_priority
 		modifier = {
 			factor = 0
 			NOT = {
@@ -367,6 +373,7 @@ tech_acemod_crisis_extradimensional_3 = {
 		}
 	}
 	ai_weight = {
+		weight = @acemod_ai_weight_priority
 		modifier = {
 			factor = 0
 			NOT = {
@@ -430,6 +437,7 @@ tech_acemod_crisis_extradimensional_ai_empire_1 = {
 		}
 	}
 	ai_weight = {
+		weight = @acemod_ai_weight_priority
 		modifier = {
 			factor = 0
 			NOT = {
@@ -493,6 +501,7 @@ tech_acemod_crisis_extradimensional_ai_empire_2 = {
 		}
 	}
 	ai_weight = {
+		weight = @acemod_ai_weight_priority
 		modifier = {
 			factor = 0
 			NOT = {
@@ -556,6 +565,7 @@ tech_acemod_crisis_extradimensional_ai_empire_3 = {
 		}
 	}
 	ai_weight = {
+		weight = @acemod_ai_weight_priority
 		modifier = {
 			factor = 0
 			NOT = {
@@ -624,6 +634,7 @@ tech_acemod_crisis_goo = {
 		}
 	}
 	ai_weight = {
+		weight = @acemod_ai_weight_priority
 		modifier = {
 			factor = 0
 			NOT = {
@@ -688,6 +699,7 @@ tech_acemod_crisis_goo = {
 # 		}
 # 	}
 # 	ai_weight = {
+#		weight = @acemod_ai_weight_priority
 # 		modifier = {
 # 			factor = 0
 # 			NOT = {
@@ -746,6 +758,7 @@ tech_acemod_crisis_fe = {
 		}
 	}
 	ai_weight = {
+		weight = @acemod_ai_weight_priority
 		modifier = {
 			factor = 1.25
 			research_leader = {
