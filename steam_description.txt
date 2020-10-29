@@ -1,4 +1,4 @@
-[B]Aggressive Crisis Engine (ACEMOD)[/B] is a collaborative Stellaris mod with [b]new crisis AI[/b] and a great amount of [b]crisis improvements[/b].
+[B]Aggressive Crisis Engine (ACEMOD)[/B] is a collaborative Stellaris mod with [b]new crisis AI[/b] and a great amount of [b]crisis improvements.[/b]
 
 [code]a.k.a. crisis is fixed[/code]
 
@@ -16,7 +16,7 @@ Modders can use ACEMOD AI for their own custom country_types and exclude individ
 
 [h1]Compatibility[/h1]
 
-This mod is highly compatible but requires disabling vanilla crisis AI. For this reason put ACEMOD below any mod which changes crises.
+This mod is highly compatible but requires disabling vanilla crisis AI. For this reason put ACEMOD below any mod which changes crises (this includes Starnet AI and Glavius AI which overwrite crisis definitions without actually making changes to them).
 
 ACEMOD gives Dimensional Anchors FTL inhibitors makes them visible on a galactic map. Position ACEMOD below any mod which adds components or ship types.
 
@@ -59,4 +59,4 @@ List of features is subject to change.
 Thank you to 150 players who decided to try the mod in [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2254550964]beta stage[/url].
 
 [h1]Support[/h1]
-Please post bug reports in the [url=https://steamcommunity.com/workshop/filedetails/discussion/2268189539/3011179244472319574/]dedicated comments section[/url] or on [url=https://github.com/Fiiral/Improved-Crisis]GitHub[/url].
+Please post bug reports in the [url=https://steamcommunity.com/workshop/filedetails/discussion/2268189539/3011179244472328564/]dedicated comments section[/url] or on [url=https://github.com/Fiiral/Improved-Crisis]GitHub[/url].
