@@ -23,6 +23,7 @@ namespace = acemod_fleet
 # set_country_flag = acemod_country_flag_disabled_army_ai						country				Disables ACEMOD AI for army fleets.
 # set_country_flag = acemod_country_flag_disabled_colonizer_ai					country				Disables ACEMOD AI for colonizer fleets.
 #
+# set_global_flag = acemod_constructor_reinforcements_disabled					global				Disables constructor reinforcements for all countries.
 # set_country_flag = acemod_constructor_reinforcements							country				Enables constructor reinforcements for given country. Vanilla crisis countries receive them by default. Requires acemod_assisted_ai country flag.
 # acemod_set_country_constructor_reinforcements_exclusion_on = yes				country				Prevents ACEMOD from issuing constructor reinforcements.
 # acemod_set_country_constructor_reinforcements_exclusion_off = yes				country				Resumes default operation.
@@ -94,6 +95,18 @@ event = {
 			}
 			set_global_flag = acemod_activated
 			set_country_flag = acemod_assisted_ai
+			if = {
+				limit = {
+					NOR = {
+						has_global_flag = acemod_constructor_reinforcements_disabled
+						check_variable = {
+							which = acemod_var_country_constructor_reinforcements_exclusion
+							value = 1
+						}
+					}
+				}
+				set_country_flag = acemod_constructor_reinforcements
+			}
 		}
 	}
 }
@@ -1204,28 +1217,41 @@ fleet_event = {
 }
 
 # Constructor reinforcements.
-country_event = {
+event = {
 	id = acemod_fleet.350
 	hide_window = yes
 	is_triggered_only = yes
 	trigger = {
 		has_global_flag = acemod_activated
-		has_country_flag = acemod_assisted_ai
-		OR = {
-			is_country_type = swarm
-			is_country_type = extradimensional
-			is_country_type = extradimensional_2
-			is_country_type = extradimensional_3
-			is_country_type = ai_empire
-			has_country_flag = acemod_constructor_reinforcements
-		}
 		NOT = {
-			check_variable = {
-				which = acemod_var_country_constructor_reinforcements_exclusion
-				value = 1
+			has_global_flag = acemod_constructor_reinforcements_disabled
+		}
+	}
+	immediate = {
+		every_country = {
+			limit = {
+				has_country_flag = acemod_assisted_ai
+				has_country_flag = acemod_constructor_reinforcements
+				NOT = {
+					check_variable = {
+						which = acemod_var_country_constructor_reinforcements_exclusion
+						value = 1
+					}
+				}
+			}
+			country_event = {
+				id = acemod_fleet.351				# Delayed for performance.
+				days = 20
+				random = 5
 			}
 		}
 	}
+}
+
+country_event = {
+	id = acemod_fleet.351
+	hide_window = yes
+	is_triggered_only = yes
 	immediate = {
 		if = {
 			limit = {
@@ -1234,7 +1260,7 @@ country_event = {
 					limit = {
 						is_ship_size = construction_ship_swarm
 					}
-					count < 20
+					count < 10
 				}
 			}
 			if = {
@@ -1246,7 +1272,7 @@ country_event = {
 				save_event_target_as = acemod_prethoryn
 			}
 			while = {
-				count = 5
+				count = 2
 				random_owned_ship = {
 					save_event_target_as = acemod_constructor_respawn_system
 				}
@@ -1284,12 +1310,9 @@ country_event = {
 			every_owned_planet = {
 				limit = {
 					is_planet_class = pc_ai
-					NOT = {
-						has_planet_flag = machine_lair
-					}
 				}
 				planet_event = {
-					id = acemod_fleet.351
+					id = acemod_fleet.352
 				}
 			}
 			break = yes
@@ -1305,7 +1328,7 @@ country_event = {
 					limit = {
 						is_ship_size = construction_ship_ed
 					}
-					count < 20
+					count < 10
 				}
 			}
 			if = {
@@ -1325,7 +1348,7 @@ country_event = {
 						}
 					}
 					while = {
-						count = 5
+						count = 2
 						create_fleet = {
 							effect = {
 								set_owner = ROOT
@@ -1362,7 +1385,7 @@ country_event = {
 						}
 					}
 					while = {
-						count = 5
+						count = 2
 						create_fleet = {
 							effect = {
 								set_owner = ROOT
@@ -1399,7 +1422,7 @@ country_event = {
 						}
 					}
 					while = {
-						count = 5
+						count = 2
 						create_fleet = {
 							effect = {
 								set_owner = ROOT
@@ -1424,6 +1447,13 @@ country_event = {
 		if = {
 			limit = {
 				has_country_flag = acemod_constructor_reinforcements
+				NOR = {
+					is_country_type = swarm
+					is_country_type = extradimensional
+					is_country_type = extradimensional_2
+					is_country_type = extradimensional_3
+					is_country_type = ai_empire
+				}
 			}
 			random_system_within_border = {
 				limit = {
@@ -1458,7 +1488,7 @@ country_event = {
 
 # Constructor reinforcements spawn in AI hub systems.
 planet_event = {
-	id = acemod_fleet.351
+	id = acemod_fleet.352
 	hide_window = yes
 	is_triggered_only = yes
 	immediate = {
@@ -1469,7 +1499,7 @@ planet_event = {
 						limit = {
 							is_ship_size = construction_ship_ai
 						}
-						count < 20
+						count < 10
 					}
 				}
 			}

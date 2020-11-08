@@ -6,9 +6,12 @@ Vanilla AI is off for main crises and all fleet movements are mod scripted, this
 
 Galactic empires receive initial massive damage penalty against crisis factions. New technologies are required to be obtained in order to mitigate this.
 
+[h1]Load order[/h1]
+At the very bottom. Aggressive Crisis Engine overwrites very little but what is does is crucial for it to work.
+
 [h1]Improvements[/h1]
 
-[IMG]https://i.imgur.com/5bsQY0a.png[/IMG]
+[IMG]https://i.imgur.com/5Vi5v3F.png[/IMG]
 
 ACEMOD is flexible and modular. Users are able to switch individual components on and off at game start.
 
