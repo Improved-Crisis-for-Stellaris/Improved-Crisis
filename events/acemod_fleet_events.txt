@@ -1454,6 +1454,12 @@ country_event = {
 					is_country_type = extradimensional_3
 					is_country_type = ai_empire
 				}
+				NOT = {
+					check_variable = {
+						which = acemod_var_country_constructor_reinforcements_exclusion
+						value = 1
+					}
+				}
 			}
 			random_system_within_border = {
 				limit = {
