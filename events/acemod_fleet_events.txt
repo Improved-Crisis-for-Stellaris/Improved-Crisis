@@ -2560,3 +2560,16 @@ fleet_event = {
 		clear_orders = yes
 	}
 }
+
+# Disables crisis colossi by default to avoid player meltdown.
+country_event = {
+	id = acemod_fleet.799
+	hide_window = yes
+	fire_only_once = yes
+	trigger = {
+		is_ai = no
+	}
+	immediate = {
+		set_global_flag = acemod_crisis_colossus_disabled
+	}
+}
