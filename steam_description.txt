@@ -9,24 +9,29 @@ Galactic empires receive initial massive damage penalty against crisis factions.
 [h1]Load order[/h1]
 At the very bottom. Aggressive Crisis Engine overwrites very little but what is does is crucial for it to work.
 
+[h1]Additional mod support[/h1]
+ACEMOD configuration menu opens on game start. In order to access menu after start of the game you can use one or more of the following mods:
+- [url=https://steamcommunity.com/sharedfiles/filedetails/?id=1087781345]Mod Menu[/url] by [url=https://steamcommunity.com/profiles/76561198051778636/myworkshopfiles/]had[/url].
+- [url=https://steamcommunity.com/sharedfiles/filedetails/?id=1840010432]Dynamic Mod Menu[/url] by [url=https://steamcommunity.com/profiles/76561198074894335/myworkshopfiles/]mario0244[/url].
+- [url=https://steamcommunity.com/sharedfiles/filedetails/?id=1943060017]Infinite Stellaris Framework[/url] by [url=https://steamcommunity.com/id/INFINI7E/myworkshopfiles/]小傘INFINI7E[/url].
+You can also fire mod menu with an [b]event acemod_menu.1[/b] console command.
+
 [h1]Improvements[/h1]
 
 [IMG]https://i.imgur.com/5Vi5v3F.png[/IMG]
 
-ACEMOD is flexible and modular. Users are able to switch individual components on and off at game start.
+ACEMOD is flexible and modular. Users are able to switch individual components on and off on game start.
 
-Modders can use ACEMOD AI for their own custom country_types and exclude individual fleets from ACEMOD AI for their own events. Current list of effects for modders to use is inside [b]acemod_fleet_events.txt[/b].
+Modders can use ACEMOD AI for their own custom country_types and exclude individual fleets from ACEMOD AI for their own events. Current list of effects for modders to use is inside [b]acemod_fleet_events.txt[/b]. See [url=https://steamcommunity.com/workshop/filedetails/discussion/2268189539/3011179244472319574/]AI framework documentation (modders)[/url] for details.
 
 [h1]Compatibility[/h1]
-
 This mod is highly compatible but requires disabling vanilla crisis AI. For this reason put ACEMOD below any mod which changes crises (this includes Starnet AI and Glavius AI which overwrite crisis definitions without actually making changes to them).
 
-ACEMOD gives Dimensional Anchors FTL inhibitors makes them visible on a galactic map. Position ACEMOD below any mod which adds components or ship types.
+ACEMOD gives Dimensional Anchors FTL inhibitors and makes them visible on a galactic map. Position ACEMOD below any mod which adds components or ship types.
 
 See [url=https://steamcommunity.com/workshop/filedetails/discussion/2268189539/3011179244472319574/]AI framework documentation (modders)[/url] if you want to get technical.
 
 [h1]Crisis AI[/h1]
-
 - Full support for Contingency, Prethoryn Scourge, Unbidden, Aberrant and Vehement.
 - New custom pathfinding accounting for wormholes and gateways. Begone loops.
 - Aggressive not only in the name. Fleets are relentless and always seek targets.
@@ -46,17 +51,19 @@ List of features is subject to change.
 [URL=https://drive.google.com/file/d/1lmIHQESuLCjBIqGbFyhScgyT0zw01aQK/view?usp=sharing]End result save link (no mods required).[/URL]
 [URL=https://drive.google.com/file/d/188i2NgwGeS6ggqMjTLzwX6-BUxu0VTyq/view?usp=sharing]Pre-crisis trigger save (vanilla compatible).[/URL]
 
-[URL=https://www.youtube.com/watch?v=Uc7txLKBitI][IMG]https://i.imgur.com/WZIvTg5.png[/IMG][/URL]
+[URL=https://www.youtube.com/watch?v=GBBHjfVy784][IMG]https://i.imgur.com/WZIvTg5.png[/IMG][/URL]
 [i]A 37-year timelapse of the Contingency invading the galaxy (compressed into 5 minutes).[/i]
 
-[URL=https://www.youtube.com/watch?v=65IZq9gP-wk][IMG]https://i.imgur.com/gpeRsRG.png[/IMG][/URL]
+[URL=https://www.youtube.com/watch?v=h7BEtyWjHf4][IMG]https://i.imgur.com/gpeRsRG.png[/IMG][/URL]
 [i]Similar video but with Unbidden.[/i]
 
-[URL=https://www.youtube.com/watch?v=XaXALDxjow4][IMG]https://i.imgur.com/KGiYmZc.png[/IMG][/URL]
+[URL=https://www.youtube.com/watch?v=D9REirOG3J4][IMG]https://i.imgur.com/KGiYmZc.png[/IMG][/URL]
 [i]Prethoryn Scourge video.[/i]
 
-[h1]Credits[/h1]
+[h1]Mod merging info[/h1]
+When merging mods for personal use by [url=https://bcssov.github.io/IronyModManager/]Irony Mod Manager[/url], [url=https://winmerge.org/]WinMerge[/url] or some other way, please make sure [b]ai = { }[/b] block has [b]enabled = no[/b]. Otherwise ACEMOD AI will be overwritten by vanilla AI and won't work properly. For list of overwrites see [url=https://steamcommunity.com/workshop/filedetails/discussion/2268189539/3011179244472319574/]AI framework documentation (modders)[/url].
 
+[h1]Credits[/h1]
 [url=https://steamcommunity.com/profiles/76561198873489312/myworkshopfiles/]Fiiral[/url], [url=https://steamcommunity.com/id/oldent/myworkshopfiles/?appid=281990]OldEnt[/url] and [url=https://steamcommunity.com/profiles/76561198394015599/myworkshopfiles/]Rodahtnov[/url] hope you will enjoy this mod.
 
 Thank you to 150 players who decided to try the mod in [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2254550964]beta stage[/url].

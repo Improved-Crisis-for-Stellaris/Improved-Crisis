@@ -580,6 +580,92 @@ fleet_event = {
 				# 	}
 				# }
 			}
+			effect = {
+				id = acemod.112.e3
+				root = {
+					if = {
+						limit = {
+							is_fleet_idle = yes
+						}
+						# log = "ACEMOD_log: acemod.111.e2 Military fleet failed to find system via standard script and executed fallback script."
+						fleet_event = {
+							id = acemod_fleet.113
+							days = 5
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+# Seeks L-Cluster system to park.
+fleet_event = {
+	id = acemod_fleet.113
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		queue_actions = {
+			find_random_system = {
+				trigger = {
+					id = "acemod.113.t1"
+					has_star_flag = lcluster
+					has_access_fleet = root.owner
+					any_fleet_in_system = {
+						owner = {
+							is_hostile = root.owner
+						}
+						fleet_power > 0
+					}
+					NOT = {
+						has_star_flag = acemod_star_flag_solar_system_target
+					}
+				}
+				found_system = {
+					effect = {
+						id = "acemod.113.e1"
+						set_timed_star_flag = {
+							flag = acemod_star_flag_solar_system_target
+							days = 120
+						}
+					}
+					move_to = this
+				}
+				failed = {
+					effect = {
+						id = "acemod.113.e3"
+						queue_actions = {
+							find_random_system = {
+								trigger = {
+									id = "acemod.113.t3"
+									exists = owner
+									owner = {
+										NOR = {
+											is_same_value = root.owner
+											is_country_type = fallen_empire
+										}
+									}
+									NOR = {
+										has_star_flag = lcluster
+										has_star_flag = acemod_star_flag_solar_system_target
+									}
+									has_access_fleet = root.owner
+								}
+								found_system = {
+									effect = {
+										id = "acemod.113.e4"
+										set_timed_star_flag = {
+											flag = acemod_star_flag_solar_system_target
+											days = 120
+										}
+									}
+									move_to = this
+								}
+							}
+						}
+					}
+				}
+			}
 		}
 	}
 }
