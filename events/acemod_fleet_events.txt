@@ -1810,12 +1810,31 @@ fleet_event = {
 											}
 										}
 										every_owned_ship = {
-											prevprev = {
-												create_army = {
-													name = "NAME_Contingency"
-													owner = root.owner
-													type = "robotic_army"
-													species = event_target:custodian_bot
+											if = {
+												limit = {
+													has_global_flag = acot_override_activated													# Compatibility for Ancient Cache of Technologies: Override.
+												}
+												prevprev = {
+													create_army = {
+														name = "NAME_Contingency"
+														owner = root.owner
+														type = "fe_omnimech"
+														species = event_target:custodian_bot
+													}
+													change_variable = {
+														which = acemod_var_planet_acot_override_fe_omnimech_num_debug														# For debug purposes.
+														value = 1
+													}
+												}
+											}
+											else = {
+												prevprev = {
+													create_army = {
+														name = "NAME_Contingency"
+														owner = root.owner
+														type = "robotic_army"
+														species = event_target:custodian_bot
+													}
 												}
 											}
 										}
