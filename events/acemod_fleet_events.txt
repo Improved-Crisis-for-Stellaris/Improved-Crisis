@@ -2348,8 +2348,9 @@ planet_event = {
 	immediate = {
 		if = {
 			limit = {
-				is_under_colonization = yes				# Failsafe if planet was reclaimed by normal empire.
+				has_colony_progress >= 1				# Failsafe if planet was reclaimed by normal empire.
 			}
+			set_planet_flag = acemod_planet_flag_start_colony_effect_fix
 			create_colony = {
 				owner = solar_system.owner
 				species = solar_system.owner
@@ -2395,6 +2396,7 @@ country_event = {
 			limit = {
 				has_colony_progress >= 1
 			}
+			set_planet_flag = acemod_planet_flag_start_colony_effect_fix
 			create_colony = {
 				owner = solar_system.owner
 				species = solar_system.owner
