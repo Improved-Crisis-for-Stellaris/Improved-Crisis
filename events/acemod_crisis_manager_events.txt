@@ -1,0 +1,329 @@
+namespace = acemod_crisis_manager
+# Crisis Manager window
+country_event = {
+	id = acemod_crisis_manager.1
+	title = acemod_crisis_manager.1.name
+	desc = acemod_crisis_manager.1.desc
+	picture = GFX_evt_ground_combat
+	is_triggered_only = yes
+	option = {
+		name = acemod_crisis_manager.1.a
+		custom_tooltip = acemod_crisis_manager.1.a.tooltip
+		hidden_effect = {
+			if = {
+				limit = {
+					NOT = {
+						has_global_flag = acemod_crisis_manager_active
+					}
+				}
+				set_global_flag = acemod_crisis_manager_active
+				country_event = {
+					id = acemod_crisis_manager.1
+					days = 0
+					random = 0
+				}
+				break = yes
+			}
+			else = {
+				remove_global_flag = acemod_crisis_manager_active
+				country_event = {
+					id = acemod_crisis_manager.1
+					days = 0
+					random = 0
+				}
+				break = yes
+			}
+		}
+	}
+	option = {
+		name = acemod_crisis_manager.1.b
+		custom_tooltip = acemod_crisis_manager.1.b.tooltip
+		hidden_effect = {
+			country_event = {
+				id = acemod_crisis_manager.1
+				days = 0
+				random = 0
+			}
+			country_event = {
+				id = acemod_crisis_manager.2				# Gathers and shows information about galaxy as configured in the game lobby.
+				days = 0
+				random = 0
+			}
+		}
+	}
+	option = {
+		name = acemod_crisis_manager.1.z
+		custom_tooltip = acemod_crisis_manager.1.z.tooltip
+		hidden_effect = {
+			country_event = {
+				id = acemod_menu.1				# Closes Crisis Manager window and redirects to main menu.
+				days = 0
+				random = 0
+			}
+		}
+	}
+}
+
+# Gathers information about galaxy as configured in the game lobby.
+country_event = {
+	id = acemod_crisis_manager.2
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			country_event = {
+				id = acemod_crisis_manager.3				# Gathers information about galaxy as configured in the game lobby.
+				days = 0
+				random = 0
+			}
+			country_event = {
+				id = acemod_crisis_manager.4				# Shows information about galaxy as configured in the game lobby.
+				days = 0
+				random = 0
+			}
+		}
+	}
+}
+
+# Gathers information about galaxy as configured in the game lobby.
+country_event = {
+	id = acemod_crisis_manager.3
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			# GALAXY_SIZE
+			this = {
+				set_variable = {
+					which = acemod_crisis_manager_var_country_num_systems
+					value = 0
+				}
+				every_system = {
+					limit = {
+						always = yes
+					}
+					prevprevprev = {
+						change_variable = {
+							which = acemod_crisis_manager_var_country_num_systems
+							value = 1
+						}
+					}
+				}
+			}
+			# get_galaxy_setup_value effect
+			get_galaxy_setup_value = {
+				which = acemod_crisis_manager_var_country_num_empires
+				setting = num_empires
+			}
+			get_galaxy_setup_value = {
+				which = acemod_crisis_manager_var_country_num_advanced_empires
+				setting = num_advanced_empires
+			}
+			get_galaxy_setup_value = {
+				which = acemod_crisis_manager_var_country_num_fallen_empires
+				setting = num_fallen_empires
+			}
+			get_galaxy_setup_value = {
+				which = acemod_crisis_manager_var_country_num_marauder_empires
+				setting = num_marauder_empires
+			}
+			get_galaxy_setup_value = {
+				which = acemod_crisis_manager_var_country_mid_game_year
+				setting = mid_game_year
+			}
+			get_galaxy_setup_value = {
+				which = acemod_crisis_manager_var_country_end_game_year
+				setting = end_game_year
+			}
+			get_galaxy_setup_value = {
+				which = acemod_crisis_manager_var_country_victory_year
+				setting = victory_year
+			}
+			get_galaxy_setup_value = {
+				which = acemod_crisis_manager_var_country_num_guaranteed_colonies
+				setting = num_guaranteed_colonies
+			}
+			get_galaxy_setup_value = {
+				which = acemod_crisis_manager_var_country_num_gateways
+				setting = num_gateways
+			}
+			get_galaxy_setup_value = {
+				which = acemod_crisis_manager_var_country_num_wormhole_pairs
+				setting = num_wormhole_pairs
+			}
+			get_galaxy_setup_value = {
+				which = acemod_crisis_manager_var_country_num_hyperlanes
+				setting = num_hyperlanes
+			}
+			get_galaxy_setup_value = {
+				which = acemod_crisis_manager_var_country_habitable_worlds_scale
+				setting = habitable_worlds_scale
+			}
+			get_galaxy_setup_value = {
+				which = acemod_crisis_manager_var_country_primitive_worlds_scale
+				setting = primitive_worlds_scale
+			}
+			get_galaxy_setup_value = {
+				which = acemod_crisis_manager_var_country_crisis_strength_scale
+				setting = crisis_strength_scale
+			}
+			get_galaxy_setup_value = {
+				which = acemod_crisis_manager_var_country_tech_costs_scale
+				setting = tech_costs_scale
+			}
+			# FE_DIFFICULTY
+			this = {
+				if = {
+					limit = {
+						is_difficulty = 0
+					}
+					set_variable = {
+						which = acemod_crisis_manager_var_country_is_difficulty
+						value = 0.5
+					}
+					break = yes
+				}
+				else_if = {
+					limit = {
+						is_difficulty = 1
+					}
+					set_variable = {
+						which = acemod_crisis_manager_var_country_is_difficulty
+						value = 1
+					}
+					break = yes
+				}
+				else_if = {
+					limit = {
+						is_difficulty = 2
+					}
+					set_variable = {
+						which = acemod_crisis_manager_var_country_is_difficulty
+						value = 2
+					}
+					break = yes
+				}
+				else_if = {
+					limit = {
+						is_difficulty = 3
+					}
+					set_variable = {
+						which = acemod_crisis_manager_var_country_is_difficulty
+						value = 3
+					}
+					break = yes
+				}
+				else_if = {
+					limit = {
+						is_difficulty = 4
+					}
+					set_variable = {
+						which = acemod_crisis_manager_var_country_is_difficulty
+						value = 4
+					}
+					break = yes
+				}
+				else_if = {
+					limit = {
+						is_difficulty = 5
+					}
+					set_variable = {
+						which = acemod_crisis_manager_var_country_is_difficulty
+						value = 5
+					}
+					break = yes
+				}
+				else = {
+					set_variable = {
+						which = acemod_crisis_manager_var_country_is_difficulty
+						value = 404
+					}
+				}
+			}
+			# GALAXY_SHAPE - unobtainable
+			this = {
+				set_variable = {
+					which = acemod_crisis_manager_var_country_setup_scenario
+					value = 404
+				}
+			}
+			# FE_SCALING_DIFFICULTY - unobtainable
+			this = {
+				set_variable = {
+					which = acemod_crisis_manager_var_country_scaling_difficulty
+					value = 404
+				}
+			}
+			# FE_AGGRESSIVENESS - unobtainable
+			this = {
+				set_variable = {
+					which = acemod_crisis_manager_var_country_aggressiveness
+					value = 404
+				}
+			}
+			# FE_ADVANCED_NEAR_PLAYER - unobtainable
+			this = {
+				set_variable = {
+					which = acemod_crisis_manager_var_country_advanced_neighbors
+					value = 404
+				}
+			}
+			# FE_CLUSTERED_STARTS - unobtainable
+			this = {
+				set_variable = {
+					which = acemod_crisis_manager_var_country_empire_placement
+					value = 404
+				}
+			}
+			# CARAVANEERS_LABEL
+			this = {
+				if = {
+					limit = {
+						caravaneers_enabled = yes
+					}
+					set_variable = {
+						which = acemod_crisis_manager_var_country_caravaneers_enabled
+						value = 1
+					}
+				}
+				else = {
+					set_variable = {
+						which = acemod_crisis_manager_var_country_caravaneers_enabled
+						value = 0
+					}
+				}
+			}
+			# XENO_COMPATIBILITY_LABEL
+			this = {
+				if = {
+					limit = {
+						xeno_compatibility_enabled = yes
+					}
+					set_variable = {
+						which = acemod_crisis_manager_var_country_xeno_compatibility_enabled
+						value = 1
+					}
+				}
+				else = {
+					set_variable = {
+						which = acemod_crisis_manager_var_country_xeno_compatibility_enabled
+						value = 0
+					}
+				}
+			}
+		}
+	}
+}
+
+# Shows information about galaxy as configured in the game lobby.
+country_event = {
+	id = acemod_crisis_manager.4
+	title = acemod_crisis_manager.4.name
+	desc = acemod_crisis_manager.4.desc
+	picture = GFX_evt_spy_orb
+	is_triggered_only = yes
+	option = {
+		name = acemod_crisis_manager.4.a
+		custom_tooltip = acemod_crisis_manager.4.a.tooltip
+	}
+}

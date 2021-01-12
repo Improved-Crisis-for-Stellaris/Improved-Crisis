@@ -18,7 +18,7 @@ You can also fire mod menu with an [b]event acemod_menu.1[/b] console command.
 
 [h1]Improvements[/h1]
 
-[IMG]https://i.imgur.com/5Vi5v3F.png[/IMG]
+[IMG]https://i.imgur.com/KqlEBFM.png[/IMG]
 
 ACEMOD is flexible and modular. Users are able to switch individual components on and off on game start.
 

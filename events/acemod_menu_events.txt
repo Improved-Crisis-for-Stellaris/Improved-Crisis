@@ -20,6 +20,17 @@ country_event = {
 	picture = GFX_evt_fallen_empire_awakes
 	is_triggered_only = yes
 	option = {
+		name = acemod_menu.1.y
+		custom_tooltip = acemod_menu.1.y.tooltip
+		hidden_effect = {
+			country_event = {
+				id = acemod_crisis_manager.1				# Closes main menu window and redirects to Crisis Manager.
+				days = 0
+				random = 0
+			}
+		}
+	}
+	option = {
 		name = acemod_menu.1.a
 		custom_tooltip = acemod_menu.1.a.tooltip
 		hidden_effect = {

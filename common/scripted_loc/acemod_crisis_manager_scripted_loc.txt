@@ -1,0 +1,953 @@
+# Basic yes or no, fail or pass indication.
+defined_text = {
+	name = GetName_acemod_crisis_manager_active
+	text = {
+		trigger = {
+			has_global_flag = acemod_crisis_manager_active
+		}
+		localization_key = acemod_crisis_manager_trigger_yes
+	}
+	text = {
+		trigger = {
+			NOT = {
+				has_global_flag = acemod_crisis_manager_active
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_no
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_crisis_manager_is_ironman
+	text = {
+		trigger = {
+			is_ironman = yes
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			is_ironman = no
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+# Checks if the game is multiplayer.
+defined_text = {
+	name = GetName_acemod_crisis_manager_is_multiplayer
+	text = {
+		trigger = {
+			is_multiplayer = yes
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			is_multiplayer = no
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+# DLC Check. Only for host_has_dlc, local_has_dlc is of little use once the game starts.
+# defined_text = {
+# 	name = GetName_acemod_crisis_manager_dlc_check_symbols_of_domination
+# 	text = {
+# 		trigger = {
+# 			host_has_dlc = "Symbols of Domination"
+# 		}
+# 		localization_key = acemod_crisis_manager_trigger_pass
+# 	}
+# 	text = {
+# 		trigger = {
+# 			NOT = {
+# 				host_has_dlc = "Symbols of Domination"
+# 			}
+# 		}
+# 		localization_key = acemod_crisis_manager_trigger_fail
+# 	}
+# }
+defined_text = {
+	name = GetName_acemod_crisis_manager_dlc_check_arachnoid
+	text = {
+		trigger = {
+			host_has_dlc = "Arachnoid Portrait Pack"
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				host_has_dlc = "Arachnoid Portrait Pack"
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+# defined_text = {
+# 	name = GetName_acemod_crisis_manager_dlc_check_paradox_account_sign_up_bonus
+# 	text = {
+# 		trigger = {
+# 			host_has_dlc = "Paradox Account Sign-up Bonus"
+# 		}
+# 		localization_key = acemod_crisis_manager_trigger_pass
+# 	}
+# 	text = {
+# 		trigger = {
+# 			NOT = {
+# 				host_has_dlc = "Paradox Account Sign-up Bonus"
+# 			}
+# 		}
+# 		localization_key = acemod_crisis_manager_trigger_fail
+# 	}
+# }
+defined_text = {
+	name = GetName_acemod_acemod_crisis_manager_dlc_check_host_plantoid
+	text = {
+		trigger = {
+			host_has_dlc = "Plantoid"
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				host_has_dlc = "Plantoid"
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_crisis_manager_dlc_check_creaturs_of_the_void	# Creatures of the Void Portrait Pack trigger is recognised but always returns false. Luckily, game files always check against both Creatures and Anniversary Portraits.
+	text = {
+		trigger = {
+			OR = {
+				host_has_dlc = "Anniversary Portraits"
+				host_has_dlc = "Creatures of the Void Portrait Pack"
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOR = {
+				host_has_dlc = "Anniversary Portraits"
+				host_has_dlc = "Creatures of the Void Portrait Pack"
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+# defined_text = {
+# 	name = GetName_acemod_crisis_manager_dlc_original_game_soundtrack
+# 	text = {
+# 		trigger = {
+# 			host_has_dlc = "Original Game Soundrack"
+# 		}
+# 		localization_key = acemod_crisis_manager_trigger_pass
+# 	}
+# 	text = {
+# 		trigger = {
+# 			NOT = {
+# 				host_has_dlc = "Original Game Soundrack"
+# 			}
+# 		}
+# 		localization_key = acemod_crisis_manager_trigger_fail
+# 	}
+# }
+defined_text = {
+	name = GetName_acemod_acemod_crisis_manager_dlc_check_host_leviathans
+	text = {
+		trigger = {
+			host_has_dlc = "Leviathans Story Pack"
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				host_has_dlc = "Leviathans Story Pack"
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_crisis_manager_dlc_horizon_signal	# No trigger check exists.
+	text = {
+		trigger = {
+			exists = event_target:horizonsignal_system			# Only reliable if system has been marked.
+			# always = yes # User can disable in the launcher
+			# host_has_dlc = "Horizon Signal"
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				exists = event_target:horizonsignal_system
+			}
+			# NOT = {
+			# 	host_has_dlc = "Horizon Signal"
+			# }
+		}
+		localization_key = acemod_crisis_manager_dlc_horizon_signal_trigger
+	}
+	# text = {
+	# 	trigger = {
+	# 		NOT = {
+	# 			host_has_dlc = "Horizon Signal"
+	# 		}
+	# 	}
+	# 	localization_key = acemod_crisis_manager_trigger_fail
+	# }
+}
+
+defined_text = {
+	name = GetName_acemod_acemod_crisis_manager_dlc_check_host_utopia
+	text = {
+		trigger = {
+			host_has_dlc = "Utopia"
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				host_has_dlc = "Utopia"
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_acemod_crisis_manager_dlc_check_anniversary_portraits
+	text = {
+		trigger = {
+			host_has_dlc = "Anniversary Portraits"
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				host_has_dlc = "Anniversary Portraits"
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_acemod_crisis_manager_dlc_check_host_synthetic_dawn
+	text = {
+		trigger = {
+			host_has_dlc = "Synthetic Dawn Story Pack"
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				host_has_dlc = "Synthetic Dawn Story Pack"
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_acemod_crisis_manager_dlc_check_apocalypse
+	text = {
+		trigger = {
+			host_has_dlc = "Apocalypse"
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				host_has_dlc = "Apocalypse"
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_acemod_crisis_manager_dlc_check_host_humanoids
+	text = {
+		trigger = {
+			host_has_dlc = "Humanoids Species Pack"
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				host_has_dlc = "Humanoids Species Pack"
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_acemod_crisis_manager_dlc_check_host_distant_stars
+	text = {
+		trigger = {
+			host_has_dlc = "Distant Stars Story Pack"
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				host_has_dlc = "Distant Stars Story Pack"
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_acemod_crisis_manager_dlc_check_host_megacorp
+	text = {
+		trigger = {
+			host_has_dlc = "Megacorp"
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				host_has_dlc = "Megacorp"
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_acemod_crisis_manager_dlc_check_host_ancient_relics
+	text = {
+		trigger = {
+			host_has_dlc = "Ancient Relics Story Pack"
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				host_has_dlc = "Ancient Relics Story Pack"
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_acemod_crisis_manager_dlc_check_host_lithoids
+	text = {
+		trigger = {
+			host_has_dlc = "Lithoids Species Pack"
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				host_has_dlc = "Lithoids Species Pack"
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_acemod_crisis_manager_dlc_check_host_federations
+	text = {
+		trigger = {
+			host_has_dlc = "Federations"
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				host_has_dlc = "Federations"
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_acemod_crisis_manager_dlc_check_host_necroids
+	text = {
+		trigger = {
+			host_has_dlc = "Necroids Species Pack"
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				host_has_dlc = "Necroids Species Pack"
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+# Substitutes for variable when galaxy setting is off.
+defined_text = {
+	name = GetName_acemod_crisis_manager_var_country_num_empires
+	text = {
+		trigger = {
+			check_variable = {
+				which = acemod_crisis_manager_var_country_num_empires
+				value = 0
+			}
+		}
+		localization_key = OFF
+	}
+	text = {
+		trigger = {
+			NOT = {
+				check_variable = {
+					which = acemod_crisis_manager_var_country_num_empires
+					value = 0
+				}
+			}
+		}
+		localization_key = acemod_crisis_manager_blank
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_crisis_manager_var_country_num_advanced_empires
+	text = {
+		trigger = {
+			check_variable = {
+				which = acemod_crisis_manager_var_country_num_advanced_empires
+				value = 0
+			}
+		}
+		localization_key = OFF
+	}
+	text = {
+		trigger = {
+			NOT = {
+				check_variable = {
+					which = acemod_crisis_manager_var_country_num_advanced_empires
+					value = 0
+				}
+			}
+		}
+		localization_key = acemod_crisis_manager_blank
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_crisis_manager_var_country_num_fallen_empires
+	text = {
+		trigger = {
+			check_variable = {
+				which = acemod_crisis_manager_var_country_num_fallen_empires
+				value = 0
+			}
+		}
+		localization_key = OFF
+	}
+	text = {
+		trigger = {
+			NOT = {
+				check_variable = {
+					which = acemod_crisis_manager_var_country_num_fallen_empires
+					value = 0
+				}
+			}
+		}
+		localization_key = acemod_crisis_manager_blank
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_crisis_manager_var_country_victory_year
+	text = {
+		trigger = {
+			check_variable = {
+				which = acemod_crisis_manager_var_country_victory_year
+				value = 1050
+			}
+		}
+		localization_key = acemod_crisis_manager_var_country_victory_year_is_off
+	}
+	text = {
+		trigger = {
+			NOT = {
+				check_variable = {
+					which = acemod_crisis_manager_var_country_victory_year
+					value = 1050
+				}
+			}
+		}
+		localization_key = acemod_crisis_manager_var_country_victory_year_is_not_off
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_crisis_manager_var_country_num_marauder_empires
+	text = {
+		trigger = {
+			check_variable = {
+				which = acemod_crisis_manager_var_country_num_marauder_empires
+				value = 0
+			}
+		}
+		localization_key = OFF
+	}
+	text = {
+		trigger = {
+			NOT = {
+				check_variable = {
+					which = acemod_crisis_manager_var_country_num_marauder_empires
+					value = 0
+				}
+			}
+		}
+		localization_key = acemod_crisis_manager_blank
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_crisis_manager_var_country_num_guaranteed_colonies
+	text = {
+		trigger = {
+			check_variable = {
+				which = acemod_crisis_manager_var_country_num_guaranteed_colonies
+				value = 0
+			}
+		}
+		localization_key = OFF
+	}
+	text = {
+		trigger = {
+			NOT = {
+				check_variable = {
+					which = acemod_crisis_manager_var_country_num_guaranteed_colonies
+					value = 0
+				}
+			}
+		}
+		localization_key = acemod_crisis_manager_blank
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_crisis_manager_var_country_num_gateways
+	text = {
+		trigger = {
+			check_variable = {
+				which = acemod_crisis_manager_var_country_num_gateways
+				value = 0
+			}
+		}
+		localization_key = OFF
+	}
+	text = {
+		trigger = {
+			NOT = {
+				check_variable = {
+					which = acemod_crisis_manager_var_country_num_gateways
+					value = 0
+				}
+			}
+		}
+		localization_key = acemod_crisis_manager_blank
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_crisis_manager_var_country_num_wormhole_pairs
+	text = {
+		trigger = {
+			check_variable = {
+				which = acemod_crisis_manager_var_country_num_wormhole_pairs
+				value = 0
+			}
+		}
+		localization_key = OFF
+	}
+	text = {
+		trigger = {
+			NOT = {
+				check_variable = {
+					which = acemod_crisis_manager_var_country_num_wormhole_pairs
+					value = 0
+				}
+			}
+		}
+		localization_key = acemod_crisis_manager_blank
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_crisis_manager_var_country_primitive_worlds_scale
+	text = {
+		trigger = {
+			check_variable = {
+				which = acemod_crisis_manager_var_country_primitive_worlds_scale
+				value = 0
+			}
+		}
+		localization_key = OFF
+	}
+	text = {
+		trigger = {
+			NOT = {
+				check_variable = {
+					which = acemod_crisis_manager_var_country_primitive_worlds_scale
+					value = 0
+				}
+			}
+		}
+		localization_key = acemod_crisis_manager_blank
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_crisis_manager_var_country_crisis_strength_scale
+	text = {
+		trigger = {
+			check_variable = {
+				which = acemod_crisis_manager_var_country_crisis_strength_scale
+				value = 0
+			}
+		}
+		localization_key = OFF
+	}
+	text = {
+		trigger = {
+			NOT = {
+				check_variable = {
+					which = acemod_crisis_manager_var_country_crisis_strength_scale
+					value = 0
+				}
+			}
+		}
+		localization_key = acemod_crisis_manager_blank
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_crisis_manager_var_country_caravaneers_enabled
+	text = {
+		trigger = {
+			check_variable = {
+				which = acemod_crisis_manager_var_country_caravaneers_enabled
+				value = 0
+			}
+		}
+		localization_key = acemod_crisis_manager_var_country_caravaneers_enabled_is_off
+	}
+	text = {
+		trigger = {
+			NOT = {
+				check_variable = {
+					which = acemod_crisis_manager_var_country_caravaneers_enabled
+					value = 0
+				}
+			}
+		}
+		localization_key = acemod_crisis_manager_var_country_caravaneers_enabled_is_not_off
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_crisis_manager_var_country_xeno_compatibility_enabled
+	text = {
+		trigger = {
+			check_variable = {
+				which = acemod_crisis_manager_var_country_xeno_compatibility_enabled
+				value = 0
+			}
+		}
+		localization_key = acemod_crisis_manager_var_country_xeno_compatibility_enabled_is_off
+	}
+	text = {
+		trigger = {
+			NOT = {
+				check_variable = {
+					which = acemod_crisis_manager_var_country_xeno_compatibility_enabled
+					value = 0
+				}
+			}
+		}
+		localization_key = acemod_crisis_manager_var_country_xeno_compatibility_enabled_is_not_off
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_crisis_manager_var_country_setup_scenario	# setup_scenario is not numerical but used the same syntax for consistency.
+	text = {
+		trigger = {
+			check_variable = {
+				which = acemod_crisis_manager_var_country_setup_scenario
+				value = 404				# Code for unobtainable.
+			}
+		}
+		# localization_key = OFF	# Disabled as this setting is unobtainable.
+		localization_key = acemod_crisis_manager_unobtainable
+	}
+	text = {
+		trigger = {
+			check_variable = {
+				which = acemod_crisis_manager_var_country_setup_scenario
+				value = 0
+			}
+		}
+		# localization_key = OFF	# Disabled as this setting is unobtainable.
+		localization_key = acemod_crisis_manager_blank
+	}
+	text = {
+		trigger = {
+			NOR = {
+				check_variable = {
+					which = acemod_crisis_manager_var_country_setup_scenario
+					value = 0
+				}
+				check_variable = {
+					which = acemod_crisis_manager_var_country_setup_scenario
+					value = 404
+				}
+			}
+		}
+		localization_key = acemod_crisis_manager_blank
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_crisis_manager_var_country_is_difficulty
+	text = {
+		trigger = {
+			check_variable = {
+				which = acemod_crisis_manager_var_country_is_difficulty
+				value = 0.5
+			}
+		}
+		localization_key = DIFFICULTY_CADET
+	}
+	text = {
+		trigger = {
+			check_variable = {
+				which = acemod_crisis_manager_var_country_is_difficulty
+				value = 1
+			}
+		}
+		localization_key = DIFFICULTY_ENSIGN
+	}
+	text = {
+		trigger = {
+			check_variable = {
+				which = acemod_crisis_manager_var_country_is_difficulty
+				value = 2
+			}
+		}
+		localization_key = DIFFICULTY_CAPTAIN
+	}
+	text = {
+		trigger = {
+			check_variable = {
+				which = acemod_crisis_manager_var_country_is_difficulty
+				value = 3
+			}
+		}
+		localization_key = DIFFICULTY_COMMODORE
+	}
+	text = {
+		trigger = {
+			check_variable = {
+				which = acemod_crisis_manager_var_country_is_difficulty
+				value = 4
+			}
+		}
+		localization_key = DIFFICULTY_ADMIRAL
+	}
+	text = {
+		trigger = {
+			check_variable = {
+				which = acemod_crisis_manager_var_country_is_difficulty
+				value = 5
+			}
+		}
+		localization_key = DIFFICULTY_GRAND_ADMIRAL
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_crisis_manager_var_country_scaling_difficulty
+	text = {
+		trigger = {
+			check_variable = {
+				which = acemod_crisis_manager_var_country_scaling_difficulty
+				value = 404				# Code for unobtainable.
+			}
+		}
+		# localization_key = OFF	# Disabled as this setting is unobtainable.
+		localization_key = acemod_crisis_manager_var_country_scaling_difficulty_is_unobtainable
+	}
+	text = {
+		trigger = {
+			check_variable = {
+				which = acemod_crisis_manager_var_country_scaling_difficulty
+				value = 0
+			}
+		}
+		# localization_key = acemod_crisis_manager_var_country_scaling_difficulty_is_off	# Disabled as this setting is unobtainable.
+		localization_key = acemod_crisis_manager_blank
+	}
+	text = {
+		trigger = {
+			NOR = {
+				check_variable = {
+					which = acemod_crisis_manager_var_country_scaling_difficulty
+					value = 0
+				}
+				check_variable = {
+					which = acemod_crisis_manager_var_country_scaling_difficulty
+					value = 404
+				}
+			}
+		}
+		# acemod_crisis_manager_var_country_scaling_difficulty_is_not_off	# Disabled as this setting is unobtainable.
+		localization_key = acemod_crisis_manager_blank
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_crisis_manager_var_country_aggressiveness	# aggressiveness is not numerical but used the same syntax for consistency.
+	text = {
+		trigger = {
+			check_variable = {
+				which = acemod_crisis_manager_var_country_aggressiveness
+				value = 404				# Code for unobtainable.
+			}
+		}
+		# localization_key = OFF	# Disabled as this setting is unobtainable.
+		localization_key = acemod_crisis_manager_unobtainable
+	}
+	text = {
+		trigger = {
+			check_variable = {
+				which = acemod_crisis_manager_var_country_aggressiveness
+				value = 0
+			}
+		}
+		# localization_key = OFF	# Disabled as this setting is unobtainable.
+		localization_key = acemod_crisis_manager_blank
+	}
+	text = {
+		trigger = {
+			NOR = {
+				check_variable = {
+					which = acemod_crisis_manager_var_country_aggressiveness
+					value = 0
+				}
+				check_variable = {
+					which = acemod_crisis_manager_var_country_aggressiveness
+					value = 404
+				}
+			}
+		}
+		localization_key = acemod_crisis_manager_blank
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_crisis_manager_var_country_advanced_neighbors
+	text = {
+		trigger = {
+			check_variable = {
+				which = acemod_crisis_manager_var_country_advanced_neighbors
+				value = 404				# Code for unobtainable.
+			}
+		}
+		# localization_key = acemod_crisis_manager_var_country_advanced_neighbors_is_off	# Disabled as this setting is unobtainable.
+		localization_key = acemod_crisis_manager_var_country_advanced_neighbors_is_unobtainable
+	}
+	text = {
+		trigger = {
+			check_variable = {
+				which = acemod_crisis_manager_var_country_advanced_neighbors
+				value = 0
+			}
+		}
+		# localization_key = acemod_crisis_manager_var_country_advanced_neighbors_is_off	# Disabled as this setting is unobtainable.
+		localization_key = acemod_crisis_manager_blank
+	}
+	text = {
+		trigger = {
+			NOR = {
+				check_variable = {
+					which = acemod_crisis_manager_var_country_advanced_neighbors
+					value = 0
+				}
+				check_variable = {
+					which = acemod_crisis_manager_var_country_advanced_neighbors
+					value = 404					# Code for unobtainable.
+				}
+			}
+		}
+		# localization_key = acemod_crisis_manager_var_country_advanced_neighbors_is_not_off
+		localization_key = acemod_crisis_manager_blank
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_crisis_manager_var_country_empire_placement	# empire_placement is not numerical but used the same syntax for consistency.
+	text = {
+		trigger = {
+			check_variable = {
+				which = acemod_crisis_manager_var_country_empire_placement
+				value = 404				# Code for unobtainable.
+			}
+		}
+		# localization_key = OFF	# Disabled as this setting is unobtainable.
+		localization_key = acemod_crisis_manager_var_country_empire_placement_is_unobtainable
+	}
+	text = {
+		trigger = {
+			check_variable = {
+				which = acemod_crisis_manager_var_country_empire_placement
+				value = 0
+			}
+		}
+		# localization_key = acemod_crisis_manager_var_country_empire_placement_is_off	# Disabled as this setting is unobtainable.
+		localization_key = acemod_crisis_manager_blank
+	}
+	text = {
+		trigger = {
+			NOR = {
+				check_variable = {
+					which = acemod_crisis_manager_var_country_empire_placement
+					value = 0
+				}
+				check_variable = {
+					which = acemod_crisis_manager_var_country_empire_placement
+					value = 404					# Code for unobtainable.
+				}
+			}
+		}
+		# localization_key = acemod_crisis_manager_var_country_empire_placement_is_not_off
+		localization_key = acemod_crisis_manager_blank
+	}
+}
