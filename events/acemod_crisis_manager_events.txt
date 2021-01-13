@@ -1,4 +1,19 @@
 namespace = acemod_crisis_manager
+# INITIALISERS
+# Marks ACE Crisis Manager mod as present. Other mods can check against this flag to see if ACE Crisis Manager is installed.
+country_event = {
+	id = acemod_core.100
+	hide_window = yes
+	fire_only_once = yes
+	trigger = {
+		is_ai = no
+	}
+	immediate = {
+		set_global_flag = acemod_crisis_manager_installed
+	}
+}
+
+# MENU
 # Crisis Manager window
 country_event = {
 	id = acemod_crisis_manager.1
@@ -46,6 +61,22 @@ country_event = {
 			}
 			country_event = {
 				id = acemod_crisis_manager.2				# Gathers and shows information about galaxy as configured in the game lobby.
+				days = 0
+				random = 0
+			}
+		}
+	}
+	option = {
+		name = acemod_crisis_manager.1.c
+		custom_tooltip = acemod_crisis_manager.1.c.tooltip
+		hidden_effect = {
+			country_event = {
+				id = acemod_crisis_manager.1
+				days = 0
+				random = 0
+			}
+			country_event = {
+				id = acemod_crisis_manager.5				# Debugging tool.
 				days = 0
 				random = 0
 			}
@@ -325,5 +356,70 @@ country_event = {
 	option = {
 		name = acemod_crisis_manager.4.a
 		custom_tooltip = acemod_crisis_manager.4.a.tooltip
+	}
+}
+
+# Debugging tool.
+country_event = {
+	id = acemod_crisis_manager.5
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			country_event = {
+				id = acemod_crisis_manager.6				# Debugging event.
+				days = 0
+				random = 0
+			}
+			country_event = {
+				id = acemod_crisis_manager.7				# Debug output.
+				days = 0
+				random = 0
+			}
+		}
+	}
+}
+
+# Debugging event.
+country_event = {
+	id = acemod_crisis_manager.6
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+		}
+	}
+}
+
+# Debug output.
+country_event = {
+	id = acemod_crisis_manager.7
+	title = acemod_crisis_manager.7.name
+	desc = acemod_crisis_manager.7.desc
+	picture = GFX_evt_glitchy_matrix
+	is_triggered_only = yes
+	option = {
+		name = acemod_crisis_manager.7.a
+		custom_tooltip = acemod_crisis_manager.7.a.tooltip
+	}
+}
+
+# CRISIS TRIGGERS
+# Core crisis trigger event. Mirror of crisis_trigger.1
+# Dummy event to remove errors in Stellaris log file. DO NOT USE.
+event = {
+	id = acemod_crisis_manager.1500
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		set_global_flag = a_deadly_tempest_mod_active		# A Deadly Tempest
+		set_global_flag = z_cm_installed		# Infinite Crisis Master
+		set_global_flag = CmtFlagActivated		# NaK1119's Crisis Manager (all editions + unofficial)
+		set_global_flag = acot_override_activated		# Ancient Cache of Technologies: Override
+		set_global_flag = nhsc_v30		# Extra Ship Components 3.0
+		set_global_flag = nhsc_fe_planets_updated		# Extra Ship Components 3.0 - Overwrites
+		set_global_flag = has_real_space_mod		# Real Space
+		set_global_flag = z_framework_installed		# Infinite Stellaris Framework
+		set_global_flag = galactic_community_formed		# missing vanilla flag?
 	}
 }

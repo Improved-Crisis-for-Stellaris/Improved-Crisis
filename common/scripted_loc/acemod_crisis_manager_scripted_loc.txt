@@ -951,3 +951,671 @@ defined_text = {
 		localization_key = acemod_crisis_manager_blank
 	}
 }
+
+# Debugging tool.
+defined_text = {
+	name = GetName_acemod_crisis_manager_debug_is_acemod_installed
+	text = {
+		trigger = {
+			has_global_flag = acemod_installed
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				has_global_flag = acemod_installed
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_crisis_manager_debug_is_ace_crisis_manager_installed
+	text = {
+		trigger = {
+			has_global_flag = acemod_crisis_manager_installed
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				has_global_flag = acemod_crisis_manager_installed
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_crisis_manager_debug_is_crisis_master_installed
+	text = {
+		trigger = {
+			has_global_flag = z_cm_installed
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				has_global_flag = z_cm_installed
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_crisis_manager_debug_is_cmt_installed
+	text = {
+		trigger = {
+			has_global_flag = CmtFlagActivated
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				has_global_flag = CmtFlagActivated
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_crisis_manager_debug_is_deadly_tempest_installed
+	text = {
+		trigger = {
+			has_global_flag = a_deadly_tempest_mod_active
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				has_global_flag = a_deadly_tempest_mod_active
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_crisis_manager_debug_is_acot_override_installed
+	text = {
+		trigger = {
+			has_global_flag = acot_override_activated
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				has_global_flag = acot_override_activated
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_crisis_manager_debug_is_nhsc_installed
+	text = {
+		trigger = {
+			has_global_flag = nhsc_v30
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				has_global_flag = nhsc_v30
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_crisis_manager_debug_is_nhsco_installed
+	text = {
+		trigger = {
+			has_global_flag = nhsc_fe_planets_updated
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				has_global_flag = nhsc_fe_planets_updated
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_crisis_manager_debug_is_real_space_installed
+	text = {
+		trigger = {
+			has_global_flag = has_real_space_mod
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				has_global_flag = has_real_space_mod
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_crisis_manager_debug_is_infinite_stellaris_framework_installed
+	text = {
+		trigger = {
+			has_global_flag = z_framework_installed
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				has_global_flag = z_framework_installed
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+# Debug flags and triggers
+defined_text = {
+	name = GetName_acemod_crisis_manager_is_crises_allowed
+	text = {
+		trigger = {
+			is_crises_allowed = yes
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				is_crises_allowed = no
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_crisis_manager_galactic_crisis_happened
+	text = {
+		trigger = {
+			has_global_flag = galactic_crisis_happened
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				has_global_flag = galactic_crisis_happened
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+# galactic_community_formed (global), is_galactic_community_formed (global), guardians_of_the_galaxy_happened (global), guardians_of_the_galaxy (country), sleepers_awake_rival_waking (global), timed_guardians_of_the_galaxy (country)
+defined_text = {
+	name = GetName_acemod_crisis_manager_galactic_community_formed
+	text = {
+		trigger = {
+			has_global_flag = galactic_community_formed
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				has_global_flag = galactic_community_formed
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_crisis_manager_is_galactic_community_formed
+	text = {
+		trigger = {
+			is_galactic_community_formed = yes
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				is_galactic_community_formed = no
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_crisis_manager_guardians_of_the_galaxy_happened
+	text = {
+		trigger = {
+			has_global_flag = guardians_of_the_galaxy_happened
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				has_global_flag = guardians_of_the_galaxy_happened
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_crisis_manager_guardians_of_the_galaxy
+	text = {
+		trigger = {
+			any_country = {
+				has_country_flag = guardians_of_the_galaxy
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				any_country = {
+					has_country_flag = guardians_of_the_galaxy
+				}
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_crisis_manager_sleepers_awake_rival_waking
+	text = {
+		trigger = {
+			has_global_flag = sleepers_awake_rival_waking
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				has_global_flag = sleepers_awake_rival_waking
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_crisis_manager_timed_guardians_of_the_galaxy
+	text = {
+		trigger = {
+			any_country = {
+				has_country_flag = guardians_of_the_galaxy
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				any_country = {
+					has_country_flag = timed_guardians_of_the_galaxy
+				}
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+# prethoryn_subspace_echoes prethoryn_invasion_happened has_event_chain = coming_storm_chain prethoryn_approaching_rim prethoryn_transmission prethoryn_arrival prethoryn_scourge_chain prethoryn_main_invasion ongoing_prethoryn_invasion sentinels_founded sentinel_fe_support event_target:sentinel_fallen_empire feral_prethoryn_can_spawn event_target:feral_prethoryn feral_prethoryn_appeared feral_prethoryn_infighting_ongoing prethoryn_invasion_defeated brood_queen_captured
+defined_text = {
+	name = GetName_acemod_crisis_manager_prethoryn_subspace_echoes
+	text = {
+		trigger = {
+			has_global_flag = prethoryn_subspace_echoes
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				has_global_flag = prethoryn_subspace_echoes
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_crisis_manager_prethoryn_invasion_happened
+	text = {
+		trigger = {
+			has_global_flag = prethoryn_invasion_happened
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				has_global_flag = prethoryn_invasion_happened
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_crisis_manager_coming_storm_chain
+	text = {
+		trigger = {
+			any_country = {
+				has_event_chain = coming_storm_chain
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				any_country = {
+					has_event_chain = coming_storm_chain
+				}
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_crisis_manager_prethoryn_approaching_rim
+	text = {
+		trigger = {
+			has_global_flag = prethoryn_approaching_rim
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				has_global_flag = prethoryn_approaching_rim
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_crisis_manager_prethoryn_transmission
+	text = {
+		trigger = {
+			has_global_flag = prethoryn_transmission
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				has_global_flag = prethoryn_transmission
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_crisis_manager_prethoryn_arrival
+	text = {
+		trigger = {
+			has_global_flag = prethoryn_arrival
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				has_global_flag = prethoryn_arrival
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_crisis_manager_prethoryn_scourge_chain
+	text = {
+		trigger = {
+			any_country = {
+				has_event_chain = prethoryn_scourge_chain
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				any_country = {
+					has_event_chain = prethoryn_scourge_chain
+				}
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_crisis_manager_prethoryn_main_invasion
+	text = {
+		trigger = {
+			has_global_flag = prethoryn_main_invasion
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				has_global_flag = prethoryn_main_invasion
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_crisis_manager_ongoing_prethoryn_invasion
+	text = {
+		trigger = {
+			has_global_flag = ongoing_prethoryn_invasion
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				has_global_flag = ongoing_prethoryn_invasion
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_crisis_manager_sentinels_founded
+	text = {
+		trigger = {
+			has_global_flag = sentinels_founded
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				has_global_flag = sentinels_founded
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_crisis_manager_sentinel_fe_support
+	text = {
+		trigger = {
+			has_global_flag = sentinel_fe_support
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				has_global_flag = sentinel_fe_support
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_crisis_manager_sentinel_fallen_empire
+	text = {
+		trigger = {
+			exists = event_target:sentinel_fallen_empire
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				exists = event_target:sentinel_fallen_empire
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_crisis_manager_feral_prethoryn_can_spawn
+	text = {
+		trigger = {
+			has_global_flag = feral_prethoryn_can_spawn
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				has_global_flag = feral_prethoryn_can_spawn
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_crisis_manager_feral_prethoryn
+	text = {
+		trigger = {
+			exists = event_target:feral_prethoryn
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				exists = event_target:feral_prethoryn
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_crisis_manager_feral_prethoryn_appeared
+	text = {
+		trigger = {
+			has_global_flag = feral_prethoryn_appeared
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				has_global_flag = feral_prethoryn_appeared
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_crisis_manager_feral_prethoryn_infighting_ongoing
+	text = {
+		trigger = {
+			has_global_flag = feral_prethoryn_infighting_ongoing
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				has_global_flag = feral_prethoryn_infighting_ongoing
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_crisis_manager_prethoryn_invasion_defeated
+	text = {
+		trigger = {
+			has_global_flag = prethoryn_invasion_defeated
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				has_global_flag = prethoryn_invasion_defeated
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_crisis_manager_brood_queen_captured
+	text = {
+		trigger = {
+			has_global_flag = brood_queen_captured
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				has_global_flag = brood_queen_captured
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}

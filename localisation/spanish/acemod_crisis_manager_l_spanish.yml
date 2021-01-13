@@ -2,18 +2,22 @@
 
   # Menu------------------------------------
  acemod_crisis_manager_name:0 "Aggressive Crisis Engine"
- acemod_crisis_manager.1.name:0 "$acemod_crisis_manager_name$: Crisis Manager"
+ acemod_crisis_manager.1.name:0 "$acemod_crisis_manager_name$: $acemod_crisis_manager_name_singular$"
  acemod_crisis_manager.1.desc:0 "$SETTINGS$ for §R$CRISIS_FACTOR$§!. They can be changed at any point during the game from this menu.\n\nThis §BMod Manager§! does not change game files. Has to be §G$ACTIVE$§! for it to work."
- acemod_crisis_manager.1.a:0 "§BCrisis Manager§! is [root.GetName_acemod_crisis_manager_active]"
+ acemod_crisis_manager.1.a:0 "§B$acemod_crisis_manager_name_singular$§! is [root.GetName_acemod_crisis_manager_active]"
  acemod_crisis_manager.1.a.tooltip:0 "Enables or disables §BCrisis Manager§!."
  acemod_crisis_manager.1.b:0 "$MESSAGE_GOTO$ $GALAXY_SETTINGS$"
  acemod_crisis_manager.1.b.tooltip:0 "Gathers and shows information about galaxy as configured in the $GAME_MULTIPLAYER_LOBBY$."
+ acemod_crisis_manager.1.c:0 "Debug"
+ acemod_crisis_manager.1.c.tooltip:0 "Diagnostics tool. Evaluates state of the galaxy and mod setup."
  acemod_crisis_manager.1.z:0 "§Y$SAVE$§!"
  acemod_crisis_manager.1.z.tooltip:0 "Back to main menu."
  acemod_crisis_manager_trigger_yes:0 "§G$ACTIVE$§!"
  acemod_crisis_manager_trigger_no:0 "§R$NOT_ACTIVE$§!"
  acemod_crisis_manager_trigger_pass:0 "£trigger_yes£"
  acemod_crisis_manager_trigger_fail:0 "£trigger_no£"
+ acemod_crisis_manager_name_singular:0 "Crisis Manager"
+ acemod_crisis_manager_name_plural:0 "Crisis managers"
 
  # Galaxy Settings------------------------------------
  acemod_crisis_manager_blank:0 ""
@@ -71,6 +75,22 @@
  acemod_crisis_manager_dlc_horizon_signal_trigger:0 "412 Obtainable with active event"
  # Continuation for DLCs released in 2021 and later
  acemod_crisis_manager_dlc_check_post_2020:0 ""
+
+ # Debugging tool------------------------------------
+ acemod_crisis_manager.7.name:0 "Debug"
+ acemod_crisis_manager.7.desc:0 "$CRISIS_FACTOR$: [root.GetName_acemod_crisis_manager_is_crises_allowed] is_crises_allowed | [root.GetName_acemod_crisis_manager_galactic_crisis_happened] galactic_crisis_happened\n[root.GetName_acemod_crisis_manager_galactic_community_formed] galactic_community_formed | ? [root.GetName_acemod_crisis_manager_is_galactic_community_formed] is_galactic_community_formed\n$fallen_empires_awakening.5.name$: [root.GetName_acemod_crisis_manager_guardians_of_the_galaxy_happened] guardians_of_the_galaxy_happened | [root.GetName_acemod_crisis_manager_guardians_of_the_galaxy] guardians_of_the_galaxy | [root.GetName_acemod_crisis_manager_sleepers_awake_rival_waking] sleepers_awake_rival_waking | [root.GetName_acemod_crisis_manager_timed_guardians_of_the_galaxy] timed_guardians_of_the_galaxy\n$name_list_Prethoryn$: [root.GetName_acemod_crisis_manager_prethoryn_subspace_echoes] prethoryn_subspace_echoes | [root.GetName_acemod_crisis_manager_prethoryn_invasion_happened] prethoryn_invasion_happened | [root.GetName_acemod_crisis_manager_coming_storm_chain] coming_storm_chain | [root.GetName_acemod_crisis_manager_prethoryn_approaching_rim] prethoryn_approaching_rim | [root.GetName_acemod_crisis_manager_prethoryn_transmission] prethoryn_transmission | [root.GetName_acemod_crisis_manager_prethoryn_arrival] prethoryn_arrival | [root.GetName_acemod_crisis_manager_prethoryn_scourge_chain] prethoryn_scourge_chain | [root.GetName_acemod_crisis_manager_prethoryn_main_invasion] prethoryn_main_invasion | [root.GetName_acemod_crisis_manager_ongoing_prethoryn_invasion] ongoing_prethoryn_invasion | [root.GetName_acemod_crisis_manager_sentinels_founded] sentinels_founded | [root.GetName_acemod_crisis_manager_sentinel_fe_support] sentinel_fe_support | [root.GetName_acemod_crisis_manager_sentinel_fallen_empire] sentinel_fallen_empire | [root.GetName_acemod_crisis_manager_feral_prethoryn_can_spawn] feral_prethoryn_can_spawn | [root.GetName_acemod_crisis_manager_feral_prethoryn] feral_prethoryn | [root.GetName_acemod_crisis_manager_feral_prethoryn_appeared] feral_prethoryn_appeared | [root.GetName_acemod_crisis_manager_feral_prethoryn_infighting_ongoing] prethoryn_infighting_ongoing | [root.GetName_acemod_crisis_manager_prethoryn_invasion_defeated] prethoryn_invasion_defeated | [root.GetName_acemod_crisis_manager_brood_queen_captured] brood_queen_captured |\n$name_list_Extradimensional$: \n$ai_crisis_chain_title$: \n$acemod_crisis_manager_name_mods_info$\n$acemod_crisis_manager_name_mods$: [root.GetName_acemod_crisis_manager_debug_is_acemod_installed] §B$acemod_crisis_manager_name$§! | [root.GetName_acemod_crisis_manager_debug_is_deadly_tempest_installed] §G$acemod_crisis_manager_name_deadly_tempest$§! | [root.GetName_acemod_crisis_manager_debug_is_acot_override_installed] $acemod_crisis_manager_name_acot_override$ | [root.GetName_acemod_crisis_manager_debug_is_nhsco_installed] §M$acemod_crisis_manager_name_nhsco$§! [root.GetName_acemod_crisis_manager_debug_is_infinite_stellaris_framework_installed] §Y$acemod_crisis_manager_name_infinite_stellaris_framework$§! |\n$acemod_crisis_manager_name_plural$: [root.GetName_acemod_crisis_manager_debug_is_ace_crisis_manager_installed] §B$acemod_crisis_manager.1.name$§! | [root.GetName_acemod_crisis_manager_debug_is_crisis_master_installed] §Y$acemod_crisis_manager_name_crisis_master$§! | [root.GetName_acemod_crisis_manager_debug_is_cmt_installed] §G$acemod_crisis_manager_name_cmt$§! | [root.GetName_acemod_crisis_manager_debug_is_nhsc_installed] §M$acemod_crisis_manager_name_nhsc$§! | [root.GetName_acemod_crisis_manager_debug_is_real_space_installed] $acemod_crisis_manager_name_real_space$ |"
+ acemod_crisis_manager.7.a:0 "$MESSAGE_OK$"
+ acemod_crisis_manager.7.a.tooltip:0 "$CLOSE$"
+ acemod_crisis_manager_name_mods:0 "Mods"
+ acemod_crisis_manager_name_mods_info:0 "Below is for reference only."
+ acemod_crisis_manager_name_crisis_master:0 "Infinite Crisis Master"
+ acemod_crisis_manager_name_cmt:0 "NaK1119's Crisis Manager (all editions + unofficial)"
+ acemod_crisis_manager_name_deadly_tempest:0 "Deadly Tempest"
+ acemod_crisis_manager_name_acot_override:0 "Ancient Cache of Technologies: Override"
+ acemod_crisis_manager_name_nhsc:0 "Extra Ship Components 3.0"
+ acemod_crisis_manager_name_nhsco:0 "Extra Ship Components 3.0 - Overwrites"
+ acemod_crisis_manager_name_real_space:0 "Real Space"
+ acemod_crisis_manager_name_infinite_stellaris_framework:0 "Infinite Stellaris Framework"
 
 # Mod Menu------------------------------------
  modmenu_acemod_crisis_manager:0 "$acemod_crisis_manager_name$"
