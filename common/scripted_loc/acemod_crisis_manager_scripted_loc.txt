@@ -3000,3 +3000,77 @@ defined_text = {
 }
 
 # TO DO: destroyed_by_colossus planet_cracked planet_shielded planet_godrayed (planet) machine_world_1 machine_world_2 machine_world_3 machine_world_4 machine_lair event_chain_counter = active_machine_worlds (country) ghost_signal_4_flag ghost_signal_3_flag ghost_signal_2_flag ai_invasion_defeated (global)
+# Prethoryn spawn
+defined_text = {
+	name = GetName_acemod_crisis_manager_var_country_prethoryn_spawn_time
+	text = {
+		trigger = {
+			check_variable = {
+				which = acemod_crisis_manager_var_country_prethoryn_spawn_time
+				value = 0
+			}
+		}
+		localization_key = BASE
+	}
+	text = {
+		trigger = {
+			NOT = {
+				check_variable = {
+					which = acemod_crisis_manager_var_country_prethoryn_spawn_time
+					value = 0
+				}
+			}
+		}
+		localization_key = acemod_crisis_manager_blank
+	}
+}
+
+# Extradimensional spawn
+defined_text = {
+	name = GetName_acemod_crisis_manager_var_country_extradimensional_spawn_time
+	text = {
+		trigger = {
+			check_variable = {
+				which = acemod_crisis_manager_var_country_extradimensional_spawn_time
+				value = 0
+			}
+		}
+		localization_key = BASE
+	}
+	text = {
+		trigger = {
+			NOT = {
+				check_variable = {
+					which = acemod_crisis_manager_var_country_extradimensional_spawn_time
+					value = 0
+				}
+			}
+		}
+		localization_key = acemod_crisis_manager_blank
+	}
+}
+
+# Contingency spawn
+defined_text = {
+	name = GetName_acemod_crisis_manager_var_country_contingency_spawn_time
+	text = {
+		trigger = {
+			check_variable = {
+				which = acemod_crisis_manager_var_country_contingency_spawn_time
+				value = 0
+			}
+		}
+		localization_key = BASE
+	}
+	text = {
+		trigger = {
+			NOT = {
+				check_variable = {
+					which = acemod_crisis_manager_var_country_contingency_spawn_time
+					value = 0
+				}
+			}
+		}
+		localization_key = acemod_crisis_manager_blank
+	}
+}

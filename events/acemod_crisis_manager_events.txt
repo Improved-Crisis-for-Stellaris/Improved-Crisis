@@ -83,6 +83,120 @@ country_event = {
 		}
 	}
 	option = {
+		name = acemod_crisis_manager.1.d		# Prethoryn spawn
+		custom_tooltip = acemod_crisis_manager.1.d.tooltip
+		hidden_effect = {
+			event_target:global_event_country = {
+				# global_event country is always around
+				if = {
+					limit = {
+						check_variable = {
+							which = acemod_crisis_manager_var_country_prethoryn_spawn_time
+							value <= 100
+						}
+					}
+					change_variable = {
+						which = acemod_crisis_manager_var_country_prethoryn_spawn_time
+						value = 10
+					}
+				}
+				else = {
+					set_variable = {
+						which = acemod_crisis_manager_var_country_prethoryn_spawn_time
+						value = 0
+					}
+				}
+				root = {
+					set_variable = {
+						which = acemod_crisis_manager_var_country_prethoryn_spawn_time
+						value = prev
+					}
+				}
+			}
+			country_event = {
+				id = acemod_crisis_manager.1
+				days = 0
+				random = 0
+			}
+		}
+	}
+	option = {
+		name = acemod_crisis_manager.1.e		# Extradimensional spawn
+		custom_tooltip = acemod_crisis_manager.1.e.tooltip
+		hidden_effect = {
+			event_target:global_event_country = {
+				# global_event country is always around
+				if = {
+					limit = {
+						check_variable = {
+							which = acemod_crisis_manager_var_country_extradimensional_spawn_time
+							value <= 100
+						}
+					}
+					change_variable = {
+						which = acemod_crisis_manager_var_country_extradimensional_spawn_time
+						value = 10
+					}
+				}
+				else = {
+					set_variable = {
+						which = acemod_crisis_manager_var_country_extradimensional_spawn_time
+						value = 0
+					}
+				}
+				root = {
+					set_variable = {
+						which = acemod_crisis_manager_var_country_extradimensional_spawn_time
+						value = prev
+					}
+				}
+			}
+			country_event = {
+				id = acemod_crisis_manager.1
+				days = 0
+				random = 0
+			}
+		}
+	}
+	option = {
+		name = acemod_crisis_manager.1.f		# Contingency spawn
+		custom_tooltip = acemod_crisis_manager.1.f.tooltip
+		hidden_effect = {
+			event_target:global_event_country = {
+				# global_event country is always around
+				if = {
+					limit = {
+						check_variable = {
+							which = acemod_crisis_manager_var_country_contingency_spawn_time
+							value <= 100
+						}
+					}
+					change_variable = {
+						which = acemod_crisis_manager_var_country_contingency_spawn_time
+						value = 10
+					}
+				}
+				else = {
+					set_variable = {
+						which = acemod_crisis_manager_var_country_contingency_spawn_time
+						value = 0
+					}
+				}
+				root = {
+					set_variable = {
+						which = acemod_crisis_manager_var_country_contingency_spawn_time
+						value = prev
+					}
+				}
+			}
+			country_event = {
+				id = acemod_crisis_manager.1
+				days = 0
+				random = 0
+			}
+		}
+	}
+	option = {
 		name = acemod_crisis_manager.1.z
 		custom_tooltip = acemod_crisis_manager.1.z.tooltip
 		hidden_effect = {

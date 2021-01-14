@@ -94,5 +94,20 @@
  acemod_crisis_manager_name_real_space:0 "Real Space"
  acemod_crisis_manager_name_infinite_stellaris_framework:0 "Infinite Stellaris Framework"
 
+# Prethoryn spawn------------------------------------
+ acemod_crisis_manager.1.d:0 "§G$name_list_Prethoryn$§!: [root.GetName_acemod_crisis_manager_var_country_prethoryn_spawn_time][root.acemod_crisis_manager_var_country_prethoryn_spawn_time] $YEARS$"
+ acemod_crisis_manager.1.d.tooltip:0 "$SETTINGS$"
+ acemod_crisis_manager_menu_prethoryn_spawn:0 "$SETTINGS$"
+
+# Extradimensional spawn------------------------------------
+ acemod_crisis_manager.1.e:0 "§M$name_list_Extradimensional$§!: [root.GetName_acemod_crisis_manager_var_country_extradimensional_spawn_time][root.acemod_crisis_manager_var_country_extradimensional_spawn_time] $YEARS$"
+ acemod_crisis_manager.1.e.tooltip:0 "$SETTINGS$"
+ acemod_crisis_manager_menu_extradimensional_spawn:0 "$SETTINGS$"
+
+# Contingency spawn------------------------------------
+ acemod_crisis_manager.1.f:0 "§R$ai_crisis_chain_title$§!: [root.GetName_acemod_crisis_manager_var_country_contingency_spawn_time][root.acemod_crisis_manager_var_country_contingency_spawn_time] $YEARS$"
+ acemod_crisis_manager.1.f.tooltip:0 "$SETTINGS$"
+ acemod_crisis_manager_menu_contingency_spawn:0 "$SETTINGS$"
+
 # Mod Menu------------------------------------
  modmenu_acemod_crisis_manager:0 "$acemod_crisis_manager_name$"
