@@ -1287,7 +1287,74 @@ defined_text = {
 	}
 }
 
-# prethoryn_subspace_echoes prethoryn_invasion_happened has_event_chain = coming_storm_chain prethoryn_approaching_rim prethoryn_transmission prethoryn_arrival prethoryn_scourge_chain prethoryn_main_invasion ongoing_prethoryn_invasion sentinels_founded sentinel_fe_support event_target:sentinel_fallen_empire feral_prethoryn_can_spawn event_target:feral_prethoryn feral_prethoryn_appeared feral_prethoryn_infighting_ongoing prethoryn_invasion_defeated brood_queen_captured
+# Relic check. has_relic = r_contingency_core has_relic = r_unbidden_warlock has_relic = r_prethoryn_queen
+defined_text = {
+	name = GetName_acemod_crisis_manager_r_contingency_core
+	text = {
+		trigger = {
+			any_country = {
+				has_relic = r_contingency_core
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				any_country = {
+					has_relic = r_contingency_core
+				}
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_crisis_manager_r_prethoryn_queen
+	text = {
+		trigger = {
+			any_country = {
+				has_relic = r_prethoryn_queen
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				any_country = {
+					has_relic = r_prethoryn_queen
+				}
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_crisis_manager_r_unbidden_warlock
+	text = {
+		trigger = {
+			any_country = {
+				has_relic = r_unbidden_warlock
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				any_country = {
+					has_relic = r_unbidden_warlock
+				}
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+# prethoryn_subspace_echoes prethoryn_invasion_happened has_event_chain = coming_storm_chain prethoryn_approaching_rim prethoryn_transmission prethoryn_arrival prethoryn_scourge_chain prethoryn_main_invasion ongoing_prethoryn_invasion sentinels_founded sentinel_fe_support event_target:sentinel_fallen_empire feral_prethoryn_can_spawn event_target:feral_prethoryn feral_prethoryn_appeared feral_prethoryn_infighting_ongoing prethoryn_invasion_defeated brood_queen_captured sentinel_donation sentinel_anatomy_files injured_swarm_queen queen_captured queen_snatched has_fleet_flag = pet_queen has_leader_flag = captured_queen has_fleet_flag = roaming_prethoryn_fleet has_fleet_flag = infighting_prethoryn
 defined_text = {
 	name = GetName_acemod_crisis_manager_prethoryn_subspace_echoes
 	text = {
@@ -1603,6 +1670,168 @@ defined_text = {
 }
 
 defined_text = {
+	name = GetName_acemod_crisis_manager_sentinel_donation
+	text = {
+		trigger = {
+			any_country = {
+				has_country_flag = sentinel_donation
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				any_country = {
+					has_country_flag = sentinel_donation
+				}
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_crisis_manager_sentinel_anatomy_files
+	text = {
+		trigger = {
+			any_country = {
+				has_country_flag = sentinel_anatomy_files
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				any_country = {
+					has_country_flag = sentinel_anatomy_files
+				}
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_crisis_manager_injured_swarm_queen
+	text = {
+		trigger = {
+			any_country = {
+				has_country_flag = injured_swarm_queen
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				any_country = {
+					has_country_flag = injured_swarm_queen
+				}
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_crisis_manager_queen_captured
+	text = {
+		trigger = {
+			any_country = {
+				has_country_flag = queen_captured
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				any_country = {
+					has_country_flag = queen_captured
+				}
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_crisis_manager_queen_snatched
+	text = {
+		trigger = {
+			any_country = {
+				has_country_flag = queen_snatched
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				any_country = {
+					has_country_flag = queen_snatched
+				}
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_crisis_manager_pet_queen
+	text = {
+		trigger = {
+			any_country = {
+				any_owned_fleet = {
+					has_fleet_flag = pet_queen
+				}
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				any_country = {
+					any_owned_fleet = {
+						has_fleet_flag = pet_queen
+					}
+				}
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_crisis_manager_captured_queen
+	text = {
+		trigger = {
+			any_country = {
+				any_owned_leader = {
+					has_leader_flag = captured_queen
+				}
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				any_country = {
+					any_owned_leader = {
+						has_leader_flag = captured_queen
+					}
+				}
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+defined_text = {
 	name = GetName_acemod_crisis_manager_brood_queen_captured
 	text = {
 		trigger = {
@@ -1619,3 +1848,1155 @@ defined_text = {
 		localization_key = acemod_crisis_manager_trigger_fail
 	}
 }
+
+defined_text = {
+	name = GetName_acemod_crisis_manager_queen_snatched
+	text = {
+		trigger = {
+			any_country = {
+				has_country_flag = queen_snatched
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				any_country = {
+					has_country_flag = queen_snatched
+				}
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_crisis_manager_roaming_prethoryn_fleet
+	text = {
+		trigger = {
+			any_country = {
+				any_owned_fleet = {
+					has_fleet_flag = roaming_prethoryn_fleet
+				}
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				any_country = {
+					any_owned_fleet = {
+						has_fleet_flag = roaming_prethoryn_fleet
+					}
+				}
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_crisis_manager_infighting_prethoryn
+	text = {
+		trigger = {
+			any_country = {
+				any_owned_fleet = {
+					has_fleet_flag = infighting_prethoryn
+				}
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				any_country = {
+					any_owned_fleet = {
+						has_fleet_flag = infighting_prethoryn
+					}
+				}
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+# event_target:portal_holder_1 (global), extradimensional_invasion_happened (global), event_target:extradimensionals (global), has_ship_flag = unbidden_portal (country), has_event_chain = extradimensional_invasion_chain (country). extradimensional_second_portal (global), aberrant (country), event_target:extradimensionals2 (global), has_ship_flag = aberrant_portal (country), extradimensionals_fight (global) extradimensional_third_portal (global), vehement (country), event_target:extradimensionals3 (global), has_ship_flag = vehement_portal (country), extradimensional_first_portal_destroyed (global), extradimensionals_expunged (country), extradimensional_second_portal_destroyed (global), extradimensional_third_portal_destroyed (global), 
+defined_text = {
+	name = GetName_acemod_crisis_manager_extradimensional_invasion_happened
+	text = {
+		trigger = {
+			has_global_flag = extradimensional_invasion_happened
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				has_global_flag = extradimensional_invasion_happened
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_crisis_manager_portal_holder_1
+	text = {
+		trigger = {
+			exists = event_target:portal_holder_1
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				exists = event_target:portal_holder_1
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_crisis_manager_unbidden_portal
+	text = {
+		trigger = {
+			any_country = {
+				any_owned_ship = {
+					has_ship_flag = unbidden_portal
+				}
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				any_country = {
+					any_owned_ship = {
+						has_ship_flag = unbidden_portal
+					}
+				}
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_crisis_manager_extradimensionals
+	text = {
+		trigger = {
+			exists = event_target:extradimensionals
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				exists = event_target:extradimensionals
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_crisis_manager_extradimensional_invasion_chain
+	text = {
+		trigger = {
+			any_country = {
+				has_event_chain = extradimensional_invasion_chain
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				any_country = {
+					has_event_chain = extradimensional_invasion_chain
+				}
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_crisis_manager_extradimensional_second_portal
+	text = {
+		trigger = {
+			has_global_flag = extradimensional_second_portal
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				has_global_flag = extradimensional_second_portal
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_crisis_manager_aberrant
+	text = {
+		trigger = {
+			any_country = {
+				has_country_flag = aberrant
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				any_country = {
+					has_country_flag = aberrant
+				}
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_crisis_manager_extradimensionals2
+	text = {
+		trigger = {
+			exists = event_target:extradimensionals2
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				exists = event_target:extradimensionals2
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_crisis_manager_aberrant_portal
+	text = {
+		trigger = {
+			any_country = {
+				any_owned_ship = {
+					has_ship_flag = aberrant_portal
+				}
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				any_country = {
+					any_owned_ship = {
+						has_ship_flag = aberrant_portal
+					}
+				}
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_crisis_manager_extradimensionals_fight
+	text = {
+		trigger = {
+			has_global_flag = extradimensionals_fight
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				has_global_flag = extradimensionals_fight
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_crisis_manager_extradimensional_third_portal
+	text = {
+		trigger = {
+			has_global_flag = extradimensional_third_portal
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				has_global_flag = extradimensional_third_portal
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_crisis_manager_vehement
+	text = {
+		trigger = {
+			any_country = {
+				has_country_flag = vehement
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				any_country = {
+					has_country_flag = vehement
+				}
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_crisis_manager_extradimensionals3
+	text = {
+		trigger = {
+			exists = event_target:extradimensionals3
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				exists = event_target:extradimensionals3
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_crisis_manager_vehement_portal
+	text = {
+		trigger = {
+			any_country = {
+				any_owned_ship = {
+					has_ship_flag = vehement_portal
+				}
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				any_country = {
+					any_owned_ship = {
+						has_ship_flag = vehement_portal
+					}
+				}
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_crisis_manager_extradimensional_first_portal_destroyed
+	text = {
+		trigger = {
+			has_global_flag = extradimensional_first_portal_destroyed
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				has_global_flag = extradimensional_first_portal_destroyed
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_crisis_manager_extradimensionals_expunged
+	text = {
+		trigger = {
+			any_country = {
+				has_country_flag = extradimensionals_expunged
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				any_country = {
+					has_country_flag = extradimensionals_expunged
+				}
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_crisis_manager_extradimensional_second_portal_destroyed
+	text = {
+		trigger = {
+			has_global_flag = extradimensional_second_portal_destroyed
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				has_global_flag = extradimensional_second_portal_destroyed
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_crisis_manager_extradimensional_third_portal_destroyed
+	text = {
+		trigger = {
+			has_global_flag = extradimensional_third_portal_destroyed
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				has_global_flag = extradimensional_third_portal_destroyed
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+# ai_invasion_happened (global), ai_ghost_signal (global), has_event_chain = "ghost_signal_chain" (country) has_event_chain = "ai_crisis_chain" (country) ghost_signal_5_flag (global) ai_empire (global) ai_empire count (global) post_arrival_events_machine (country) has_special_project = AI_CRISIS_PROJECT (country) has_completed_special_project = AI_CRISIS_PROJECT (country) ghost_signal_blocked (country) has_special_project = SYNTH_INFILTRATION_PROJECT (country) has_completed_special_project = SYNTH_INFILTRATION_PROJECT (country) synth_detector (country) event_target:custodian_bot (global) event_target:contingency_bot (global) ai_invasion_ongoing (global) synth_terror (global) has_point_of_interest = { poi = ai_crisis_poi_1 } { poi = ai_crisis_poi_2 } { poi = ai_crisis_poi_3 } { poi = ai_crisis_poi_4 } { poi = ai_crisis_poi_5 } (country) first_machine_world_destroyed (global) destroyed_by_colossus planet_cracked planet_shielded planet_godrayed (planet) machine_world_1 machine_world_2 machine_world_3 machine_world_4 machine_lair event_chain_counter = active_machine_worlds (country) ghost_signal_4_flag ghost_signal_3_flag ghost_signal_2_flag ai_invasion_defeated (global) is_country_type = cybrex_empire (global) cybrex_empire count (global) cybrex_resurface (global) cybrex_destroyed (global) cybrex_departed (global) cybrex_donation (country) pc_cybrex (planet)
+defined_text = {
+	name = GetName_acemod_crisis_manager_ai_invasion_happened
+	text = {
+		trigger = {
+			has_global_flag = ai_invasion_happened
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				has_global_flag = ai_invasion_happened
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_crisis_manager_ai_ghost_signal
+	text = {
+		trigger = {
+			has_global_flag = ai_ghost_signal
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				has_global_flag = ai_ghost_signal
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_crisis_manager_ghost_signal_chain
+	text = {
+		trigger = {
+			any_country = {
+				has_event_chain = ghost_signal_chain
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				any_country = {
+					has_event_chain = ghost_signal_chain
+				}
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_crisis_manager_ai_crisis_chain
+	text = {
+		trigger = {
+			any_country = {
+				has_event_chain = ai_crisis_chain
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				any_country = {
+					has_event_chain = ai_crisis_chain
+				}
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_crisis_manager_ghost_signal_5_flag
+	text = {
+		trigger = {
+			has_global_flag = ghost_signal_5_flag
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				has_global_flag = ghost_signal_5_flag
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_crisis_manager_ai_empire
+	text = {
+		trigger = {
+			any_country = {
+				is_country_type = ai_empire
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				any_country = {
+					is_country_type = ai_empire
+				}
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+# ai_empire count (to do elsewhere)
+defined_text = {
+	name = GetName_acemod_crisis_manager_post_arrival_events_machine
+	text = {
+		trigger = {
+			any_country = {
+				has_country_flag = post_arrival_events_machine
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				any_country = {
+					has_country_flag = post_arrival_events_machine
+				}
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_crisis_manager_AI_CRISIS_PROJECT_has
+	text = {
+		trigger = {
+			any_country = {
+				has_special_project = AI_CRISIS_PROJECT
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				any_country = {
+					has_special_project = AI_CRISIS_PROJECT
+				}
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_crisis_manager_AI_CRISIS_PROJECT_has_completed
+	text = {
+		trigger = {
+			any_country = {
+				has_completed_special_project = AI_CRISIS_PROJECT
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				any_country = {
+					has_completed_special_project = AI_CRISIS_PROJECT
+				}
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_crisis_manager_ghost_signal_blocked
+	text = {
+		trigger = {
+			any_country = {
+				has_country_flag = ghost_signal_blocked
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				any_country = {
+					has_country_flag = ghost_signal_blocked
+				}
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_crisis_manager_SYNTH_INFILTRATION_PROJECT_has
+	text = {
+		trigger = {
+			any_country = {
+				has_special_project = SYNTH_INFILTRATION_PROJECT
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				any_country = {
+					has_special_project = SYNTH_INFILTRATION_PROJECT
+				}
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_crisis_manager_SYNTH_INFILTRATION_PROJECT_has_completed
+	text = {
+		trigger = {
+			any_country = {
+				has_completed_special_project = SYNTH_INFILTRATION_PROJECT
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				any_country = {
+					has_completed_special_project = SYNTH_INFILTRATION_PROJECT
+				}
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_crisis_manager_synth_detector
+	text = {
+		trigger = {
+			any_country = {
+				has_country_flag = synth_detector
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				any_country = {
+					has_country_flag = synth_detector
+				}
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_crisis_manager_custodian_bot
+	text = {
+		trigger = {
+			exists = event_target:custodian_bot
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				exists = event_target:custodian_bot
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_crisis_manager_contingency_bot
+	text = {
+		trigger = {
+			exists = event_target:contingency_bot
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				exists = event_target:contingency_bot
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_crisis_manager_ai_invasion_ongoing
+	text = {
+		trigger = {
+			has_global_flag = ai_invasion_ongoing
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				has_global_flag = ai_invasion_ongoing
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_crisis_manager_synth_terror
+	text = {
+		trigger = {
+			has_global_flag = synth_terror
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				has_global_flag = synth_terror
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_crisis_manager_ai_crisis_poi_1
+	text = {
+		trigger = {
+			any_country = {
+				has_point_of_interest = {
+					poi = ai_crisis_poi.1
+				}
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				any_country = {
+					has_point_of_interest = {
+						poi = ai_crisis_poi.1
+					}
+				}
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_crisis_manager_ai_crisis_poi_2
+	text = {
+		trigger = {
+			any_country = {
+				has_point_of_interest = {
+					poi = ai_crisis_poi.2
+				}
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				any_country = {
+					has_point_of_interest = {
+						poi = ai_crisis_poi.2
+					}
+				}
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_crisis_manager_ai_crisis_poi_3
+	text = {
+		trigger = {
+			any_country = {
+				has_point_of_interest = {
+					poi = ai_crisis_poi.3
+				}
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				any_country = {
+					has_point_of_interest = {
+						poi = ai_crisis_poi.3
+					}
+				}
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_crisis_manager_ai_crisis_poi_4
+	text = {
+		trigger = {
+			any_country = {
+				has_point_of_interest = {
+					poi = ai_crisis_poi.4
+				}
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				any_country = {
+					has_point_of_interest = {
+						poi = ai_crisis_poi.4
+					}
+				}
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_crisis_manager_ai_crisis_poi_5
+	text = {
+		trigger = {
+			any_country = {
+				has_point_of_interest = {
+					poi = ai_crisis_poi.5
+				}
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				any_country = {
+					has_point_of_interest = {
+						poi = ai_crisis_poi.5
+					}
+				}
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_crisis_manager_first_machine_world_destroyed
+	text = {
+		trigger = {
+			has_global_flag = first_machine_world_destroyed
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				has_global_flag = first_machine_world_destroyed
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_crisis_manager_ghost_signal_4_flag
+	text = {
+		trigger = {
+			has_global_flag = ghost_signal_4_flag
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				has_global_flag = ghost_signal_4_flag
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_crisis_manager_ghost_signal_3_flag
+	text = {
+		trigger = {
+			has_global_flag = ghost_signal_3_flag
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				has_global_flag = ghost_signal_3_flag
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_crisis_manager_ghost_signal_2_flag
+	text = {
+		trigger = {
+			has_global_flag = ghost_signal_2_flag
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				has_global_flag = ghost_signal_2_flag
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_crisis_manager_cybrex_empire
+	text = {
+		trigger = {
+			any_country = {
+				is_country_type = cybrex_empire
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				any_country = {
+					is_country_type = cybrex_empire
+				}
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+# cybrex_empire count (to do elsewhere)
+defined_text = {
+	name = GetName_acemod_crisis_manager_cybrex_resurface
+	text = {
+		trigger = {
+			has_global_flag = cybrex_resurface
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				has_global_flag = cybrex_resurface
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_crisis_manager_cybrex_destroyed
+	text = {
+		trigger = {
+			has_global_flag = cybrex_destroyed
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				has_global_flag = cybrex_destroyed
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_crisis_manager_cybrex_departed
+	text = {
+		trigger = {
+			has_global_flag = cybrex_departed
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				has_global_flag = cybrex_departed
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_crisis_manager_cybrex_donation
+	text = {
+		trigger = {
+			any_country = {
+				has_country_flag = cybrex_donation
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				any_country = {
+					has_country_flag = cybrex_donation
+				}
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_crisis_manager_pc_cybrex
+	text = {
+		trigger = {
+			any_planet = {
+				is_planet_class = pc_cybrex
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				any_planet = {
+					is_planet_class = pc_cybrex
+				}
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_crisis_manager_ai_invasion_defeated
+	text = {
+		trigger = {
+			has_global_flag = ai_invasion_defeated
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				has_global_flag = ai_invasion_defeated
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_crisis_manager_r_contingency_core
+	text = {
+		trigger = {
+			any_country = {
+				has_relic = r_contingency_core
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				any_country = {
+					has_relic = r_contingency_core
+				}
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+# TO DO: destroyed_by_colossus planet_cracked planet_shielded planet_godrayed (planet) machine_world_1 machine_world_2 machine_world_3 machine_world_4 machine_lair event_chain_counter = active_machine_worlds (country) ghost_signal_4_flag ghost_signal_3_flag ghost_signal_2_flag ai_invasion_defeated (global)
