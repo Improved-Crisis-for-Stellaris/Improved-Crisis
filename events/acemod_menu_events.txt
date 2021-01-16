@@ -7,6 +7,7 @@ country_event = {
 		is_ai = no
 	}
 	immediate = {
+		set_global_flag = acemod_menu_fired
 		country_event = {
 			id = acemod_menu.1
 		}

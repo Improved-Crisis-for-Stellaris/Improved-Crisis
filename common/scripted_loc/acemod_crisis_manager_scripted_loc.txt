@@ -21,13 +21,21 @@ defined_text = {
 	name = GetName_acemod_crisis_manager_is_ironman
 	text = {
 		trigger = {
-			is_ironman = yes
+			check_variable = {
+				which = acemod_crisis_manager_var_country_is_ironman
+				value = 1
+			}
 		}
 		localization_key = acemod_crisis_manager_trigger_pass
 	}
 	text = {
 		trigger = {
-			is_ironman = no
+			NOT = {
+				check_variable = {
+					which = acemod_crisis_manager_var_country_is_ironman
+					value = 1
+				}
+			}
 		}
 		localization_key = acemod_crisis_manager_trigger_fail
 	}
@@ -38,15 +46,73 @@ defined_text = {
 	name = GetName_acemod_crisis_manager_is_multiplayer
 	text = {
 		trigger = {
-			is_multiplayer = yes
+			check_variable = {
+				which = acemod_crisis_manager_var_country_is_multiplayer
+				value = 1
+			}
 		}
 		localization_key = acemod_crisis_manager_trigger_pass
 	}
 	text = {
 		trigger = {
-			is_multiplayer = no
+			NOT = {
+				check_variable = {
+					which = acemod_crisis_manager_var_country_is_multiplayer
+					value = 1
+				}
+			}
 		}
 		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+# Checks if checksum is modified.
+defined_text = {
+	name = GetName_acemod_crisis_manager_var_country_is_checksum_modified
+	text = {
+		trigger = {
+			check_variable = {
+				which = acemod_crisis_manager_var_country_is_checksum_modified
+				value = 1
+			}
+		}
+		localization_key = ACHIEVEMENT_TOOLTIP_CHECKSUM
+	}
+	text = {
+		trigger = {
+			NOT = {
+				check_variable = {
+					which = acemod_crisis_manager_var_country_is_checksum_modified
+					value = 1
+				}
+			}
+		}
+		localization_key = acemod_crisis_manager_checksum_vanilla
+	}
+}
+
+# Checks if achievements are disabled.
+defined_text = {
+	name = GetName_acemod_crisis_manager_var_country_achievements_disabled
+	text = {
+		trigger = {
+			check_variable = {
+				which = acemod_crisis_manager_var_country_achievements_disabled
+				value = 0
+			}
+		}
+		localization_key = ACHIEVEMENT_ELIGIBLE
+	}
+	text = {
+		trigger = {
+			NOT = {
+				check_variable = {
+					which = acemod_crisis_manager_var_country_achievements_disabled
+					value = 0
+				}
+			}
+		}
+		localization_key = ACHIEVEMENT_NOT_ELIGIBLE
 	}
 }
 
@@ -1145,7 +1211,7 @@ defined_text = {
 	text = {
 		trigger = {
 			NOT = {
-				is_crises_allowed = no
+				is_crises_allowed = yes
 			}
 		}
 		localization_key = acemod_crisis_manager_trigger_fail
@@ -3072,5 +3138,95 @@ defined_text = {
 			}
 		}
 		localization_key = acemod_crisis_manager_blank
+	}
+}
+
+# Spawn menu
+defined_text = {
+	name = GetName_acemod_crisis_manager_var_country_spawn_time_variable
+	text = {
+		trigger = {
+			check_variable = {
+				which = acemod_crisis_manager_var_country_spawn_time_variable
+				value = 5
+			}
+		}
+		localization_key = acemod_crisis_manager_num_5
+	}
+	text = {
+		trigger = {
+			check_variable = {
+				which = acemod_crisis_manager_var_country_spawn_time_variable
+				value = 10
+			}
+		}
+		localization_key = acemod_crisis_manager_num_10
+	}
+	text = {
+		trigger = {
+			check_variable = {
+				which = acemod_crisis_manager_var_country_spawn_time_variable
+				value = 20
+			}
+		}
+		localization_key = acemod_crisis_manager_num_20
+	}
+	text = {
+		trigger = {
+			check_variable = {
+				which = acemod_crisis_manager_var_country_spawn_time_variable
+				value = 50
+			}
+		}
+		localization_key = acemod_crisis_manager_num_50
+	}
+	text = {
+		trigger = {
+			check_variable = {
+				which = acemod_crisis_manager_var_country_spawn_time_variable
+				value = 100
+			}
+		}
+		localization_key = acemod_crisis_manager_num_100
+	}
+	text = {
+		trigger = {
+			check_variable = {
+				which = acemod_crisis_manager_var_country_spawn_time_variable
+				value = 404
+			}
+		}
+		localization_key = acemod_crisis_manager_num_reset
+	}
+	text = {
+		trigger = {
+			NOR = {
+				check_variable = {
+					which = acemod_crisis_manager_var_country_spawn_time_variable
+					value = 5
+				}
+				check_variable = {
+					which = acemod_crisis_manager_var_country_spawn_time_variable
+					value = 10
+				}
+				check_variable = {
+					which = acemod_crisis_manager_var_country_spawn_time_variable
+					value = 20
+				}
+				check_variable = {
+					which = acemod_crisis_manager_var_country_spawn_time_variable
+					value = 50
+				}
+				check_variable = {
+					which = acemod_crisis_manager_var_country_spawn_time_variable
+					value = 100
+				}
+				check_variable = {
+					which = acemod_crisis_manager_var_country_spawn_time_variable
+					value = 404
+				}
+			}
+		}
+		localization_key = acemod_crisis_manager_num_5
 	}
 }

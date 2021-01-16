@@ -8,8 +8,19 @@ country_event = {
 		is_ai = no
 	}
 	immediate = {
-		country_event = {
-			id = acemod_menu.0
+		if = {
+			limit = {
+				NOT = {
+					has_global_flag = acemod_menu_fired
+				}
+			}
+			set_global_flag = acemod_menu_fired
+			country_event = {
+				id = acemod_menu.0
+			}
+		}
+		else = {
+			break = yes
 		}
 	}
 }
@@ -36,6 +47,8 @@ event = {
 		OR = {
 			has_global_flag = galactic_crisis_happened
 			has_global_flag = ai_invasion_ongoing			# Contingency crisis_events_3.txt does not set galactic_crisis_happened global flag! Naturally spawning Contingency will set flag via crisis_trigger_events.txt . Manually or by a mod spawned Contingency might lack this global flag.
+			has_global_flag = prethoryn_invasion_happened
+			has_global_flag = extradimensional_invasion_happened
 			has_global_flag = gray_goo_crisis_active
 		}
 		NOT = {

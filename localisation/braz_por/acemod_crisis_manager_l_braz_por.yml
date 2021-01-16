@@ -4,7 +4,7 @@
  acemod_crisis_manager_name:0 "Aggressive Crisis Engine"
  acemod_crisis_manager.1.name:0 "$acemod_crisis_manager_name$: $acemod_crisis_manager_name_singular$"
  acemod_crisis_manager.1.desc:0 "$SETTINGS$ for §R$CRISIS_FACTOR$§!. They can be changed at any point during the game from this menu.\n\nThis §BMod Manager§! does not change game files. Has to be §G$ACTIVE$§! for it to work."
- acemod_crisis_manager.1.a:0 "§B$acemod_crisis_manager_name_singular$§! is [root.GetName_acemod_crisis_manager_active]"
+ acemod_crisis_manager.1.a:0 "§B$acemod_crisis_manager_name_singular$§! is [root.GetName_acemod_crisis_manager_active] (§RWork in $PROGRESS_VALUE$§!)"
  acemod_crisis_manager.1.a.tooltip:0 "Enables or disables §BCrisis Manager§!."
  acemod_crisis_manager.1.b:0 "$MESSAGE_GOTO$ $GALAXY_SETTINGS$"
  acemod_crisis_manager.1.b.tooltip:0 "Gathers and shows information about the galaxy as configured in the $GAME_MULTIPLAYER_LOBBY$."
@@ -23,9 +23,10 @@
  acemod_crisis_manager_blank:0 ""
  acemod_crisis_manager_unobtainable:0 "Unobtainable"
  acemod_crisis_manager.4.name:0 "$GALAXY_SETTINGS$"
- acemod_crisis_manager.4.desc:0 "$ACHIEVEMENT_TOOLTIP_NO$\n$FE_IRONMAN$: [root.GetName_acemod_crisis_manager_is_ironman]\nMultiplayer: [root.GetName_acemod_crisis_manager_is_multiplayer]\n$ACHIEVEMENT_TOOLTIP_CHECKSUM$\n$acemod_crisis_manager_var_country_num_systems$\n$acemod_crisis_manager_var_country_num_empires$\n$acemod_crisis_manager_var_country_num_advanced_empires$\n$acemod_crisis_manager_var_country_num_fallen_empires$\n$acemod_crisis_manager_var_country_num_marauder_empires$\n$acemod_crisis_manager_var_country_mid_game_year$\n$acemod_crisis_manager_var_country_end_game_year$\n$acemod_crisis_manager_var_country_victory_year$\n$acemod_crisis_manager_var_country_num_guaranteed_colonies$\n$acemod_crisis_manager_var_country_num_gateways$\n$acemod_crisis_manager_var_country_num_wormhole_pairs$\n$acemod_crisis_manager_var_country_num_hyperlanes$\n$acemod_crisis_manager_var_country_habitable_worlds_scale$\n$acemod_crisis_manager_var_country_primitive_worlds_scale$\n$acemod_crisis_manager_var_country_crisis_strength_scale$\n$acemod_crisis_manager_var_country_tech_costs_scale$\n$acemod_crisis_manager_var_country_is_difficulty$\n$acemod_crisis_manager_var_country_caravaneers_enabled$\n$acemod_crisis_manager_var_country_xeno_compatibility_enabled$\n$acemod_crisis_manager_var_country_setup_scenario$\n$acemod_crisis_manager_var_country_scaling_difficulty$\n$acemod_crisis_manager_var_country_scaling_aggressiveness$\n$acemod_crisis_manager_var_country_advanced_neighbors$\n$acemod_crisis_manager_var_country_empire_placement$\n$acemod_crisis_manager_dlc_check$"
+ acemod_crisis_manager.4.desc:0 "[root.GetName_acemod_crisis_manager_var_country_achievements_disabled]\n$FE_IRONMAN$: [root.GetName_acemod_crisis_manager_is_ironman]\nMultiplayer: [root.GetName_acemod_crisis_manager_is_multiplayer]\n[root.GetName_acemod_crisis_manager_var_country_is_checksum_modified]\n$acemod_crisis_manager_var_country_num_systems$\n$acemod_crisis_manager_var_country_num_empires$\n$acemod_crisis_manager_var_country_num_advanced_empires$\n$acemod_crisis_manager_var_country_num_fallen_empires$\n$acemod_crisis_manager_var_country_num_marauder_empires$\n$acemod_crisis_manager_var_country_mid_game_year$\n$acemod_crisis_manager_var_country_end_game_year$\n$acemod_crisis_manager_var_country_victory_year$\n$acemod_crisis_manager_var_country_num_guaranteed_colonies$\n$acemod_crisis_manager_var_country_num_gateways$\n$acemod_crisis_manager_var_country_num_wormhole_pairs$\n$acemod_crisis_manager_var_country_num_hyperlanes$\n$acemod_crisis_manager_var_country_habitable_worlds_scale$\n$acemod_crisis_manager_var_country_primitive_worlds_scale$\n$acemod_crisis_manager_var_country_crisis_strength_scale$\n$acemod_crisis_manager_var_country_tech_costs_scale$\n$acemod_crisis_manager_var_country_is_difficulty$\n$acemod_crisis_manager_var_country_caravaneers_enabled$\n$acemod_crisis_manager_var_country_xeno_compatibility_enabled$\n$acemod_crisis_manager_var_country_setup_scenario$\n$acemod_crisis_manager_var_country_scaling_difficulty$\n$acemod_crisis_manager_var_country_scaling_aggressiveness$\n$acemod_crisis_manager_var_country_advanced_neighbors$\n$acemod_crisis_manager_var_country_empire_placement$\n$acemod_crisis_manager_dlc_check$"
  acemod_crisis_manager.4.a:0 "$MESSAGE_OK$"
  acemod_crisis_manager.4.a.tooltip:0 "$CLOSE$"
+ acemod_crisis_manager_checksum_vanilla:0 "$CHECKSUM$ $SETTINGS_VOICE_TYPE_default_advisor_voice_type$"
  acemod_crisis_manager_var_country_num_systems:0 "$GALAXY_SIZE$: [root.acemod_crisis_manager_var_country_num_systems]"
  acemod_crisis_manager_var_country_num_empires:0 "$NUM_EMPIRES$: [root.acemod_crisis_manager_var_country_num_empires][root.GetName_acemod_crisis_manager_var_country_num_empires]"
  acemod_crisis_manager_var_country_num_advanced_empires:0 "$NUM_ADVANCED_EMPIRES$: [root.acemod_crisis_manager_var_country_num_advanced_empires][root.GetName_acemod_crisis_manager_var_country_num_advanced_empires]"
@@ -94,20 +95,32 @@
  acemod_crisis_manager_name_real_space:0 "Real Space"
  acemod_crisis_manager_name_infinite_stellaris_framework:0 "Infinite Stellaris Framework"
 
+# Spawn menu------------------------------------
+ acemod_crisis_manager.1.g:0 "Change year value by: [root.GetName_acemod_crisis_manager_var_country_spawn_time_variable]"
+ acemod_crisis_manager.1.g.tooltip:0 "Change crisis spawn year value by this amount."
+ acemod_crisis_manager_num_0:0 "0"
+ acemod_crisis_manager_num_5:0 "5"
+ acemod_crisis_manager_num_10:0 "10"
+ acemod_crisis_manager_num_20:0 "20"
+ acemod_crisis_manager_num_50:0 "50"
+ acemod_crisis_manager_num_100:0 "100"
+ acemod_crisis_manager_num_reset:0 "$RESET_DEFAULT$"
+ acemod_crisis_manager_base:0 "§R$BASE$§!: Crisis will spawn under vanilla conditions, maximum one per game, or as set by other mods.\n\n§BAlternatively§!, force trigger crisis by adjusting year.\n$FE_END_GAME$ + $YEARS$ = $CRISIS_FACTOR$ $YEAR$."
+
 # Prethoryn spawn------------------------------------
  acemod_crisis_manager.1.d:0 "§G$name_list_Prethoryn$§!: [root.GetName_acemod_crisis_manager_var_country_prethoryn_spawn_time][root.acemod_crisis_manager_var_country_prethoryn_spawn_time] $YEARS$"
- acemod_crisis_manager.1.d.tooltip:0 "$SETTINGS$"
- acemod_crisis_manager_menu_prethoryn_spawn:0 "$SETTINGS$"
+ acemod_crisis_manager.1.d.tooltip:0 "$acemod_crisis_manager_base$"
+ acemod_crisis_manager_menu_prethoryn_spawn:0 "$acemod_crisis_manager_base$"
 
 # Extradimensional spawn------------------------------------
  acemod_crisis_manager.1.e:0 "§M$name_list_Extradimensional$§!: [root.GetName_acemod_crisis_manager_var_country_extradimensional_spawn_time][root.acemod_crisis_manager_var_country_extradimensional_spawn_time] $YEARS$"
- acemod_crisis_manager.1.e.tooltip:0 "$SETTINGS$"
- acemod_crisis_manager_menu_extradimensional_spawn:0 "$SETTINGS$"
+ acemod_crisis_manager.1.e.tooltip:0 "$acemod_crisis_manager_base$"
+ acemod_crisis_manager_menu_extradimensional_spawn:0 "$acemod_crisis_manager_base$"
 
 # Contingency spawn------------------------------------
  acemod_crisis_manager.1.f:0 "§R$ai_crisis_chain_title$§!: [root.GetName_acemod_crisis_manager_var_country_contingency_spawn_time][root.acemod_crisis_manager_var_country_contingency_spawn_time] $YEARS$"
- acemod_crisis_manager.1.f.tooltip:0 "$SETTINGS$"
- acemod_crisis_manager_menu_contingency_spawn:0 "$SETTINGS$"
+ acemod_crisis_manager.1.f.tooltip:0 "$acemod_crisis_manager_base$"
+ acemod_crisis_manager_menu_contingency_spawn:0 "$acemod_crisis_manager_base$"
 
 # Mod Menu------------------------------------
  modmenu_acemod_crisis_manager:0 "$acemod_crisis_manager_name$"

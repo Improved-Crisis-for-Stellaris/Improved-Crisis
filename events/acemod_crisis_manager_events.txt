@@ -27,11 +27,12 @@ country_event = {
 		hidden_effect = {
 			if = {
 				limit = {
-					NOT = {
-						has_global_flag = acemod_crisis_manager_active
-					}
+					always = no
+					# NOT = {
+					# 	has_global_flag = acemod_crisis_manager_active
+					# }
 				}
-				set_global_flag = acemod_crisis_manager_active
+				# set_global_flag = acemod_crisis_manager_active
 				country_event = {
 					id = acemod_crisis_manager.1
 					days = 0
@@ -40,7 +41,7 @@ country_event = {
 				break = yes
 			}
 			else = {
-				remove_global_flag = acemod_crisis_manager_active
+				# remove_global_flag = acemod_crisis_manager_active
 				country_event = {
 					id = acemod_crisis_manager.1
 					days = 0
@@ -91,19 +92,31 @@ country_event = {
 				if = {
 					limit = {
 						check_variable = {
-							which = acemod_crisis_manager_var_country_prethoryn_spawn_time
-							value <= 100
+							which = acemod_crisis_manager_var_country_spawn_time_variable
+							value = 0
 						}
 					}
 					change_variable = {
-						which = acemod_crisis_manager_var_country_prethoryn_spawn_time
-						value = 10
+						which = acemod_crisis_manager_var_country_spawn_time_variable
+						value = 5
 					}
 				}
-				else = {
+				if = {
+					limit = {
+						check_variable = {
+							which = acemod_crisis_manager_var_country_spawn_time_variable
+							value = 404
+						}
+					}
 					set_variable = {
 						which = acemod_crisis_manager_var_country_prethoryn_spawn_time
 						value = 0
+					}
+				}
+				else = {
+					change_variable = {
+						which = acemod_crisis_manager_var_country_prethoryn_spawn_time
+						value = acemod_crisis_manager_var_country_spawn_time_variable
 					}
 				}
 				root = {
@@ -111,12 +124,12 @@ country_event = {
 						which = acemod_crisis_manager_var_country_prethoryn_spawn_time
 						value = prev
 					}
+					country_event = {
+						id = acemod_crisis_manager.1
+						days = 0
+						random = 0
+					}
 				}
-			}
-			country_event = {
-				id = acemod_crisis_manager.1
-				days = 0
-				random = 0
 			}
 		}
 	}
@@ -129,19 +142,31 @@ country_event = {
 				if = {
 					limit = {
 						check_variable = {
-							which = acemod_crisis_manager_var_country_extradimensional_spawn_time
-							value <= 100
+							which = acemod_crisis_manager_var_country_spawn_time_variable
+							value = 0
 						}
 					}
 					change_variable = {
-						which = acemod_crisis_manager_var_country_extradimensional_spawn_time
-						value = 10
+						which = acemod_crisis_manager_var_country_spawn_time_variable
+						value = 5
 					}
 				}
-				else = {
+				if = {
+					limit = {
+						check_variable = {
+							which = acemod_crisis_manager_var_country_spawn_time_variable
+							value = 404
+						}
+					}
 					set_variable = {
 						which = acemod_crisis_manager_var_country_extradimensional_spawn_time
 						value = 0
+					}
+				}
+				else = {
+					change_variable = {
+						which = acemod_crisis_manager_var_country_extradimensional_spawn_time
+						value = acemod_crisis_manager_var_country_spawn_time_variable
 					}
 				}
 				root = {
@@ -149,12 +174,12 @@ country_event = {
 						which = acemod_crisis_manager_var_country_extradimensional_spawn_time
 						value = prev
 					}
+					country_event = {
+						id = acemod_crisis_manager.1
+						days = 0
+						random = 0
+					}
 				}
-			}
-			country_event = {
-				id = acemod_crisis_manager.1
-				days = 0
-				random = 0
 			}
 		}
 	}
@@ -167,19 +192,31 @@ country_event = {
 				if = {
 					limit = {
 						check_variable = {
-							which = acemod_crisis_manager_var_country_contingency_spawn_time
-							value <= 100
+							which = acemod_crisis_manager_var_country_spawn_time_variable
+							value = 0
 						}
 					}
 					change_variable = {
-						which = acemod_crisis_manager_var_country_contingency_spawn_time
-						value = 10
+						which = acemod_crisis_manager_var_country_spawn_time_variable
+						value = 5
 					}
 				}
-				else = {
+				if = {
+					limit = {
+						check_variable = {
+							which = acemod_crisis_manager_var_country_spawn_time_variable
+							value = 404
+						}
+					}
 					set_variable = {
 						which = acemod_crisis_manager_var_country_contingency_spawn_time
 						value = 0
+					}
+				}
+				else = {
+					change_variable = {
+						which = acemod_crisis_manager_var_country_contingency_spawn_time
+						value = acemod_crisis_manager_var_country_spawn_time_variable
 					}
 				}
 				root = {
@@ -187,12 +224,122 @@ country_event = {
 						which = acemod_crisis_manager_var_country_contingency_spawn_time
 						value = prev
 					}
+					country_event = {
+						id = acemod_crisis_manager.1
+						days = 0
+						random = 0
+					}
 				}
 			}
-			country_event = {
-				id = acemod_crisis_manager.1
-				days = 0
-				random = 0
+		}
+	}
+	option = {
+		name = acemod_crisis_manager.1.g
+		custom_tooltip = acemod_crisis_manager.1.g.tooltip
+		hidden_effect = {
+			event_target:global_event_country = {
+				# global_event country is always around
+				if = {
+					limit = {
+						check_variable = {
+							which = acemod_crisis_manager_var_country_spawn_time_variable
+							value = 0
+						}
+					}
+					set_variable = {
+						which = acemod_crisis_manager_var_country_spawn_time_variable
+						value = 5
+					}
+				}
+				if = {
+					limit = {
+						check_variable = {
+							which = acemod_crisis_manager_var_country_spawn_time_variable
+							value = 5
+						}
+					}
+					set_variable = {
+						which = acemod_crisis_manager_var_country_spawn_time_variable
+						value = 10
+					}
+				}
+				else_if = {
+					limit = {
+						check_variable = {
+							which = acemod_crisis_manager_var_country_spawn_time_variable
+							value = 10
+						}
+					}
+					set_variable = {
+						which = acemod_crisis_manager_var_country_spawn_time_variable
+						value = 20
+					}
+				}
+				else_if = {
+					limit = {
+						check_variable = {
+							which = acemod_crisis_manager_var_country_spawn_time_variable
+							value = 20
+						}
+					}
+					set_variable = {
+						which = acemod_crisis_manager_var_country_spawn_time_variable
+						value = 50
+					}
+				}
+				else_if = {
+					limit = {
+						check_variable = {
+							which = acemod_crisis_manager_var_country_spawn_time_variable
+							value = 50
+						}
+					}
+					set_variable = {
+						which = acemod_crisis_manager_var_country_spawn_time_variable
+						value = 100
+					}
+				}
+				else_if = {
+					limit = {
+						check_variable = {
+							which = acemod_crisis_manager_var_country_spawn_time_variable
+							value = 100
+						}
+					}
+					set_variable = {
+						which = acemod_crisis_manager_var_country_spawn_time_variable
+						value = 404
+					}
+				}
+				else_if = {
+					limit = {
+						check_variable = {
+							which = acemod_crisis_manager_var_country_spawn_time_variable
+							value = 404
+						}
+					}
+					set_variable = {
+						which = acemod_crisis_manager_var_country_spawn_time_variable
+						value = 5
+					}
+				}
+				else = {
+					set_variable = {
+						which = acemod_crisis_manager_var_country_spawn_time_variable
+						value = 5
+					}
+				}
+				root = {
+					set_variable = {
+						which = acemod_crisis_manager_var_country_spawn_time_variable
+						value = prev
+					}
+					country_event = {
+						id = acemod_crisis_manager.1
+						days = 0
+						random = 0
+					}
+				}
 			}
 		}
 	}
@@ -237,8 +384,128 @@ country_event = {
 	is_triggered_only = yes
 	immediate = {
 		hidden_effect = {
-			# GALAXY_SIZE
-			this = {
+			event_target:global_event_country = {
+				# global_event country is always around
+				# acemod_crisis_manager_var_country_is_checksum_modified
+				if = {
+					limit = {
+						always = no						# Unable to grab this value but modded events change checksum (this file).
+					}
+					set_variable = {
+						which = acemod_crisis_manager_var_country_is_checksum_modified
+						value = 0
+					}
+				}
+				else = {
+					set_variable = {
+						which = acemod_crisis_manager_var_country_is_checksum_modified
+						value = 1
+					}
+				}
+				root = {
+					# Save to root country so that variables can be displayed on Debug window via scripted_loc.
+					set_variable = {
+						which = acemod_crisis_manager_var_country_is_checksum_modified
+						value = prev
+					}
+				}
+			}
+			event_target:global_event_country = {
+				# global_event country is always around
+				# acemod_crisis_manager_var_country_is_ironman
+				if = {
+					limit = {
+						is_ironman = yes
+					}
+					set_variable = {
+						which = acemod_crisis_manager_var_country_is_ironman
+						value = 1
+					}
+				}
+				else = {
+					set_variable = {
+						which = acemod_crisis_manager_var_country_is_ironman
+						value = 0
+					}
+				}
+				root = {
+					# Save to root country so that variables can be displayed on Debug window via scripted_loc.
+					set_variable = {
+						which = acemod_crisis_manager_var_country_is_ironman
+						value = prev
+					}
+				}
+			}
+			event_target:global_event_country = {
+				# global_event country is always around
+				# acemod_crisis_manager_var_country_is_multiplayer
+				if = {
+					limit = {
+						is_multiplayer = yes
+					}
+					set_variable = {
+						which = acemod_crisis_manager_var_country_is_multiplayer
+						value = 1
+					}
+				}
+				else = {
+					set_variable = {
+						which = acemod_crisis_manager_var_country_is_multiplayer
+						value = 0
+					}
+				}
+				root = {
+					# Save to root country so that variables can be displayed on Debug window via scripted_loc.
+					set_variable = {
+						which = acemod_crisis_manager_var_country_is_multiplayer
+						value = prev
+					}
+				}
+			}
+			event_target:global_event_country = {
+				# global_event country is always around
+				# acemod_crisis_manager_var_country_achievements_disabled
+				if = {
+					limit = {
+						OR = {
+							check_variable = {
+								which = acemod_crisis_manager_var_country_is_checksum_modified								# Achievements cannot be obtained with modified checksum.
+								value = 1
+							}
+							NOT = {
+								check_variable = {
+									which = acemod_crisis_manager_var_country_is_ironman									# Achievements require ironman mode.
+									value = 1
+								}
+							}
+							check_variable = {
+								which = acemod_crisis_manager_var_country_is_multiplayer								# Achievements cannot be obtained in multiplayer.
+								value = 1
+							}
+						}
+					}
+					set_variable = {
+						which = acemod_crisis_manager_var_country_achievements_disabled
+						value = 1
+					}
+				}
+				else = {
+					set_variable = {
+						which = acemod_crisis_manager_var_country_achievements_disabled
+						value = 0
+					}
+				}
+				root = {
+					# Save to root country so that variables can be displayed on Debug window via scripted_loc.
+					set_variable = {
+						which = acemod_crisis_manager_var_country_achievements_disabled
+						value = prev
+					}
+				}
+			}
+			event_target:global_event_country = {
+				# global_event country is always around
+				# GALAXY_SIZE
 				set_variable = {
 					which = acemod_crisis_manager_var_country_num_systems
 					value = 0
@@ -247,77 +514,147 @@ country_event = {
 					limit = {
 						always = yes
 					}
-					prevprevprev = {
+					event_target:global_event_country = {
 						change_variable = {
 							which = acemod_crisis_manager_var_country_num_systems
 							value = 1
 						}
 					}
 				}
+				root = {
+					# Save to root country so that variables can be displayed on Debug window via scripted_loc.
+					set_variable = {
+						which = acemod_crisis_manager_var_country_num_systems
+						value = prev
+					}
+				}
 			}
-			# get_galaxy_setup_value effect
-			get_galaxy_setup_value = {
-				which = acemod_crisis_manager_var_country_num_empires
-				setting = num_empires
+			event_target:global_event_country = {
+				# global_event country is always around
+				# get_galaxy_setup_value effect
+				get_galaxy_setup_value = {
+					which = acemod_crisis_manager_var_country_num_empires
+					setting = num_empires
+				}
+				get_galaxy_setup_value = {
+					which = acemod_crisis_manager_var_country_num_advanced_empires
+					setting = num_advanced_empires
+				}
+				get_galaxy_setup_value = {
+					which = acemod_crisis_manager_var_country_num_fallen_empires
+					setting = num_fallen_empires
+				}
+				get_galaxy_setup_value = {
+					which = acemod_crisis_manager_var_country_num_marauder_empires
+					setting = num_marauder_empires
+				}
+				get_galaxy_setup_value = {
+					which = acemod_crisis_manager_var_country_mid_game_year
+					setting = mid_game_year
+				}
+				get_galaxy_setup_value = {
+					which = acemod_crisis_manager_var_country_end_game_year
+					setting = end_game_year
+				}
+				get_galaxy_setup_value = {
+					which = acemod_crisis_manager_var_country_victory_year
+					setting = victory_year
+				}
+				get_galaxy_setup_value = {
+					which = acemod_crisis_manager_var_country_num_guaranteed_colonies
+					setting = num_guaranteed_colonies
+				}
+				get_galaxy_setup_value = {
+					which = acemod_crisis_manager_var_country_num_gateways
+					setting = num_gateways
+				}
+				get_galaxy_setup_value = {
+					which = acemod_crisis_manager_var_country_num_wormhole_pairs
+					setting = num_wormhole_pairs
+				}
+				get_galaxy_setup_value = {
+					which = acemod_crisis_manager_var_country_num_hyperlanes
+					setting = num_hyperlanes
+				}
+				get_galaxy_setup_value = {
+					which = acemod_crisis_manager_var_country_habitable_worlds_scale
+					setting = habitable_worlds_scale
+				}
+				get_galaxy_setup_value = {
+					which = acemod_crisis_manager_var_country_primitive_worlds_scale
+					setting = primitive_worlds_scale
+				}
+				get_galaxy_setup_value = {
+					which = acemod_crisis_manager_var_country_crisis_strength_scale
+					setting = crisis_strength_scale
+				}
+				get_galaxy_setup_value = {
+					which = acemod_crisis_manager_var_country_tech_costs_scale
+					setting = tech_costs_scale
+				}
+				root = {
+					# Save to root country so that variables can be displayed on Debug window via scripted_loc.
+					set_variable = {
+						which = acemod_crisis_manager_var_country_num_empires
+						value = prev
+					}
+					set_variable = {
+						which = acemod_crisis_manager_var_country_num_advanced_empires
+						value = prev
+					}
+					set_variable = {
+						which = acemod_crisis_manager_var_country_num_fallen_empires
+						value = prev
+					}
+					set_variable = {
+						which = acemod_crisis_manager_var_country_num_marauder_empires
+						value = prev
+					}
+					set_variable = {
+						which = acemod_crisis_manager_var_country_mid_game_year
+						value = prev
+					}
+					set_variable = {
+						which = acemod_crisis_manager_var_country_end_game_year
+						value = prev
+					}
+					set_variable = {
+						which = acemod_crisis_manager_var_country_victory_year
+						value = prev
+					}
+					set_variable = {
+						which = acemod_crisis_manager_var_country_num_guaranteed_colonies
+						value = prev
+					}
+					set_variable = {
+						which = acemod_crisis_manager_var_country_num_wormhole_pairs
+						value = prev
+					}
+					set_variable = {
+						which = acemod_crisis_manager_var_country_num_hyperlanes
+						value = prev
+					}
+					set_variable = {
+						which = acemod_crisis_manager_var_country_habitable_worlds_scale
+						value = prev
+					}
+					set_variable = {
+						which = acemod_crisis_manager_var_country_primitive_worlds_scale
+						value = prev
+					}
+					set_variable = {
+						which = acemod_crisis_manager_var_country_crisis_strength_scale
+						value = prev
+					}
+					set_variable = {
+						which = acemod_crisis_manager_var_country_tech_costs_scale
+						value = prev
+					}
+				}
 			}
-			get_galaxy_setup_value = {
-				which = acemod_crisis_manager_var_country_num_advanced_empires
-				setting = num_advanced_empires
-			}
-			get_galaxy_setup_value = {
-				which = acemod_crisis_manager_var_country_num_fallen_empires
-				setting = num_fallen_empires
-			}
-			get_galaxy_setup_value = {
-				which = acemod_crisis_manager_var_country_num_marauder_empires
-				setting = num_marauder_empires
-			}
-			get_galaxy_setup_value = {
-				which = acemod_crisis_manager_var_country_mid_game_year
-				setting = mid_game_year
-			}
-			get_galaxy_setup_value = {
-				which = acemod_crisis_manager_var_country_end_game_year
-				setting = end_game_year
-			}
-			get_galaxy_setup_value = {
-				which = acemod_crisis_manager_var_country_victory_year
-				setting = victory_year
-			}
-			get_galaxy_setup_value = {
-				which = acemod_crisis_manager_var_country_num_guaranteed_colonies
-				setting = num_guaranteed_colonies
-			}
-			get_galaxy_setup_value = {
-				which = acemod_crisis_manager_var_country_num_gateways
-				setting = num_gateways
-			}
-			get_galaxy_setup_value = {
-				which = acemod_crisis_manager_var_country_num_wormhole_pairs
-				setting = num_wormhole_pairs
-			}
-			get_galaxy_setup_value = {
-				which = acemod_crisis_manager_var_country_num_hyperlanes
-				setting = num_hyperlanes
-			}
-			get_galaxy_setup_value = {
-				which = acemod_crisis_manager_var_country_habitable_worlds_scale
-				setting = habitable_worlds_scale
-			}
-			get_galaxy_setup_value = {
-				which = acemod_crisis_manager_var_country_primitive_worlds_scale
-				setting = primitive_worlds_scale
-			}
-			get_galaxy_setup_value = {
-				which = acemod_crisis_manager_var_country_crisis_strength_scale
-				setting = crisis_strength_scale
-			}
-			get_galaxy_setup_value = {
-				which = acemod_crisis_manager_var_country_tech_costs_scale
-				setting = tech_costs_scale
-			}
-			# FE_DIFFICULTY
-			this = {
+			event_target:global_event_country = {
+				# global_event country is always around
+				# FE_DIFFICULTY
 				if = {
 					limit = {
 						is_difficulty = 0
@@ -326,7 +663,7 @@ country_event = {
 						which = acemod_crisis_manager_var_country_is_difficulty
 						value = 0.5
 					}
-					break = yes
+					# break = yes
 				}
 				else_if = {
 					limit = {
@@ -336,7 +673,7 @@ country_event = {
 						which = acemod_crisis_manager_var_country_is_difficulty
 						value = 1
 					}
-					break = yes
+					# break = yes
 				}
 				else_if = {
 					limit = {
@@ -346,7 +683,7 @@ country_event = {
 						which = acemod_crisis_manager_var_country_is_difficulty
 						value = 2
 					}
-					break = yes
+					# break = yes
 				}
 				else_if = {
 					limit = {
@@ -356,7 +693,7 @@ country_event = {
 						which = acemod_crisis_manager_var_country_is_difficulty
 						value = 3
 					}
-					break = yes
+					# break = yes
 				}
 				else_if = {
 					limit = {
@@ -366,7 +703,7 @@ country_event = {
 						which = acemod_crisis_manager_var_country_is_difficulty
 						value = 4
 					}
-					break = yes
+					# break = yes
 				}
 				else_if = {
 					limit = {
@@ -376,7 +713,7 @@ country_event = {
 						which = acemod_crisis_manager_var_country_is_difficulty
 						value = 5
 					}
-					break = yes
+					# break = yes
 				}
 				else = {
 					set_variable = {
@@ -384,44 +721,86 @@ country_event = {
 						value = 404
 					}
 				}
+				root = {
+					# Save to root country so that variables can be displayed on Debug window via scripted_loc.
+					set_variable = {
+						which = acemod_crisis_manager_var_country_is_difficulty
+						value = prev
+					}
+				}
 			}
 			# GALAXY_SHAPE - unobtainable
-			this = {
+			event_target:global_event_country = {
 				set_variable = {
 					which = acemod_crisis_manager_var_country_setup_scenario
 					value = 404
 				}
+				root = {
+					# Save to root country so that variables can be displayed on Debug window via scripted_loc.
+					set_variable = {
+						which = acemod_crisis_manager_var_country_setup_scenario
+						value = prev
+					}
+				}
 			}
 			# FE_SCALING_DIFFICULTY - unobtainable
-			this = {
+			event_target:global_event_country = {
 				set_variable = {
 					which = acemod_crisis_manager_var_country_scaling_difficulty
 					value = 404
 				}
+				root = {
+					# Save to root country so that variables can be displayed on Debug window via scripted_loc.
+					set_variable = {
+						which = acemod_crisis_manager_var_country_scaling_difficulty
+						value = prev
+					}
+				}
 			}
 			# FE_AGGRESSIVENESS - unobtainable
-			this = {
+			event_target:global_event_country = {
 				set_variable = {
 					which = acemod_crisis_manager_var_country_aggressiveness
 					value = 404
 				}
+				root = {
+					# Save to root country so that variables can be displayed on Debug window via scripted_loc.
+					set_variable = {
+						which = acemod_crisis_manager_var_country_aggressiveness
+						value = prev
+					}
+				}
 			}
 			# FE_ADVANCED_NEAR_PLAYER - unobtainable
-			this = {
+			event_target:global_event_country = {
 				set_variable = {
 					which = acemod_crisis_manager_var_country_advanced_neighbors
 					value = 404
 				}
+				root = {
+					# Save to root country so that variables can be displayed on Debug window via scripted_loc.
+					set_variable = {
+						which = acemod_crisis_manager_var_country_advanced_neighbors
+						value = prev
+					}
+				}
 			}
 			# FE_CLUSTERED_STARTS - unobtainable
-			this = {
+			event_target:global_event_country = {
 				set_variable = {
 					which = acemod_crisis_manager_var_country_empire_placement
 					value = 404
 				}
+				root = {
+					# Save to root country so that variables can be displayed on Debug window via scripted_loc.
+					set_variable = {
+						which = acemod_crisis_manager_var_country_empire_placement
+						value = prev
+					}
+				}
 			}
 			# CARAVANEERS_LABEL
-			this = {
+			event_target:global_event_country = {
 				if = {
 					limit = {
 						caravaneers_enabled = yes
@@ -437,9 +816,16 @@ country_event = {
 						value = 0
 					}
 				}
+				root = {
+					# Save to root country so that variables can be displayed on Debug window via scripted_loc.
+					set_variable = {
+						which = acemod_crisis_manager_var_country_caravaneers_enabled
+						value = prev
+					}
+				}
 			}
 			# XENO_COMPATIBILITY_LABEL
-			this = {
+			event_target:global_event_country = {
 				if = {
 					limit = {
 						xeno_compatibility_enabled = yes
@@ -453,6 +839,13 @@ country_event = {
 					set_variable = {
 						which = acemod_crisis_manager_var_country_xeno_compatibility_enabled
 						value = 0
+					}
+				}
+				root = {
+					# Save to root country so that variables can be displayed on Debug window via scripted_loc.
+					set_variable = {
+						which = acemod_crisis_manager_var_country_xeno_compatibility_enabled
+						value = prev
 					}
 				}
 			}
@@ -520,6 +913,7 @@ country_event = {
 
 # CRISIS TRIGGERS
 # Core crisis trigger event. Mirror of crisis_trigger.1
+# 
 # Dummy event to remove errors in Stellaris log file. DO NOT USE.
 event = {
 	id = acemod_crisis_manager.1500
