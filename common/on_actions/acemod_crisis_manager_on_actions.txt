@@ -1,0 +1,5 @@
+on_game_start_country = {
+	events = {
+		acemod_crisis_manager.2000		# Marks Aggresive Crisis Engine Mod Manager mod as present. Other mods can check against this flag to see if ACEMOD is installed. on_game_start
+	}
+}

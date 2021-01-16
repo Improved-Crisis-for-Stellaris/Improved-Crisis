@@ -1,13 +1,14 @@
 # Flag event is fired from elsewhere.
 # on_game_start = {
 # 	events = {
-# 		acemod_core.1		# Marks Aggresive Crisis Engine mod as present. Other mods can check against this flag to see if ACEMOD is installed.
+# 		acemod_core.1		# Marks Aggresive Crisis Engine mod as present. Other mods can check against this flag to see if ACEMOD is installed. fire_only_once
 # 	}
 # }
 # Menu events.
 on_game_start_country = {
 	events = {
 		acemod_menu.0		# Options mod menu
+		acemod_core.7		# Marks Aggresive Crisis Engine mod as present. Other mods can check against this flag to see if ACEMOD is installed. on_game_start
 	}
 }
 

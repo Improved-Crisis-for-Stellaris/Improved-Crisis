@@ -25,7 +25,7 @@ country_event = {
 	}
 }
 
-# Marks Aggresive Crisis Engine mod as present. Other mods can check against this flag to see if ACEMOD is installed.
+# Marks Aggresive Crisis Engine mod as present. Other mods can check against this flag to see if ACEMOD is installed. fire_only_once
 country_event = {
 	id = acemod_core.1
 	hide_window = yes
@@ -124,5 +124,18 @@ country_event = {
 				days = -1
 			}
 		}
+	}
+}
+
+# Marks Aggresive Crisis Engine mod as present. Other mods can check against this flag to see if ACEMOD is installed. on_game_start
+country_event = {
+	id = acemod_core.7
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		is_ai = no
+	}
+	immediate = {
+		set_global_flag = acemod_installed
 	}
 }

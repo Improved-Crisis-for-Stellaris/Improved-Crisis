@@ -931,3 +931,16 @@ event = {
 		set_global_flag = galactic_community_formed		# missing vanilla flag?
 	}
 }
+
+# Marks Aggresive Crisis Engine Mod Manager mod as present. Other mods can check against this flag to see if ACEMOD is installed. on_game_start
+country_event = {
+	id = acemod_crisis_manager.2000
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		is_ai = no
+	}
+	immediate = {
+		set_global_flag = acemod_crisis_manager_installed
+	}
+}
