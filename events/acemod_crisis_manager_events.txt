@@ -32,7 +32,7 @@ country_event = {
 					# 	has_global_flag = acemod_crisis_manager_active
 					# }
 				}
-				# set_global_flag = acemod_crisis_manager_active
+				set_global_flag = acemod_crisis_manager_active
 				country_event = {
 					id = acemod_crisis_manager.1
 					days = 0
