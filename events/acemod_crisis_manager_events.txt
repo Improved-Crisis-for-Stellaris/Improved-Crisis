@@ -529,6 +529,56 @@ country_event = {
 					}
 				}
 			}
+			# global_event country is always around
+			# Counts number of human players present
+			event_target:global_event_country = {
+				set_variable = {
+					which = acemod_crisis_manager_var_country_num_human_players_live
+					value = 0
+				}
+				every_country = {
+					limit = {
+						is_ai = no
+					}
+					prev = {
+						change_variable = {
+							which = acemod_crisis_manager_var_country_num_human_players_live							# Counts number of human players present
+							value = 1
+						}
+					}
+				}
+				root = {
+					# Save to root country so that variables can be displayed on Debug window via scripted_loc.
+					set_variable = {
+						which = acemod_crisis_manager_var_country_num_human_players_live
+						value = prev
+					}
+					set_global_flag = ace_debug
+				}
+			}
+			# Counts number of human players on_game_start (since this is post start count number is unknown).
+			if = {
+				limit = {
+					NOT = {
+						has_global_flag = acemod_crisis_manager_num_human_players_start_counted
+					}
+				}
+				event_target:global_event_country = {
+					set_global_flag = acemod_crisis_manager_num_human_players_start_counted
+					set_variable = {
+						which = acemod_crisis_manager_var_country_num_human_players_start
+						value = 404
+					}
+					root = {
+						# Save to root country so that variables can be displayed on Debug window via scripted_loc.
+						set_variable = {
+							which = acemod_crisis_manager_var_country_num_human_players_start
+							value = prev
+						}
+						set_global_flag = ace_debug
+					}
+				}
+			}
 			event_target:global_event_country = {
 				# global_event country is always around
 				# get_galaxy_setup_value effect
@@ -925,6 +975,7 @@ event = {
 		set_global_flag = CmtFlagActivated		# NaK1119's Crisis Manager (all editions + unofficial)
 		set_global_flag = acot_override_activated		# Ancient Cache of Technologies: Override
 		set_global_flag = nhsc_v30		# Extra Ship Components 3.0
+		set_global_flag = nhsc_overwrites_v30		# Extra Ship Components 3.0 - Overwrites
 		set_global_flag = nhsc_fe_planets_updated		# Extra Ship Components 3.0 - Overwrites
 		set_global_flag = has_real_space_mod		# Real Space
 		set_global_flag = z_framework_installed		# Infinite Stellaris Framework
@@ -942,5 +993,34 @@ country_event = {
 	}
 	immediate = {
 		set_global_flag = acemod_crisis_manager_installed
+		if = {
+			limit = {
+				NOT = {
+					has_global_flag = acemod_crisis_manager_num_human_players_start_counted
+				}
+			}
+			event_target:global_event_country = {
+				set_global_flag = acemod_crisis_manager_num_human_players_start_counted
+				set_variable = {
+					which = acemod_crisis_manager_var_country_num_human_players_start
+					value = 0
+				}
+				every_country = {
+					limit = {
+						is_ai = no
+					}
+					event_target:global_event_country = {
+						change_variable = {
+							which = acemod_crisis_manager_var_country_num_human_players_start							# Counts number of human players on_game_start
+							value = 1
+						}
+					}
+					set_variable = {
+						which = acemod_crisis_manager_var_country_num_human_players_start
+						value = prev
+					}
+				}
+			}
+		}
 	}
 }

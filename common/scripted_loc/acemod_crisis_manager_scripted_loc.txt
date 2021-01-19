@@ -1149,13 +1149,17 @@ defined_text = {
 	name = GetName_acemod_crisis_manager_debug_is_nhsco_installed
 	text = {
 		trigger = {
-			has_global_flag = nhsc_fe_planets_updated
+			OR = {
+				has_global_flag = nhsc_overwrites_v30
+				has_global_flag = nhsc_fe_planets_updated
+			}
 		}
 		localization_key = acemod_crisis_manager_trigger_pass
 	}
 	text = {
 		trigger = {
-			NOT = {
+			NOR = {
+				has_global_flag = nhsc_overwrites_v30
 				has_global_flag = nhsc_fe_planets_updated
 			}
 		}
@@ -1265,9 +1269,7 @@ defined_text = {
 	}
 	text = {
 		trigger = {
-			NOT = {
-				is_galactic_community_formed = no
-			}
+			is_galactic_community_formed = no
 		}
 		localization_key = acemod_crisis_manager_trigger_fail
 	}
@@ -3228,5 +3230,68 @@ defined_text = {
 			}
 		}
 		localization_key = acemod_crisis_manager_num_5
+	}
+}
+
+# Number of players
+defined_text = {
+	name = GetName_acemod_crisis_manager_var_country_num_human_players_start
+	text = {
+		trigger = {
+			NOR = {
+				check_variable = {
+					which = acemod_crisis_manager_var_country_num_human_players_start
+					value = 0
+				}
+				check_variable = {
+					which = acemod_crisis_manager_var_country_num_human_players_start
+					value = 404
+				}
+			}
+		}
+		localization_key = acemod_crisis_manager_blank
+	}
+	text = {
+		trigger = {
+			check_variable = {
+				which = acemod_crisis_manager_var_country_num_human_players_start
+				value = 0
+			}
+		}
+		localization_key = OFF
+	}
+	text = {
+		trigger = {
+			check_variable = {
+				which = acemod_crisis_manager_var_country_num_human_players_start
+				value = 404
+			}
+		}
+		localization_key = UNKNOWN
+	}
+}
+
+# Number of players
+defined_text = {
+	name = GetName_acemod_crisis_manager_var_country_num_human_players_live
+	text = {
+		trigger = {
+			NOT = {
+				check_variable = {
+					which = acemod_crisis_manager_var_country_num_human_players_live
+					value = 0
+				}
+			}
+		}
+		localization_key = acemod_crisis_manager_blank
+	}
+	text = {
+		trigger = {
+			check_variable = {
+				which = acemod_crisis_manager_var_country_num_human_players_live
+				value = 0
+			}
+		}
+		localization_key = OFF
 	}
 }
