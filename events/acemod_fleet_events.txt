@@ -296,6 +296,8 @@ event = {
 					is_fleet_idle = yes
 					is_ship_class = shipclass_military
 				}
+				clear_orders = yes				# Unstucks fleet if caught in a queued actions loop.
+				clear_fleet_actions = this				# Unstucks fleet if caught in a queued actions loop.
 				fleet_event = {
 					id = acemod_fleet.105
 					days = 2
