@@ -1,0 +1,243 @@
+# Scope: country is_country_type = global_event
+acemod_crisis_manager_calculate_prethoryn_effect = {
+	if = {
+		limit = {
+			check_variable = {
+				which = acemod_crisis_manager_var_country_prethoryn_spawn_time
+				value = 5
+			}
+			end_game_years_passed >= 5
+		}
+		set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+		country_event = {
+			id = crisis.10
+		}
+	}
+	if = {
+		limit = {
+			check_variable = {
+				which = acemod_crisis_manager_var_country_prethoryn_spawn_time
+				value = 10
+			}
+			end_game_years_passed >= 10
+		}
+		set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+		country_event = {
+			id = crisis.10
+		}
+	}
+	if = {
+		limit = {
+			check_variable = {
+				which = acemod_crisis_manager_var_country_prethoryn_spawn_time
+				value = 15
+			}
+			end_game_years_passed >= 15
+		}
+		set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+		country_event = {
+			id = crisis.10
+		}
+	}
+	if = {
+		limit = {
+			check_variable = {
+				which = acemod_crisis_manager_var_country_prethoryn_spawn_time
+				value = 20
+			}
+			end_game_years_passed >= 20
+		}
+		set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+		country_event = {
+			id = crisis.10
+		}
+	}
+	if = {
+		limit = {
+			check_variable = {
+				which = acemod_crisis_manager_var_country_prethoryn_spawn_time
+				value = 25
+			}
+			end_game_years_passed >= 25
+		}
+		set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+		country_event = {
+			id = crisis.10
+		}
+	}
+	if = {
+		limit = {
+			check_variable = {
+				which = acemod_crisis_manager_var_country_prethoryn_spawn_time
+				value = 30
+			}
+			end_game_years_passed >= 30
+		}
+		set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+		country_event = {
+			id = crisis.10
+		}
+	}
+}
+
+acemod_crisis_manager_calculate_extradimensional_effect = {
+	if = {
+		limit = {
+			check_variable = {
+				which = acemod_crisis_manager_var_country_extradimensional_spawn_time
+				value = 5
+			}
+			end_game_years_passed >= 5
+		}
+		set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+		country_event = {
+			id = crisis.1000
+		}
+	}
+	if = {
+		limit = {
+			check_variable = {
+				which = acemod_crisis_manager_var_country_extradimensional_spawn_time
+				value = 10
+			}
+			end_game_years_passed >= 10
+		}
+		set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+		country_event = {
+			id = crisis.1000
+		}
+	}
+	if = {
+		limit = {
+			check_variable = {
+				which = acemod_crisis_manager_var_country_extradimensional_spawn_time
+				value = 15
+			}
+			end_game_years_passed >= 15
+		}
+		set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+		country_event = {
+			id = crisis.1000
+		}
+	}
+	if = {
+		limit = {
+			check_variable = {
+				which = acemod_crisis_manager_var_country_extradimensional_spawn_time
+				value = 20
+			}
+			end_game_years_passed >= 20
+		}
+		set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+		country_event = {
+			id = crisis.1000
+		}
+	}
+	if = {
+		limit = {
+			check_variable = {
+				which = acemod_crisis_manager_var_country_extradimensional_spawn_time
+				value = 25
+			}
+			end_game_years_passed >= 25
+		}
+		set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+		country_event = {
+			id = crisis.1000
+		}
+	}
+	if = {
+		limit = {
+			check_variable = {
+				which = acemod_crisis_manager_var_country_extradimensional_spawn_time
+				value = 30
+			}
+			end_game_years_passed >= 30
+		}
+		set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+		country_event = {
+			id = crisis.1000
+		}
+	}
+}
+
+acemod_crisis_manager_calculate_contingency_effect = {
+	if = {
+		limit = {
+			check_variable = {
+				which = acemod_crisis_manager_var_country_contingency_spawn_time
+				value = 5
+			}
+			end_game_years_passed >= 5
+		}
+		set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+		country_event = {
+			id = crisis.2005
+		}
+	}
+	if = {
+		limit = {
+			check_variable = {
+				which = acemod_crisis_manager_var_country_contingency_spawn_time
+				value = 10
+			}
+			end_game_years_passed >= 10
+		}
+		set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+		country_event = {
+			id = crisis.2005
+		}
+	}
+	if = {
+		limit = {
+			check_variable = {
+				which = acemod_crisis_manager_var_country_contingency_spawn_time
+				value = 15
+			}
+			end_game_years_passed >= 15
+		}
+		set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+		country_event = {
+			id = crisis.2005
+		}
+	}
+	if = {
+		limit = {
+			check_variable = {
+				which = acemod_crisis_manager_var_country_contingency_spawn_time
+				value = 20
+			}
+			end_game_years_passed >= 20
+		}
+		set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+		country_event = {
+			id = crisis.2005
+		}
+	}
+	if = {
+		limit = {
+			check_variable = {
+				which = acemod_crisis_manager_var_country_contingency_spawn_time
+				value = 25
+			}
+			end_game_years_passed >= 25
+		}
+		set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+		country_event = {
+			id = crisis.2005
+		}
+	}
+	if = {
+		limit = {
+			check_variable = {
+				which = acemod_crisis_manager_var_country_contingency_spawn_time
+				value = 30
+			}
+			end_game_years_passed >= 30
+		}
+		set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+		country_event = {
+			id = crisis.2005
+		}
+	}
+}

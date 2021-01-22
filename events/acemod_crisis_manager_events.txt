@@ -962,14 +962,243 @@ country_event = {
 }
 
 # CRISIS TRIGGERS
-# Core crisis trigger event. Mirror of crisis_trigger.1
-# 
+# Vanilla crisis trigger override without overwrite. on_five_year_pulse in case ACE Crisis Manager is added mid-game.
+event = {
+	id = acemod_crisis_manager.1000
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		is_crises_allowed = yes
+		end_game_years_passed >= 44		# Original value is 50. We assume no other mods change this to anything lower than 44 and break this. Every five years this value is checked so it will fire when end_game_years_passed >= 45. One year of spacing allows for optional injection of code later or blocking ACE Crisis Manager from working.
+		NOT = {
+			has_global_flag = acemod_crisis_manager_countdown_end_game_years_passed_45
+		}
+	}
+	immediate = {
+		random_country = {
+			limit = {
+				is_country_type = global_event				# global_event country is always around
+			}
+			set_global_flag = acemod_crisis_manager_countdown_end_game_years_passed_45			# Let the other mods know that ACE Crisis Manager began countdown.
+			country_event = {
+				id = acemod_crisis_manager.1001				# Begin countdown to end_game_years_passed = 50 T-10d where proper crisis trigger override is set.
+				days = 1790				# years -10 days equals end_game_years_passed = 50 T-10d
+			}
+		}
+	}
+}
+
+# Countdown is over, firing main crisis trigger event before vanilla crisis_trigger.1 is fired.
+country_event = {
+	id = acemod_crisis_manager.1001
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		has_global_flag = acemod_crisis_manager_active		# Won't make any changes to the game if it is inactive.
+		NOT = {
+			has_global_flag = acemod_crisis_manager_disable_crisis_firing			# Allows other mods to effectively disable ACE Crisis Manager's ability to trigger crisis. Best set on_game_start or soon after.
+		}
+	}
+	immediate = {
+		random_country = {
+			limit = {
+				is_country_type = global_event				# global_event country is always around
+			}
+			if = {
+				limit = {
+					NAND = {
+						check_variable = {
+							which = acemod_crisis_manager_var_country_prethoryn_spawn_time
+							value = 0							# No changes.
+						}
+						check_variable = {
+							which = acemod_crisis_manager_var_country_extradimensional_spawn_time
+							value = 0							# No changes.
+						}
+						check_variable = {
+							which = acemod_crisis_manager_var_country_contingency_spawn_time
+							value = 0							# No changes.
+						}
+					}
+				}
+				set_global_flag = galactic_crisis_happened				# Setting up flag shortly before end_game_years_passed >= 50 to prevent crisis_trigger.1 from firing. This flag *must* stay up, otherwise crisis_trigger.1 will fire. We don't want crisis and potentially any modded event to trigger earlier than default vanilla value, this is why we waited 50 years minus 10 days to set it up.
+				set_global_flag = acemod_crisis_manager_galactic_crisis_happened				# Let other mods know that ACE Crisis Manager hijacked event crisis_trigger.1 and now actively handles crisis spawning.}
+			}
+			else = {
+				# No changes in all equals vanilla.
+			}
+		}
+	}
+}
+
+# Crisis trigger tick event (on_five_year_pulse)
+event = {
+	id = acemod_crisis_manager.1003
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		has_global_flag = acemod_crisis_manager_active		# Won't make any changes to the game if it is inactive.
+		NOT = {
+			has_global_flag = acemod_crisis_manager_disable_crisis_firing			# Allows other mods to effectively disable ACE Crisis Manager's ability to trigger crisis. Set on_game_start or soon after.
+		}
+	}
+	immediate = {
+		random_country = {
+			limit = {
+				is_country_type = global_event				# global_event country is always around
+			}
+			country_event = {
+				id = acemod_crisis_manager.1004				# Delay event for years start performance.
+				days = 20
+				random = 5
+			}
+		}
+	}
+}
+
+# Proper crisis triggers. Branching out depending on settings.
+country_event = {
+	id = acemod_crisis_manager.1004
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		random_country = {
+			limit = {
+				is_country_type = global_event				# global_event country is always around
+			}
+			if = {
+				limit = {
+					check_variable = {
+						which = acemod_crisis_manager_var_country_prethoryn_spawn_time
+						value = 0						# No changes.
+					}
+					check_variable = {
+						which = acemod_crisis_manager_var_country_extradimensional_spawn_time
+						value = 0						# No changes.
+					}
+					check_variable = {
+						which = acemod_crisis_manager_var_country_contingency_spawn_time
+						value = 0						# No changes.
+					}
+				}
+				country_event = {
+					id = acemod_crisis_manager.1005					# No changes in all equals vanilla.
+					days = 0
+				}
+			}
+			else = {
+				if = {
+					limit = {
+						NOR = {
+							check_variable = {
+								which = acemod_crisis_manager_var_country_prethoryn_spawn_time
+								value = 0								# If changes were made execute custom triggers.
+							}
+							has_global_flag = prethoryn_invasion_happened							# One instance at a time in case a mod overwrites the event.
+						}
+					}
+					country_event = {
+						id = acemod_crisis_manager.1006						# Prethoryn triggers.
+						days = 0
+					}
+				}
+				if = {
+					limit = {
+						NOR = {
+							check_variable = {
+								which = acemod_crisis_manager_var_country_extradimensional_spawn_time
+								value = 0
+							}
+							has_global_flag = extradimensional_invasion_happened							# One instance at a time in case a mod overwrites the event.
+						}
+					}
+					country_event = {
+						id = acemod_crisis_manager.1007						# Extradimensional triggers.
+						days = 0
+					}
+				}
+				if = {
+					limit = {
+						NOR = {
+							check_variable = {
+								which = acemod_crisis_manager_var_country_contingency_spawn_time
+								value = 0
+							}
+							has_global_flag = ai_invasion_happened							# One instance at a time in case a mod overwrites the event.
+						}
+					}
+					country_event = {
+						id = acemod_crisis_manager.1008						# Contingency triggers
+						days = 0
+					}
+				}
+			}
+		}
+	}
+}
+
+# Vanilla, no effect.
+country_event = {
+	id = acemod_crisis_manager.1005
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		break = yes		# Blank event for overwrites.
+	}
+}
+
+# acemod_crisis_manager_var_country_prethoryn_spawn_time
+country_event = {
+	id = acemod_crisis_manager.1006
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		random_country = {
+			limit = {
+				is_country_type = global_event				# global_event country is always around
+			}
+			acemod_crisis_manager_calculate_prethoryn_effect = yes
+		}
+	}
+}
+
+# acemod_crisis_manager_var_country_extradimensional_spawn_time
+country_event = {
+	id = acemod_crisis_manager.1007
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		random_country = {
+			limit = {
+				is_country_type = global_event				# global_event country is always around
+			}
+			acemod_crisis_manager_calculate_extradimensional_effect = yes
+		}
+	}
+}
+
+# acemod_crisis_manager_var_country_contingency_spawn_time
+country_event = {
+	id = acemod_crisis_manager.1008
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		random_country = {
+			limit = {
+				is_country_type = global_event				# global_event country is always around
+			}
+			acemod_crisis_manager_calculate_contingency_effect = yes
+		}
+	}
+}
+
 # Dummy event to remove errors in Stellaris log file. DO NOT USE.
 event = {
 	id = acemod_crisis_manager.1500
 	hide_window = yes
 	is_triggered_only = yes
 	immediate = {
+		set_global_flag = acemod_crisis_manager_disable_crisis_firing		# Allows other mods to effectively disable ACE Crisis Manager's ability to trigger crisis. Set on_game_start or soon after.
 		set_global_flag = a_deadly_tempest_mod_active		# A Deadly Tempest
 		set_global_flag = z_cm_installed		# Infinite Crisis Master
 		set_global_flag = CmtFlagActivated		# NaK1119's Crisis Manager (all editions + unofficial)

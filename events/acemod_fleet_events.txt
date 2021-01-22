@@ -296,8 +296,6 @@ event = {
 					is_fleet_idle = yes
 					is_ship_class = shipclass_military
 				}
-				clear_orders = yes				# Unstucks fleet if caught in a queued actions loop.
-				clear_fleet_actions = this				# Unstucks fleet if caught in a queued actions loop.
 				fleet_event = {
 					id = acemod_fleet.105
 					days = 2
@@ -355,6 +353,8 @@ fleet_event = {
 		# 		}
 		# 	}
 		# }
+		clear_orders = yes		# Unstucks fleet if caught in a queued actions loop.
+		clear_fleet_actions = this		# Unstucks fleet if caught in a queued actions loop.
 		if = {
 			limit = {
 				solar_system = {
@@ -875,6 +875,8 @@ fleet_event = {
 	hide_window = yes
 	is_triggered_only = yes
 	immediate = {
+		clear_orders = yes		# Unstucks fleet if caught in a queued actions loop.
+		clear_fleet_actions = this		# Unstucks fleet if caught in a queued actions loop.
 		if = {
 			limit = {
 				has_fleet_flag = acemod_planet_flag_starbase_construction_fleet
@@ -1811,6 +1813,8 @@ fleet_event = {
 		# 	}
 		# 	break = yes
 		# }
+		clear_orders = yes		# Unstucks fleet if caught in a queued actions loop.
+		clear_fleet_actions = this		# Unstucks fleet if caught in a queued actions loop.
 		if = {
 			limit = {
 				solar_system = {
@@ -2323,6 +2327,8 @@ fleet_event = {
 		# 	break = yes
 		# }
 		# TO DO: Efficiency clean up and event target save instead of double seek.
+		clear_orders = yes		# Unstucks fleet if caught in a queued actions loop.
+		clear_fleet_actions = this		# Unstucks fleet if caught in a queued actions loop.
 		if = {
 			limit = {
 				solar_system = {
