@@ -3,7 +3,7 @@
   # Menu------------------------------------
  acemod_crisis_manager_name:0 "Aggressive Crisis Engine"
  acemod_crisis_manager.1.name:0 "$acemod_crisis_manager_name$: $acemod_crisis_manager_name_singular$"
- acemod_crisis_manager.1.desc:0 "$SETTINGS$ for §R$CRISIS_FACTOR$§!. They can be changed at any point during the game from this menu.\n\nThis §BMod Manager§! does not change game files and has to be §G$ACTIVE$§! for it to work.\n\nData from the Manager and its dignostics tools is stored in a save, most of it is accessible through §W$acemod_crisis_manager.1.b$§! and §W$acemod_crisis_manager.1.c$§! windows. Manager records when and what crisis it has spawned."
+ acemod_crisis_manager.1.desc:0 "$SETTINGS$ for §R$CRISIS_FACTOR$§!. They can be changed at any point during the game from this menu.\n\nThis §BCrisis Manager§! does not change game files and has to be §G$ACTIVE$§! for it to work.\n\nData from the Manager and its dignostics tools is stored in a save, most of it is accessible through §W$acemod_crisis_manager.1.b$§! and §W$acemod_crisis_manager.1.c$§! windows. Manager records when and what crisis it has spawned."
  acemod_crisis_manager.1.a:0 "§B$acemod_crisis_manager_name_singular$§! is [root.GetName_acemod_crisis_manager_active]"
  acemod_crisis_manager.1.a.tooltip:0 "Enables or disables §BCrisis Manager§!."
  acemod_crisis_manager.1.b:0 "$MESSAGE_GOTO$ $GALAXY_SETTINGS$"
