@@ -259,6 +259,16 @@ event = {
 	}
 }
 
+# Disables start_colony hotfix.
+event = {
+	id = acemod_debug.208
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		set_global_flag = acemod_global_flag_start_colony_effect_fix_disabled
+	}
+}
+
 # Checks if the fleet is idle and applies a timed fleet_flag.
 # Doesn't work as expected.
 fleet_event = {

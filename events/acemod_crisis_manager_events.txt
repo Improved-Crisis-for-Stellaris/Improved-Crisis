@@ -27,10 +27,9 @@ country_event = {
 		hidden_effect = {
 			if = {
 				limit = {
-					always = no
-					# NOT = {
-					# 	has_global_flag = acemod_crisis_manager_active
-					# }
+					NOT = {
+						has_global_flag = acemod_crisis_manager_active
+					}
 				}
 				set_global_flag = acemod_crisis_manager_active
 				country_event = {
@@ -41,7 +40,7 @@ country_event = {
 				break = yes
 			}
 			else = {
-				# remove_global_flag = acemod_crisis_manager_active
+				remove_global_flag = acemod_crisis_manager_active
 				country_event = {
 					id = acemod_crisis_manager.1
 					days = 0
@@ -119,6 +118,18 @@ country_event = {
 						value = acemod_crisis_manager_var_country_spawn_time_variable
 					}
 				}
+				if = {
+					limit = {
+						check_variable = {
+							which = acemod_crisis_manager_var_country_prethoryn_spawn_time							# Max 200 at this moment. Easy to adjust if scripted_effects are expanded.
+							value > 200
+						}
+					}
+					set_variable = {
+						which = acemod_crisis_manager_var_country_prethoryn_spawn_time
+						value = 0
+					}
+				}
 				root = {
 					set_variable = {
 						which = acemod_crisis_manager_var_country_prethoryn_spawn_time
@@ -169,6 +180,18 @@ country_event = {
 						value = acemod_crisis_manager_var_country_spawn_time_variable
 					}
 				}
+				if = {
+					limit = {
+						check_variable = {
+							which = acemod_crisis_manager_var_country_extradimensional_spawn_time							# Max 200 at this moment. Easy to adjust if scripted_effects are expanded.
+							value > 200
+						}
+					}
+					set_variable = {
+						which = acemod_crisis_manager_var_country_extradimensional_spawn_time
+						value = 0
+					}
+				}
 				root = {
 					set_variable = {
 						which = acemod_crisis_manager_var_country_extradimensional_spawn_time
@@ -217,6 +240,18 @@ country_event = {
 					change_variable = {
 						which = acemod_crisis_manager_var_country_contingency_spawn_time
 						value = acemod_crisis_manager_var_country_spawn_time_variable
+					}
+				}
+				if = {
+					limit = {
+						check_variable = {
+							which = acemod_crisis_manager_var_country_contingency_spawn_time							# Max 200 at this moment. Easy to adjust if scripted_effects are expanded.
+							value > 200
+						}
+					}
+					set_variable = {
+						which = acemod_crisis_manager_var_country_contingency_spawn_time
+						value = 0
 					}
 				}
 				root = {
@@ -553,7 +588,6 @@ country_event = {
 						which = acemod_crisis_manager_var_country_num_human_players_live
 						value = prev
 					}
-					set_global_flag = ace_debug
 				}
 			}
 			# Counts number of human players on_game_start (since this is post start count number is unknown).
@@ -575,7 +609,6 @@ country_event = {
 							which = acemod_crisis_manager_var_country_num_human_players_start
 							value = prev
 						}
-						set_global_flag = ace_debug
 					}
 				}
 			}
@@ -982,7 +1015,7 @@ event = {
 			set_global_flag = acemod_crisis_manager_countdown_end_game_years_passed_45			# Let the other mods know that ACE Crisis Manager began countdown.
 			country_event = {
 				id = acemod_crisis_manager.1001				# Begin countdown to end_game_years_passed = 50 T-10d where proper crisis trigger override is set.
-				days = 1790				# years -10 days equals end_game_years_passed = 50 T-10d
+				days = 350				# years -10 days equals end_game_years_passed = 50 T-10d
 			}
 		}
 	}
@@ -1099,7 +1132,8 @@ country_event = {
 					}
 					country_event = {
 						id = acemod_crisis_manager.1006						# Prethoryn triggers.
-						days = 0
+						days = 60
+						random = 90
 					}
 				}
 				if = {
@@ -1114,7 +1148,8 @@ country_event = {
 					}
 					country_event = {
 						id = acemod_crisis_manager.1007						# Extradimensional triggers.
-						days = 0
+						days = 60
+						random = 90
 					}
 				}
 				if = {
@@ -1129,7 +1164,8 @@ country_event = {
 					}
 					country_event = {
 						id = acemod_crisis_manager.1008						# Contingency triggers
-						days = 0
+						days = 60
+						random = 90
 					}
 				}
 			}

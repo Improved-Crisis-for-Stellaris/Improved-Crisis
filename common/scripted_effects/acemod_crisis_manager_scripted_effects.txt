@@ -1,243 +1,1828 @@
 # Scope: country is_country_type = global_event
 acemod_crisis_manager_calculate_prethoryn_effect = {
-	if = {
-		limit = {
-			check_variable = {
-				which = acemod_crisis_manager_var_country_prethoryn_spawn_time
-				value = 5
+	set_global_flag = test_prethoryn_flag
+	switch = {
+		trigger = end_game_years_passed
+		5 < {
+			break = yes
+		}
+		5 = {
+			if = {
+				limit = {
+					check_variable = {
+						which = acemod_crisis_manager_var_country_prethoryn_spawn_time
+						value = 5
+					}
+				}
+				set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+				set_global_flag = acemod_crisis_manager_prethoryn_spawned_5
+				country_event = {
+					id = crisis.10
+				}
 			}
-			end_game_years_passed >= 5
 		}
-		set_global_flag = acemod_crisis_manager_galactic_crisis_happened
-		country_event = {
-			id = crisis.10
-		}
-	}
-	if = {
-		limit = {
-			check_variable = {
-				which = acemod_crisis_manager_var_country_prethoryn_spawn_time
-				value = 10
+		10 = {
+			if = {
+				limit = {
+					check_variable = {
+						which = acemod_crisis_manager_var_country_prethoryn_spawn_time
+						value = 10
+					}
+				}
+				set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+				set_global_flag = acemod_crisis_manager_prethoryn_spawned_10
+				country_event = {
+					id = crisis.10
+				}
 			}
-			end_game_years_passed >= 10
 		}
-		set_global_flag = acemod_crisis_manager_galactic_crisis_happened
-		country_event = {
-			id = crisis.10
-		}
-	}
-	if = {
-		limit = {
-			check_variable = {
-				which = acemod_crisis_manager_var_country_prethoryn_spawn_time
-				value = 15
+		15 = {
+			if = {
+				limit = {
+					check_variable = {
+						which = acemod_crisis_manager_var_country_prethoryn_spawn_time
+						value = 15
+					}
+				}
+				set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+				set_global_flag = acemod_crisis_manager_prethoryn_spawned_15
+				country_event = {
+					id = crisis.10
+				}
 			}
-			end_game_years_passed >= 15
 		}
-		set_global_flag = acemod_crisis_manager_galactic_crisis_happened
-		country_event = {
-			id = crisis.10
-		}
-	}
-	if = {
-		limit = {
-			check_variable = {
-				which = acemod_crisis_manager_var_country_prethoryn_spawn_time
-				value = 20
+		20 = {
+			if = {
+				limit = {
+					check_variable = {
+						which = acemod_crisis_manager_var_country_prethoryn_spawn_time
+						value = 20
+					}
+				}
+				set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+				set_global_flag = acemod_crisis_manager_prethoryn_spawned_20
+				country_event = {
+					id = crisis.10
+				}
 			}
-			end_game_years_passed >= 20
 		}
-		set_global_flag = acemod_crisis_manager_galactic_crisis_happened
-		country_event = {
-			id = crisis.10
-		}
-	}
-	if = {
-		limit = {
-			check_variable = {
-				which = acemod_crisis_manager_var_country_prethoryn_spawn_time
-				value = 25
+		25 = {
+			if = {
+				limit = {
+					check_variable = {
+						which = acemod_crisis_manager_var_country_prethoryn_spawn_time
+						value = 25
+					}
+				}
+				set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+				set_global_flag = acemod_crisis_manager_prethoryn_spawned_25
+				country_event = {
+					id = crisis.10
+				}
 			}
-			end_game_years_passed >= 25
 		}
-		set_global_flag = acemod_crisis_manager_galactic_crisis_happened
-		country_event = {
-			id = crisis.10
-		}
-	}
-	if = {
-		limit = {
-			check_variable = {
-				which = acemod_crisis_manager_var_country_prethoryn_spawn_time
-				value = 30
+		30 = {
+			if = {
+				limit = {
+					check_variable = {
+						which = acemod_crisis_manager_var_country_prethoryn_spawn_time
+						value = 30
+					}
+				}
+				set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+				set_global_flag = acemod_crisis_manager_prethoryn_spawned_30
+				country_event = {
+					id = crisis.10
+				}
 			}
-			end_game_years_passed >= 30
 		}
-		set_global_flag = acemod_crisis_manager_galactic_crisis_happened
-		country_event = {
-			id = crisis.10
+		35 = {
+			if = {
+				limit = {
+					check_variable = {
+						which = acemod_crisis_manager_var_country_prethoryn_spawn_time
+						value = 35
+					}
+				}
+				set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+				set_global_flag = acemod_crisis_manager_prethoryn_spawned_35
+				country_event = {
+					id = crisis.10
+				}
+			}
+		}
+		40 = {
+			if = {
+				limit = {
+					check_variable = {
+						which = acemod_crisis_manager_var_country_prethoryn_spawn_time
+						value = 40
+					}
+				}
+				set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+				set_global_flag = acemod_crisis_manager_prethoryn_spawned_40
+				country_event = {
+					id = crisis.10
+				}
+			}
+		}
+		45 = {
+			if = {
+				limit = {
+					check_variable = {
+						which = acemod_crisis_manager_var_country_prethoryn_spawn_time
+						value = 45
+					}
+				}
+				set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+				set_global_flag = acemod_crisis_manager_prethoryn_spawned_45
+				country_event = {
+					id = crisis.10
+				}
+			}
+		}
+		50 = {
+			if = {
+				limit = {
+					check_variable = {
+						which = acemod_crisis_manager_var_country_prethoryn_spawn_time
+						value = 50
+					}
+				}
+				set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+				set_global_flag = acemod_crisis_manager_prethoryn_spawned_50
+				country_event = {
+					id = crisis.10
+				}
+			}
+		}
+		55 = {
+			if = {
+				limit = {
+					check_variable = {
+						which = acemod_crisis_manager_var_country_prethoryn_spawn_time
+						value = 55
+					}
+				}
+				set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+				set_global_flag = acemod_crisis_manager_prethoryn_spawned_55
+				country_event = {
+					id = crisis.10
+				}
+			}
+		}
+		60 = {
+			if = {
+				limit = {
+					check_variable = {
+						which = acemod_crisis_manager_var_country_prethoryn_spawn_time
+						value = 60
+					}
+				}
+				set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+				set_global_flag = acemod_crisis_manager_prethoryn_spawned_60
+				country_event = {
+					id = crisis.10
+				}
+			}
+		}
+		65 = {
+			if = {
+				limit = {
+					check_variable = {
+						which = acemod_crisis_manager_var_country_prethoryn_spawn_time
+						value = 65
+					}
+				}
+				set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+				set_global_flag = acemod_crisis_manager_prethoryn_spawned_65
+				country_event = {
+					id = crisis.10
+				}
+			}
+		}
+		70 = {
+			if = {
+				limit = {
+					check_variable = {
+						which = acemod_crisis_manager_var_country_prethoryn_spawn_time
+						value = 70
+					}
+				}
+				set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+				set_global_flag = acemod_crisis_manager_prethoryn_spawned_70
+				country_event = {
+					id = crisis.10
+				}
+			}
+		}
+		75 = {
+			if = {
+				limit = {
+					check_variable = {
+						which = acemod_crisis_manager_var_country_prethoryn_spawn_time
+						value = 75
+					}
+				}
+				set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+				set_global_flag = acemod_crisis_manager_prethoryn_spawned_75
+				country_event = {
+					id = crisis.10
+				}
+			}
+		}
+		80 = {
+			if = {
+				limit = {
+					check_variable = {
+						which = acemod_crisis_manager_var_country_prethoryn_spawn_time
+						value = 80
+					}
+				}
+				set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+				set_global_flag = acemod_crisis_manager_prethoryn_spawned_80
+				country_event = {
+					id = crisis.10
+				}
+			}
+		}
+		85 = {
+			if = {
+				limit = {
+					check_variable = {
+						which = acemod_crisis_manager_var_country_prethoryn_spawn_time
+						value = 85
+					}
+				}
+				set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+				set_global_flag = acemod_crisis_manager_prethoryn_spawned_85
+				country_event = {
+					id = crisis.10
+				}
+			}
+		}
+		90 = {
+			if = {
+				limit = {
+					check_variable = {
+						which = acemod_crisis_manager_var_country_prethoryn_spawn_time
+						value = 90
+					}
+				}
+				set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+				set_global_flag = acemod_crisis_manager_prethoryn_spawned_90
+				country_event = {
+					id = crisis.10
+				}
+			}
+		}
+		95 = {
+			if = {
+				limit = {
+					check_variable = {
+						which = acemod_crisis_manager_var_country_prethoryn_spawn_time
+						value = 95
+					}
+				}
+				set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+				set_global_flag = acemod_crisis_manager_prethoryn_spawned_95
+				country_event = {
+					id = crisis.10
+				}
+			}
+		}
+		100 = {
+			if = {
+				limit = {
+					check_variable = {
+						which = acemod_crisis_manager_var_country_prethoryn_spawn_time
+						value = 100
+					}
+				}
+				set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+				set_global_flag = acemod_crisis_manager_prethoryn_spawned_100
+				country_event = {
+					id = crisis.10
+				}
+			}
+		}
+		105 = {
+			if = {
+				limit = {
+					check_variable = {
+						which = acemod_crisis_manager_var_country_prethoryn_spawn_time
+						value = 105
+					}
+				}
+				set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+				set_global_flag = acemod_crisis_manager_prethoryn_spawned_105
+				country_event = {
+					id = crisis.10
+				}
+			}
+		}
+		110 = {
+			if = {
+				limit = {
+					check_variable = {
+						which = acemod_crisis_manager_var_country_prethoryn_spawn_time
+						value = 110
+					}
+				}
+				set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+				set_global_flag = acemod_crisis_manager_prethoryn_spawned_110
+				country_event = {
+					id = crisis.10
+				}
+			}
+		}
+		115 = {
+			if = {
+				limit = {
+					check_variable = {
+						which = acemod_crisis_manager_var_country_prethoryn_spawn_time
+						value = 115
+					}
+				}
+				set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+				set_global_flag = acemod_crisis_manager_prethoryn_spawned_115
+				country_event = {
+					id = crisis.10
+				}
+			}
+		}
+		120 = {
+			if = {
+				limit = {
+					check_variable = {
+						which = acemod_crisis_manager_var_country_prethoryn_spawn_time
+						value = 120
+					}
+				}
+				set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+				set_global_flag = acemod_crisis_manager_prethoryn_spawned_120
+				country_event = {
+					id = crisis.10
+				}
+			}
+		}
+		125 = {
+			if = {
+				limit = {
+					check_variable = {
+						which = acemod_crisis_manager_var_country_prethoryn_spawn_time
+						value = 125
+					}
+				}
+				set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+				set_global_flag = acemod_crisis_manager_prethoryn_spawned_125
+				country_event = {
+					id = crisis.10
+				}
+			}
+		}
+		130 = {
+			if = {
+				limit = {
+					check_variable = {
+						which = acemod_crisis_manager_var_country_prethoryn_spawn_time
+						value = 130
+					}
+				}
+				set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+				set_global_flag = acemod_crisis_manager_prethoryn_spawned_130
+				country_event = {
+					id = crisis.10
+				}
+			}
+		}
+		135 = {
+			if = {
+				limit = {
+					check_variable = {
+						which = acemod_crisis_manager_var_country_prethoryn_spawn_time
+						value = 135
+					}
+				}
+				set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+				set_global_flag = acemod_crisis_manager_prethoryn_spawned_135
+				country_event = {
+					id = crisis.10
+				}
+			}
+		}
+		140 = {
+			if = {
+				limit = {
+					check_variable = {
+						which = acemod_crisis_manager_var_country_prethoryn_spawn_time
+						value = 140
+					}
+				}
+				set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+				set_global_flag = acemod_crisis_manager_prethoryn_spawned_140
+				country_event = {
+					id = crisis.10
+				}
+			}
+		}
+		145 = {
+			if = {
+				limit = {
+					check_variable = {
+						which = acemod_crisis_manager_var_country_prethoryn_spawn_time
+						value = 145
+					}
+				}
+				set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+				set_global_flag = acemod_crisis_manager_prethoryn_spawned_145
+				country_event = {
+					id = crisis.10
+				}
+			}
+		}
+		150 = {
+			if = {
+				limit = {
+					check_variable = {
+						which = acemod_crisis_manager_var_country_prethoryn_spawn_time
+						value = 150
+					}
+				}
+				set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+				set_global_flag = acemod_crisis_manager_prethoryn_spawned_150
+				country_event = {
+					id = crisis.10
+				}
+			}
+		}
+		155 = {
+			if = {
+				limit = {
+					check_variable = {
+						which = acemod_crisis_manager_var_country_prethoryn_spawn_time
+						value = 155
+					}
+				}
+				set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+				set_global_flag = acemod_crisis_manager_prethoryn_spawned_155
+				country_event = {
+					id = crisis.10
+				}
+			}
+		}
+		160 = {
+			if = {
+				limit = {
+					check_variable = {
+						which = acemod_crisis_manager_var_country_prethoryn_spawn_time
+						value = 160
+					}
+				}
+				set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+				set_global_flag = acemod_crisis_manager_prethoryn_spawned_160
+				country_event = {
+					id = crisis.10
+				}
+			}
+		}
+		165 = {
+			if = {
+				limit = {
+					check_variable = {
+						which = acemod_crisis_manager_var_country_prethoryn_spawn_time
+						value = 165
+					}
+				}
+				set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+				set_global_flag = acemod_crisis_manager_prethoryn_spawned_165
+				country_event = {
+					id = crisis.10
+				}
+			}
+		}
+		170 = {
+			if = {
+				limit = {
+					check_variable = {
+						which = acemod_crisis_manager_var_country_prethoryn_spawn_time
+						value = 170
+					}
+				}
+				set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+				set_global_flag = acemod_crisis_manager_prethoryn_spawned_170
+				country_event = {
+					id = crisis.10
+				}
+			}
+		}
+		175 = {
+			if = {
+				limit = {
+					check_variable = {
+						which = acemod_crisis_manager_var_country_prethoryn_spawn_time
+						value = 175
+					}
+				}
+				set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+				set_global_flag = acemod_crisis_manager_prethoryn_spawned_175
+				country_event = {
+					id = crisis.10
+				}
+			}
+		}
+		180 = {
+			if = {
+				limit = {
+					check_variable = {
+						which = acemod_crisis_manager_var_country_prethoryn_spawn_time
+						value = 180
+					}
+				}
+				set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+				set_global_flag = acemod_crisis_manager_prethoryn_spawned_180
+				country_event = {
+					id = crisis.10
+				}
+			}
+		}
+		185 = {
+			if = {
+				limit = {
+					check_variable = {
+						which = acemod_crisis_manager_var_country_prethoryn_spawn_time
+						value = 185
+					}
+				}
+				set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+				set_global_flag = acemod_crisis_manager_prethoryn_spawned_185
+				country_event = {
+					id = crisis.10
+				}
+			}
+		}
+		190 = {
+			if = {
+				limit = {
+					check_variable = {
+						which = acemod_crisis_manager_var_country_prethoryn_spawn_time
+						value = 190
+					}
+				}
+				set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+				set_global_flag = acemod_crisis_manager_prethoryn_spawned_190
+				country_event = {
+					id = crisis.10
+				}
+			}
+		}
+		195 = {
+			if = {
+				limit = {
+					check_variable = {
+						which = acemod_crisis_manager_var_country_prethoryn_spawn_time
+						value = 195
+					}
+				}
+				set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+				set_global_flag = acemod_crisis_manager_prethoryn_spawned_195
+				country_event = {
+					id = crisis.10
+				}
+			}
+		}
+		200 = {
+			if = {
+				limit = {
+					check_variable = {
+						which = acemod_crisis_manager_var_country_prethoryn_spawn_time
+						value = 200
+					}
+				}
+				set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+				set_global_flag = acemod_crisis_manager_prethoryn_spawned_200
+				country_event = {
+					id = crisis.10
+				}
+			}
 		}
 	}
 }
 
 acemod_crisis_manager_calculate_extradimensional_effect = {
-	if = {
-		limit = {
-			check_variable = {
-				which = acemod_crisis_manager_var_country_extradimensional_spawn_time
-				value = 5
+	switch = {
+		trigger = end_game_years_passed
+		5 < {
+			break = yes
+		}
+		5 = {
+			if = {
+				limit = {
+					check_variable = {
+						which = acemod_crisis_manager_var_country_extradimensional_spawn_time
+						value = 5
+					}
+				}
+				set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+				set_global_flag = acemod_crisis_manager_extradimensional_spawned_5
+				country_event = {
+					id = crisis.1000
+				}
 			}
-			end_game_years_passed >= 5
 		}
-		set_global_flag = acemod_crisis_manager_galactic_crisis_happened
-		country_event = {
-			id = crisis.1000
-		}
-	}
-	if = {
-		limit = {
-			check_variable = {
-				which = acemod_crisis_manager_var_country_extradimensional_spawn_time
-				value = 10
+		10 = {
+			if = {
+				limit = {
+					check_variable = {
+						which = acemod_crisis_manager_var_country_extradimensional_spawn_time
+						value = 10
+					}
+				}
+				set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+				set_global_flag = acemod_crisis_manager_extradimensional_spawned_10
+				country_event = {
+					id = crisis.1000
+				}
 			}
-			end_game_years_passed >= 10
 		}
-		set_global_flag = acemod_crisis_manager_galactic_crisis_happened
-		country_event = {
-			id = crisis.1000
-		}
-	}
-	if = {
-		limit = {
-			check_variable = {
-				which = acemod_crisis_manager_var_country_extradimensional_spawn_time
-				value = 15
+		15 = {
+			if = {
+				limit = {
+					check_variable = {
+						which = acemod_crisis_manager_var_country_extradimensional_spawn_time
+						value = 15
+					}
+				}
+				set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+				set_global_flag = acemod_crisis_manager_extradimensional_spawned_15
+				country_event = {
+					id = crisis.1000
+				}
 			}
-			end_game_years_passed >= 15
 		}
-		set_global_flag = acemod_crisis_manager_galactic_crisis_happened
-		country_event = {
-			id = crisis.1000
-		}
-	}
-	if = {
-		limit = {
-			check_variable = {
-				which = acemod_crisis_manager_var_country_extradimensional_spawn_time
-				value = 20
+		20 = {
+			if = {
+				limit = {
+					check_variable = {
+						which = acemod_crisis_manager_var_country_extradimensional_spawn_time
+						value = 20
+					}
+				}
+				set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+				set_global_flag = acemod_crisis_manager_extradimensional_spawned_20
+				country_event = {
+					id = crisis.1000
+				}
 			}
-			end_game_years_passed >= 20
 		}
-		set_global_flag = acemod_crisis_manager_galactic_crisis_happened
-		country_event = {
-			id = crisis.1000
-		}
-	}
-	if = {
-		limit = {
-			check_variable = {
-				which = acemod_crisis_manager_var_country_extradimensional_spawn_time
-				value = 25
+		25 = {
+			if = {
+				limit = {
+					check_variable = {
+						which = acemod_crisis_manager_var_country_extradimensional_spawn_time
+						value = 25
+					}
+				}
+				set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+				set_global_flag = acemod_crisis_manager_extradimensional_spawned_25
+				country_event = {
+					id = crisis.1000
+				}
 			}
-			end_game_years_passed >= 25
 		}
-		set_global_flag = acemod_crisis_manager_galactic_crisis_happened
-		country_event = {
-			id = crisis.1000
-		}
-	}
-	if = {
-		limit = {
-			check_variable = {
-				which = acemod_crisis_manager_var_country_extradimensional_spawn_time
-				value = 30
+		30 = {
+			if = {
+				limit = {
+					check_variable = {
+						which = acemod_crisis_manager_var_country_extradimensional_spawn_time
+						value = 30
+					}
+				}
+				set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+				set_global_flag = acemod_crisis_manager_extradimensional_spawned_30
+				country_event = {
+					id = crisis.1000
+				}
 			}
-			end_game_years_passed >= 30
 		}
-		set_global_flag = acemod_crisis_manager_galactic_crisis_happened
-		country_event = {
-			id = crisis.1000
+		35 = {
+			if = {
+				limit = {
+					check_variable = {
+						which = acemod_crisis_manager_var_country_extradimensional_spawn_time
+						value = 35
+					}
+				}
+				set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+				set_global_flag = acemod_crisis_manager_extradimensional_spawned_35
+				country_event = {
+					id = crisis.1000
+				}
+			}
+		}
+		40 = {
+			if = {
+				limit = {
+					check_variable = {
+						which = acemod_crisis_manager_var_country_extradimensional_spawn_time
+						value = 40
+					}
+				}
+				set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+				set_global_flag = acemod_crisis_manager_extradimensional_spawned_40
+				country_event = {
+					id = crisis.1000
+				}
+			}
+		}
+		45 = {
+			if = {
+				limit = {
+					check_variable = {
+						which = acemod_crisis_manager_var_country_extradimensional_spawn_time
+						value = 45
+					}
+				}
+				set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+				set_global_flag = acemod_crisis_manager_extradimensional_spawned_45
+				country_event = {
+					id = crisis.1000
+				}
+			}
+		}
+		50 = {
+			if = {
+				limit = {
+					check_variable = {
+						which = acemod_crisis_manager_var_country_extradimensional_spawn_time
+						value = 50
+					}
+				}
+				set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+				set_global_flag = acemod_crisis_manager_extradimensional_spawned_50
+				country_event = {
+					id = crisis.1000
+				}
+			}
+		}
+		55 = {
+			if = {
+				limit = {
+					check_variable = {
+						which = acemod_crisis_manager_var_country_extradimensional_spawn_time
+						value = 55
+					}
+				}
+				set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+				set_global_flag = acemod_crisis_manager_extradimensional_spawned_55
+				country_event = {
+					id = crisis.1000
+				}
+			}
+		}
+		60 = {
+			if = {
+				limit = {
+					check_variable = {
+						which = acemod_crisis_manager_var_country_extradimensional_spawn_time
+						value = 60
+					}
+				}
+				set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+				set_global_flag = acemod_crisis_manager_extradimensional_spawned_60
+				country_event = {
+					id = crisis.1000
+				}
+			}
+		}
+		65 = {
+			if = {
+				limit = {
+					check_variable = {
+						which = acemod_crisis_manager_var_country_extradimensional_spawn_time
+						value = 65
+					}
+				}
+				set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+				set_global_flag = acemod_crisis_manager_extradimensional_spawned_65
+				country_event = {
+					id = crisis.1000
+				}
+			}
+		}
+		70 = {
+			if = {
+				limit = {
+					check_variable = {
+						which = acemod_crisis_manager_var_country_extradimensional_spawn_time
+						value = 70
+					}
+				}
+				set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+				set_global_flag = acemod_crisis_manager_extradimensional_spawned_70
+				country_event = {
+					id = crisis.1000
+				}
+			}
+		}
+		75 = {
+			if = {
+				limit = {
+					check_variable = {
+						which = acemod_crisis_manager_var_country_extradimensional_spawn_time
+						value = 75
+					}
+				}
+				set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+				set_global_flag = acemod_crisis_manager_extradimensional_spawned_75
+				country_event = {
+					id = crisis.1000
+				}
+			}
+		}
+		80 = {
+			if = {
+				limit = {
+					check_variable = {
+						which = acemod_crisis_manager_var_country_extradimensional_spawn_time
+						value = 80
+					}
+				}
+				set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+				set_global_flag = acemod_crisis_manager_extradimensional_spawned_80
+				country_event = {
+					id = crisis.1000
+				}
+			}
+		}
+		85 = {
+			if = {
+				limit = {
+					check_variable = {
+						which = acemod_crisis_manager_var_country_extradimensional_spawn_time
+						value = 85
+					}
+				}
+				set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+				set_global_flag = acemod_crisis_manager_extradimensional_spawned_85
+				country_event = {
+					id = crisis.1000
+				}
+			}
+		}
+		90 = {
+			if = {
+				limit = {
+					check_variable = {
+						which = acemod_crisis_manager_var_country_extradimensional_spawn_time
+						value = 90
+					}
+				}
+				set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+				set_global_flag = acemod_crisis_manager_extradimensional_spawned_90
+				country_event = {
+					id = crisis.1000
+				}
+			}
+		}
+		95 = {
+			if = {
+				limit = {
+					check_variable = {
+						which = acemod_crisis_manager_var_country_extradimensional_spawn_time
+						value = 95
+					}
+				}
+				set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+				set_global_flag = acemod_crisis_manager_extradimensional_spawned_95
+				country_event = {
+					id = crisis.1000
+				}
+			}
+		}
+		100 = {
+			if = {
+				limit = {
+					check_variable = {
+						which = acemod_crisis_manager_var_country_extradimensional_spawn_time
+						value = 100
+					}
+				}
+				set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+				set_global_flag = acemod_crisis_manager_extradimensional_spawned_100
+				country_event = {
+					id = crisis.1000
+				}
+			}
+		}
+		105 = {
+			if = {
+				limit = {
+					check_variable = {
+						which = acemod_crisis_manager_var_country_extradimensional_spawn_time
+						value = 105
+					}
+				}
+				set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+				set_global_flag = acemod_crisis_manager_extradimensional_spawned_105
+				country_event = {
+					id = crisis.1000
+				}
+			}
+		}
+		110 = {
+			if = {
+				limit = {
+					check_variable = {
+						which = acemod_crisis_manager_var_country_extradimensional_spawn_time
+						value = 110
+					}
+				}
+				set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+				set_global_flag = acemod_crisis_manager_extradimensional_spawned_110
+				country_event = {
+					id = crisis.1000
+				}
+			}
+		}
+		115 = {
+			if = {
+				limit = {
+					check_variable = {
+						which = acemod_crisis_manager_var_country_extradimensional_spawn_time
+						value = 115
+					}
+				}
+				set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+				set_global_flag = acemod_crisis_manager_extradimensional_spawned_115
+				country_event = {
+					id = crisis.1000
+				}
+			}
+		}
+		120 = {
+			if = {
+				limit = {
+					check_variable = {
+						which = acemod_crisis_manager_var_country_extradimensional_spawn_time
+						value = 120
+					}
+				}
+				set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+				set_global_flag = acemod_crisis_manager_extradimensional_spawned_120
+				country_event = {
+					id = crisis.1000
+				}
+			}
+		}
+		125 = {
+			if = {
+				limit = {
+					check_variable = {
+						which = acemod_crisis_manager_var_country_extradimensional_spawn_time
+						value = 125
+					}
+				}
+				set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+				set_global_flag = acemod_crisis_manager_extradimensional_spawned_125
+				country_event = {
+					id = crisis.1000
+				}
+			}
+		}
+		130 = {
+			if = {
+				limit = {
+					check_variable = {
+						which = acemod_crisis_manager_var_country_extradimensional_spawn_time
+						value = 130
+					}
+				}
+				set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+				set_global_flag = acemod_crisis_manager_extradimensional_spawned_130
+				country_event = {
+					id = crisis.1000
+				}
+			}
+		}
+		135 = {
+			if = {
+				limit = {
+					check_variable = {
+						which = acemod_crisis_manager_var_country_extradimensional_spawn_time
+						value = 135
+					}
+				}
+				set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+				set_global_flag = acemod_crisis_manager_extradimensional_spawned_135
+				country_event = {
+					id = crisis.1000
+				}
+			}
+		}
+		140 = {
+			if = {
+				limit = {
+					check_variable = {
+						which = acemod_crisis_manager_var_country_extradimensional_spawn_time
+						value = 140
+					}
+				}
+				set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+				set_global_flag = acemod_crisis_manager_extradimensional_spawned_140
+				country_event = {
+					id = crisis.1000
+				}
+			}
+		}
+		145 = {
+			if = {
+				limit = {
+					check_variable = {
+						which = acemod_crisis_manager_var_country_extradimensional_spawn_time
+						value = 145
+					}
+				}
+				set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+				set_global_flag = acemod_crisis_manager_extradimensional_spawned_145
+				country_event = {
+					id = crisis.1000
+				}
+			}
+		}
+		150 = {
+			if = {
+				limit = {
+					check_variable = {
+						which = acemod_crisis_manager_var_country_extradimensional_spawn_time
+						value = 150
+					}
+				}
+				set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+				set_global_flag = acemod_crisis_manager_extradimensional_spawned_150
+				country_event = {
+					id = crisis.1000
+				}
+			}
+		}
+		155 = {
+			if = {
+				limit = {
+					check_variable = {
+						which = acemod_crisis_manager_var_country_extradimensional_spawn_time
+						value = 155
+					}
+				}
+				set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+				set_global_flag = acemod_crisis_manager_extradimensional_spawned_155
+				country_event = {
+					id = crisis.1000
+				}
+			}
+		}
+		160 = {
+			if = {
+				limit = {
+					check_variable = {
+						which = acemod_crisis_manager_var_country_extradimensional_spawn_time
+						value = 160
+					}
+				}
+				set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+				set_global_flag = acemod_crisis_manager_extradimensional_spawned_160
+				country_event = {
+					id = crisis.1000
+				}
+			}
+		}
+		165 = {
+			if = {
+				limit = {
+					check_variable = {
+						which = acemod_crisis_manager_var_country_extradimensional_spawn_time
+						value = 165
+					}
+				}
+				set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+				set_global_flag = acemod_crisis_manager_extradimensional_spawned_165
+				country_event = {
+					id = crisis.1000
+				}
+			}
+		}
+		170 = {
+			if = {
+				limit = {
+					check_variable = {
+						which = acemod_crisis_manager_var_country_extradimensional_spawn_time
+						value = 170
+					}
+				}
+				set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+				set_global_flag = acemod_crisis_manager_extradimensional_spawned_170
+				country_event = {
+					id = crisis.1000
+				}
+			}
+		}
+		175 = {
+			if = {
+				limit = {
+					check_variable = {
+						which = acemod_crisis_manager_var_country_extradimensional_spawn_time
+						value = 175
+					}
+				}
+				set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+				set_global_flag = acemod_crisis_manager_extradimensional_spawned_175
+				country_event = {
+					id = crisis.1000
+				}
+			}
+		}
+		180 = {
+			if = {
+				limit = {
+					check_variable = {
+						which = acemod_crisis_manager_var_country_extradimensional_spawn_time
+						value = 180
+					}
+				}
+				set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+				set_global_flag = acemod_crisis_manager_extradimensional_spawned_180
+				country_event = {
+					id = crisis.1000
+				}
+			}
+		}
+		185 = {
+			if = {
+				limit = {
+					check_variable = {
+						which = acemod_crisis_manager_var_country_extradimensional_spawn_time
+						value = 185
+					}
+				}
+				set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+				set_global_flag = acemod_crisis_manager_extradimensional_spawned_185
+				country_event = {
+					id = crisis.1000
+				}
+			}
+		}
+		190 = {
+			if = {
+				limit = {
+					check_variable = {
+						which = acemod_crisis_manager_var_country_extradimensional_spawn_time
+						value = 190
+					}
+				}
+				set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+				set_global_flag = acemod_crisis_manager_extradimensional_spawned_190
+				country_event = {
+					id = crisis.1000
+				}
+			}
+		}
+		195 = {
+			if = {
+				limit = {
+					check_variable = {
+						which = acemod_crisis_manager_var_country_extradimensional_spawn_time
+						value = 195
+					}
+				}
+				set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+				set_global_flag = acemod_crisis_manager_extradimensional_spawned_195
+				country_event = {
+					id = crisis.1000
+				}
+			}
+		}
+		200 = {
+			if = {
+				limit = {
+					check_variable = {
+						which = acemod_crisis_manager_var_country_extradimensional_spawn_time
+						value = 200
+					}
+				}
+				set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+				set_global_flag = acemod_crisis_manager_extradimensional_spawned_200
+				country_event = {
+					id = crisis.1000
+				}
+			}
 		}
 	}
 }
 
 acemod_crisis_manager_calculate_contingency_effect = {
-	if = {
-		limit = {
-			check_variable = {
-				which = acemod_crisis_manager_var_country_contingency_spawn_time
-				value = 5
+	switch = {
+		trigger = end_game_years_passed
+		5 < {
+			break = yes
+		}
+		5 = {
+			if = {
+				limit = {
+					check_variable = {
+						which = acemod_crisis_manager_var_country_contingency_spawn_time
+						value = 5
+					}
+				}
+				set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+				set_global_flag = acemod_crisis_manager_contingency_spawned_5
+				country_event = {
+					id = crisis.2005
+				}
 			}
-			end_game_years_passed >= 5
 		}
-		set_global_flag = acemod_crisis_manager_galactic_crisis_happened
-		country_event = {
-			id = crisis.2005
-		}
-	}
-	if = {
-		limit = {
-			check_variable = {
-				which = acemod_crisis_manager_var_country_contingency_spawn_time
-				value = 10
+		10 = {
+			if = {
+				limit = {
+					check_variable = {
+						which = acemod_crisis_manager_var_country_contingency_spawn_time
+						value = 10
+					}
+				}
+				set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+				set_global_flag = acemod_crisis_manager_contingency_spawned_10
+				country_event = {
+					id = crisis.2005
+				}
 			}
-			end_game_years_passed >= 10
 		}
-		set_global_flag = acemod_crisis_manager_galactic_crisis_happened
-		country_event = {
-			id = crisis.2005
-		}
-	}
-	if = {
-		limit = {
-			check_variable = {
-				which = acemod_crisis_manager_var_country_contingency_spawn_time
-				value = 15
+		15 = {
+			if = {
+				limit = {
+					check_variable = {
+						which = acemod_crisis_manager_var_country_contingency_spawn_time
+						value = 15
+					}
+				}
+				set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+				set_global_flag = acemod_crisis_manager_contingency_spawned_15
+				country_event = {
+					id = crisis.2005
+				}
 			}
-			end_game_years_passed >= 15
 		}
-		set_global_flag = acemod_crisis_manager_galactic_crisis_happened
-		country_event = {
-			id = crisis.2005
-		}
-	}
-	if = {
-		limit = {
-			check_variable = {
-				which = acemod_crisis_manager_var_country_contingency_spawn_time
-				value = 20
+		20 = {
+			if = {
+				limit = {
+					check_variable = {
+						which = acemod_crisis_manager_var_country_contingency_spawn_time
+						value = 20
+					}
+				}
+				set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+				set_global_flag = acemod_crisis_manager_contingency_spawned_20
+				country_event = {
+					id = crisis.2005
+				}
 			}
-			end_game_years_passed >= 20
 		}
-		set_global_flag = acemod_crisis_manager_galactic_crisis_happened
-		country_event = {
-			id = crisis.2005
-		}
-	}
-	if = {
-		limit = {
-			check_variable = {
-				which = acemod_crisis_manager_var_country_contingency_spawn_time
-				value = 25
+		25 = {
+			if = {
+				limit = {
+					check_variable = {
+						which = acemod_crisis_manager_var_country_contingency_spawn_time
+						value = 25
+					}
+				}
+				set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+				set_global_flag = acemod_crisis_manager_contingency_spawned_25
+				country_event = {
+					id = crisis.2005
+				}
 			}
-			end_game_years_passed >= 25
 		}
-		set_global_flag = acemod_crisis_manager_galactic_crisis_happened
-		country_event = {
-			id = crisis.2005
-		}
-	}
-	if = {
-		limit = {
-			check_variable = {
-				which = acemod_crisis_manager_var_country_contingency_spawn_time
-				value = 30
+		30 = {
+			if = {
+				limit = {
+					check_variable = {
+						which = acemod_crisis_manager_var_country_contingency_spawn_time
+						value = 30
+					}
+				}
+				set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+				set_global_flag = acemod_crisis_manager_contingency_spawned_30
+				country_event = {
+					id = crisis.2005
+				}
 			}
-			end_game_years_passed >= 30
 		}
-		set_global_flag = acemod_crisis_manager_galactic_crisis_happened
-		country_event = {
-			id = crisis.2005
+		35 = {
+			if = {
+				limit = {
+					check_variable = {
+						which = acemod_crisis_manager_var_country_contingency_spawn_time
+						value = 35
+					}
+				}
+				set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+				set_global_flag = acemod_crisis_manager_contingency_spawned_35
+				country_event = {
+					id = crisis.2005
+				}
+			}
+		}
+		40 = {
+			if = {
+				limit = {
+					check_variable = {
+						which = acemod_crisis_manager_var_country_contingency_spawn_time
+						value = 40
+					}
+				}
+				set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+				set_global_flag = acemod_crisis_manager_contingency_spawned_40
+				country_event = {
+					id = crisis.2005
+				}
+			}
+		}
+		45 = {
+			if = {
+				limit = {
+					check_variable = {
+						which = acemod_crisis_manager_var_country_contingency_spawn_time
+						value = 45
+					}
+				}
+				set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+				set_global_flag = acemod_crisis_manager_contingency_spawned_45
+				country_event = {
+					id = crisis.2005
+				}
+			}
+		}
+		50 = {
+			if = {
+				limit = {
+					check_variable = {
+						which = acemod_crisis_manager_var_country_contingency_spawn_time
+						value = 50
+					}
+				}
+				set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+				set_global_flag = acemod_crisis_manager_contingency_spawned_50
+				country_event = {
+					id = crisis.2005
+				}
+			}
+		}
+		55 = {
+			if = {
+				limit = {
+					check_variable = {
+						which = acemod_crisis_manager_var_country_contingency_spawn_time
+						value = 55
+					}
+				}
+				set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+				set_global_flag = acemod_crisis_manager_contingency_spawned_55
+				country_event = {
+					id = crisis.2005
+				}
+			}
+		}
+		60 = {
+			if = {
+				limit = {
+					check_variable = {
+						which = acemod_crisis_manager_var_country_contingency_spawn_time
+						value = 60
+					}
+				}
+				set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+				set_global_flag = acemod_crisis_manager_contingency_spawned_60
+				country_event = {
+					id = crisis.2005
+				}
+			}
+		}
+		65 = {
+			if = {
+				limit = {
+					check_variable = {
+						which = acemod_crisis_manager_var_country_contingency_spawn_time
+						value = 65
+					}
+				}
+				set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+				set_global_flag = acemod_crisis_manager_contingency_spawned_65
+				country_event = {
+					id = crisis.2005
+				}
+			}
+		}
+		70 = {
+			if = {
+				limit = {
+					check_variable = {
+						which = acemod_crisis_manager_var_country_contingency_spawn_time
+						value = 70
+					}
+				}
+				set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+				set_global_flag = acemod_crisis_manager_contingency_spawned_70
+				country_event = {
+					id = crisis.2005
+				}
+			}
+		}
+		75 = {
+			if = {
+				limit = {
+					check_variable = {
+						which = acemod_crisis_manager_var_country_contingency_spawn_time
+						value = 75
+					}
+				}
+				set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+				set_global_flag = acemod_crisis_manager_contingency_spawned_75
+				country_event = {
+					id = crisis.2005
+				}
+			}
+		}
+		80 = {
+			if = {
+				limit = {
+					check_variable = {
+						which = acemod_crisis_manager_var_country_contingency_spawn_time
+						value = 80
+					}
+				}
+				set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+				set_global_flag = acemod_crisis_manager_contingency_spawned_80
+				country_event = {
+					id = crisis.2005
+				}
+			}
+		}
+		85 = {
+			if = {
+				limit = {
+					check_variable = {
+						which = acemod_crisis_manager_var_country_contingency_spawn_time
+						value = 85
+					}
+				}
+				set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+				set_global_flag = acemod_crisis_manager_contingency_spawned_85
+				country_event = {
+					id = crisis.2005
+				}
+			}
+		}
+		90 = {
+			if = {
+				limit = {
+					check_variable = {
+						which = acemod_crisis_manager_var_country_contingency_spawn_time
+						value = 90
+					}
+				}
+				set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+				set_global_flag = acemod_crisis_manager_contingency_spawned_90
+				country_event = {
+					id = crisis.2005
+				}
+			}
+		}
+		95 = {
+			if = {
+				limit = {
+					check_variable = {
+						which = acemod_crisis_manager_var_country_contingency_spawn_time
+						value = 95
+					}
+				}
+				set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+				set_global_flag = acemod_crisis_manager_contingency_spawned_95
+				country_event = {
+					id = crisis.2005
+				}
+			}
+		}
+		100 = {
+			if = {
+				limit = {
+					check_variable = {
+						which = acemod_crisis_manager_var_country_contingency_spawn_time
+						value = 100
+					}
+				}
+				set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+				set_global_flag = acemod_crisis_manager_contingency_spawned_100
+				country_event = {
+					id = crisis.2005
+				}
+			}
+		}
+		105 = {
+			if = {
+				limit = {
+					check_variable = {
+						which = acemod_crisis_manager_var_country_contingency_spawn_time
+						value = 105
+					}
+				}
+				set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+				set_global_flag = acemod_crisis_manager_contingency_spawned_105
+				country_event = {
+					id = crisis.2005
+				}
+			}
+		}
+		110 = {
+			if = {
+				limit = {
+					check_variable = {
+						which = acemod_crisis_manager_var_country_contingency_spawn_time
+						value = 110
+					}
+				}
+				set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+				set_global_flag = acemod_crisis_manager_contingency_spawned_110
+				country_event = {
+					id = crisis.2005
+				}
+			}
+		}
+		115 = {
+			if = {
+				limit = {
+					check_variable = {
+						which = acemod_crisis_manager_var_country_contingency_spawn_time
+						value = 115
+					}
+				}
+				set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+				set_global_flag = acemod_crisis_manager_contingency_spawned_115
+				country_event = {
+					id = crisis.2005
+				}
+			}
+		}
+		120 = {
+			if = {
+				limit = {
+					check_variable = {
+						which = acemod_crisis_manager_var_country_contingency_spawn_time
+						value = 120
+					}
+				}
+				set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+				set_global_flag = acemod_crisis_manager_contingency_spawned_120
+				country_event = {
+					id = crisis.2005
+				}
+			}
+		}
+		125 = {
+			if = {
+				limit = {
+					check_variable = {
+						which = acemod_crisis_manager_var_country_contingency_spawn_time
+						value = 125
+					}
+				}
+				set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+				set_global_flag = acemod_crisis_manager_contingency_spawned_125
+				country_event = {
+					id = crisis.2005
+				}
+			}
+		}
+		130 = {
+			if = {
+				limit = {
+					check_variable = {
+						which = acemod_crisis_manager_var_country_contingency_spawn_time
+						value = 130
+					}
+				}
+				set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+				set_global_flag = acemod_crisis_manager_contingency_spawned_130
+				country_event = {
+					id = crisis.2005
+				}
+			}
+		}
+		135 = {
+			if = {
+				limit = {
+					check_variable = {
+						which = acemod_crisis_manager_var_country_contingency_spawn_time
+						value = 135
+					}
+				}
+				set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+				set_global_flag = acemod_crisis_manager_contingency_spawned_135
+				country_event = {
+					id = crisis.2005
+				}
+			}
+		}
+		140 = {
+			if = {
+				limit = {
+					check_variable = {
+						which = acemod_crisis_manager_var_country_contingency_spawn_time
+						value = 140
+					}
+				}
+				set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+				set_global_flag = acemod_crisis_manager_contingency_spawned_140
+				country_event = {
+					id = crisis.2005
+				}
+			}
+		}
+		145 = {
+			if = {
+				limit = {
+					check_variable = {
+						which = acemod_crisis_manager_var_country_contingency_spawn_time
+						value = 145
+					}
+				}
+				set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+				set_global_flag = acemod_crisis_manager_contingency_spawned_145
+				country_event = {
+					id = crisis.2005
+				}
+			}
+		}
+		150 = {
+			if = {
+				limit = {
+					check_variable = {
+						which = acemod_crisis_manager_var_country_contingency_spawn_time
+						value = 150
+					}
+				}
+				set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+				set_global_flag = acemod_crisis_manager_contingency_spawned_150
+				country_event = {
+					id = crisis.2005
+				}
+			}
+		}
+		155 = {
+			if = {
+				limit = {
+					check_variable = {
+						which = acemod_crisis_manager_var_country_contingency_spawn_time
+						value = 155
+					}
+				}
+				set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+				set_global_flag = acemod_crisis_manager_contingency_spawned_155
+				country_event = {
+					id = crisis.2005
+				}
+			}
+		}
+		160 = {
+			if = {
+				limit = {
+					check_variable = {
+						which = acemod_crisis_manager_var_country_contingency_spawn_time
+						value = 160
+					}
+				}
+				set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+				set_global_flag = acemod_crisis_manager_contingency_spawned_160
+				country_event = {
+					id = crisis.2005
+				}
+			}
+		}
+		165 = {
+			if = {
+				limit = {
+					check_variable = {
+						which = acemod_crisis_manager_var_country_contingency_spawn_time
+						value = 165
+					}
+				}
+				set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+				set_global_flag = acemod_crisis_manager_contingency_spawned_165
+				country_event = {
+					id = crisis.2005
+				}
+			}
+		}
+		170 = {
+			if = {
+				limit = {
+					check_variable = {
+						which = acemod_crisis_manager_var_country_contingency_spawn_time
+						value = 170
+					}
+				}
+				set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+				set_global_flag = acemod_crisis_manager_contingency_spawned_170
+				country_event = {
+					id = crisis.2005
+				}
+			}
+		}
+		175 = {
+			if = {
+				limit = {
+					check_variable = {
+						which = acemod_crisis_manager_var_country_contingency_spawn_time
+						value = 175
+					}
+				}
+				set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+				set_global_flag = acemod_crisis_manager_contingency_spawned_175
+				country_event = {
+					id = crisis.2005
+				}
+			}
+		}
+		180 = {
+			if = {
+				limit = {
+					check_variable = {
+						which = acemod_crisis_manager_var_country_contingency_spawn_time
+						value = 180
+					}
+				}
+				set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+				set_global_flag = acemod_crisis_manager_contingency_spawned_180
+				country_event = {
+					id = crisis.2005
+				}
+			}
+		}
+		185 = {
+			if = {
+				limit = {
+					check_variable = {
+						which = acemod_crisis_manager_var_country_contingency_spawn_time
+						value = 185
+					}
+				}
+				set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+				set_global_flag = acemod_crisis_manager_contingency_spawned_185
+				country_event = {
+					id = crisis.2005
+				}
+			}
+		}
+		190 = {
+			if = {
+				limit = {
+					check_variable = {
+						which = acemod_crisis_manager_var_country_contingency_spawn_time
+						value = 190
+					}
+				}
+				set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+				set_global_flag = acemod_crisis_manager_contingency_spawned_190
+				country_event = {
+					id = crisis.2005
+				}
+			}
+		}
+		195 = {
+			if = {
+				limit = {
+					check_variable = {
+						which = acemod_crisis_manager_var_country_contingency_spawn_time
+						value = 195
+					}
+				}
+				set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+				set_global_flag = acemod_crisis_manager_contingency_spawned_195
+				country_event = {
+					id = crisis.2005
+				}
+			}
+		}
+		200 = {
+			if = {
+				limit = {
+					check_variable = {
+						which = acemod_crisis_manager_var_country_contingency_spawn_time
+						value = 200
+					}
+				}
+				set_global_flag = acemod_crisis_manager_galactic_crisis_happened
+				set_global_flag = acemod_crisis_manager_contingency_spawned_200
+				country_event = {
+					id = crisis.2005
+				}
+			}
 		}
 	}
 }
