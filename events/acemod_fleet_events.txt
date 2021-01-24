@@ -53,6 +53,8 @@ namespace = acemod_fleet
 #
 # set_planet_flag = acemod_planet_flag_bombardment_target_ignore				planet				Marks planet as excluded from being targeted for bombardment.
 #
+# set_fleet_flag = acemod_fleet_flag_starbase_defensive_protocol				fleet				# Marks fleet as a trigger for territorial defensive actions.
+# 
 # ACEMOD AI activation. Required to avoid crisis events overwrites.
 event = {
 	id = acemod_fleet.10
@@ -297,6 +299,9 @@ event = {
 					}
 					is_fleet_idle = yes
 					is_ship_class = shipclass_military
+					NOT = {
+						has_fleet_flag = acemod_fleet_flag_response_team
+					}
 				}
 				fleet_event = {
 					id = acemod_fleet.105
@@ -485,7 +490,7 @@ fleet_event = {
 									#	max_distance <= 1000
 									#	min_distance >= 1
 									#	type = hyperlane
-									#	uses_bypass = yes
+									#	use_bypass = yes
 									bypass_empire = root.owner
 									min_jumps = 1
 									max_jumps = 1
@@ -845,6 +850,166 @@ fleet_event = {
 # 		}
 # 	}
 # }
+# Territorial defense actions.	on_space_battle_lost
+country_event = {
+	id = acemod_fleet.130
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		has_country_flag = acemod_assisted_ai
+	}
+	immediate = {
+		if = {
+			limit = {
+				has_global_flag = acemod_activated
+				FROMFROM = {
+					OR = {
+						is_ship_size = starbase_exd
+						is_ship_size = starbase_exd_0
+						is_ship_size = starbase_ai
+						is_ship_size = starbase_swarm
+						has_fleet_flag = acemod_fleet_flag_starbase_defensive_protocol
+					}
+				}
+			}
+			fromfrom = {
+				solar_system = {
+					set_timed_star_flag = {
+						flag = acemod_star_flag_response_trigger
+						days = 360
+					}
+					every_fleet_in_system = {
+						limit = {
+							is_ship_class = shipclass_military
+							owner = {
+								is_hostile = root.owner
+							}
+						}
+						if = {
+							limit = {
+								NOT = {
+									has_fleet_flag = acemod_fleet_flag_response_target_candidate@root
+								}
+							}
+							set_timed_fleet_flag = {
+								flag = acemod_fleet_flag_response_target_candidate@root
+								days = 360
+							}
+						}
+						else = {
+							set_timed_fleet_flag = {
+								flag = acemod_fleet_flag_response_target_candidate@root
+								days = 480
+							}
+						}
+						change_variable = {
+							which = acemod_var_fleet_defensive_protocol_kill_count
+							value = 1
+						}
+					}
+				}
+			}
+			# from = {
+			# 	change_variable = {
+			# 		which = acemod_var_country_defensive_protocol_kill_count	# Need to account for multiple owners' fleets.
+			# 		value = 1
+			# 	}
+			# }
+		}
+	}
+}
+
+# Triggering territorial defense.	on_entering_system_fleet
+fleet_event = {
+	id = acemod_fleet.135
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		has_global_flag = acemod_activated
+	}
+	immediate = {
+		if = {
+			limit = {
+				has_fleet_flag = acemod_fleet_flag_response_target_candidate@from.owner
+			}
+			if = {
+				limit = {
+					from.owner = {
+						has_country_flag = acemod_assisted_ai
+					}
+					from = {
+						NOT = {
+							has_star_flag = acemod_star_flag_response_issued
+						}
+					}
+					NOT = {
+						has_fleet_flag = acemod_fleet_flag_response_target
+					}
+				}
+				from = {
+					set_star_flag = acemod_star_flag_response_required
+					every_system = {
+						limit = {
+							distance = {
+								source = root.from
+								# min_distance = 0
+								# max_distance = 3
+								# type = hyperlane
+								use_bypasses = yes
+								bypass_empire = root.from.owner
+								min_jumps = 0
+								max_jumps = 3
+								# ignore_hyperlanes = no
+							}
+						}
+						random_fleet_in_system = {
+							limit = {
+								owner = {
+									is_same_value = root.from.owner
+								}
+								is_ship_class = shipclass_military
+								NOR = {
+									has_fleet_flag = acemod_fleet_flag_response_team
+									check_variable = {
+										which = acemod_var_fleet_piloted_exclusion
+										value = 1
+									}
+								}
+							}
+							set_timed_fleet_flag = {
+								flag = acemod_fleet_flag_response_team
+								days = 180
+							}
+							clear_orders = yes							# Unstucks fleet if caught in a queued actions loop.
+							clear_fleet_actions = this							# Unstucks fleet if caught in a queued actions loop.
+							queue_actions = {
+								attack_fleet = {
+									target = root
+								}
+							}
+							root.from = {
+								set_star_flag = acemod_star_flag_response_issued
+								every_fleet_in_system = {
+									limit = {
+										is_ship_class = shipclass_military
+										owner = {
+											is_hostile = root.from.owner
+										}
+									}
+									set_timed_fleet_flag = {
+										flag = acemod_fleet_flag_response_target
+										days = 360
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
 # Main starbase constructor event.
 event = {
 	id = acemod_fleet.300
@@ -1284,7 +1449,7 @@ fleet_event = {
 									#	max_distance <= 1000
 									#	min_distance >= 1
 									# 	type = hyperlane
-									#	uses_bypass = yes
+									#	use_bypass = yes
 									bypass_empire = root.owner
 									min_jumps = 1
 									max_jumps = 1
@@ -2115,7 +2280,7 @@ fleet_event = {
 									#	max_distance <= 1000
 									#	min_distance >= 1
 									# 	type = hyperlane
-									#	uses_bypass = yes
+									#	use_bypass = yes
 									bypass_empire = root.owner
 									min_jumps = 1
 									max_jumps = 1

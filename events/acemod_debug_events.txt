@@ -269,6 +269,16 @@ event = {
 	}
 }
 
+# Marks fleet as a trigger for territorial defensive actions.
+fleet_event = {
+	id = acemod_debug.209
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		set_fleet_flag = acemod_fleet_flag_starbase_defensive_protocol
+	}
+}
+
 # Checks if the fleet is idle and applies a timed fleet_flag.
 # Doesn't work as expected.
 fleet_event = {
