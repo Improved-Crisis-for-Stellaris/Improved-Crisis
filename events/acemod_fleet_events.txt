@@ -53,7 +53,9 @@ namespace = acemod_fleet
 #
 # set_planet_flag = acemod_planet_flag_bombardment_target_ignore				planet				Marks planet as excluded from being targeted for bombardment.
 #
-# set_fleet_flag = acemod_fleet_flag_starbase_defensive_protocol				fleet				# Marks fleet as a trigger for territorial defensive actions.
+# set_fleet_flag = acemod_fleet_flag_starbase_defensive_protocol				fleet				Marks fleet as a trigger for territorial defensive actions.
+# set_star_flag = acemod_star_flag_starbase_defensive_protocol					system				Marks system as critical and to be defended immediately if needed.
+# set_country_flag = acemod_country_flag_starbase_defensive_protocol_disabled	country				Disables territorial defense for given country.
 # 
 # ACEMOD AI activation. Required to avoid crisis events overwrites.
 event = {
@@ -862,33 +864,36 @@ country_event = {
 		if = {
 			limit = {
 				has_global_flag = acemod_activated
+				NOT = {
+					has_country_flag = acemod_country_flag_starbase_defensive_protocol_disabled					# Response mechanism is now a core fleet AI functionality and is enabled on default.
+				}
 				FROMFROM = {
 					OR = {
 						is_ship_size = starbase_exd
 						is_ship_size = starbase_exd_0
 						is_ship_size = starbase_ai
 						is_ship_size = starbase_swarm
-						has_fleet_flag = acemod_fleet_flag_starbase_defensive_protocol
+						has_fleet_flag = acemod_fleet_flag_starbase_defensive_protocol						# Only fleets marked with this flag or ship sizes listed above will trigger response if defeated.
 					}
 				}
 			}
 			fromfrom = {
 				solar_system = {
 					set_timed_star_flag = {
-						flag = acemod_star_flag_response_trigger
+						flag = acemod_star_flag_response_trigger						# Marking system where incident happened for debugging purposes.
 						days = 360
 					}
 					every_fleet_in_system = {
 						limit = {
 							is_ship_class = shipclass_military
 							owner = {
-								is_hostile = root.owner
+								is_hostile = root.owner								# Marking all enemy fleets in the system as perpetrators.
 							}
 						}
 						if = {
 							limit = {
 								NOT = {
-									has_fleet_flag = acemod_fleet_flag_response_target_candidate@root
+									has_fleet_flag = acemod_fleet_flag_response_target_candidate@root									# Fleet is marked with defeated fleet's owner's ID.
 								}
 							}
 							set_timed_fleet_flag = {
@@ -898,12 +903,12 @@ country_event = {
 						}
 						else = {
 							set_timed_fleet_flag = {
-								flag = acemod_fleet_flag_response_target_candidate@root
+								flag = acemod_fleet_flag_response_target_candidate@root								# Account for possibly already dispatched response.
 								days = 480
 							}
 						}
 						change_variable = {
-							which = acemod_var_fleet_defensive_protocol_kill_count
+							which = acemod_var_fleet_defensive_protocol_kill_count							# Keeping kill count on fleets, possibly for future features.
 							value = 1
 						}
 					}
@@ -911,7 +916,7 @@ country_event = {
 			}
 			# from = {
 			# 	change_variable = {
-			# 		which = acemod_var_country_defensive_protocol_kill_count	# Need to account for multiple owners' fleets.
+			# 		which = acemod_var_country_defensive_protocol_kill_count	# Need to account for multiple owners' fleets. Will allow to evaluate how dangerous specific galactic empires are.
 			# 		value = 1
 			# 	}
 			# }
@@ -937,35 +942,31 @@ fleet_event = {
 					from.owner = {
 						has_country_flag = acemod_assisted_ai
 					}
-					from = {
-						NOT = {
-							has_star_flag = acemod_star_flag_response_issued
+					NOR = {
+						from = {
+							has_star_flag = acemod_star_flag_response_issued							# Stop if response is already dispatched to the system.
 						}
-					}
-					NOT = {
-						has_fleet_flag = acemod_fleet_flag_response_target
+						has_fleet_flag = acemod_fleet_flag_response_target						# Stop if fleet is already targeted by response.
 					}
 				}
 				from = {
-					set_star_flag = acemod_star_flag_response_required
-					every_system = {
-						limit = {
-							distance = {
-								source = root.from
-								# min_distance = 0
-								# max_distance = 3
-								# type = hyperlane
-								use_bypasses = yes
-								bypass_empire = root.from.owner
-								min_jumps = 0
-								max_jumps = 3
-								# ignore_hyperlanes = no
-							}
-						}
-						random_fleet_in_system = {
+					set_timed_star_flag = {
+						flag = acemod_star_flag_response_required						# Marking response request beacon for debugging purposes.
+						days = 360
+					}
+					root.from.owner = {
+						random_owned_fleet = {
 							limit = {
-								owner = {
-									is_same_value = root.from.owner
+								distance = {
+									source = root.from
+									# min_distance = 0
+									# max_distance = 3
+									# type = hyperlane
+									use_bypasses = yes
+									bypass_empire = owner
+									min_jumps = 0
+									max_jumps = 1
+									# ignore_hyperlanes = no
 								}
 								is_ship_class = shipclass_military
 								NOR = {
@@ -976,32 +977,487 @@ fleet_event = {
 									}
 								}
 							}
-							set_timed_fleet_flag = {
-								flag = acemod_fleet_flag_response_team
-								days = 180
-							}
-							clear_orders = yes							# Unstucks fleet if caught in a queued actions loop.
-							clear_fleet_actions = this							# Unstucks fleet if caught in a queued actions loop.
-							queue_actions = {
-								attack_fleet = {
-									target = root
+							acemod_response_effect = yes
+						}
+						if = {
+							limit = {
+								root.from = {
+									NOT = {
+										has_star_flag = acemod_star_flag_response_issued
+									}
 								}
 							}
-							root.from = {
-								set_star_flag = acemod_star_flag_response_issued
-								every_fleet_in_system = {
-									limit = {
-										is_ship_class = shipclass_military
-										owner = {
-											is_hostile = root.from.owner
+							random_owned_fleet = {
+								limit = {
+									distance = {
+										source = root.from
+										# min_distance = 0
+										# max_distance = 3
+										# type = hyperlane
+										use_bypasses = yes
+										bypass_empire = owner
+										min_jumps = 0
+										max_jumps = 2
+										# ignore_hyperlanes = no
+									}
+									is_ship_class = shipclass_military
+									NOR = {
+										has_fleet_flag = acemod_fleet_flag_response_team
+										check_variable = {
+											which = acemod_var_fleet_piloted_exclusion
+											value = 1
 										}
 									}
-									set_timed_fleet_flag = {
-										flag = acemod_fleet_flag_response_target
-										days = 360
+								}
+								acemod_response_effect = yes
+								break = yes
+							}
+						}
+						if = {
+							limit = {
+								root.from = {
+									NOT = {
+										has_star_flag = acemod_star_flag_response_issued
 									}
 								}
 							}
+							random_owned_fleet = {
+								limit = {
+									distance = {
+										source = root.from
+										# min_distance = 0
+										# max_distance = 3
+										# type = hyperlane
+										use_bypasses = yes
+										bypass_empire = owner
+										min_jumps = 0
+										max_jumps = 3
+										# ignore_hyperlanes = no
+									}
+									is_ship_class = shipclass_military
+									NOR = {
+										has_fleet_flag = acemod_fleet_flag_response_team
+										check_variable = {
+											which = acemod_var_fleet_piloted_exclusion
+											value = 1
+										}
+									}
+								}
+								acemod_response_effect = yes
+								break = yes
+							}
+						}
+						if = {
+							limit = {
+								root.from = {
+									NOT = {
+										has_star_flag = acemod_star_flag_response_issued
+									}
+								}
+							}
+							random_owned_fleet = {
+								limit = {
+									distance = {
+										source = root.from
+										# min_distance = 0
+										# max_distance = 3
+										# type = hyperlane
+										use_bypasses = yes
+										bypass_empire = owner
+										min_jumps = 0
+										max_jumps = 4
+										# ignore_hyperlanes = no
+									}
+									is_ship_class = shipclass_military
+									NOR = {
+										has_fleet_flag = acemod_fleet_flag_response_team
+										check_variable = {
+											which = acemod_var_fleet_piloted_exclusion
+											value = 1
+										}
+									}
+								}
+								acemod_response_effect = yes
+								break = yes
+							}
+						}
+						if = {
+							limit = {
+								root.from = {
+									NOT = {
+										has_star_flag = acemod_star_flag_response_issued
+									}
+								}
+							}
+							random_owned_fleet = {
+								limit = {
+									distance = {
+										source = root.from
+										# min_distance = 0
+										# max_distance = 3
+										# type = hyperlane
+										use_bypasses = yes
+										bypass_empire = owner
+										min_jumps = 0
+										max_jumps = 5
+										# ignore_hyperlanes = no
+									}
+									is_ship_class = shipclass_military
+									NOR = {
+										has_fleet_flag = acemod_fleet_flag_response_team
+										check_variable = {
+											which = acemod_var_fleet_piloted_exclusion
+											value = 1
+										}
+									}
+								}
+								acemod_response_effect = yes
+								break = yes
+							}
+						}
+					}
+					# }
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				from = {
+					owner = {
+						has_country_flag = acemod_assisted_ai
+					}
+				}
+			}
+			fleet_event = {
+				id = acemod_fleet.136
+				days = 1				# Delay for
+			}
+		}
+	}
+}
+
+# Special handling for critical systems.
+fleet_event = {
+	id = acemod_fleet.136
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		if = {
+			limit = {
+				NOR = {
+					from = {
+						owner = {
+							NOT = {
+								has_country_flag = acemod_country_flag_starbase_defensive_protocol_disabled
+							}
+						}
+						has_star_flag = acemod_star_flag_response_issued						# Stop if response is already dispatched to the system.
+					}
+					has_fleet_flag = acemod_fleet_flag_response_target					# Stop if fleet is already targeted by response.
+				}
+				OR = {
+					AND = {
+						owner = {
+							is_country_type = ai_empire
+						}
+						OR = {
+							has_star_flag = ai_system
+							has_star_flag = AI_hub
+						}
+						NOT = {
+							has_star_flag = acemod_star_flag_defensive_jumpdrive_protocol_cooldown
+						}
+					}
+					AND = {
+						owner = {
+							is_country_type = extradimensional
+						}
+						has_star_flag = extradimensional_origin_system
+					}
+					AND = {
+						owner = {
+							is_country_type = extradimensional_2
+						}
+						has_star_flag = extradimensional_second_portal_system
+					}
+					AND = {
+						owner = {
+							is_country_type = extradimensional_3
+						}
+						has_star_flag = extradimensional_third_portal_system
+					}
+					has_star_flag = acemod_star_flag_starbase_defensive_protocol
+				}
+			}
+			if = {
+				limit = {
+					root.from = {
+						NOT = {
+							has_star_flag = acemod_star_flag_response_issued
+						}
+					}
+				}
+				root.from.owner = {
+					random_owned_fleet = {
+						limit = {
+							distance = {
+								source = root.from
+								# min_distance = 0
+								# max_distance = 3
+								# type = hyperlane
+								use_bypasses = yes
+								bypass_empire = owner
+								min_jumps = 0
+								max_jumps = 1
+								# ignore_hyperlanes = no
+							}
+							is_ship_class = shipclass_military
+							NOR = {
+								has_fleet_flag = acemod_fleet_flag_response_team
+								check_variable = {
+									which = acemod_var_fleet_piloted_exclusion
+									value = 1
+								}
+							}
+						}
+						acemod_response_effect = yes
+					}
+					if = {
+						limit = {
+							root.from = {
+								NOT = {
+									has_star_flag = acemod_star_flag_response_issued
+								}
+							}
+						}
+						random_owned_fleet = {
+							limit = {
+								distance = {
+									source = root.from
+									# min_distance = 0
+									# max_distance = 3
+									# type = hyperlane
+									use_bypasses = yes
+									bypass_empire = owner
+									min_jumps = 0
+									max_jumps = 2
+									# ignore_hyperlanes = no
+								}
+								is_ship_class = shipclass_military
+								NOR = {
+									has_fleet_flag = acemod_fleet_flag_response_team
+									check_variable = {
+										which = acemod_var_fleet_piloted_exclusion
+										value = 1
+									}
+								}
+							}
+							acemod_response_effect = yes
+							break = yes
+						}
+					}
+					if = {
+						limit = {
+							root.from = {
+								NOT = {
+									has_star_flag = acemod_star_flag_response_issued
+								}
+							}
+						}
+						random_owned_fleet = {
+							limit = {
+								distance = {
+									source = root.from
+									# min_distance = 0
+									# max_distance = 3
+									# type = hyperlane
+									use_bypasses = yes
+									bypass_empire = owner
+									min_jumps = 0
+									max_jumps = 3
+									# ignore_hyperlanes = no
+								}
+								is_ship_class = shipclass_military
+								NOR = {
+									has_fleet_flag = acemod_fleet_flag_response_team
+									check_variable = {
+										which = acemod_var_fleet_piloted_exclusion
+										value = 1
+									}
+								}
+							}
+							acemod_response_effect = yes
+							break = yes
+						}
+					}
+					if = {
+						limit = {
+							root.from = {
+								NOT = {
+									has_star_flag = acemod_star_flag_response_issued
+								}
+							}
+						}
+						random_owned_fleet = {
+							limit = {
+								distance = {
+									source = root.from
+									# min_distance = 0
+									# max_distance = 3
+									# type = hyperlane
+									use_bypasses = yes
+									bypass_empire = owner
+									min_jumps = 0
+									max_jumps = 4
+									# ignore_hyperlanes = no
+								}
+								is_ship_class = shipclass_military
+								NOR = {
+									has_fleet_flag = acemod_fleet_flag_response_team
+									check_variable = {
+										which = acemod_var_fleet_piloted_exclusion
+										value = 1
+									}
+								}
+							}
+							acemod_response_effect = yes
+							break = yes
+						}
+					}
+					if = {
+						limit = {
+							root.from = {
+								NOT = {
+									has_star_flag = acemod_star_flag_response_issued
+								}
+							}
+						}
+						random_owned_fleet = {
+							limit = {
+								distance = {
+									source = root.from
+									# min_distance = 0
+									# max_distance = 3
+									# type = hyperlane
+									use_bypasses = yes
+									bypass_empire = owner
+									min_jumps = 0
+									max_jumps = 5
+									# ignore_hyperlanes = no
+								}
+								is_ship_class = shipclass_military
+								NOR = {
+									has_fleet_flag = acemod_fleet_flag_response_team
+									check_variable = {
+										which = acemod_var_fleet_piloted_exclusion
+										value = 1
+									}
+								}
+							}
+							acemod_response_effect = yes
+							break = yes
+						}
+					}
+					if = {
+						limit = {
+							root.from = {
+								NOT = {
+									has_star_flag = acemod_star_flag_response_issued
+								}
+							}
+						}
+						random_owned_fleet = {
+							limit = {
+								distance = {
+									source = root.from
+									# min_distance = 0
+									# max_distance = 3
+									# type = hyperlane
+									use_bypasses = yes
+									bypass_empire = owner
+									min_jumps = 0
+									max_jumps = 6
+									# ignore_hyperlanes = no
+								}
+								is_ship_class = shipclass_military
+								NOR = {
+									has_fleet_flag = acemod_fleet_flag_response_team
+									check_variable = {
+										which = acemod_var_fleet_piloted_exclusion
+										value = 1
+									}
+								}
+							}
+							acemod_response_effect = yes
+							break = yes
+						}
+					}
+					if = {
+						limit = {
+							root.from = {
+								NOT = {
+									has_star_flag = acemod_star_flag_response_issued
+								}
+							}
+						}
+						random_owned_fleet = {
+							limit = {
+								distance = {
+									source = root.from
+									# min_distance = 0
+									# max_distance = 3
+									# type = hyperlane
+									use_bypasses = yes
+									bypass_empire = owner
+									min_jumps = 0
+									max_jumps = 7
+									# ignore_hyperlanes = no
+								}
+								is_ship_class = shipclass_military
+								NOR = {
+									has_fleet_flag = acemod_fleet_flag_response_team
+									check_variable = {
+										which = acemod_var_fleet_piloted_exclusion
+										value = 1
+									}
+								}
+							}
+							acemod_response_effect = yes
+							break = yes
+						}
+					}
+					if = {
+						limit = {
+							root.from = {
+								NOT = {
+									has_star_flag = acemod_star_flag_response_issued
+								}
+							}
+						}
+						random_owned_fleet = {
+							limit = {
+								distance = {
+									source = root.from
+									# min_distance = 0
+									# max_distance = 3
+									# type = hyperlane
+									use_bypasses = yes
+									bypass_empire = owner
+									min_jumps = 0
+									max_jumps = 8
+									# ignore_hyperlanes = no
+								}
+								is_ship_class = shipclass_military
+								NOR = {
+									has_fleet_flag = acemod_fleet_flag_response_team
+									check_variable = {
+										which = acemod_var_fleet_piloted_exclusion
+										value = 1
+									}
+								}
+							}
+							acemod_response_effect = yes
+							break = yes
 						}
 					}
 				}

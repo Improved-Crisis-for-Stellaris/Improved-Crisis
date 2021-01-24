@@ -46,13 +46,20 @@ on_entering_system_fleet = {
 on_entering_system_fleet = {
 	events = {
 		acemod_fleet.610		# Activates defensive jumpdrive protocol if protected system is under attack.
-		# acemod_fleet.135		# Triggering territorial defense.
+		acemod_fleet.135		# Triggering territorial defense.
 	}
 }
 
-# on_space_battle_lost = {
-# 	# on_fleet_destroyed_victim = {	# debug
+on_space_battle_lost = {
+	# on_fleet_destroyed_victim = {	# debug
+	events = {
+		acemod_fleet.130		# Territorial defense actions.
+	}
+}
+
+# TO DO
+# on_jump_drive = {
 # 	events = {
-# 		acemod_fleet.130		# Territorial defense actions.
+# 		acemod_fleet.137		# Territorial defense actions against jumpdrive jumps.
 # 	}
 # }

@@ -279,6 +279,26 @@ fleet_event = {
 	}
 }
 
+# Disables territorial defense.
+country_event = {
+	id = acemod_debug.210
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		set_country_flag = acemod_country_flag_starbase_defensive_protocol_disabled
+	}
+}
+
+# Marks system as critical and to be defended immediately if needed.
+event = {
+	id = acemod_debug.211
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		set_star_flag = acemod_star_flag_starbase_defensive_protocol
+	}
+}
+
 # Checks if the fleet is idle and applies a timed fleet_flag.
 # Doesn't work as expected.
 fleet_event = {
