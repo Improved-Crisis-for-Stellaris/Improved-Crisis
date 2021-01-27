@@ -345,3 +345,23 @@ event = {
 		set_planet_flag = akeean_shielded_homeworld
 	}
 }
+
+# Marks planet as excluded from being targeted for invasion.
+event = {
+	id = acemod_debug.402
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		set_planet_flag = acemod_planet_flag_army_target_ignore
+	}
+}
+
+# Marks planet as excluded from being targeted for colonization or infestation.
+event = {
+	id = acemod_debug.403
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		set_planet_flag = acemod_planet_flag_colonizer_target_ignore
+	}
+}

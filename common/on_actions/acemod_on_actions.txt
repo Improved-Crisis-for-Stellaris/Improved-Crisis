@@ -56,10 +56,3 @@ on_space_battle_lost = {
 		acemod_fleet.130		# Territorial defense actions.
 	}
 }
-
-# TO DO
-# on_jump_drive = {
-# 	events = {
-# 		acemod_fleet.137		# Territorial defense actions against jumpdrive jumps.
-# 	}
-# }
