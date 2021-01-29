@@ -365,3 +365,13 @@ event = {
 		set_planet_flag = acemod_planet_flag_colonizer_target_ignore
 	}
 }
+
+# Disables pinging systems to indicate potential high value targets.
+event = {
+	id = acemod_debug.404
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		set_country_flag = acemod_country_flag_system_pings_disabled
+	}
+}
