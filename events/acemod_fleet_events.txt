@@ -409,8 +409,9 @@ fleet_event = {
 							has_planet_flag = acemod_planet_flag_bombardment_target_ignore							# Hotfix for akeean's Shielded World origin homeworlds. We will need a bigger boat.
 							has_orbital_bombardment = yes
 						}
-						NOT = {
+						NOR = {
 							is_owned_by = root.owner
+							is_controlled_by = root.owner
 						}
 					}
 				}
@@ -427,8 +428,9 @@ fleet_event = {
 							has_planet_flag = acemod_planet_flag_bombardment_target
 							has_planet_flag = acemod_planet_flag_bombardment_target_ignore
 						}
-						NOT = {
+						NOR = {
 							is_owned_by = root.owner
+							is_controlled_by = root.owner
 						}
 						# is_same_value = event_target:acemod_event_target_invader_bombardment_target
 					}
@@ -1521,6 +1523,7 @@ fleet_event = {
 							is_hostile = prevprevprevprev.owner
 						}
 					}
+					save_event_target_as = acemod_event_target_system_pings_target
 					prevprevprevprev = {
 						clear_orders = yes						# Unstucks fleet if caught in a queued actions loop.
 						clear_fleet_actions = this						# Unstucks fleet if caught in a queued actions loop.
@@ -1531,6 +1534,17 @@ fleet_event = {
 						}
 					}
 				}
+			}
+		}
+		if = {
+			limit = {
+				NOT = {
+					exists = event_target:acemod_event_target_system_pings_target
+				}
+			}
+			fleet_event = {
+				id = acemod_fleet.105
+				days = 1
 			}
 		}
 	}
