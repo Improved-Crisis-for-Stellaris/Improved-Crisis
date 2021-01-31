@@ -46,8 +46,8 @@ See [url=https://steamcommunity.com/workshop/filedetails/discussion/2268189539/3
 - Various fixes like changing crisis bombardment stance and making unarmed crisis ships flee when in danger.
 List of features is subject to change.
 
-[URL=https://www.youtube.com/watch?v=sWNCwrcAPz4][IMG]https://i.imgur.com/1c5yfJK.png[/IMG][/URL]
-[i]Presented in the video above: 5 year comparison of Aggressive Crisis Engine vs 2.7.2 Vanilla crisis AI (Unbidden). At the end of an 8 minute test Vanilla crisis had 5 starbases and ACEMOD AI had 18.[/i]
+[URL=https://www.youtube.com/watch?v=_kA0QkxCjmE&feature=emb_title&ab_channel=GeneralPol][IMG]https://i.imgur.com/EBb3etY.png[/IMG][/URL]
+[i]Comparison of Vanilla and ACE AI under the same conditions (2.8.1, x10, Commodore). Video courtesy of [url=https://www.youtube.com/channel/UCKInflPaHost0EU5Q7ALK_A]General Po[/url]l.[/i]
 
 [URL=https://www.youtube.com/watch?v=02WjfX9Rne0][IMG]https://i.imgur.com/165j5Dq.png[/IMG][/URL]
 [i]Overnight test run of ACEMOD AI crisis on Stellaris 2.7.2. Default settings but technology cost on x0.25. All empires were on repeatables. Crisis on x1 strength was squashed, this is a x5 Scourge.[/i]

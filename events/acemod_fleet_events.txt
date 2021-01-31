@@ -299,32 +299,39 @@ event = {
 			}
 			every_owned_fleet = {
 				limit = {
-					NOT = {
-						check_variable = {
-							which = acemod_var_fleet_piloted_exclusion
-							value = 1
-						}
-					}
 					is_fleet_idle = yes
-					is_ship_class = shipclass_military
-					NOR = {
-						has_fleet_flag = acemod_fleet_flag_response_team
-						has_fleet_flag = acemod_fleet_flag_solar_response_team
-					}
 				}
-				locked_random_list = {
-					80 = {
-						fleet_event = {
-							id = acemod_fleet.105
-							days = 3
-							random = 10
+				if = {
+					limit = {
+						NOT = {
+							check_variable = {
+								which = acemod_var_fleet_piloted_exclusion
+								value = 1
+							}
 						}
 					}
-					20 = {
-						fleet_event = {
-							id = acemod_fleet.150							# Pinging systems to indicate potential high value targets.
-							days = 3
-							random = 10
+					if = {
+						limit = {
+							is_ship_class = shipclass_military
+							NOT = {
+								has_fleet_flag = acemod_fleet_flag_solar_response_team
+							}
+						}
+						locked_random_list = {
+							80 = {
+								fleet_event = {
+									id = acemod_fleet.105
+									days = 3
+									random = 10
+								}
+							}
+							20 = {
+								fleet_event = {
+									id = acemod_fleet.150									# Pinging systems to indicate potential high value targets.
+									days = 3
+									random = 10
+								}
+							}
 						}
 					}
 				}
@@ -383,8 +390,13 @@ fleet_event = {
 		if = {
 			limit = {
 				NOR = {
-					has_fleet_flag = acemod_fleet_flag_response_team					# Failsafe if special orders were issued during event delay.
 					has_fleet_flag = acemod_fleet_flag_solar_response_team					# Failsafe if special orders were issued during event delay.
+					AND = {
+						has_fleet_flag = acemod_fleet_flag_response_team						# Failsafe if special orders were issued during event delay.
+						NOT = {
+							has_fleet_order = aggressive_stance_fleet_order							# Unstucks fleet if response target is out of reach.
+						}
+					}
 				}
 			}
 			clear_orders = yes			# Unstucks fleet if caught in a queued actions loop.
@@ -917,7 +929,7 @@ country_event = {
 				solar_system = {
 					set_timed_star_flag = {
 						flag = acemod_star_flag_response_trigger						# Marking system where incident happened for debugging purposes.
-						days = 720
+						days = 540
 					}
 					every_fleet_in_system = {
 						limit = {
@@ -934,13 +946,13 @@ country_event = {
 							}
 							set_timed_fleet_flag = {
 								flag = acemod_fleet_flag_response_target_candidate@root
-								days = 720
+								days = 540
 							}
 						}
 						else = {
 							set_timed_fleet_flag = {
 								flag = acemod_fleet_flag_response_target_candidate@root								# Account for possibly already dispatched response.
-								days = 720
+								days = 540
 							}
 						}
 						change_variable = {
@@ -1100,7 +1112,7 @@ fleet_event = {
 				from = {
 					set_timed_star_flag = {
 						flag = acemod_star_flag_response_required						# Marking response request beacon for debugging purposes.
-						days = 720
+						days = 540
 					}
 					root.from.owner = {
 						random_owned_fleet = {
