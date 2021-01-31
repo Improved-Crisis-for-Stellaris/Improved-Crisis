@@ -1029,38 +1029,37 @@ fleet_event = {
 							target = root
 						}
 					}
-					# Does not work, TO DO.
-					# queue_actions = {
-					# 	find_closest_planet = {
-					# 		trigger = {
-					# 			id = "acemod.134.t1"
-					# 			solar_system = {
-					# 				is_same_value = root.solar_system
-					# 			}
-					# 			has_planet_flag = acemod_planet_flag_bombardment_target@root
-					# 		}
-					# 		found_planet = {
-					# 			move_to = this
-					# 			wait = 5
-					# 			orbit_planet = this
-					# 		}
-					# 		failed = {
-					# 			effect = {
-					# 				id = "acemod.134.e1"
-					# 				random_system = {
-					# 					limit = {
-					# 						has_star_flag = acemod_star_flag_solar_system_target@root
-					# 					}
-					# 					root = {
-					# 						queue_actions = {
-					# 							move_to = prev
-					# 						}
-					# 					}
-					# 				}
-					# 			}
-					# 		}
-					# 	}
-					# }
+					queue_actions = {
+						find_closest_planet = {
+							trigger = {
+								id = "acemod.134.t1"
+								solar_system = {
+									is_same_value = root.solar_system
+								}
+								has_planet_flag = acemod_planet_flag_bombardment_target@prev
+							}
+							found_planet = {
+								move_to = this
+								wait = 5
+								orbit_planet = this
+							}
+							failed = {
+								effect = {
+									id = "acemod.134.e1"
+									random_system = {
+										limit = {
+											has_star_flag = acemod_star_flag_solar_system_target@prev
+										}
+										prev = {
+											queue_actions = {
+												move_to = prev
+											}
+										}
+									}
+								}
+							}
+						}
+					}
 				}
 			}
 		}
