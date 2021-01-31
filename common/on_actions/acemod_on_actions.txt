@@ -46,6 +46,7 @@ on_entering_system_fleet = {
 on_entering_system_fleet = {
 	events = {
 		acemod_fleet.610		# Activates defensive jumpdrive protocol if protected system is under attack.
+		acemod_fleet.134		# Triggering system-wide interception.
 		acemod_fleet.135		# Triggering territorial defense.
 	}
 }
