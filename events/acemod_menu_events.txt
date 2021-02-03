@@ -4,9 +4,10 @@ country_event = {
 	hide_window = yes
 	is_triggered_only = yes
 	trigger = {
-		NOT = {
-			has_global_flag = acemod_menu_fired
-		}
+		# Commenting out to fix menu mods which support ACEMOD. This is now a redirect event menu mods can use.
+		# NOT = {
+		# 	has_global_flag = acemod_menu_fired
+		# }
 		is_ai = no
 	}
 	immediate = {

@@ -313,9 +313,6 @@ event = {
 					if = {
 						limit = {
 							is_ship_class = shipclass_military
-							NOT = {
-								has_fleet_flag = acemod_fleet_flag_solar_response_team
-							}
 						}
 						locked_random_list = {
 							80 = {
@@ -390,9 +387,11 @@ fleet_event = {
 		if = {
 			limit = {
 				NOR = {
-					has_fleet_flag = acemod_fleet_flag_solar_response_team					# Failsafe if special orders were issued during event delay.
 					AND = {
-						has_fleet_flag = acemod_fleet_flag_response_team						# Failsafe if special orders were issued during event delay.
+						OR = {
+							has_fleet_flag = acemod_fleet_flag_response_team							# Failsafe if special orders were issued during event delay.
+							has_fleet_flag = acemod_fleet_flag_solar_response_team							# Failsafe if special orders were issued during event delay.
+						}
 						NOT = {
 							has_fleet_order = aggressive_stance_fleet_order							# Unstucks fleet if response target is out of reach.
 						}
