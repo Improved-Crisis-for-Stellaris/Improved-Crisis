@@ -1,6 +1,6 @@
 # Scope: country is_country_type = global_event
 acemod_crisis_manager_calculate_prethoryn_effect = {
-	set_global_flag = test_prethoryn_flag
+	set_global_flag = acemod_crisis_manager_prethoryn_spawn_effect_fired
 	switch = {
 		trigger = end_game_years_passed
 		5 < {
@@ -610,6 +610,7 @@ acemod_crisis_manager_calculate_prethoryn_effect = {
 }
 
 acemod_crisis_manager_calculate_extradimensional_effect = {
+	set_global_flag = acemod_crisis_manager_extradimensional_spawn_effect_fired
 	switch = {
 		trigger = end_game_years_passed
 		5 < {
@@ -1219,6 +1220,7 @@ acemod_crisis_manager_calculate_extradimensional_effect = {
 }
 
 acemod_crisis_manager_calculate_contingency_effect = {
+	set_global_flag = acemod_crisis_manager_contingency_spawn_effect_fired
 	switch = {
 		trigger = end_game_years_passed
 		5 < {
