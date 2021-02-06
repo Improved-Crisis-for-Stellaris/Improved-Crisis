@@ -51,38 +51,6 @@ country_event = {
 		}
 	}
 	option = {
-		name = acemod_crisis_manager.1.b
-		custom_tooltip = acemod_crisis_manager.1.b.tooltip
-		hidden_effect = {
-			country_event = {
-				id = acemod_crisis_manager.1
-				days = 0
-				random = 0
-			}
-			country_event = {
-				id = acemod_crisis_manager.2				# Gathers and shows information about galaxy as configured in the game lobby.
-				days = 0
-				random = 0
-			}
-		}
-	}
-	option = {
-		name = acemod_crisis_manager.1.c
-		custom_tooltip = acemod_crisis_manager.1.c.tooltip
-		hidden_effect = {
-			country_event = {
-				id = acemod_crisis_manager.1
-				days = 0
-				random = 0
-			}
-			country_event = {
-				id = acemod_crisis_manager.5				# Debugging tool.
-				days = 0
-				random = 0
-			}
-		}
-	}
-	option = {
 		name = acemod_crisis_manager.1.d		# Prethoryn spawn
 		custom_tooltip = acemod_crisis_manager.1.d.tooltip
 		hidden_effect = {
@@ -375,6 +343,17 @@ country_event = {
 						random = 0
 					}
 				}
+			}
+		}
+	}
+	option = {
+		name = acemod_crisis_manager.1.y
+		custom_tooltip = acemod_crisis_manager.1.y.tooltip
+		hidden_effect = {
+			country_event = {
+				id = acemod_crisis_manager.10				# Closes Crisis Manager window and opens Debugging tools menu.
+				days = 0
+				random = 0
 			}
 		}
 	}
@@ -991,6 +970,88 @@ country_event = {
 	option = {
 		name = acemod_crisis_manager.7.a
 		custom_tooltip = acemod_crisis_manager.7.a.tooltip
+	}
+}
+
+# ACE Crisis Manager Debug.
+country_event = {
+	id = acemod_crisis_manager.8
+	title = acemod_crisis_manager.8.name
+	desc = acemod_crisis_manager.8.desc
+	picture = GFX_evt_laser_grid
+	is_triggered_only = yes
+	option = {
+		name = acemod_crisis_manager.8.a
+		custom_tooltip = acemod_crisis_manager.8.a.tooltip
+	}
+}
+
+# Debugging tools menu window
+country_event = {
+	id = acemod_crisis_manager.10
+	title = acemod_crisis_manager.10.name
+	desc = acemod_crisis_manager.10.desc
+	picture = GFX_evt_space_station
+	is_triggered_only = yes
+	option = {
+		name = acemod_crisis_manager.10.a
+		custom_tooltip = acemod_crisis_manager.10.a.tooltip
+		hidden_effect = {
+			country_event = {
+				id = acemod_crisis_manager.10
+				days = 0
+				random = 0
+			}
+			country_event = {
+				id = acemod_crisis_manager.2				# Gathers and shows information about galaxy as configured in the game lobby.
+				days = 0
+				random = 0
+			}
+		}
+	}
+	option = {
+		name = acemod_crisis_manager.10.b
+		custom_tooltip = acemod_crisis_manager.10.b.tooltip
+		hidden_effect = {
+			country_event = {
+				id = acemod_crisis_manager.10
+				days = 0
+				random = 0
+			}
+			country_event = {
+				id = acemod_crisis_manager.5				# Debugging tool.
+				days = 0
+				random = 0
+			}
+		}
+	}
+	option = {
+		name = acemod_crisis_manager.10.c
+		custom_tooltip = acemod_crisis_manager.10.c.tooltip
+		hidden_effect = {
+			country_event = {
+				id = acemod_crisis_manager.10
+				days = 0
+				random = 0
+			}
+			acemod_crisis_manager_calculate_current_end_game_year = yes
+			country_event = {
+				id = acemod_crisis_manager.8				# ACE Crisis Manager Debugging tool.
+				days = 0
+				random = 0
+			}
+		}
+	}
+	option = {
+		name = acemod_crisis_manager.10.z
+		custom_tooltip = acemod_crisis_manager.10.z.tooltip
+		hidden_effect = {
+			country_event = {
+				id = acemod_crisis_manager.1				# Closes Debugging tools window and redirects to main menu.
+				days = 0
+				random = 0
+			}
+		}
 	}
 }
 

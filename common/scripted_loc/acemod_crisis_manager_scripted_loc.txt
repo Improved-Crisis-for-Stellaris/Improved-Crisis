@@ -3295,3 +3295,172 @@ defined_text = {
 		localization_key = OFF
 	}
 }
+
+# ACE Debug
+defined_text = {
+	name = GetName_acemod_crisis_manager_active_debug
+	text = {
+		trigger = {
+			has_global_flag = acemod_crisis_manager_active
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				has_global_flag = acemod_crisis_manager_active
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_crisis_manager_num_human_players_start_counted
+	text = {
+		trigger = {
+			has_global_flag = acemod_crisis_manager_num_human_players_start_counted
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				has_global_flag = acemod_crisis_manager_num_human_players_start_counted
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_crisis_manager_countdown_end_game_years_passed_45
+	text = {
+		trigger = {
+			has_global_flag = acemod_crisis_manager_countdown_end_game_years_passed_45
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				has_global_flag = acemod_crisis_manager_countdown_end_game_years_passed_45
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_crisis_manager_acemod_crisis_manager_galactic_crisis_happened
+	text = {
+		trigger = {
+			has_global_flag = acemod_crisis_manager_galactic_crisis_happened
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				has_global_flag = acemod_crisis_manager_galactic_crisis_happened
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_crisis_manager_disable_crisis_firing
+	text = {
+		trigger = {
+			has_global_flag = acemod_crisis_manager_disable_crisis_firing
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				has_global_flag = acemod_crisis_manager_disable_crisis_firing
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_crisis_manager_prethoryn_spawn_effect_fired
+	text = {
+		trigger = {
+			has_global_flag = acemod_crisis_manager_prethoryn_spawn_effect_fired
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				has_global_flag = acemod_crisis_manager_prethoryn_spawn_effect_fired
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_crisis_manager_extradimensional_spawn_effect_fired
+	text = {
+		trigger = {
+			has_global_flag = acemod_crisis_manager_extradimensional_spawn_effect_fired
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				has_global_flag = acemod_crisis_manager_extradimensional_spawn_effect_fired
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_crisis_manager_contingency_spawn_effect_fired
+	text = {
+		trigger = {
+			has_global_flag = acemod_crisis_manager_contingency_spawn_effect_fired
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				has_global_flag = acemod_crisis_manager_contingency_spawn_effect_fired
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_crisis_manager_var_current_end_game_year
+	text = {
+		trigger = {
+			check_variable = {
+				which = acemod_crisis_manager_var_current_end_game_year
+				value = 0
+			}
+		}
+		localization_key = acemod_crisis_manager_num_0
+	}
+	text = {
+		trigger = {
+			NOT = {
+				check_variable = {
+					which = acemod_crisis_manager_var_current_end_game_year
+					value = 0
+				}
+			}
+		}
+		localization_key = acemod_crisis_manager_blank
+	}
+}
