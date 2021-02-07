@@ -361,10 +361,18 @@ country_event = {
 		name = acemod_crisis_manager.1.z
 		custom_tooltip = acemod_crisis_manager.1.z.tooltip
 		hidden_effect = {
-			country_event = {
-				id = acemod_menu.1				# Closes Crisis Manager window and redirects to main menu.
-				days = 0
-				random = 0
+			if = {
+				limit = {
+					has_global_flag = acemod_installed
+				}
+				country_event = {
+					id = acemod_menu.1					# Closes Crisis Manager window and redirects to main menu.
+					days = 0
+					random = 0
+				}
+			}
+			else = {
+				break = yes				# If Crisis Manager is installed as a standalone simply closing the window instead of redirection to main menu event which does not exist.
 			}
 		}
 	}

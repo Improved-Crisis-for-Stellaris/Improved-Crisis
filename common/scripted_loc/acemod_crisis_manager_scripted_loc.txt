@@ -1038,6 +1038,24 @@ defined_text = {
 }
 
 defined_text = {
+	name = GetName_acemod_crisis_manager_debug_is_acemod_activated
+	text = {
+		trigger = {
+			has_global_flag = acemod_activated
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				has_global_flag = acemod_activated
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+defined_text = {
 	name = GetName_acemod_crisis_manager_debug_is_ace_crisis_manager_installed
 	text = {
 		trigger = {
