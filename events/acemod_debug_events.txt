@@ -334,7 +334,7 @@ event = {
 	}
 }
 
-# Dummy flag setup for akeean's Shielded World origin worlds. DO NOT USE THIS EVENT.
+# Dummy flag setup for akeean's Shielded World origin and Gigastructural Engineering & More worlds. DO NOT USE THIS EVENT.
 event = {
 	id = acemod_debug.401
 	hide_window = yes
@@ -343,6 +343,8 @@ event = {
 		set_planet_flag = akeean_shield_active
 		set_planet_flag = akeean_planetary_shielding_device
 		set_planet_flag = akeean_shielded_homeworld
+		set_planet_flag = corrona	# Gigastructural Engineering & More Corrona Primitive world
+		set_country_flag = corrona_primitives
 	}
 }
 
