@@ -60,6 +60,7 @@ namespace = acemod_fleet
 # set_fleet_flag = acemod_fleet_flag_starbase_defensive_protocol				fleet				Marks fleet as a trigger for territorial defensive actions.
 # set_star_flag = acemod_star_flag_starbase_defensive_protocol					system				Marks system as critical and to be defended immediately if needed.
 # set_country_flag = acemod_country_flag_starbase_defensive_protocol_disabled	country				Disables territorial defense for given country.
+# set_country_flag = acemod_country_flag_starbase_defensive_protocol_fallback_event_disabled	country	Disables fallback event (acemod_fleet.132). Use if issues from triggering both 130 132 arise (should not).
 #
 # set_country_flag = acemod_country_flag_system_pings_disabled					country				Disables pinging systems to indicate potential high value targets.
 # 
@@ -1034,6 +1035,78 @@ country_event = {
 				}
 			}
 			# from = {
+			# 	change_variable = {
+			# 		which = acemod_var_country_defensive_protocol_kill_count	# Need to account for multiple owners' fleets. Will allow to evaluate how dangerous specific galactic empires are.
+			# 		value = 1
+			# 	}
+			# }
+		}
+	}
+}
+
+# Territorial defense fallback event when on_space_battle_lost does not trigger (acemod_fleet.130). Uses on_system_lost
+# From = system
+# FromFrom = country (new owner)
+# This = country (previous owner)
+country_event = {
+	id = acemod_fleet.132
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		has_country_flag = acemod_assisted_ai
+	}
+	immediate = {
+		if = {
+			limit = {
+				has_global_flag = acemod_activated
+				NOT = {
+					has_country_flag = acemod_country_flag_starbase_defensive_protocol_disabled					# Response mechanism is now a core fleet AI functionality and is enabled on default.
+				}
+				NOR = {
+					is_country_type = swarm
+					is_country_type = extradimensional
+					is_country_type = extradimensional_2
+					is_country_type = extradimensional_3
+					is_country_type = ai_empire
+					has_country_flag = acemod_country_flag_starbase_defensive_protocol_fallback_event_disabled					# Checks fallback event is disabled (acemod_fleet.132). Use if issues from triggering both 130 132 arise (should not).
+				}
+			}
+			from = {
+				set_timed_star_flag = {
+					flag = acemod_star_flag_response_trigger					# Marking system where incident happened for debugging purposes.
+					days = 540
+				}
+				every_fleet_in_system = {
+					limit = {
+						is_ship_class = shipclass_military
+						owner = {
+							is_hostile = root							# Marking all enemy fleets in the system as perpetrators.
+						}
+					}
+					if = {
+						limit = {
+							NOT = {
+								has_fleet_flag = acemod_fleet_flag_response_target_candidate@root								# Fleet is marked with defeated fleet's owner's ID.
+							}
+						}
+						set_timed_fleet_flag = {
+							flag = acemod_fleet_flag_response_target_candidate@root
+							days = 540
+						}
+					}
+					else = {
+						set_timed_fleet_flag = {
+							flag = acemod_fleet_flag_response_target_candidate@root							# Account for possibly already dispatched response.
+							days = 540
+						}
+					}
+					change_variable = {
+						which = acemod_var_fleet_defensive_protocol_kill_count						# Keeping kill count on fleets, possibly for future features.
+						value = 1
+					}
+				}
+			}
+			# from = { # Need to adjust scope for on_system_lost
 			# 	change_variable = {
 			# 		which = acemod_var_country_defensive_protocol_kill_count	# Need to account for multiple owners' fleets. Will allow to evaluate how dangerous specific galactic empires are.
 			# 		value = 1

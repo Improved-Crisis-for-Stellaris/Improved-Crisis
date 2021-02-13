@@ -59,6 +59,12 @@ on_space_battle_lost = {
 	}
 }
 
+on_system_lost = {
+	events = {
+		acemod_fleet.132		# Territorial defense fallback event when on_space_battle_lost does not trigger (acemod_fleet.130). Uses on_system_lost
+	}
+}
+
 on_planet_attackers_win = {
 	events = {
 		acemod_fleet.450		# Fix crisis country taking over planet controlled by another crisis country.
