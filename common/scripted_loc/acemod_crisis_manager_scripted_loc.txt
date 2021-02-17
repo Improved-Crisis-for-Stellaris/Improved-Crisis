@@ -3251,6 +3251,24 @@ defined_text = {
 	}
 }
 
+defined_text = {
+	name = GetName_acemod_crisis_manager_prethoryn_spawn_skip_mtth_disabled
+	text = {
+		trigger = {
+			has_global_flag = acemod_crisis_manager_prethoryn_spawn_skip_mtth_disabled
+		}
+		localization_key = acemod_crisis_manager_trigger_no
+	}
+	text = {
+		trigger = {
+			NOT = {
+				has_global_flag = acemod_crisis_manager_prethoryn_spawn_skip_mtth_disabled
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_yes
+	}
+}
+
 # Number of players
 defined_text = {
 	name = GetName_acemod_crisis_manager_var_country_num_human_players_start
@@ -3417,6 +3435,42 @@ defined_text = {
 		trigger = {
 			NOT = {
 				has_global_flag = acemod_crisis_manager_prethoryn_spawn_effect_fired
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_crisis_manager_prethoryn_spawn_skip_mtth_disabled_debug
+	text = {
+		trigger = {
+			has_global_flag = acemod_crisis_manager_prethoryn_spawn_skip_mtth_disabled
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				has_global_flag = acemod_crisis_manager_prethoryn_spawn_skip_mtth_disabled
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_crisis_manager_prethoryn_spawn_skip_mtth_fired
+	text = {
+		trigger = {
+			has_global_flag = acemod_crisis_manager_prethoryn_spawn_skip_mtth_fired
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				has_global_flag = acemod_crisis_manager_prethoryn_spawn_skip_mtth_fired
 			}
 		}
 		localization_key = acemod_crisis_manager_trigger_fail

@@ -35,6 +35,24 @@ acemod_crisis_manager_calculate_prethoryn_effect = {
 				country_event = {
 					id = crisis.10
 				}
+				if = {
+					limit = {
+						NOT = {
+							has_global_flag = acemod_crisis_manager_prethoryn_spawn_skip_mtth_disabled
+						}
+					}
+					set_global_flag = acemod_crisis_manager_prethoryn_spawn_skip_mtth_fired
+					random_country = {
+						limit = {
+							is_country_type = default
+						}
+						country_event = {
+							id = crisis.12
+							days = 35
+							random = 10
+						}
+					}
+				}
 			}
 		}
 		10 = {
@@ -65,6 +83,24 @@ acemod_crisis_manager_calculate_prethoryn_effect = {
 				}
 				country_event = {
 					id = crisis.10
+				}
+				if = {
+					limit = {
+						NOT = {
+							has_global_flag = acemod_crisis_manager_prethoryn_spawn_skip_mtth_disabled
+						}
+					}
+					set_global_flag = acemod_crisis_manager_prethoryn_spawn_skip_mtth_fired
+					random_country = {
+						limit = {
+							is_country_type = default
+						}
+						country_event = {
+							id = crisis.12
+							days = 35
+							random = 10
+						}
+					}
 				}
 			}
 		}
@@ -97,6 +133,24 @@ acemod_crisis_manager_calculate_prethoryn_effect = {
 				country_event = {
 					id = crisis.10
 				}
+				if = {
+					limit = {
+						NOT = {
+							has_global_flag = acemod_crisis_manager_prethoryn_spawn_skip_mtth_disabled
+						}
+					}
+					set_global_flag = acemod_crisis_manager_prethoryn_spawn_skip_mtth_fired
+					random_country = {
+						limit = {
+							is_country_type = default
+						}
+						country_event = {
+							id = crisis.12
+							days = 35
+							random = 10
+						}
+					}
+				}
 			}
 		}
 		20 = {
@@ -127,6 +181,24 @@ acemod_crisis_manager_calculate_prethoryn_effect = {
 				}
 				country_event = {
 					id = crisis.10
+				}
+				if = {
+					limit = {
+						NOT = {
+							has_global_flag = acemod_crisis_manager_prethoryn_spawn_skip_mtth_disabled
+						}
+					}
+					set_global_flag = acemod_crisis_manager_prethoryn_spawn_skip_mtth_fired
+					random_country = {
+						limit = {
+							is_country_type = default
+						}
+						country_event = {
+							id = crisis.12
+							days = 35
+							random = 10
+						}
+					}
 				}
 			}
 		}
@@ -159,6 +231,24 @@ acemod_crisis_manager_calculate_prethoryn_effect = {
 				country_event = {
 					id = crisis.10
 				}
+				if = {
+					limit = {
+						NOT = {
+							has_global_flag = acemod_crisis_manager_prethoryn_spawn_skip_mtth_disabled
+						}
+					}
+					set_global_flag = acemod_crisis_manager_prethoryn_spawn_skip_mtth_fired
+					random_country = {
+						limit = {
+							is_country_type = default
+						}
+						country_event = {
+							id = crisis.12
+							days = 35
+							random = 10
+						}
+					}
+				}
 			}
 		}
 		30 = {
@@ -189,6 +279,24 @@ acemod_crisis_manager_calculate_prethoryn_effect = {
 				}
 				country_event = {
 					id = crisis.10
+				}
+				if = {
+					limit = {
+						NOT = {
+							has_global_flag = acemod_crisis_manager_prethoryn_spawn_skip_mtth_disabled
+						}
+					}
+					set_global_flag = acemod_crisis_manager_prethoryn_spawn_skip_mtth_fired
+					random_country = {
+						limit = {
+							is_country_type = default
+						}
+						country_event = {
+							id = crisis.12
+							days = 35
+							random = 10
+						}
+					}
 				}
 			}
 		}
@@ -221,6 +329,24 @@ acemod_crisis_manager_calculate_prethoryn_effect = {
 				country_event = {
 					id = crisis.10
 				}
+				if = {
+					limit = {
+						NOT = {
+							has_global_flag = acemod_crisis_manager_prethoryn_spawn_skip_mtth_disabled
+						}
+					}
+					set_global_flag = acemod_crisis_manager_prethoryn_spawn_skip_mtth_fired
+					random_country = {
+						limit = {
+							is_country_type = default
+						}
+						country_event = {
+							id = crisis.12
+							days = 35
+							random = 10
+						}
+					}
+				}
 			}
 		}
 		40 = {
@@ -251,6 +377,24 @@ acemod_crisis_manager_calculate_prethoryn_effect = {
 				}
 				country_event = {
 					id = crisis.10
+				}
+				if = {
+					limit = {
+						NOT = {
+							has_global_flag = acemod_crisis_manager_prethoryn_spawn_skip_mtth_disabled
+						}
+					}
+					set_global_flag = acemod_crisis_manager_prethoryn_spawn_skip_mtth_fired
+					random_country = {
+						limit = {
+							is_country_type = default
+						}
+						country_event = {
+							id = crisis.12
+							days = 35
+							random = 10
+						}
+					}
 				}
 			}
 		}
@@ -283,6 +427,24 @@ acemod_crisis_manager_calculate_prethoryn_effect = {
 				country_event = {
 					id = crisis.10
 				}
+				if = {
+					limit = {
+						NOT = {
+							has_global_flag = acemod_crisis_manager_prethoryn_spawn_skip_mtth_disabled
+						}
+					}
+					set_global_flag = acemod_crisis_manager_prethoryn_spawn_skip_mtth_fired
+					random_country = {
+						limit = {
+							is_country_type = default
+						}
+						country_event = {
+							id = crisis.12
+							days = 35
+							random = 10
+						}
+					}
+				}
 			}
 		}
 		50 = {
@@ -313,6 +475,24 @@ acemod_crisis_manager_calculate_prethoryn_effect = {
 				}
 				country_event = {
 					id = crisis.10
+				}
+				if = {
+					limit = {
+						NOT = {
+							has_global_flag = acemod_crisis_manager_prethoryn_spawn_skip_mtth_disabled
+						}
+					}
+					set_global_flag = acemod_crisis_manager_prethoryn_spawn_skip_mtth_fired
+					random_country = {
+						limit = {
+							is_country_type = default
+						}
+						country_event = {
+							id = crisis.12
+							days = 35
+							random = 10
+						}
+					}
 				}
 			}
 		}
@@ -345,6 +525,24 @@ acemod_crisis_manager_calculate_prethoryn_effect = {
 				country_event = {
 					id = crisis.10
 				}
+				if = {
+					limit = {
+						NOT = {
+							has_global_flag = acemod_crisis_manager_prethoryn_spawn_skip_mtth_disabled
+						}
+					}
+					set_global_flag = acemod_crisis_manager_prethoryn_spawn_skip_mtth_fired
+					random_country = {
+						limit = {
+							is_country_type = default
+						}
+						country_event = {
+							id = crisis.12
+							days = 35
+							random = 10
+						}
+					}
+				}
 			}
 		}
 		60 = {
@@ -375,6 +573,24 @@ acemod_crisis_manager_calculate_prethoryn_effect = {
 				}
 				country_event = {
 					id = crisis.10
+				}
+				if = {
+					limit = {
+						NOT = {
+							has_global_flag = acemod_crisis_manager_prethoryn_spawn_skip_mtth_disabled
+						}
+					}
+					set_global_flag = acemod_crisis_manager_prethoryn_spawn_skip_mtth_fired
+					random_country = {
+						limit = {
+							is_country_type = default
+						}
+						country_event = {
+							id = crisis.12
+							days = 35
+							random = 10
+						}
+					}
 				}
 			}
 		}
@@ -407,6 +623,24 @@ acemod_crisis_manager_calculate_prethoryn_effect = {
 				country_event = {
 					id = crisis.10
 				}
+				if = {
+					limit = {
+						NOT = {
+							has_global_flag = acemod_crisis_manager_prethoryn_spawn_skip_mtth_disabled
+						}
+					}
+					set_global_flag = acemod_crisis_manager_prethoryn_spawn_skip_mtth_fired
+					random_country = {
+						limit = {
+							is_country_type = default
+						}
+						country_event = {
+							id = crisis.12
+							days = 35
+							random = 10
+						}
+					}
+				}
 			}
 		}
 		70 = {
@@ -437,6 +671,24 @@ acemod_crisis_manager_calculate_prethoryn_effect = {
 				}
 				country_event = {
 					id = crisis.10
+				}
+				if = {
+					limit = {
+						NOT = {
+							has_global_flag = acemod_crisis_manager_prethoryn_spawn_skip_mtth_disabled
+						}
+					}
+					set_global_flag = acemod_crisis_manager_prethoryn_spawn_skip_mtth_fired
+					random_country = {
+						limit = {
+							is_country_type = default
+						}
+						country_event = {
+							id = crisis.12
+							days = 35
+							random = 10
+						}
+					}
 				}
 			}
 		}
@@ -469,6 +721,24 @@ acemod_crisis_manager_calculate_prethoryn_effect = {
 				country_event = {
 					id = crisis.10
 				}
+				if = {
+					limit = {
+						NOT = {
+							has_global_flag = acemod_crisis_manager_prethoryn_spawn_skip_mtth_disabled
+						}
+					}
+					set_global_flag = acemod_crisis_manager_prethoryn_spawn_skip_mtth_fired
+					random_country = {
+						limit = {
+							is_country_type = default
+						}
+						country_event = {
+							id = crisis.12
+							days = 35
+							random = 10
+						}
+					}
+				}
 			}
 		}
 		80 = {
@@ -499,6 +769,24 @@ acemod_crisis_manager_calculate_prethoryn_effect = {
 				}
 				country_event = {
 					id = crisis.10
+				}
+				if = {
+					limit = {
+						NOT = {
+							has_global_flag = acemod_crisis_manager_prethoryn_spawn_skip_mtth_disabled
+						}
+					}
+					set_global_flag = acemod_crisis_manager_prethoryn_spawn_skip_mtth_fired
+					random_country = {
+						limit = {
+							is_country_type = default
+						}
+						country_event = {
+							id = crisis.12
+							days = 35
+							random = 10
+						}
+					}
 				}
 			}
 		}
@@ -531,6 +819,24 @@ acemod_crisis_manager_calculate_prethoryn_effect = {
 				country_event = {
 					id = crisis.10
 				}
+				if = {
+					limit = {
+						NOT = {
+							has_global_flag = acemod_crisis_manager_prethoryn_spawn_skip_mtth_disabled
+						}
+					}
+					set_global_flag = acemod_crisis_manager_prethoryn_spawn_skip_mtth_fired
+					random_country = {
+						limit = {
+							is_country_type = default
+						}
+						country_event = {
+							id = crisis.12
+							days = 35
+							random = 10
+						}
+					}
+				}
 			}
 		}
 		90 = {
@@ -561,6 +867,24 @@ acemod_crisis_manager_calculate_prethoryn_effect = {
 				}
 				country_event = {
 					id = crisis.10
+				}
+				if = {
+					limit = {
+						NOT = {
+							has_global_flag = acemod_crisis_manager_prethoryn_spawn_skip_mtth_disabled
+						}
+					}
+					set_global_flag = acemod_crisis_manager_prethoryn_spawn_skip_mtth_fired
+					random_country = {
+						limit = {
+							is_country_type = default
+						}
+						country_event = {
+							id = crisis.12
+							days = 35
+							random = 10
+						}
+					}
 				}
 			}
 		}
@@ -593,6 +917,24 @@ acemod_crisis_manager_calculate_prethoryn_effect = {
 				country_event = {
 					id = crisis.10
 				}
+				if = {
+					limit = {
+						NOT = {
+							has_global_flag = acemod_crisis_manager_prethoryn_spawn_skip_mtth_disabled
+						}
+					}
+					set_global_flag = acemod_crisis_manager_prethoryn_spawn_skip_mtth_fired
+					random_country = {
+						limit = {
+							is_country_type = default
+						}
+						country_event = {
+							id = crisis.12
+							days = 35
+							random = 10
+						}
+					}
+				}
 			}
 		}
 		100 = {
@@ -623,6 +965,24 @@ acemod_crisis_manager_calculate_prethoryn_effect = {
 				}
 				country_event = {
 					id = crisis.10
+				}
+				if = {
+					limit = {
+						NOT = {
+							has_global_flag = acemod_crisis_manager_prethoryn_spawn_skip_mtth_disabled
+						}
+					}
+					set_global_flag = acemod_crisis_manager_prethoryn_spawn_skip_mtth_fired
+					random_country = {
+						limit = {
+							is_country_type = default
+						}
+						country_event = {
+							id = crisis.12
+							days = 35
+							random = 10
+						}
+					}
 				}
 			}
 		}
@@ -655,6 +1015,24 @@ acemod_crisis_manager_calculate_prethoryn_effect = {
 				country_event = {
 					id = crisis.10
 				}
+				if = {
+					limit = {
+						NOT = {
+							has_global_flag = acemod_crisis_manager_prethoryn_spawn_skip_mtth_disabled
+						}
+					}
+					set_global_flag = acemod_crisis_manager_prethoryn_spawn_skip_mtth_fired
+					random_country = {
+						limit = {
+							is_country_type = default
+						}
+						country_event = {
+							id = crisis.12
+							days = 35
+							random = 10
+						}
+					}
+				}
 			}
 		}
 		110 = {
@@ -685,6 +1063,24 @@ acemod_crisis_manager_calculate_prethoryn_effect = {
 				}
 				country_event = {
 					id = crisis.10
+				}
+				if = {
+					limit = {
+						NOT = {
+							has_global_flag = acemod_crisis_manager_prethoryn_spawn_skip_mtth_disabled
+						}
+					}
+					set_global_flag = acemod_crisis_manager_prethoryn_spawn_skip_mtth_fired
+					random_country = {
+						limit = {
+							is_country_type = default
+						}
+						country_event = {
+							id = crisis.12
+							days = 35
+							random = 10
+						}
+					}
 				}
 			}
 		}
@@ -717,6 +1113,24 @@ acemod_crisis_manager_calculate_prethoryn_effect = {
 				country_event = {
 					id = crisis.10
 				}
+				if = {
+					limit = {
+						NOT = {
+							has_global_flag = acemod_crisis_manager_prethoryn_spawn_skip_mtth_disabled
+						}
+					}
+					set_global_flag = acemod_crisis_manager_prethoryn_spawn_skip_mtth_fired
+					random_country = {
+						limit = {
+							is_country_type = default
+						}
+						country_event = {
+							id = crisis.12
+							days = 35
+							random = 10
+						}
+					}
+				}
 			}
 		}
 		120 = {
@@ -747,6 +1161,24 @@ acemod_crisis_manager_calculate_prethoryn_effect = {
 				}
 				country_event = {
 					id = crisis.10
+				}
+				if = {
+					limit = {
+						NOT = {
+							has_global_flag = acemod_crisis_manager_prethoryn_spawn_skip_mtth_disabled
+						}
+					}
+					set_global_flag = acemod_crisis_manager_prethoryn_spawn_skip_mtth_fired
+					random_country = {
+						limit = {
+							is_country_type = default
+						}
+						country_event = {
+							id = crisis.12
+							days = 35
+							random = 10
+						}
+					}
 				}
 			}
 		}
@@ -779,6 +1211,24 @@ acemod_crisis_manager_calculate_prethoryn_effect = {
 				country_event = {
 					id = crisis.10
 				}
+				if = {
+					limit = {
+						NOT = {
+							has_global_flag = acemod_crisis_manager_prethoryn_spawn_skip_mtth_disabled
+						}
+					}
+					set_global_flag = acemod_crisis_manager_prethoryn_spawn_skip_mtth_fired
+					random_country = {
+						limit = {
+							is_country_type = default
+						}
+						country_event = {
+							id = crisis.12
+							days = 35
+							random = 10
+						}
+					}
+				}
 			}
 		}
 		130 = {
@@ -809,6 +1259,24 @@ acemod_crisis_manager_calculate_prethoryn_effect = {
 				}
 				country_event = {
 					id = crisis.10
+				}
+				if = {
+					limit = {
+						NOT = {
+							has_global_flag = acemod_crisis_manager_prethoryn_spawn_skip_mtth_disabled
+						}
+					}
+					set_global_flag = acemod_crisis_manager_prethoryn_spawn_skip_mtth_fired
+					random_country = {
+						limit = {
+							is_country_type = default
+						}
+						country_event = {
+							id = crisis.12
+							days = 35
+							random = 10
+						}
+					}
 				}
 			}
 		}
@@ -841,6 +1309,24 @@ acemod_crisis_manager_calculate_prethoryn_effect = {
 				country_event = {
 					id = crisis.10
 				}
+				if = {
+					limit = {
+						NOT = {
+							has_global_flag = acemod_crisis_manager_prethoryn_spawn_skip_mtth_disabled
+						}
+					}
+					set_global_flag = acemod_crisis_manager_prethoryn_spawn_skip_mtth_fired
+					random_country = {
+						limit = {
+							is_country_type = default
+						}
+						country_event = {
+							id = crisis.12
+							days = 35
+							random = 10
+						}
+					}
+				}
 			}
 		}
 		140 = {
@@ -871,6 +1357,24 @@ acemod_crisis_manager_calculate_prethoryn_effect = {
 				}
 				country_event = {
 					id = crisis.10
+				}
+				if = {
+					limit = {
+						NOT = {
+							has_global_flag = acemod_crisis_manager_prethoryn_spawn_skip_mtth_disabled
+						}
+					}
+					set_global_flag = acemod_crisis_manager_prethoryn_spawn_skip_mtth_fired
+					random_country = {
+						limit = {
+							is_country_type = default
+						}
+						country_event = {
+							id = crisis.12
+							days = 35
+							random = 10
+						}
+					}
 				}
 			}
 		}
@@ -903,6 +1407,24 @@ acemod_crisis_manager_calculate_prethoryn_effect = {
 				country_event = {
 					id = crisis.10
 				}
+				if = {
+					limit = {
+						NOT = {
+							has_global_flag = acemod_crisis_manager_prethoryn_spawn_skip_mtth_disabled
+						}
+					}
+					set_global_flag = acemod_crisis_manager_prethoryn_spawn_skip_mtth_fired
+					random_country = {
+						limit = {
+							is_country_type = default
+						}
+						country_event = {
+							id = crisis.12
+							days = 35
+							random = 10
+						}
+					}
+				}
 			}
 		}
 		150 = {
@@ -933,6 +1455,24 @@ acemod_crisis_manager_calculate_prethoryn_effect = {
 				}
 				country_event = {
 					id = crisis.10
+				}
+				if = {
+					limit = {
+						NOT = {
+							has_global_flag = acemod_crisis_manager_prethoryn_spawn_skip_mtth_disabled
+						}
+					}
+					set_global_flag = acemod_crisis_manager_prethoryn_spawn_skip_mtth_fired
+					random_country = {
+						limit = {
+							is_country_type = default
+						}
+						country_event = {
+							id = crisis.12
+							days = 35
+							random = 10
+						}
+					}
 				}
 			}
 		}
@@ -965,6 +1505,24 @@ acemod_crisis_manager_calculate_prethoryn_effect = {
 				country_event = {
 					id = crisis.10
 				}
+				if = {
+					limit = {
+						NOT = {
+							has_global_flag = acemod_crisis_manager_prethoryn_spawn_skip_mtth_disabled
+						}
+					}
+					set_global_flag = acemod_crisis_manager_prethoryn_spawn_skip_mtth_fired
+					random_country = {
+						limit = {
+							is_country_type = default
+						}
+						country_event = {
+							id = crisis.12
+							days = 35
+							random = 10
+						}
+					}
+				}
 			}
 		}
 		160 = {
@@ -995,6 +1553,24 @@ acemod_crisis_manager_calculate_prethoryn_effect = {
 				}
 				country_event = {
 					id = crisis.10
+				}
+				if = {
+					limit = {
+						NOT = {
+							has_global_flag = acemod_crisis_manager_prethoryn_spawn_skip_mtth_disabled
+						}
+					}
+					set_global_flag = acemod_crisis_manager_prethoryn_spawn_skip_mtth_fired
+					random_country = {
+						limit = {
+							is_country_type = default
+						}
+						country_event = {
+							id = crisis.12
+							days = 35
+							random = 10
+						}
+					}
 				}
 			}
 		}
@@ -1027,6 +1603,24 @@ acemod_crisis_manager_calculate_prethoryn_effect = {
 				country_event = {
 					id = crisis.10
 				}
+				if = {
+					limit = {
+						NOT = {
+							has_global_flag = acemod_crisis_manager_prethoryn_spawn_skip_mtth_disabled
+						}
+					}
+					set_global_flag = acemod_crisis_manager_prethoryn_spawn_skip_mtth_fired
+					random_country = {
+						limit = {
+							is_country_type = default
+						}
+						country_event = {
+							id = crisis.12
+							days = 35
+							random = 10
+						}
+					}
+				}
 			}
 		}
 		170 = {
@@ -1057,6 +1651,24 @@ acemod_crisis_manager_calculate_prethoryn_effect = {
 				}
 				country_event = {
 					id = crisis.10
+				}
+				if = {
+					limit = {
+						NOT = {
+							has_global_flag = acemod_crisis_manager_prethoryn_spawn_skip_mtth_disabled
+						}
+					}
+					set_global_flag = acemod_crisis_manager_prethoryn_spawn_skip_mtth_fired
+					random_country = {
+						limit = {
+							is_country_type = default
+						}
+						country_event = {
+							id = crisis.12
+							days = 35
+							random = 10
+						}
+					}
 				}
 			}
 		}
@@ -1089,6 +1701,24 @@ acemod_crisis_manager_calculate_prethoryn_effect = {
 				country_event = {
 					id = crisis.10
 				}
+				if = {
+					limit = {
+						NOT = {
+							has_global_flag = acemod_crisis_manager_prethoryn_spawn_skip_mtth_disabled
+						}
+					}
+					set_global_flag = acemod_crisis_manager_prethoryn_spawn_skip_mtth_fired
+					random_country = {
+						limit = {
+							is_country_type = default
+						}
+						country_event = {
+							id = crisis.12
+							days = 35
+							random = 10
+						}
+					}
+				}
 			}
 		}
 		180 = {
@@ -1119,6 +1749,24 @@ acemod_crisis_manager_calculate_prethoryn_effect = {
 				}
 				country_event = {
 					id = crisis.10
+				}
+				if = {
+					limit = {
+						NOT = {
+							has_global_flag = acemod_crisis_manager_prethoryn_spawn_skip_mtth_disabled
+						}
+					}
+					set_global_flag = acemod_crisis_manager_prethoryn_spawn_skip_mtth_fired
+					random_country = {
+						limit = {
+							is_country_type = default
+						}
+						country_event = {
+							id = crisis.12
+							days = 35
+							random = 10
+						}
+					}
 				}
 			}
 		}
@@ -1151,6 +1799,24 @@ acemod_crisis_manager_calculate_prethoryn_effect = {
 				country_event = {
 					id = crisis.10
 				}
+				if = {
+					limit = {
+						NOT = {
+							has_global_flag = acemod_crisis_manager_prethoryn_spawn_skip_mtth_disabled
+						}
+					}
+					set_global_flag = acemod_crisis_manager_prethoryn_spawn_skip_mtth_fired
+					random_country = {
+						limit = {
+							is_country_type = default
+						}
+						country_event = {
+							id = crisis.12
+							days = 35
+							random = 10
+						}
+					}
+				}
 			}
 		}
 		190 = {
@@ -1181,6 +1847,24 @@ acemod_crisis_manager_calculate_prethoryn_effect = {
 				}
 				country_event = {
 					id = crisis.10
+				}
+				if = {
+					limit = {
+						NOT = {
+							has_global_flag = acemod_crisis_manager_prethoryn_spawn_skip_mtth_disabled
+						}
+					}
+					set_global_flag = acemod_crisis_manager_prethoryn_spawn_skip_mtth_fired
+					random_country = {
+						limit = {
+							is_country_type = default
+						}
+						country_event = {
+							id = crisis.12
+							days = 35
+							random = 10
+						}
+					}
 				}
 			}
 		}
@@ -1213,6 +1897,24 @@ acemod_crisis_manager_calculate_prethoryn_effect = {
 				country_event = {
 					id = crisis.10
 				}
+				if = {
+					limit = {
+						NOT = {
+							has_global_flag = acemod_crisis_manager_prethoryn_spawn_skip_mtth_disabled
+						}
+					}
+					set_global_flag = acemod_crisis_manager_prethoryn_spawn_skip_mtth_fired
+					random_country = {
+						limit = {
+							is_country_type = default
+						}
+						country_event = {
+							id = crisis.12
+							days = 35
+							random = 10
+						}
+					}
+				}
 			}
 		}
 		200 = {
@@ -1243,6 +1945,24 @@ acemod_crisis_manager_calculate_prethoryn_effect = {
 				}
 				country_event = {
 					id = crisis.10
+				}
+				if = {
+					limit = {
+						NOT = {
+							has_global_flag = acemod_crisis_manager_prethoryn_spawn_skip_mtth_disabled
+						}
+					}
+					set_global_flag = acemod_crisis_manager_prethoryn_spawn_skip_mtth_fired
+					random_country = {
+						limit = {
+							is_country_type = default
+						}
+						country_event = {
+							id = crisis.12
+							days = 35
+							random = 10
+						}
+					}
 				}
 			}
 		}
