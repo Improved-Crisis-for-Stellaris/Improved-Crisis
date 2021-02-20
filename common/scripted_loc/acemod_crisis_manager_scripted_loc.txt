@@ -3370,6 +3370,43 @@ defined_text = {
 }
 
 defined_text = {
+	name = GetName_acemod_var_country_acemod_army_strength_modifier_debug
+	text = {
+		trigger = {
+			NOR = {
+				check_variable = {
+					which = acemod_var_country_acemod_army_strength_modifier
+					value = 0
+				}
+				check_variable = {
+					which = acemod_var_country_acemod_army_strength_modifier
+					value = 101
+				}
+			}
+		}
+		localization_key = acemod_var_country_acemod_army_strength_modifier_debug_var
+	}
+	text = {
+		trigger = {
+			check_variable = {
+				which = acemod_var_country_acemod_army_strength_modifier
+				value = 0
+			}
+		}
+		localization_key = FE_CRISES
+	}
+	text = {
+		trigger = {
+			check_variable = {
+				which = acemod_var_country_acemod_army_strength_modifier
+				value = 101
+			}
+		}
+		localization_key = OFF
+	}
+}
+
+defined_text = {
 	name = GetName_acemod_crisis_manager_countdown_end_game_years_passed_45
 	text = {
 		trigger = {

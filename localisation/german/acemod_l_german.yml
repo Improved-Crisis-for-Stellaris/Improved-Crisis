@@ -49,7 +49,7 @@
  acemod_crisis_debuff_modifier_desc:0 "Galactic threats require dedicated research of efficient containment methods."
  acemod_fallen_awakened_empire_debuff_modifier:0 "Enigmatic Engineering of the Relics"
  acemod_fallen_awakened_empire_debuff_modifier_desc:0 "The ancients use shipwright technologies beyond our understanding, it is advisable to avoid direct confrontation."
- 
+
   # Menu------------------------------------
  acemod_menu_name:0 "Aggressive Crisis Engine"
  acemod_menu.1.name:0 "$acemod_menu_name$: $GALAXY_SETTINGS$"
@@ -66,13 +66,15 @@
  acemod_menu.1.e.tooltip:0 "§R$CRISIS_FACTOR$§!:\n\n$CRISIS_FACTOR$ $COUNTRY_MODIFIER$:\n$PRODUCES_RESOURCES$\n  £mod_ship_orbit_upkeep_mult£ $constructor_plural$ 5-$AUTOSAVE_YEARLY$ if $VALUE_LESS_THAN$10.\n\n$acemod_menu_can_disable$"
  acemod_menu.1.f:0 "£job_purge£ $colossus_plural$ - [root.GetName_acemod_crisis_colossus_disabled] (§RWork in $PROGRESS_VALUE$§!)"
  acemod_menu.1.f.tooltip:0 "§R$CRISIS_FACTOR$§!:\n\n§R$ai_crisis_chain_title$§!, §G$name_list_Prethoryn$§! and §M$name_list_Extradimensional$§! crises spawn £job_purge£ $colossus_plural$.\n\n$TRIGGER_REQUIRES$ $APOCALYPSE_TITLE$ $DLC_START$ $GAMESETUP_HOST$.\n\n$acemod_menu_can_disable$"
+ acemod_menu.1.g:0 "£mod_army_damage_mult£ [root.GetName_acemod_army_strength_modifier]"
+ acemod_menu.1.g.tooltip:0 "§R$CRISIS_FACTOR$§!:\n\n$CRISIS_FACTOR$ $COUNTRY_MODIFIER$:\n£mod_army_damage_mult£ [root.GetName_acemod_army_strength_modifier]\n\nDefault: §G$FE_CRISES$§!\nVanilla: $acemod_trigger_no$\n\n$acemod_menu_can_disable$"
  acemod_menu.1.y:0 "§BConfigure Crisis Manager§! - [root.GetName_acemod_crisis_manager_active]"
- acemod_menu.1.y.tooltip:0 "Opens §BCrisis Manager§! menu, where it can be activated, disabled, and configured.\n\nIt has to be set to §G$ACTIVE$§! for it to work."
+ acemod_menu.1.y.tooltip:0 "Opens §BCrisis Manager§! menu where it can be activated, disabled, and configured.\n\nIt has to be set to §G$ACTIVE$§! for it to work."
  acemod_trigger_yes:0 "§G$ACTIVE$§!"
  acemod_trigger_no:0 "§R$NOT_ACTIVE$§!"
  acemod_menu.1.z:0 "§Y$SAVE$§!"
  acemod_menu_can_disable:0 "You can disable it mid-game from this menu option."
- 
+
   # Vanilla addons------------------------------------
  ed_dimensional_anchor_key_blue:0 "$starbase_exd$"
  ed_dimensional_anchor_key_green:0 "$starbase_exd$"
@@ -92,3 +94,25 @@
  acemod_menu.2.a.tooltip:0 "Enables or disables Advanced Crisis AI.\nDefault: §G$ACTIVE$§!\n\nFleets react to their surroundings and territorial incursions. This may or may not affect performance on slower machines. Usually fleets purge faster than they spawn so the gain is minimal."
  acemod_menu.2.z:0 "§Y$SAVE$§!"
  acemod_menu.2.z.tooltip:0 "Back to main menu."
+
+  # Modifiers-----------------------------------
+ acemod_army_strength_modifier_use_crisis_strength:0 "$ARMY_POWER_HEADER$ $MODIFIER$ - §G$FE_CRISES$§!"
+ acemod_army_strength_modifier_use_vanilla:0 "$ARMY_POWER_HEADER$ $MODIFIER$ - $acemod_trigger_no$"
+ acemod_army_strength_modifier_1_25:0 "$ARMY_POWER_HEADER$ $MODIFIER$ - §G1.25x§!"
+ acemod_army_strength_modifier_1_50:0 "$ARMY_POWER_HEADER$ $MODIFIER$ - §G1.5x§!"
+ acemod_army_strength_modifier_1_75:0 "$ARMY_POWER_HEADER$ $MODIFIER$ - §G1.75x§!"
+ acemod_army_strength_modifier_2:0 "$ARMY_POWER_HEADER$ $MODIFIER$ - §G2x§!"
+ acemod_army_strength_modifier_2_25:0 "$ARMY_POWER_HEADER$ $MODIFIER$ - §G2.25x§!"
+ acemod_army_strength_modifier_2_50:0 "$ARMY_POWER_HEADER$ $MODIFIER$ - §G2.5x§!"
+ acemod_army_strength_modifier_2_75:0 "$ARMY_POWER_HEADER$ $MODIFIER$ - §G2.75x§!"
+ acemod_army_strength_modifier_3:0 "$ARMY_POWER_HEADER$ $MODIFIER$ - §G3x§!"
+ acemod_army_strength_modifier_3_25:0 "$ARMY_POWER_HEADER$ $MODIFIER$ - §G3.25x§!"
+ acemod_army_strength_modifier_3_50:0 "$ARMY_POWER_HEADER$ $MODIFIER$ - §G3.5x§!"
+ acemod_army_strength_modifier_3_75:0 "$ARMY_POWER_HEADER$ $MODIFIER$ - §G3.75x§!"
+ acemod_army_strength_modifier_4:0 "$ARMY_POWER_HEADER$ $MODIFIER$ - §G4x§!"
+ acemod_army_strength_modifier_4_25:0 "$ARMY_POWER_HEADER$ $MODIFIER$ - §G4.25x§!"
+ acemod_army_strength_modifier_4_50:0 "$ARMY_POWER_HEADER$ $MODIFIER$ - §G4.5x§!"
+ acemod_army_strength_modifier_4_75:0 "$ARMY_POWER_HEADER$ $MODIFIER$ - §G4.75x§!"
+ acemod_army_strength_modifier_5:0 "$ARMY_POWER_HEADER$ $MODIFIER$ - §G5x§!"
+ acemod_army_strength_modifier_10:0 "$ARMY_POWER_HEADER$ $MODIFIER$ - §G10x§!"
+ acemod_army_strength_modifier_25:0 "$ARMY_POWER_HEADER$ $MODIFIER$ - §G25x"
