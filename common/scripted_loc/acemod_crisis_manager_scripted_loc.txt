@@ -3370,26 +3370,26 @@ defined_text = {
 }
 
 defined_text = {
-	name = GetName_acemod_var_country_acemod_army_strength_modifier_debug
+	name = GetName_acemod_var_country_acemod_lib_army_strength_modifier_debug
 	text = {
 		trigger = {
 			NOR = {
 				check_variable = {
-					which = acemod_var_country_acemod_army_strength_modifier
+					which = acemod_var_country_acemod_lib_army_strength_modifier
 					value = 0
 				}
 				check_variable = {
-					which = acemod_var_country_acemod_army_strength_modifier
+					which = acemod_var_country_acemod_lib_army_strength_modifier
 					value = 101
 				}
 			}
 		}
-		localization_key = acemod_var_country_acemod_army_strength_modifier_debug_var
+		localization_key = acemod_var_country_acemod_lib_army_strength_modifier_debug_var
 	}
 	text = {
 		trigger = {
 			check_variable = {
-				which = acemod_var_country_acemod_army_strength_modifier
+				which = acemod_var_country_acemod_lib_army_strength_modifier
 				value = 0
 			}
 		}
@@ -3398,7 +3398,7 @@ defined_text = {
 	text = {
 		trigger = {
 			check_variable = {
-				which = acemod_var_country_acemod_army_strength_modifier
+				which = acemod_var_country_acemod_lib_army_strength_modifier
 				value = 101
 			}
 		}

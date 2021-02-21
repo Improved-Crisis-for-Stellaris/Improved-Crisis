@@ -2,7 +2,7 @@ namespace = acemod_crisis_manager
 # INITIALISERS
 # Marks ACE Crisis Manager mod as present. Other mods can check against this flag to see if ACE Crisis Manager is installed.
 country_event = {
-	id = acemod_core.100
+	id = acemod_crisis_manager.100
 	hide_window = yes
 	fire_only_once = yes
 	trigger = {
@@ -10,6 +10,45 @@ country_event = {
 	}
 	immediate = {
 		set_global_flag = acemod_crisis_manager_installed
+	}
+}
+
+# Fires Aggresive Crisis Engine Mod Manager menu if Aggresive Crisis Engine is not installed.
+country_event = {
+	id = acemod_crisis_manager.110
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		is_ai = no
+		NOT = {
+			has_global_flag = acemod_crisis_manager_menu_fired
+		}
+	}
+	immediate = {
+		set_global_flag = acemod_crisis_manager_menu_fired
+		country_event = {
+			id = acemod_crisis_manager.111
+			days = 1
+			random = 0
+		}
+	}
+}
+
+country_event = {
+	id = acemod_crisis_manager.111
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		is_ai = no
+		NOT = {
+			has_global_flag = acemod_menu_fired			# We do not need to open ACE Crisis Manager window if ACE window was opened.
+		}
+	}
+	immediate = {
+		set_global_flag = acemod_crisis_manager_menu_fired
+		country_event = {
+			id = acemod_crisis_manager.1
+		}
 	}
 }
 
@@ -372,6 +411,18 @@ country_event = {
 					random = 0
 				}
 				break = yes
+			}
+		}
+	}
+	option = {
+		name = acemod_crisis_manager.1.i
+		custom_tooltip = acemod_crisis_manager.1.i.tooltip
+		hidden_effect = {
+			acemod_lib_menu_country_acemod_lib_army_strength_modifier_option_selector = yes
+			country_event = {
+				id = acemod_crisis_manager.1
+				days = 0
+				random = 0
 			}
 		}
 	}
