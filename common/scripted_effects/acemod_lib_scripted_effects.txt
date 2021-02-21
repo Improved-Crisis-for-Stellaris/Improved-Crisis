@@ -257,6 +257,19 @@ acemod_lib_menu_country_acemod_lib_army_strength_modifier_option_selector = {
 			}
 		}
 	}
+	every_country = {
+		limit = {
+			OR = {
+				is_country_type = swarm
+				is_country_type = ai_empire
+				has_country_flag = acemod_lib_country_flag_army_strength_modifier_assisted_ai
+			}
+			NOT = {
+				has_country_flag = acemod_lib_country_flag_army_strength_modifier_disabled
+			}
+		}
+		acemod_lib_reset_country_acemod_lib_army_strength_modifier = yes
+	}
 }
 
 # Applies crisis strength multiplier to a country
@@ -827,4 +840,5 @@ acemod_lib_reset_country_acemod_lib_army_strength_modifier = {
 			}
 		}
 	}
+	set_country_flag = acemod_lib_country_flag_army_strength_modifier_applied	# Do not recalculate again until this flag is off (ie by changing menu settings).
 }

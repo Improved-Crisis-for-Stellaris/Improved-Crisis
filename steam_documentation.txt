@@ -69,7 +69,9 @@ Effects are listed in /events/acemod_fleet_events.txt (always up to date) and in
 # set_country_flag = acemod_country_flag_starbase_defensive_protocol_disabled	country				Disables territorial defense for given country.
 # set_country_flag = acemod_country_flag_starbase_defensive_protocol_fallback_event_disabled	country	Disables fallback event (acemod_fleet.132). Use if issues from triggering both 130 132 arise (should not).
 #
-# set_country_flag = acemod_country_flag_system_pings_disabled					country				Disables pinging systems to indicate potential high value targets.[/code]
+# set_country_flag = acemod_country_flag_system_pings_disabled					country				Disables pinging systems to indicate potential high value targets.[/code][code]
+# set_country_flag = acemod_lib_country_flag_army_strength_modifier_assisted_ai	country				swarm, ai_empire, and countries with this flag receive Crisis Army Strength multiplier.
+# set_country_flag = acemod_lib_country_flag_army_strength_modifier_disabled	country				Disables automatic Crisis Army Strength multiplier recalculation for given country (usefulf for disabling swarm or ai_empire bonus).[/code]
 
 ---
 

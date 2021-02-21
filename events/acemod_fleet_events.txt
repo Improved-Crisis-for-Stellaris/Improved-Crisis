@@ -64,6 +64,9 @@ namespace = acemod_fleet
 #
 # set_country_flag = acemod_country_flag_system_pings_disabled					country				Disables pinging systems to indicate potential high value targets.
 # 
+# set_country_flag = acemod_lib_country_flag_army_strength_modifier_assisted_ai	country				swarm, ai_empire, and countries with this flag receive Crisis Army Strength multiplier.
+# set_country_flag = acemod_lib_country_flag_army_strength_modifier_disabled	country				Disables automatic Crisis Army Strength multiplier recalculation for given country (usefulf for disabling swarm or ai_empire bonus).
+#
 # ACEMOD AI activation. Required to avoid crisis events overwrites.
 event = {
 	id = acemod_fleet.10
