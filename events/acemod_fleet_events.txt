@@ -3312,13 +3312,38 @@ country_event = {
 					}
 				}
 				from = {
-					is_country_type = swarm
-					is_country_type = ai_empire
+					OR = {
+						is_country_type = swarm
+						is_country_type = ai_empire
+					}
 				}
 			}
 			fromfrom = {
 				conquer = root
 				set_controller = root
+			}
+		}
+		if = {
+			limit = {
+				is_country_type = swarm
+				fromfrom = {
+					num_pops = 0
+				}
+			}
+			owner_species = {
+				save_event_target_as = prethoryn_species
+			}
+			fromfrom = {
+				start_colony = {
+					owner = root.owner
+					species = event_target:prethoryn_species
+				}
+			}
+			fromfrom = {
+				planet_event = {
+					id = acemod_fleet.506					# Fix for start_colony effect which broke in 2.8
+					days = 1080
+				}
 			}
 		}
 	}
@@ -3495,7 +3520,7 @@ fleet_event = {
 								}
 								planet_event = {
 									id = acemod_fleet.506									# Fix for start_colony effect which broke in 2.8
-									days = 1825
+									days = 1080
 								}
 							}
 							else = {
@@ -3513,7 +3538,7 @@ fleet_event = {
 								}
 								planet_event = {
 									id = acemod_fleet.506									# Fix for start_colony effect which broke in 2.8
-									days = 1825
+									days = 1080
 								}
 							}
 						}

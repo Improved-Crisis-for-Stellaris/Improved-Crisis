@@ -2374,6 +2374,182 @@ defined_text = {
 	}
 }
 
+defined_text = {
+	name = GetName_acemod_crisis_manager_extradimensional_invasion_defeated
+	text = {
+		trigger = {
+			has_global_flag = extradimensional_invasion_defeated
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				has_global_flag = extradimensional_invasion_defeated
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_crisis_manager_extradimensional_invasion_defeated_reverse
+	text = {
+		trigger = {
+			has_global_flag = extradimensional_invasion_defeated
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+	text = {
+		trigger = {
+			NOT = {
+				has_global_flag = extradimensional_invasion_defeated
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_crisis_manager_extradimensional_aberrant_compare
+	text = {
+		trigger = {
+			event_target:global_event_country = {
+				check_variable = {
+					which = acemod_crisis_manager_var_country_aberrant_spawn_time
+					value >= acemod_crisis_manager_var_country_extradimensional_spawn_time
+				}
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				event_target:global_event_country = {
+					check_variable = {
+						which = acemod_crisis_manager_var_country_aberrant_spawn_time
+						value >= acemod_crisis_manager_var_country_extradimensional_spawn_time
+					}
+				}
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_crisis_manager_extradimensional_vehement_compare
+	text = {
+		trigger = {
+			event_target:global_event_country = {
+				check_variable = {
+					which = acemod_crisis_manager_var_country_vehement_spawn_time
+					value >= acemod_crisis_manager_var_country_extradimensional_spawn_time
+				}
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				event_target:global_event_country = {
+					check_variable = {
+						which = acemod_crisis_manager_var_country_vehement_spawn_time
+						value >= acemod_crisis_manager_var_country_extradimensional_spawn_time
+					}
+				}
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_crisis_manager_aberrant_vehement_compare
+	text = {
+		trigger = {
+			event_target:global_event_country = {
+				check_variable = {
+					which = acemod_crisis_manager_var_country_vehement_spawn_time
+					value >= acemod_crisis_manager_var_country_aberrant_spawn_time
+				}
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				event_target:global_event_country = {
+					check_variable = {
+						which = acemod_crisis_manager_var_country_vehement_spawn_time
+						value >= acemod_crisis_manager_var_country_aberrant_spawn_time
+					}
+				}
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_crisis_manager_extradimensional_base_compare
+	text = {
+		trigger = {
+			event_target:global_event_country = {
+				check_variable = {
+					which = acemod_crisis_manager_var_country_extradimensional_spawn_time
+					value = 0
+				}
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+	text = {
+		trigger = {
+			NOT = {
+				event_target:global_event_country = {
+					check_variable = {
+						which = acemod_crisis_manager_var_country_extradimensional_spawn_time
+						value = 0
+					}
+				}
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_crisis_manager_aberrant_base_compare
+	text = {
+		trigger = {
+			event_target:global_event_country = {
+				check_variable = {
+					which = acemod_crisis_manager_var_country_aberrant_spawn_time
+					value = 0
+				}
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+	text = {
+		trigger = {
+			NOT = {
+				event_target:global_event_country = {
+					check_variable = {
+						which = acemod_crisis_manager_var_country_aberrant_spawn_time
+						value = 0
+					}
+				}
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+}
+
 # ai_invasion_happened (global), ai_ghost_signal (global), has_event_chain = "ghost_signal_chain" (country) has_event_chain = "ai_crisis_chain" (country) ghost_signal_5_flag (global) ai_empire (global) ai_empire count (global) post_arrival_events_machine (country) has_special_project = AI_CRISIS_PROJECT (country) has_completed_special_project = AI_CRISIS_PROJECT (country) ghost_signal_blocked (country) has_special_project = SYNTH_INFILTRATION_PROJECT (country) has_completed_special_project = SYNTH_INFILTRATION_PROJECT (country) synth_detector (country) event_target:custodian_bot (global) event_target:contingency_bot (global) ai_invasion_ongoing (global) synth_terror (global) has_point_of_interest = { poi = ai_crisis_poi_1 } { poi = ai_crisis_poi_2 } { poi = ai_crisis_poi_3 } { poi = ai_crisis_poi_4 } { poi = ai_crisis_poi_5 } (country) first_machine_world_destroyed (global) destroyed_by_colossus planet_cracked planet_shielded planet_godrayed (planet) machine_world_1 machine_world_2 machine_world_3 machine_world_4 machine_lair event_chain_counter = active_machine_worlds (country) ghost_signal_4_flag ghost_signal_3_flag ghost_signal_2_flag ai_invasion_defeated (global) is_country_type = cybrex_empire (global) cybrex_empire count (global) cybrex_resurface (global) cybrex_destroyed (global) cybrex_departed (global) cybrex_donation (country) pc_cybrex (planet)
 defined_text = {
 	name = GetName_acemod_crisis_manager_ai_invasion_happened
@@ -3128,6 +3304,56 @@ defined_text = {
 			NOT = {
 				check_variable = {
 					which = acemod_crisis_manager_var_country_extradimensional_spawn_time
+					value = 0
+				}
+			}
+		}
+		localization_key = acemod_crisis_manager_blank
+	}
+}
+
+# Aberrant spawn
+defined_text = {
+	name = GetName_acemod_crisis_manager_var_country_aberrant_spawn_time
+	text = {
+		trigger = {
+			check_variable = {
+				which = acemod_crisis_manager_var_country_aberrant_spawn_time
+				value = 0
+			}
+		}
+		localization_key = BASE
+	}
+	text = {
+		trigger = {
+			NOT = {
+				check_variable = {
+					which = acemod_crisis_manager_var_country_aberrant_spawn_time
+					value = 0
+				}
+			}
+		}
+		localization_key = acemod_crisis_manager_blank
+	}
+}
+
+# Vehement spawn
+defined_text = {
+	name = GetName_acemod_crisis_manager_var_country_vehement_spawn_time
+	text = {
+		trigger = {
+			check_variable = {
+				which = acemod_crisis_manager_var_country_vehement_spawn_time
+				value = 0
+			}
+		}
+		localization_key = BASE
+	}
+	text = {
+		trigger = {
+			NOT = {
+				check_variable = {
+					which = acemod_crisis_manager_var_country_vehement_spawn_time
 					value = 0
 				}
 			}
