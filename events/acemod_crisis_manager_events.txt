@@ -1405,8 +1405,8 @@ country_event = {
 					}
 					country_event = {
 						id = acemod_crisis_manager.1006						# Prethoryn triggers.
-						days = 60
-						random = 90
+						days = 70
+						random = 30
 					}
 				}
 				if = {
@@ -1416,13 +1416,30 @@ country_event = {
 								which = acemod_crisis_manager_var_country_extradimensional_spawn_time
 								value = 0
 							}
-							has_global_flag = extradimensional_invasion_happened							# One instance at a time in case a mod overwrites the event.
+							has_global_flag = extradimensional_invasion_defeated
+						}
+					}
+					if = {
+						limit = {
+							NOT = {
+								has_global_flag = extradimensional_invasion_happened								# One instance at a time in case a mod overwrites the event.
+							}
+						}
+						country_event = {
+							id = acemod_crisis_manager.1007							# Extradimensional triggers.
+							days = 105
+							random = 10
 						}
 					}
 					country_event = {
-						id = acemod_crisis_manager.1007						# Extradimensional triggers.
-						days = 60
-						random = 90
+						id = acemod_crisis_manager.1009						# Aberrant triggers.
+						days = 120
+						random = 20
+					}
+					country_event = {
+						id = acemod_crisis_manager.1010						# Vehement triggers.
+						days = 150						# Important for Vehement event occur after Aberrant event, otherwise Aberrant global flag might not be set in time.
+						random = 20
 					}
 				}
 				if = {
@@ -1437,8 +1454,8 @@ country_event = {
 					}
 					country_event = {
 						id = acemod_crisis_manager.1008						# Contingency triggers
-						days = 60
-						random = 90
+						days = 30
+						random = 30
 					}
 				}
 			}
@@ -1497,6 +1514,63 @@ country_event = {
 				is_country_type = global_event				# global_event country is always around
 			}
 			acemod_crisis_manager_calculate_contingency_effect = yes
+		}
+	}
+}
+
+# acemod_crisis_manager_var_country_aberrant_spawn_time
+country_event = {
+	id = acemod_crisis_manager.1009
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		has_global_flag = extradimensional_invasion_happened
+		NOT = {
+			has_global_flag = extradimensional_invasion_defeated
+		}
+	}
+	immediate = {
+		if = {
+			limit = {
+				NOT = {
+					has_global_flag = extradimensional_second_portal
+				}
+			}
+			random_country = {
+				limit = {
+					is_country_type = global_event					# global_event country is always around
+				}
+				acemod_crisis_manager_calculate_aberrant_effect = yes
+			}
+		}
+	}
+}
+
+# acemod_crisis_manager_var_country_vehement_spawn_time
+country_event = {
+	id = acemod_crisis_manager.1010
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		has_global_flag = extradimensional_invasion_happened
+		NOT = {
+			has_global_flag = extradimensional_invasion_defeated
+		}
+	}
+	immediate = {
+		if = {
+			limit = {
+				has_global_flag = extradimensional_second_portal
+				NOT = {
+					has_global_flag = extradimensional_third_portal
+				}
+			}
+			random_country = {
+				limit = {
+					is_country_type = global_event					# global_event country is always around
+				}
+				acemod_crisis_manager_calculate_vehement_effect = yes
+			}
 		}
 	}
 }
