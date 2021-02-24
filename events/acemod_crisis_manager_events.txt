@@ -1582,6 +1582,7 @@ event = {
 	is_triggered_only = yes
 	immediate = {
 		set_global_flag = acemod_crisis_manager_disable_crisis_firing		# Allows other mods to effectively disable ACE Crisis Manager's ability to trigger crisis. Set on_game_start or soon after.
+		set_country_flag = acemod_crisis_manager_crisis_establish_communications_aberrant	# Extra flag if other mods with custom country_type need event chain access. This does NOT affect other chain events, I trust other mods to overwrite them or make additional events.
 		set_global_flag = a_deadly_tempest_mod_active		# A Deadly Tempest
 		set_global_flag = z_cm_installed		# Infinite Crisis Master
 		set_global_flag = CmtFlagActivated		# NaK1119's Crisis Manager (all editions + unofficial)
