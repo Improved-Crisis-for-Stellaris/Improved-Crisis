@@ -3337,6 +3337,48 @@ defined_text = {
 	}
 }
 
+defined_text = {
+	name = GetName_acemod_crisis_manager_crisis_var_country_aberrant_spawn_attempts_num
+	text = {
+		trigger = {
+			check_variable = {
+				which = acemod_crisis_manager_crisis_var_country_aberrant_spawn_attempts_num
+				value = 0
+			}
+		}
+		localization_key = acemod_crisis_manager_num_0
+	}
+	text = {
+		trigger = {
+			NOT = {
+				check_variable = {
+					which = acemod_crisis_manager_crisis_var_country_aberrant_spawn_attempts_num
+					value = 0
+				}
+			}
+		}
+		localization_key = acemod_crisis_manager_blank
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_crisis_manager_crisis_1100_fired
+	text = {
+		trigger = {
+			has_global_flag = acemod_crisis_manager_crisis_1100_fired
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				has_global_flag = acemod_crisis_manager_crisis_1100_fired
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
 # Vehement spawn
 defined_text = {
 	name = GetName_acemod_crisis_manager_var_country_vehement_spawn_time
@@ -3770,6 +3812,42 @@ defined_text = {
 		trigger = {
 			NOT = {
 				has_global_flag = acemod_crisis_manager_contingency_spawn_effect_fired
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_crisis_manager_aberrant_spawn_effect_fired
+	text = {
+		trigger = {
+			has_global_flag = acemod_crisis_manager_aberrant_spawn_effect_fired
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				has_global_flag = acemod_crisis_manager_aberrant_spawn_effect_fired
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_crisis_manager_vehement_spawn_effect_fired
+	text = {
+		trigger = {
+			has_global_flag = acemod_crisis_manager_vehement_spawn_effect_fired
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				has_global_flag = acemod_crisis_manager_vehement_spawn_effect_fired
 			}
 		}
 		localization_key = acemod_crisis_manager_trigger_fail

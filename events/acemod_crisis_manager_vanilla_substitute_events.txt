@@ -21,6 +21,24 @@ country_event = {
 			limit = {
 				galaxy_percentage > 0.05
 			}
+			event_target:global_event_country = {
+				change_variable = {
+					which = acemod_crisis_manager_crisis_var_country_aberrant_spawn_attempts_num
+					value = 1
+				}
+				every_country = {
+					limit = {
+						OR = {
+							is_ai = no
+							is_country_type = default
+						}
+					}
+					change_variable = {
+						which = acemod_crisis_manager_crisis_var_country_aberrant_spawn_attempts_num
+						value = prev
+					}
+				}
+			}
 			country_event = {
 				# id = crisis.1100
 				id = acemod_crisis_manager_crisis.1100				#	Use substitute cloned event as vanilla will not meet its triggers.
@@ -31,8 +49,26 @@ country_event = {
 				galaxy_percentage > 0.01
 				event_target:global_event_country = {
 					check_variable = {
-						which = acemod_crisis_manager_crisis_var_aberrant_spawn_attempts_num
+						which = acemod_crisis_manager_crisis_var_country_aberrant_spawn_attempts_num
 						value > 3
+					}
+				}
+			}
+			event_target:global_event_country = {
+				change_variable = {
+					which = acemod_crisis_manager_crisis_var_country_aberrant_spawn_attempts_num
+					value = 1
+				}
+				every_country = {
+					limit = {
+						OR = {
+							is_ai = no
+							is_country_type = default
+						}
+					}
+					change_variable = {
+						which = acemod_crisis_manager_crisis_var_country_aberrant_spawn_attempts_num
+						value = prev
 					}
 				}
 			}
@@ -48,8 +84,26 @@ country_event = {
 				}
 				event_target:global_event_country = {
 					check_variable = {
-						which = acemod_crisis_manager_crisis_var_aberrant_spawn_attempts_num
+						which = acemod_crisis_manager_crisis_var_country_aberrant_spawn_attempts_num
 						value > 10
+					}
+				}
+			}
+			event_target:global_event_country = {
+				change_variable = {
+					which = acemod_crisis_manager_crisis_var_country_aberrant_spawn_attempts_num
+					value = 1
+				}
+				every_country = {
+					limit = {
+						OR = {
+							is_ai = no
+							is_country_type = default
+						}
+					}
+					change_variable = {
+						which = acemod_crisis_manager_crisis_var_country_aberrant_spawn_attempts_num
+						value = prev
 					}
 				}
 			}
@@ -61,8 +115,20 @@ country_event = {
 		else = {
 			event_target:global_event_country = {
 				change_variable = {
-					which = acemod_crisis_manager_crisis_var_aberrant_spawn_attempts_num
+					which = acemod_crisis_manager_crisis_var_country_aberrant_spawn_attempts_num
 					value = 1
+				}
+				every_country = {
+					limit = {
+						OR = {
+							is_ai = no
+							is_country_type = default
+						}
+					}
+					change_variable = {
+						which = acemod_crisis_manager_crisis_var_country_aberrant_spawn_attempts_num
+						value = prev
+					}
 				}
 			}
 			country_event = {
@@ -301,9 +367,9 @@ country_event = {
 					is_ai = no	# We assume player needs event chain, even if uses custom country_type. If that mod does not account for crisis chain then it's on them.
 				}
 			}
+			establish_communications_no_message = event_target:extradimensionals2	# ACE, to account for now improper "root" scope in crisis.1110.
 			country_event = { id = crisis.1110 days = 1 }
 			# Below effects are acemod added.
-			establish_communications_no_message = event_target:extradimensionals2	# ACE, to account for now improper "root" scope in crisis.1110.
 		}
 		random_country = {
 			limit = { is_country_type = extradimensional_2 }
