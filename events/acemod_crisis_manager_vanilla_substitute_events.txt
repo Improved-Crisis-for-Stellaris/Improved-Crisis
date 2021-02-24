@@ -380,10 +380,13 @@ country_event = {
 					fleet = {
 						if = {
 							limit = {
-								is_ship_size = starbase_exd	# Hotfix to change event chain when destroying a Dimensional Anchor.
+								is_ship_size = starbase_exd								# Hotfix to change event chain when destroying a Dimensional Anchor.
 							}
-							solar_system = {
-								set_star_flag = acemod_crisis_manager_star_flag_anchor_destroyed	# Debug.
+							owner = {
+								country_event = {
+									id = acemod_crisis_manager_crisis.1281
+									days = 1									# Delay to allow Anchor to be removed.
+								}
 							}
 						}
 					}
@@ -446,21 +449,243 @@ country_event = {
 	}
 }
 
+# Extradimensional chain adjust. Clone of vanilla crisis.1281 but without triggers. scope: extradimensional country
+country_event = {
+	id = acemod_crisis_manager_crisis.1281
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		log = "anchor destroyed event crisis.1281 triggered"
+		if = {
+			limit = {
+				count_owned_ship = {
+					limit = {
+						is_ship_size = starbase_exd
+					}
+					count < 1
+				}
+			}
+			switch = {
+				trigger = has_country_flag
+				unbidden = {
+					random_country = {
+						limit = {
+							is_country_type = portal_holder
+						}
+						random_owned_ship = {
+							limit = {
+								is_ship_size = dimensional_portal_ed
+								has_ship_flag = unbidden_portal
+							}
+							fleet = {
+								set_owner = root
+							}
+							fleet = {
+								set_event_locked = no
+							}
+						}
+					}
+				}
+				aberrant = {
+					random_country = {
+						limit = {
+							is_country_type = portal_holder
+						}
+						random_owned_ship = {
+							limit = {
+								is_ship_size = dimensional_portal_ed
+								has_ship_flag = aberrant_portal
+							}
+							fleet = {
+								set_owner = root
+							}
+							fleet = {
+								set_event_locked = no
+							}
+						}
+					}
+				}
+				vehement = {
+					random_country = {
+						limit = {
+							is_country_type = portal_holder
+						}
+						random_owned_ship = {
+							limit = {
+								is_ship_size = dimensional_portal_ed
+								has_ship_flag = vehement_portal
+							}
+							fleet = {
+								set_owner = root
+							}
+							fleet = {
+								set_event_locked = no
+							}
+						}
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				is_country_type = extradimensional
+			}
+			every_country = {
+				limit = {
+					has_event_chain = "extradimensional_invasion_chain"
+				}
+				add_event_chain_counter = {
+					event_chain = "extradimensional_invasion_chain"
+					counter = "dimensional_anchors_1"
+					amount = -1
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				is_country_type = extradimensional_2
+			}
+			every_country = {
+				limit = {
+					has_event_chain = "extradimensional_invasion_chain_2"
+				}
+				add_event_chain_counter = {
+					event_chain = "extradimensional_invasion_chain_2"
+					counter = "dimensional_anchors_2"
+					amount = -1
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				is_country_type = extradimensional_3
+			}
+			every_country = {
+				limit = {
+					has_event_chain = "extradimensional_invasion_chain_3"
+				}
+				add_event_chain_counter = {
+					event_chain = "extradimensional_invasion_chain_3"
+					counter = "dimensional_anchors_3"
+					amount = -1
+				}
+			}
+		}
+	}
+}
+
+# Extradimensional chain adjust when Vehement spawn on top of Dimensional Anchor.
+country_event = {
+	id = acemod_crisis_manager_crisis.1290
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		every_system = {
+			limit = {
+				OR = {
+					has_star_flag = acemod_crisis_manager_star_flag_starbase_exd@event_target:extradimensionals
+					has_star_flag = acemod_crisis_manager_star_flag_starbase_exd@event_target:extradimensionals2
+				}
+			}
+			if = {
+				limit = {
+					owner = {
+						is_same_value = event_target:extradimensionals3
+					}
+				}
+				if = {
+					limit = {
+						has_star_flag = acemod_crisis_manager_star_flag_starbase_exd@event_target:extradimensionals
+					}
+					event_target:extradimensionals = {
+						country_event = {
+							id = acemod_crisis_manager_crisis.1281
+							days = 1
+						}
+					}
+				}
+				else_if = {
+					limit = {
+						has_star_flag = acemod_crisis_manager_star_flag_starbase_exd@event_target:extradimensionals2
+					}
+					event_target:extradimensionals2 = {
+						country_event = {
+							id = acemod_crisis_manager_crisis.1281
+							days = 1
+						}
+					}
+				}
+			}
+			remove_star_flag = acemod_crisis_manager_star_flag_starbase_exd@prev
+		}
+	}
+}
+
 # Delay event. 
 country_event = {
 	id = acemod_crisis_manager_crisis.1201
 	hide_window = yes
 	is_triggered_only = yes
-
 	immediate = {
 		if = {
 			limit = {
+				# Below are the exact triggers for crisis.1200
+				has_global_flag = extradimensionals_fight
 				NOT = {
 					has_global_flag = extradimensional_third_portal
 				}
+				is_country_type = extradimensional_2
+				any_country = {
+					is_country_type = extradimensional
+				}
+			}
+			every_country = {
+				limit = {
+					OR = {
+						is_country_type = extradimensional
+						is_country_type = extradimensional_2
+					}
+				}
+				every_system_within_border = {
+					starbase = {
+						fleet = {
+							if = {
+								limit = {
+									is_ship_size = starbase_exd									# Hotfix to change event chain when destroying a Dimensional Anchor.
+								}
+								solar_system = {
+									set_star_flag = acemod_crisis_manager_star_flag_starbase_exd@owner									# Marking Anchor systems so we can later check which one was taken by Vehement for chain adjustment purposes.
+								}
+							}
+						}
+					}
+				}
 			}
 			country_event = {
-				id = crisis.1200
+				id = crisis.1200				# Vehement vanilla spawn event.
+			}
+			country_event = {
+				id = acemod_crisis_manager_crisis.1290				# Extradimensional chain adjust when Vehement spawn on top of Dimensional Anchor.
+				days = 1				# Need wait one day for system ownership swap.
+			}
+			acemod_crisis_manager_calculate_current_end_game_year = yes
+			event_target:global_event_country = {
+				change_variable = {
+					which = acemod_crisis_manager_var_country_vehement_spawned_year					# Debug variable until vanilla-friendly way to postpone Vehement spawn is coded.
+					value = acemod_crisis_manager_var_current_end_game_year
+				}
+				every_country = {
+					limit = {
+						OR = {
+							is_ai = no
+							is_country_type = default
+						}
+					}
+					change_variable = {
+						which = acemod_crisis_manager_var_country_vehement_spawned_year
+						value = prev
+					}
+				}
 			}
 		}
 		else = {
