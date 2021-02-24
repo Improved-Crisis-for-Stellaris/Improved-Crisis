@@ -2041,20 +2041,27 @@ fleet_event = {
 				random_list = {
 					75 = {
 						solar_system = {
-							create_starbase = {
-								size = starbase_exd_0
-								owner = root.owner
-							}
-							random_fleet_in_system = {
+							if = {
 								limit = {
-									is_ship_size = starbase_exd_0
+									NOT = {
+										exists = owner										# Failsafe in case two constructors try to spawn and add count at the same time.
+									}
 								}
-								random_owned_ship = {
+								create_starbase = {
+									size = starbase_exd_0
+									owner = root.owner
+								}
+								random_fleet_in_system = {
 									limit = {
 										is_ship_size = starbase_exd_0
 									}
-									ship_event = {
-										id = crisis.1310										# Spawn System Effect
+									random_owned_ship = {
+										limit = {
+											is_ship_size = starbase_exd_0
+										}
+										ship_event = {
+											id = crisis.1310											# Spawn System Effect
+										}
 									}
 								}
 							}

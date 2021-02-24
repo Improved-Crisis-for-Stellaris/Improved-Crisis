@@ -41,8 +41,8 @@ country_event = {
 			}
 			country_event = {
 				# id = crisis.1100
-				id = acemod_crisis_manager_crisis.1100				#	Use substitute cloned event as vanilla will not meet its triggers.
-			}
+				id = acemod_crisis_manager_crisis.1100					#	Use substitute cloned event as vanilla will not meet its triggers.
+			}	
 		}
 		else_if = {
 			limit = {
@@ -74,8 +74,9 @@ country_event = {
 			}
 			country_event = {
 				# id = crisis.1100
-				id = acemod_crisis_manager_crisis.1100				#	Use substitute cloned event as vanilla will not meet its triggers.
+				id = acemod_crisis_manager_crisis.1100					#	Use substitute cloned event as vanilla will not meet its triggers.
 			}
+			
 		}
 		else_if = {
 			limit = {
@@ -109,7 +110,7 @@ country_event = {
 			}
 			country_event = {
 				# id = crisis.1100
-				id = acemod_crisis_manager_crisis.1100				#	Use substitute cloned event as vanilla will not meet its triggers.
+				id = acemod_crisis_manager_crisis.1100					#	Use substitute cloned event as vanilla will not meet its triggers.
 			}
 		}
 		else = {
@@ -142,6 +143,7 @@ country_event = {
 
 ### Second Portal
 
+# Vanilla
 # Second Portal Appears (HIDDEN)
 country_event = {
 	id = acemod_crisis_manager_crisis.1100
@@ -285,12 +287,54 @@ country_event = {
 					create_fleet = {
 						effect = {
 							set_owner = PREV
-							create_ship = {
-								name = random
-								design = "NAME_Huntress"
-								graphical_culture = "extra_dimensional_02"
+							while = {
+								count = 1
+								set_fleet_flag = acemod_crisis_manager_fleet_flag_acot_shadowstalker								# Debug
+								if = {
+									limit = {
+										has_global_flag = acot_override_activated
+										NOT = {
+											has_global_flag = acemod_crisis_manager_acot_override_support_disabled											# Disables ACOT Aberrant "flagship" substitute.
+										}
+									}
+									create_ship = {
+										name = random
+										design = "NAME_Shadowstalker"										# ACOT Design.
+										graphical_culture = "extra_dimensional_02"
+										effect = {
+											set_ship_flag = acemod_crisis_manager_ship_flag_acot_shadowstalker
+										}
+									}
+								}
+								else = {
+									create_ship = {
+										name = random
+										design = "NAME_Huntress"
+										graphical_culture = "extra_dimensional_02"
+										effect = {
+											set_ship_flag = acemod_crisis_manager_ship_flag_acot_shadowstalker_fallback
+										}
+									}
+								}
 							}
-							assign_leader = last_created_leader
+							if = {
+								limit = {
+									any_owned_ship = {
+										NOR = {
+											has_ship_flag = acemod_crisis_manager_ship_flag_acot_shadowstalker												# Debug
+											has_ship_flag = acemod_crisis_manager_ship_flag_acot_shadowstalker_fallback
+										}
+									}
+								}
+								create_ship = {
+									name = random
+									design = "NAME_Huntress"
+									graphical_culture = "extra_dimensional_02"
+									effect = {
+										set_ship_flag = acemod_crisis_manager_ship_flag_acot_shadowstalker_missing_acot_fallback
+									}
+								}
+							}
 							while = {
 								count = 20
 								create_ship = {
@@ -299,6 +343,7 @@ country_event = {
 									graphical_culture = "extra_dimensional_02"
 								}
 							}
+							assign_leader = last_created_leader							# ACE. Moved in case first ship does not spawn for whatever reason.
 							while = {
 								count = 30
 								create_ship = {
@@ -321,15 +366,28 @@ country_event = {
 								angle = random
 							}
 							set_fleet_stance = aggressive
-							set_aggro_range = 500
+							set_fleet_bombardment_stance = indiscriminate							# For backwards compatibility with pre 2.8
+							set_fleet_bombardment_stance = armageddon							# Vanilla has selective on default
 							set_aggro_range_measure_from = self
-							set_fleet_bombardment_stance = armageddon
+							set_aggro_range = 800							# Longer aggro range, same as for pirate systems (default 500)
 						}
 					}
 				}
 			}
 			if = {
 				limit = { exists = starbase }
+				starbase = {
+					fleet = {
+						if = {
+							limit = {
+								is_ship_size = starbase_exd	# Hotfix to change event chain when destroying a Dimensional Anchor.
+							}
+							solar_system = {
+								set_star_flag = acemod_crisis_manager_star_flag_anchor_destroyed	# Debug.
+							}
+						}
+					}
+				}
 				starbase = { fleet = { destroy_fleet = this } }
 			}
 			create_starbase = {
@@ -362,6 +420,8 @@ country_event = {
 					is_country_type = default
 					is_country_type = fallen_empire
 					is_country_type = awakened_fallen_empire
+					is_country_type = ascended_empire	# ACOT Override.
+					is_country_type = lost_empire		# ACOT Override.
 					# Below triggers are acemod added.
 					has_country_flag = acemod_crisis_manager_crisis_establish_communications_aberrant	# Extra flag if other mods with custom country_type need event chain access. This does NOT affect other chain events, I trust other mods to overwrite them or make additional events.
 					is_ai = no	# We assume player needs event chain, even if uses custom country_type. If that mod does not account for crisis chain then it's on them.
@@ -376,6 +436,38 @@ country_event = {
 			# establish_communications_no_message = root
 			# Below triggers are acemod added.
 			establish_communications_no_message = event_target:extradimensionals	
+		}
+		event_target:extradimensionals2 = {
+			country_event = {
+				id = acemod_crisis_manager_crisis.1201	# ACE. Making sure Vehement spawns before Aberrant kills off all Unbidden systems.
+				days = 120
+			}
+		}
+	}
+}
+
+# Delay event. 
+country_event = {
+	id = acemod_crisis_manager_crisis.1201
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		if = {
+			limit = {
+				NOT = {
+					has_global_flag = extradimensional_third_portal
+				}
+			}
+			country_event = {
+				id = crisis.1200
+			}
+		}
+		else = {
+			country_event = {
+				id = acemod_crisis_manager_crisis.1201
+				days = 60
+			}
 		}
 	}
 }
