@@ -75,7 +75,7 @@
  acemod_crisis_manager_dlc_horizon_signal:0 "Horizon Signal"
  acemod_crisis_manager_dlc_horizon_signal_trigger:0 "412 Obtainable with active event"
  # Continuation for DLCs released in 2021 and later
- acemod_crisis_manager_dlc_check_post_2020:0 ""
+ acemod_crisis_manager_dlc_check_post_2020:0 "\ndlc025 $NEMESIS_TITLE$ [root.GetName_acemod_acemod_crisis_manager_dlc_check_host_nemesis]"
 
  # Game Debugging tool------------------------------------
  acemod_crisis_manager_degug_non:0 "Game Debug"
@@ -147,6 +147,21 @@
 # Crisis Armies Strength Multiplier------------------------------------
  acemod_crisis_manager.1.i:0 "(§G$SETTINGS$ $ACTIVE$§!) $acemod_lib_menu.1.g$"
  acemod_crisis_manager.1.i.tooltip:0 "$acemod_lib_menu.1.g.tooltip$"
+
+# Reset Crisis Manager settings to default.------------------------------------
+ acemod_crisis_manager.1.w:0 "$RESET_DEFAULT$"
+ acemod_crisis_manager.1.w.tooltip:0 "§B$acemod_crisis_manager_name_singular$§!:\n$RESET_DEFAULT_TOOLTIP$."
+
+# Crisis Manager Advanced Options menu.------------------------------------
+ acemod_crisis_manager.1.x:0 "§E$acemod_crisis_manager.1.x_plain$§!"
+ acemod_crisis_manager.1.x.tooltip:0 "Shows $acemod_menu.1.x$. Usually not needed."
+ acemod_crisis_manager.1.x_plain:0 "Advanced Options"
+ acemod_crisis_manager.11.name:0 "$acemod_menu_name$: $acemod_menu.1.x_plain$"
+ acemod_crisis_manager.11.desc:0 "Below options are not required to be changed in a normal gameplay."
+ acemod_crisis_manager.11.z:0 "§YBack to $acemod_crisis_manager_name_singular$ menu§!"
+ acemod_crisis_manager.11.z.tooltip:0 "Back to $acemod_crisis_manager.1.name$"
+ acemod_crisis_manager.11.a:0 "$acemod_crisis_manager_name_acot_override$ additional support - [root.GetName_acemod_crisis_manager_acot_override_support_disabled_reverse]"
+ acemod_crisis_manager.11.a.tooltip:0 "Minor tweaks specific for $acemod_crisis_manager_name_acot_override$, like first §H$extradimensional_invasion_chain_2_title$§! $FLEET$ receiving big capital ship instead of one $large_ship_ed$."
 
 # Debugging tools menu------------------------------------
  acemod_crisis_manager.10.name:0 "§E$acemod_crisis_manager_name$: §!$acemod_crisis_manager.1.y$"

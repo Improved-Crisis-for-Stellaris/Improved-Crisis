@@ -13435,3 +13435,52 @@ acemod_crisis_manager_calculate_current_end_game_year = {
 		}
 	}
 }
+
+# Reset Crisis Manager settings.
+acemod_crisis_manager_reset_settings = {
+	remove_global_flag = acemod_crisis_manager_active	# Disable Crisis Manager
+	remove_global_flag = acemod_crisis_manager_prethoryn_spawn_skip_mtth_disabled	# Enable Fast Prethoryn Invasion Start.
+	acemod_crisis_manager_reset_settings_script = yes	# For country firing menu effect.
+	event_target:global_event_country = {
+		acemod_crisis_manager_reset_settings_script = yes		# For global_event_country which stores actually used values.
+	}
+	every_country = {
+		limit = {
+			OR = {
+				is_ai = no				# For any player.
+				is_country_type = default				# For any other empire players might switch to.
+			}
+		}
+	}
+}
+
+acemod_crisis_manager_reset_settings_script = {
+	set_variable = {
+		which = acemod_crisis_manager_var_country_spawn_time_variable		# Change years variable.
+		value = 5
+	}
+	set_variable = {
+		which = acemod_crisis_manager_var_country_prethoryn_spawn_time		# Prethoryn spawn.
+		value = 0
+	}
+	set_variable = {
+		which = acemod_crisis_manager_var_country_contingency_spawn_time		# Contingency spawn
+		value = 0
+	}
+	set_variable = {
+		which = acemod_crisis_manager_var_country_extradimensional_spawn_time		# Extradimensional spawn
+		value = 0
+	}
+	set_variable = {
+		which = acemod_crisis_manager_var_country_aberrant_spawn_time		# Aberrant spawn
+		value = 0
+	}
+	set_variable = {
+		which = acemod_crisis_manager_var_country_vehement_spawn_time		#  Vehement spawn
+		value = 0
+	}
+	set_variable = {
+		which = acemod_var_country_acemod_lib_army_strength_modifier		# Default, use crisis strength.
+		value = 0
+	}
+}
