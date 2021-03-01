@@ -2,6 +2,9 @@
 
 [code]a.k.a. crisis is fixed[/code]
 
+[URL=https://www.youtube.com/watch?v=_kA0QkxCjmE&feature=emb_title&ab_channel=GeneralPol][IMG]https://i.imgur.com/EBb3etY.png[/IMG][/URL]
+[i]Comparison of Vanilla and ACE AI under the same conditions (2.8.1, x10, Commodore). Video courtesy of [url=https://www.youtube.com/channel/UCKInflPaHost0EU5Q7ALK_A]General Pol[/url].[/i]
+
 Vanilla AI is off for main crises and all fleet movements are mod scripted, this includes military fleets, constructors, army transports and swarm infestors.
 
 Galactic empires receive initial massive damage penalty against crisis factions. New technologies are required to be obtained in order to mitigate this.
@@ -29,6 +32,8 @@ ACEMOD is flexible and modular. Users are able to switch individual components o
 
 Modders can use ACEMOD AI for their own custom country_types and exclude individual fleets from ACEMOD AI for their own events. Current list of effects for modders to use is inside [b]acemod_fleet_events.txt[/b]. See [url=https://steamcommunity.com/workshop/filedetails/discussion/2268189539/3011179244472319574/]AI framework documentation (modders)[/url] for details.
 
+[IMG]https://i.imgur.com/lxgj781.png[/IMG]
+
 [h1]Compatibility[/h1]
 This mod is highly compatible but requires disabling vanilla crisis AI. For this reason put ACEMOD below any mod which changes crises (this includes Starnet AI and Glavius AI which overwrite crisis definitions without actually making changes to them).
 
@@ -45,9 +50,6 @@ See [url=https://steamcommunity.com/workshop/filedetails/discussion/2268189539/3
 - New crisis-related technologies.
 - Various fixes like changing crisis bombardment stance and making unarmed crisis ships flee when in danger.
 List of features is subject to change.
-
-[URL=https://www.youtube.com/watch?v=_kA0QkxCjmE&feature=emb_title&ab_channel=GeneralPol][IMG]https://i.imgur.com/EBb3etY.png[/IMG][/URL]
-[i]Comparison of Vanilla and ACE AI under the same conditions (2.8.1, x10, Commodore). Video courtesy of [url=https://www.youtube.com/channel/UCKInflPaHost0EU5Q7ALK_A]General Pol[/url].[/i]
 
 [URL=https://www.youtube.com/watch?v=02WjfX9Rne0][IMG]https://i.imgur.com/165j5Dq.png[/IMG][/URL]
 [i]Overnight test run of ACEMOD AI crisis on Stellaris 2.7.2. Default settings but technology cost on x0.25. All empires were on repeatables. Crisis on x1 strength was squashed, this is a x5 Scourge.[/i]

@@ -2918,12 +2918,21 @@ fleet_event = {
 							effect = {
 								id = "acemod.405.e2"
 								root = {
-									# fleet = {
-									# 	leader = {
-									# 		save_event_target_as = acemod_event_target_invader_army_leader
-									# 		unassign_leader = this
-									# 	}
-									# }
+									fleet = {
+										if = {
+											limit = {
+												exists = leader
+											}
+											leader = {
+												save_event_target_as = acemod_event_target_invader_army_leader
+												set_timed_leader_flag = {
+													flag = acemod_leader_invader_army_leader_free
+													days = 5
+												}
+												unassign_leader = this
+											}
+										}
+									}
 									if = {
 										limit = {
 											owner = {
@@ -2944,17 +2953,27 @@ fleet_event = {
 													type = "swarm_army"
 													species = event_target:prethoryn_species
 												}
+												# Ground combat remains leaderless even when leader is assigned to the first created army, this is beyond fixing until fleet queue to land armies exists.
+												# if = {
+												# 	limit = {
+												# 		exists = event_target:acemod_event_target_invader_army_leader
+												# 	}
+												# 	if = {
+												# 		limit = {
+												# 			event_target:acemod_event_target_invader_army_leader = {
+												# 				has_leader_flag = acemod_leader_invader_army_leader_free
+												# 			}
+												# 		}
+												# 		last_created_army = {
+												# 			assign_leader = event_target:acemod_event_target_invader_army_leader
+												# 		}
+												# 		event_target:acemod_event_target_invader_army_leader = {
+												# 			remove_leader_flag = acemod_leader_invader_army_leader_free
+												# 		}
+												# 	}
+												# }
 											}
 										}
-										# Does not work.
-										# prev = {
-										# 	random_planet_army = {
-										# 		limit = {
-										# 			is_owned_by = event_target:invader_owner
-										# 		}
-										# 		assign_leader = event_target:acemod_event_target_invader_army_leader
-										# 	}
-										# }
 										delete_fleet = {
 											target = this
 											kill_leader = no
@@ -3002,15 +3021,6 @@ fleet_event = {
 												}
 											}
 										}
-										# Does not work.
-										# prev = {
-										# 	random_planet_army = {
-										# 		limit = {
-										# 			is_owned_by = event_target:invader_owner
-										# 		}
-										# 		assign_leader = event_target:acemod_event_target_invader_army_leader
-										# 	}
-										# }
 										delete_fleet = {
 											target = this
 											kill_leader = no
@@ -3034,15 +3044,6 @@ fleet_event = {
 												}
 											}
 										}
-										# Does not work.
-										# prev = {
-										# 	random_planet_army = {
-										# 		limit = {
-										# 			is_owned_by = event_target:invader_owner
-										# 		}
-										# 		assign_leader = event_target:acemod_event_target_invader_army_leader
-										# 	}
-										# }
 										delete_fleet = {
 											target = this
 											kill_leader = no
