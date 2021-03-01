@@ -2926,7 +2926,7 @@ fleet_event = {
 											leader = {
 												save_event_target_as = acemod_event_target_invader_army_leader
 												set_timed_leader_flag = {
-													flag = acemod_leader_invader_army_leader_free
+													flag = acemod_leader_flag_invader_army_leader_free
 													days = 5
 												}
 												unassign_leader = this
@@ -2961,14 +2961,14 @@ fleet_event = {
 												# 	if = {
 												# 		limit = {
 												# 			event_target:acemod_event_target_invader_army_leader = {
-												# 				has_leader_flag = acemod_leader_invader_army_leader_free
+												# 				has_leader_flag = acemod_leader_flag_invader_army_leader_free
 												# 			}
 												# 		}
 												# 		last_created_army = {
 												# 			assign_leader = event_target:acemod_event_target_invader_army_leader
 												# 		}
 												# 		event_target:acemod_event_target_invader_army_leader = {
-												# 			remove_leader_flag = acemod_leader_invader_army_leader_free
+												# 			remove_leader_flag = acemod_leader_flag_invader_army_leader_free
 												# 		}
 												# 	}
 												# }
