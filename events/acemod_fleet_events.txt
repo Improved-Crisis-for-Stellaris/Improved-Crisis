@@ -3747,6 +3747,7 @@ fleet_event = {
 			direction = in_system
 		}
 		clear_orders = yes
+		clear_fleet_actions = this
 	}
 }
 
