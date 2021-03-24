@@ -1,4 +1,5 @@
-﻿l_french:
+﻿# acemod_lib files are shared between acemod mods.
+l_french:
 
  # Menus-----------------------------------
  acemod_lib_menu_can_disable:0 "$CHANGE$ $MATCHMAKING_SERVER_STATUS_RUNNING$ $GAME$"

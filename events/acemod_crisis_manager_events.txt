@@ -1646,6 +1646,7 @@ event = {
 		set_global_flag = nhsc_fe_planets_updated		# Extra Ship Components 3.0 - Overwrites
 		set_global_flag = has_real_space_mod		# Real Space
 		set_global_flag = z_framework_installed		# Infinite Stellaris Framework
+		set_global_flag = gigastructures_enabled		# Gigastructural Engineering & More
 		set_global_flag = galactic_community_formed		# missing vanilla flag?
 	}
 }

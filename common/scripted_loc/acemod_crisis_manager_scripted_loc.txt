@@ -1239,6 +1239,24 @@ defined_text = {
 	}
 }
 
+defined_text = {
+	name = GetName_acemod_crisis_manager_debug_is_gigastructures_installed
+	text = {
+		trigger = {
+			has_global_flag = gigastructures_enabled
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				has_global_flag = gigastructures_enabled
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
 # Debug flags and triggers
 defined_text = {
 	name = GetName_acemod_crisis_manager_is_crises_allowed
