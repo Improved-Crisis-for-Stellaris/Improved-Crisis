@@ -147,44 +147,46 @@ country_event = {
 	is_triggered_only = yes
 	immediate = {
 		set_global_flag = acemod_global_flag_akeean_shield_active_hotfix
-		every_planet = {
-			limit = {
-				OR = {
-					has_planet_flag = akeean_shield_active
-					# has_planet_flag = akeean_planetary_shielding_device	# Moon with shielding device is not shielded itself.
-					has_planet_flag = akeean_shielded_homeworld
-					has_planet_flag = corrona					# Gigastructural Engineering & More Corrona Primitive world
-				}
-			}
-			random_list = {
-				20 = {
-					set_timed_planet_flag = {
-						flag = acemod_planet_flag_bombardment_target_ignore
-						years = 30
+		every_system = {
+			every_system_planet = {
+				limit = {
+					OR = {
+						has_planet_flag = akeean_shield_active
+						# has_planet_flag = akeean_planetary_shielding_device	# Moon with shielding device is not shielded itself.
+						has_planet_flag = akeean_shielded_homeworld
+						has_planet_flag = corrona						# Gigastructural Engineering & More Corrona Primitive world
 					}
 				}
-				20 = {
-					set_timed_planet_flag = {
-						flag = acemod_planet_flag_bombardment_target_ignore
-						years = 35
+				random_list = {
+					20 = {
+						set_timed_planet_flag = {
+							flag = acemod_planet_flag_bombardment_target_ignore
+							years = 30
+						}
 					}
-				}
-				20 = {
-					set_timed_planet_flag = {
-						flag = acemod_planet_flag_bombardment_target_ignore
-						years = 40
+					20 = {
+						set_timed_planet_flag = {
+							flag = acemod_planet_flag_bombardment_target_ignore
+							years = 35
+						}
 					}
-				}
-				20 = {
-					set_timed_planet_flag = {
-						flag = acemod_planet_flag_bombardment_target_ignore
-						years = 45
+					20 = {
+						set_timed_planet_flag = {
+							flag = acemod_planet_flag_bombardment_target_ignore
+							years = 40
+						}
 					}
-				}
-				20 = {
-					set_timed_planet_flag = {
-						flag = acemod_planet_flag_bombardment_target_ignore
-						years = 50
+					20 = {
+						set_timed_planet_flag = {
+							flag = acemod_planet_flag_bombardment_target_ignore
+							years = 45
+						}
+					}
+					20 = {
+						set_timed_planet_flag = {
+							flag = acemod_planet_flag_bombardment_target_ignore
+							years = 50
+						}
 					}
 				}
 			}
@@ -207,39 +209,41 @@ event = {
 	}
 	immediate = {
 		set_global_flag = acemod_global_flag_gigas_corrona_active_hotfix
-		every_planet = {
-			limit = {
-				has_planet_flag = corrona				# Gigastructural Engineering & More Corrona Primitive world
-			}
-			random_list = {
-				20 = {
-					set_timed_planet_flag = {
-						flag = acemod_planet_flag_bombardment_target_ignore
-						years = 30
-					}
+		every_system = {
+			every_system_planet = {
+				limit = {
+					has_planet_flag = corrona					# Gigastructural Engineering & More Corrona Primitive world
 				}
-				20 = {
-					set_timed_planet_flag = {
-						flag = acemod_planet_flag_bombardment_target_ignore
-						years = 35
+				random_list = {
+					20 = {
+						set_timed_planet_flag = {
+							flag = acemod_planet_flag_bombardment_target_ignore
+							years = 30
+						}
 					}
-				}
-				20 = {
-					set_timed_planet_flag = {
-						flag = acemod_planet_flag_bombardment_target_ignore
-						years = 40
+					20 = {
+						set_timed_planet_flag = {
+							flag = acemod_planet_flag_bombardment_target_ignore
+							years = 35
+						}
 					}
-				}
-				20 = {
-					set_timed_planet_flag = {
-						flag = acemod_planet_flag_bombardment_target_ignore
-						years = 45
+					20 = {
+						set_timed_planet_flag = {
+							flag = acemod_planet_flag_bombardment_target_ignore
+							years = 40
+						}
 					}
-				}
-				20 = {
-					set_timed_planet_flag = {
-						flag = acemod_planet_flag_bombardment_target_ignore
-						years = 50
+					20 = {
+						set_timed_planet_flag = {
+							flag = acemod_planet_flag_bombardment_target_ignore
+							years = 45
+						}
+					}
+					20 = {
+						set_timed_planet_flag = {
+							flag = acemod_planet_flag_bombardment_target_ignore
+							years = 50
+						}
 					}
 				}
 			}
@@ -3624,14 +3628,16 @@ country_event = {
 	hide_window = yes
 	is_triggered_only = yes
 	immediate = {
-		every_planet = {
-			limit = {
-				has_colony_progress >= 1
-			}
-			set_planet_flag = acemod_planet_flag_start_colony_effect_fix
-			create_colony = {
-				owner = solar_system.owner
-				species = solar_system.owner
+		every_system = {
+			every_system_planet = {
+				limit = {
+					has_colony_progress >= 1
+				}
+				set_planet_flag = acemod_planet_flag_start_colony_effect_fix
+				create_colony = {
+					owner = solar_system.owner
+					species = solar_system.owner
+				}
 			}
 		}
 	}

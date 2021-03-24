@@ -1304,10 +1304,8 @@ event = {
 		}
 	}
 	immediate = {
-		random_country = {
-			limit = {
-				is_country_type = global_event				# global_event country is always around
-			}
+		event_target:global_event_country = {
+			# global_event country is always around
 			set_global_flag = acemod_crisis_manager_countdown_end_game_years_passed_45			# Let the other mods know that ACE Crisis Manager began countdown.
 			country_event = {
 				id = acemod_crisis_manager.1001				# Begin countdown to end_game_years_passed = 50 T-10d where proper crisis trigger override is set.
@@ -1329,10 +1327,8 @@ country_event = {
 		}
 	}
 	immediate = {
-		random_country = {
-			limit = {
-				is_country_type = global_event				# global_event country is always around
-			}
+		event_target:global_event_country = {
+			# global_event country is always around
 			if = {
 				limit = {
 					NAND = {
@@ -1372,10 +1368,8 @@ event = {
 		}
 	}
 	immediate = {
-		random_country = {
-			limit = {
-				is_country_type = global_event				# global_event country is always around
-			}
+		event_target:global_event_country = {
+			# global_event country is always around
 			country_event = {
 				id = acemod_crisis_manager.1004				# Delay event for years start performance.
 				days = 20
@@ -1391,10 +1385,8 @@ country_event = {
 	hide_window = yes
 	is_triggered_only = yes
 	immediate = {
-		random_country = {
-			limit = {
-				is_country_type = global_event				# global_event country is always around
-			}
+		event_target:global_event_country = {
+			# global_event country is always around
 			if = {
 				limit = {
 					check_variable = {
@@ -1502,10 +1494,8 @@ country_event = {
 	hide_window = yes
 	is_triggered_only = yes
 	immediate = {
-		random_country = {
-			limit = {
-				is_country_type = global_event				# global_event country is always around
-			}
+		event_target:global_event_country = {
+			# global_event country is always around
 			acemod_crisis_manager_calculate_prethoryn_effect = yes
 		}
 	}
@@ -1517,10 +1507,8 @@ country_event = {
 	hide_window = yes
 	is_triggered_only = yes
 	immediate = {
-		random_country = {
-			limit = {
-				is_country_type = global_event				# global_event country is always around
-			}
+		event_target:global_event_country = {
+			# global_event country is always around
 			acemod_crisis_manager_calculate_extradimensional_effect = yes
 		}
 	}
@@ -1532,10 +1520,8 @@ country_event = {
 	hide_window = yes
 	is_triggered_only = yes
 	immediate = {
-		random_country = {
-			limit = {
-				is_country_type = global_event				# global_event country is always around
-			}
+		event_target:global_event_country = {
+			# global_event country is always around
 			acemod_crisis_manager_calculate_contingency_effect = yes
 		}
 	}
@@ -1559,10 +1545,8 @@ country_event = {
 					has_global_flag = extradimensional_second_portal
 				}
 			}
-			random_country = {
-				limit = {
-					is_country_type = global_event					# global_event country is always around
-				}
+			event_target:global_event_country = {
+				# global_event country is always around
 				acemod_crisis_manager_calculate_aberrant_effect = yes
 			}
 		}
@@ -1588,10 +1572,8 @@ country_event = {
 					has_global_flag = extradimensional_third_portal
 				}
 			}
-			random_country = {
-				limit = {
-					is_country_type = global_event					# global_event country is always around
-				}
+			event_target:global_event_country = {
+				# global_event country is always around
 				acemod_crisis_manager_calculate_vehement_effect = yes
 			}
 		}
@@ -1611,7 +1593,7 @@ country_event = {
 			if = {
 				limit = {
 					NOT = {
-						has_global_flag = acemod_crisis_manager_acot_override_support_disabled	# Disables ACOT Aberrant "flagship" substitute.
+						has_global_flag = acemod_crisis_manager_acot_override_support_disabled						# Disables ACOT Aberrant "flagship" substitute.
 					}
 				}
 				set_global_flag = acemod_crisis_manager_acot_override_support_disabled
@@ -1653,8 +1635,8 @@ event = {
 	is_triggered_only = yes
 	immediate = {
 		set_global_flag = acemod_crisis_manager_disable_crisis_firing		# Allows other mods to effectively disable ACE Crisis Manager's ability to trigger crisis. Set on_game_start or soon after.
-		set_country_flag = acemod_crisis_manager_crisis_establish_communications_aberrant	# Extra flag if other mods with custom country_type need event chain access. This does NOT affect other chain events, I trust other mods to overwrite them or make additional events.
-		set_global_flag = acemod_crisis_manager_acot_override_support_disabled	# Disables ACOT Aberrant "flagship" substitute.
+		set_country_flag = acemod_crisis_manager_crisis_establish_communications_aberrant		# Extra flag if other mods with custom country_type need event chain access. This does NOT affect other chain events, I trust other mods to overwrite them or make additional events.
+		set_global_flag = acemod_crisis_manager_acot_override_support_disabled		# Disables ACOT Aberrant "flagship" substitute.
 		set_global_flag = a_deadly_tempest_mod_active		# A Deadly Tempest
 		set_global_flag = z_cm_installed		# Infinite Crisis Master
 		set_global_flag = CmtFlagActivated		# NaK1119's Crisis Manager (all editions + unofficial)

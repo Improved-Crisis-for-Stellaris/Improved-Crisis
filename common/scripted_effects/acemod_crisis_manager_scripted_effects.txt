@@ -1,4 +1,4 @@
-# Scope: country is_country_type = global_event
+# Scope: country event_target:global_event_country
 acemod_crisis_manager_calculate_prethoryn_effect = {
 	set_global_flag = acemod_crisis_manager_prethoryn_spawn_effect_fired
 	switch = {
