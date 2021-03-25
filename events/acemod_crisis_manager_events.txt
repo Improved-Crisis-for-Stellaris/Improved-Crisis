@@ -1658,8 +1658,12 @@ country_event = {
 	is_triggered_only = yes
 	trigger = {
 		is_ai = no
+		NOT = {
+			has_global_flag = acemod_crisis_manager_installed
+		}
 	}
 	immediate = {
+		set_country_flag = acemod_crisis_manager_original_game_host		# Marks original game host country for debug purposes.
 		set_global_flag = acemod_crisis_manager_installed
 		if = {
 			limit = {
@@ -1683,6 +1687,9 @@ country_event = {
 							value = 1
 						}
 					}
+				}
+				# Save to root country so that variables can be displayed on Debug window via scripted_loc.
+				root = {
 					set_variable = {
 						which = acemod_crisis_manager_var_country_num_human_players_start
 						value = prev
