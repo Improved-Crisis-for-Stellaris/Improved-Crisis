@@ -2757,7 +2757,7 @@ defined_text = {
 	text = {
 		trigger = {
 			any_country = {
-				has_completed_special_project = AI_CRISIS_PROJECT
+				has_completed_special_project_in_log = AI_CRISIS_PROJECT
 			}
 		}
 		localization_key = acemod_crisis_manager_trigger_pass
@@ -2766,7 +2766,7 @@ defined_text = {
 		trigger = {
 			NOT = {
 				any_country = {
-					has_completed_special_project = AI_CRISIS_PROJECT
+					has_completed_special_project_in_log = AI_CRISIS_PROJECT
 				}
 			}
 		}
@@ -2823,7 +2823,7 @@ defined_text = {
 	text = {
 		trigger = {
 			any_country = {
-				has_completed_special_project = SYNTH_INFILTRATION_PROJECT
+				has_completed_special_project_in_log = SYNTH_INFILTRATION_PROJECT
 			}
 		}
 		localization_key = acemod_crisis_manager_trigger_pass
@@ -2832,7 +2832,7 @@ defined_text = {
 		trigger = {
 			NOT = {
 				any_country = {
-					has_completed_special_project = SYNTH_INFILTRATION_PROJECT
+					has_completed_special_project_in_log = SYNTH_INFILTRATION_PROJECT
 				}
 			}
 		}
@@ -3239,7 +3239,7 @@ defined_text = {
 	name = GetName_acemod_crisis_manager_pc_cybrex
 	text = {
 		trigger = {
-			any_planet = {
+			any_galaxy_planet = {
 				is_planet_class = pc_cybrex
 			}
 		}
@@ -3248,7 +3248,7 @@ defined_text = {
 	text = {
 		trigger = {
 			NOT = {
-				any_planet = {
+				any_galaxy_planet = {
 					is_planet_class = pc_cybrex
 				}
 			}
