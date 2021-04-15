@@ -1616,6 +1616,35 @@ country_event = {
 		}
 	}
 	option = {
+		name = acemod_crisis_manager.11.b
+		custom_tooltip = acemod_crisis_manager.11.b.tooltip
+		hidden_effect = {
+			if = {
+				limit = {
+					NOT = {
+						has_global_flag = acemod_crisis_manager_acg_support_disabled						# Aesthetic Cinematic Gameplay support. Disabling it will allow ACE to add techs and debuffs even when ACG is present, possibly breaking balance of the overhaul.
+					}
+				}
+				set_global_flag = acemod_crisis_manager_acg_support_disabled
+				country_event = {
+					id = acemod_crisis_manager.11
+					days = 0
+					random = 0
+				}
+				break = yes
+			}
+			else = {
+				remove_global_flag = acemod_crisis_manager_acg_support_disabled
+				country_event = {
+					id = acemod_crisis_manager.11
+					days = 0
+					random = 0
+				}
+				break = yes
+			}
+		}
+	}
+	option = {
 		name = acemod_crisis_manager.11.z
 		custom_tooltip = acemod_crisis_manager.11.z.tooltip
 		hidden_effect = {
@@ -1647,6 +1676,7 @@ event = {
 		set_global_flag = has_real_space_mod		# Real Space
 		set_global_flag = z_framework_installed		# Infinite Stellaris Framework
 		set_global_flag = gigastructures_enabled		# Gigastructural Engineering & More
+		set_global_flag = acg_active		# Aesthetic Cinematic Gameplay
 		set_global_flag = galactic_community_formed		# missing vanilla flag?
 	}
 }
@@ -1697,5 +1727,20 @@ country_event = {
 				}
 			}
 		}
+	}
+}
+
+# Aesthetic Cinematic Gameplay support. on_game_start
+country_event = {
+	id = acemod_crisis_manager.2010
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		has_global_flag = acg_active
+	}
+	immediate = {
+		set_global_flag = acemod_technology_disabled
+		set_global_flag = acemod_crisis_debuff_disabled
+		set_global_flag = acemod_fallen_awakened_empire_debuff_disabled
 	}
 }

@@ -732,8 +732,7 @@ fleet_event = {
 		}
 		save_event_target_as = acemod_event_target_invader_fleet
 		set_fleet_stance = aggressive
-		set_fleet_bombardment_stance = indiscriminate		# For backwards compatibility with pre 2.8
-		set_fleet_bombardment_stance = armageddon		# Vanilla has selective on default
+		set_fleet_bombardment_stance = armageddon		# Bombardment fix for for mods overwriting vanilla with outdated code.
 		set_aggro_range_measure_from = self
 		set_aggro_range = 800		# Longer aggro range, same as for pirate systems (default 500)
 		queue_actions = {
@@ -815,8 +814,7 @@ fleet_event = {
 		}
 		save_event_target_as = acemod_event_target_invader_fleet
 		set_fleet_stance = aggressive
-		set_fleet_bombardment_stance = indiscriminate		# For backwards compatibility with pre 2.8
-		set_fleet_bombardment_stance = armageddon		# Vanilla has selective on default
+		set_fleet_bombardment_stance = armageddon		# Bombardment fix for for mods overwriting vanilla with outdated code.
 		set_aggro_range_measure_from = self
 		set_aggro_range = 800		# Longer aggro range, same as for pirate systems (default 500)
 		queue_actions = {

@@ -11,7 +11,7 @@
 
 starbase_level_exd = {
 	ship_size = starbase_exd
-	display_empire_shield = no
+	display_empire_shield = yes
 	display_map_icon = yes
 	level_weight = 5
 	ai_weight = { weight = 5 }

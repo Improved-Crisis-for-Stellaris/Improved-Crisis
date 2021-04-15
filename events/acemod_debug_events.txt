@@ -325,30 +325,6 @@ fleet_event = {
 	}
 }
 
-# Dummy flag setup for Ancient Cache of Technologies: Override compatibility. DO NOT USE THIS EVENT.
-event = {
-	id = acemod_debug.400
-	hide_window = yes
-	is_triggered_only = yes
-	immediate = {
-		set_global_flag = acot_override_activated
-	}
-}
-
-# Dummy flag setup for akeean's Shielded World origin and Gigastructural Engineering & More worlds. DO NOT USE THIS EVENT.
-event = {
-	id = acemod_debug.401
-	hide_window = yes
-	is_triggered_only = yes
-	immediate = {
-		set_planet_flag = akeean_shield_active
-		set_planet_flag = akeean_planetary_shielding_device
-		set_planet_flag = akeean_shielded_homeworld
-		set_planet_flag = corrona		# Gigastructural Engineering & More Corrona Primitive world
-		set_country_flag = corrona_primitives
-	}
-}
-
 # Marks planet as excluded from being targeted for invasion.
 event = {
 	id = acemod_debug.402
@@ -376,5 +352,21 @@ event = {
 	is_triggered_only = yes
 	immediate = {
 		set_country_flag = acemod_country_flag_system_pings_disabled
+	}
+}
+
+# Dummy flag setup to clean error.log. DO NOT USE THIS EVENT.
+event = {
+	id = acemod_debug.405
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		set_global_flag = acot_override_activated		# Ancient Cache of Technologies: Override
+		set_planet_flag = akeean_shield_active		# akeean's Shielded World origin
+		set_planet_flag = akeean_planetary_shielding_device		# akeean's Shielded World origin
+		set_planet_flag = akeean_shielded_homeworld		# akeean's Shielded World origin
+		set_planet_flag = corrona		# Gigastructural Engineering & More Corrona Primitive world
+		set_country_flag = corrona_primitives		# Gigastructural Engineering & More Corrona Primitive world
+		set_global_flag = acg_active		# Aesthetic Cinematic Gameplay
 	}
 }

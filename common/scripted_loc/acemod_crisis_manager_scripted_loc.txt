@@ -1257,6 +1257,24 @@ defined_text = {
 	}
 }
 
+defined_text = {
+	name = GetName_acemod_crisis_manager_debug_is_acg_installed
+	text = {
+		trigger = {
+			has_global_flag = acg_active			# Aesthetic Cinematic Gameplay
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				has_global_flag = acg_active
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
 # Debug flags and triggers
 defined_text = {
 	name = GetName_acemod_crisis_manager_is_crises_allowed
@@ -3928,6 +3946,24 @@ defined_text = {
 	text = {
 		trigger = {
 			has_global_flag = acemod_crisis_manager_acot_override_support_disabled
+		}
+		localization_key = acemod_crisis_manager_trigger_no
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_crisis_manager_acg_support_disabled_reverse
+	text = {
+		trigger = {
+			NOT = {
+				has_global_flag = acemod_crisis_manager_acg_support_disabled
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_yes
+	}
+	text = {
+		trigger = {
+			has_global_flag = acemod_crisis_manager_acg_support_disabled
 		}
 		localization_key = acemod_crisis_manager_trigger_no
 	}
