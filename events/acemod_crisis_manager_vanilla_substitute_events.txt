@@ -177,6 +177,7 @@ country_event = {
 				create_species = {
 					name = "NAME_Aberrant"
 					class = EXD
+					namelist = Extradimensional
 					portrait = exd2
 					traits = random
 					effect = { save_event_target_as = extradimensional_hunters_species }

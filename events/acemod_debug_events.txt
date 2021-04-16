@@ -325,6 +325,16 @@ fleet_event = {
 	}
 }
 
+# Sets flag which allows country to use perpersonality with AI disabled.
+country_event = {
+	id = acemod_debug.301
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		set_country_flag = acemod_personality_override_allowed
+	}
+}
+
 # Marks planet as excluded from being targeted for invasion.
 event = {
 	id = acemod_debug.402
