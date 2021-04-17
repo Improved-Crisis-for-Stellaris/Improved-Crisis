@@ -3461,11 +3461,8 @@ fleet_event = {
 				find_closest_planet = {
 					trigger = {
 						id = "acemod.505.t1"
-						distance = {
-							source = THIS
-							type = hyperlane
-							max_jumps = 1
-							use_bypasses = yes
+						solar_system = {
+							is_same_value = prev.solar_system
 						}
 						habitable_planet = yes
 						is_colony = no
