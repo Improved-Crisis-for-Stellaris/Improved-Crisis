@@ -1,0 +1,17 @@
+on_game_start = {
+	events = {
+		acemod_dmm_new.1		# New Dynamic Mod Menu support.
+	}
+}
+
+on_single_player_save_game_load = {
+	events = {
+		acemod_dmm_new.1		# New Dynamic Mod Menu support.
+	}
+}
+
+dmm_mod_selected = {
+	events = {
+		acemod_dmm_new.2		# New Dynamic Mod Menu support.
+	}
+}
