@@ -684,6 +684,7 @@ fleet_event = {
 			closest_system = {
 				min_steps = 1
 				max_steps = 20
+				use_bypasses = yes
 				limit = {
 					exists = owner
 					has_access_fleet = root.owner
@@ -791,6 +792,7 @@ fleet_event = {
 			closest_system = {
 				min_steps = 1
 				max_steps = 40				#	Increased search range.
+				use_bypasses = yes
 				limit = {
 					exists = owner
 					has_access_fleet = root.owner
@@ -2377,6 +2379,7 @@ fleet_event = {
 			closest_system = {
 				min_steps = 1
 				max_steps = 20
+				use_bypasses = yes
 				limit = {
 					has_access_fleet = root.owner
 					NOR = {
@@ -3209,6 +3212,7 @@ fleet_event = {
 			closest_system = {
 				min_steps = 1
 				max_steps = 20
+				use_bypasses = yes
 				limit = {
 					has_access_fleet = root.owner
 					NOT = {
@@ -3347,12 +3351,6 @@ country_event = {
 				start_colony = {
 					owner = root.owner
 					species = event_target:prethoryn_species
-				}
-			}
-			fromfrom = {
-				planet_event = {
-					id = acemod_fleet.506					# Fix for start_colony effect which broke in 2.8
-					days = 1080
 				}
 			}
 		}
@@ -3528,10 +3526,6 @@ fleet_event = {
 								root = {
 									delete_fleet = this
 								}
-								planet_event = {
-									id = acemod_fleet.506									# Fix for start_colony effect which broke in 2.8
-									days = 1080
-								}
 							}
 							else = {
 								root.owner = {
@@ -3545,10 +3539,6 @@ fleet_event = {
 								}
 								root = {
 									delete_fleet = this
-								}
-								planet_event = {
-									id = acemod_fleet.506									# Fix for start_colony effect which broke in 2.8
-									days = 1080
 								}
 							}
 						}
@@ -3579,68 +3569,6 @@ fleet_event = {
 	}
 }
 
-# # Fix for start_colony effect which broke in 2.8 but was working just fine in 2.7... (ceaseless colonisation bug).
-planet_event = {
-	id = acemod_fleet.506
-	hide_window = yes
-	is_triggered_only = yes
-	immediate = {
-		if = {
-			limit = {
-				has_colony_progress >= 1				# Failsafe if planet was reclaimed by normal empire.
-			}
-			set_planet_flag = acemod_planet_flag_start_colony_effect_fix
-			create_colony = {
-				owner = solar_system.owner
-				species = solar_system.owner
-				# ethos = solar_system.owner
-			}
-		}
-	}
-}
-
-# # Hotfix for start_colony effect for ongoing games. Needs commenting out when Stellaris 2.9 patch comes out and people drop their current saves. on_yearly_pulse
-event = {
-	id = acemod_fleet.507
-	hide_window = yes
-	is_triggered_only = yes
-	trigger = {
-		NOT = {
-			has_global_flag = acemod_global_flag_start_colony_effect_fix_disabled
-		}
-	}
-	immediate = {
-		event_target:global_event_country = {
-			country_event = {
-				id = acemod_fleet.508				#	Delay for performance.
-				days = 35
-				random = 20
-			}
-		}
-	}
-}
-
-# # Fix event delayed for game start performance and possibility for other mods to disable this without overwrites.
-country_event = {
-	id = acemod_fleet.508
-	hide_window = yes
-	is_triggered_only = yes
-	immediate = {
-		every_system = {
-			every_system_planet = {
-				limit = {
-					has_colony_progress >= 1
-				}
-				set_planet_flag = acemod_planet_flag_start_colony_effect_fix
-				create_colony = {
-					owner = solar_system.owner
-					species = solar_system.owner
-				}
-			}
-		}
-	}
-}
-
 # Finds connected and accessible bypass system. Skipping for now to see if it is needed at all.
 fleet_event = {
 	id = acemod_fleet.510
@@ -3663,6 +3591,7 @@ fleet_event = {
 			closest_system = {
 				min_steps = 1
 				max_steps = 20
+				use_bypasses = yes
 				limit = {
 					has_access_fleet = root.owner
 					NOT = {
@@ -3902,6 +3831,7 @@ fleet_event = {
 										# 	closest_system = {
 										# 		min_steps = 1
 										# 		max_steps = 20
+										#		use_bypasses = yes
 										#		has_star_flag = AI_lair
 										# 		has_star_flag = AI_hub
 										# 	}
