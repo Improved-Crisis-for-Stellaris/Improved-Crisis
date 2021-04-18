@@ -1742,5 +1742,21 @@ country_event = {
 		set_global_flag = acemod_technology_disabled
 		set_global_flag = acemod_crisis_debuff_disabled
 		set_global_flag = acemod_fallen_awakened_empire_debuff_disabled
+		event_target:global_event_country = {
+			# global_event country is always around
+			set_variable = {
+				which = acemod_var_country_acemod_lib_army_strength_modifier				# OFF
+				value = 101
+			}
+		}
+		every_country = {
+			limit = {
+				is_ai = no
+			}
+			set_variable = {
+				which = acemod_var_country_acemod_lib_army_strength_modifier				# Save to root country so that variables can be displayed on Debug window via scripted_loc.
+				value = 101
+			}
+		}
 	}
 }

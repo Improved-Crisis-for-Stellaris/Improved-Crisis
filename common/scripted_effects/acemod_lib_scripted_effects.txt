@@ -6,254 +6,265 @@ acemod_lib_menu_country_acemod_lib_army_strength_modifier_option_selector = {
 		# global_event country is always around
 		if = {
 			limit = {
-				check_variable = {
+				has_global_flag = acg_active				# Aesthetic Cinematic Gameplay support.
+				NOT = {
+					has_global_flag = acemod_crisis_manager_acg_support_disabled
+				}
+			}
+			break = yes
+		}
+		else = {
+			if = {
+				limit = {
+					check_variable = {
+						which = acemod_var_country_acemod_lib_army_strength_modifier						# Default, use crisis strength.
+						value = 0
+					}
+				}
+				set_variable = {
+					which = acemod_var_country_acemod_lib_army_strength_modifier					# OFF
+					value = 101
+				}
+			}
+			else_if = {
+				limit = {
+					check_variable = {
+						which = acemod_var_country_acemod_lib_army_strength_modifier
+						value = 101
+					}
+				}
+				set_variable = {
+					which = acemod_var_country_acemod_lib_army_strength_modifier					# 1.25x
+					value = 1.25
+				}
+			}
+			else_if = {
+				limit = {
+					check_variable = {
+						which = acemod_var_country_acemod_lib_army_strength_modifier
+						value = 1.25
+					}
+				}
+				set_variable = {
+					which = acemod_var_country_acemod_lib_army_strength_modifier					# 1.5x
+					value = 1.5
+				}
+			}
+			else_if = {
+				limit = {
+					check_variable = {
+						which = acemod_var_country_acemod_lib_army_strength_modifier
+						value = 1.5
+					}
+				}
+				set_variable = {
+					which = acemod_var_country_acemod_lib_army_strength_modifier					# 1.75x
+					value = 1.75
+				}
+			}
+			else_if = {
+				limit = {
+					check_variable = {
+						which = acemod_var_country_acemod_lib_army_strength_modifier
+						value = 1.75
+					}
+				}
+				set_variable = {
+					which = acemod_var_country_acemod_lib_army_strength_modifier					# 2x
+					value = 2
+				}
+			}
+			else_if = {
+				limit = {
+					check_variable = {
+						which = acemod_var_country_acemod_lib_army_strength_modifier
+						value = 2
+					}
+				}
+				set_variable = {
+					which = acemod_var_country_acemod_lib_army_strength_modifier					# 2.25x
+					value = 2.25
+				}
+			}
+			else_if = {
+				limit = {
+					check_variable = {
+						which = acemod_var_country_acemod_lib_army_strength_modifier
+						value = 2.25
+					}
+				}
+				set_variable = {
+					which = acemod_var_country_acemod_lib_army_strength_modifier					# 2.5x
+					value = 2.5
+				}
+			}
+			else_if = {
+				limit = {
+					check_variable = {
+						which = acemod_var_country_acemod_lib_army_strength_modifier
+						value = 2.5
+					}
+				}
+				set_variable = {
+					which = acemod_var_country_acemod_lib_army_strength_modifier					# 2.75x
+					value = 2.75
+				}
+			}
+			else_if = {
+				limit = {
+					check_variable = {
+						which = acemod_var_country_acemod_lib_army_strength_modifier
+						value = 2.75
+					}
+				}
+				set_variable = {
+					which = acemod_var_country_acemod_lib_army_strength_modifier					# 3x
+					value = 3
+				}
+			}
+			else_if = {
+				limit = {
+					check_variable = {
+						which = acemod_var_country_acemod_lib_army_strength_modifier
+						value = 3
+					}
+				}
+				set_variable = {
+					which = acemod_var_country_acemod_lib_army_strength_modifier					# 3.25x
+					value = 3.25
+				}
+			}
+			else_if = {
+				limit = {
+					check_variable = {
+						which = acemod_var_country_acemod_lib_army_strength_modifier
+						value = 3.25
+					}
+				}
+				set_variable = {
+					which = acemod_var_country_acemod_lib_army_strength_modifier					# 3.5x
+					value = 3.5
+				}
+			}
+			else_if = {
+				limit = {
+					check_variable = {
+						which = acemod_var_country_acemod_lib_army_strength_modifier
+						value = 3.5
+					}
+				}
+				set_variable = {
+					which = acemod_var_country_acemod_lib_army_strength_modifier					# 3.75x
+					value = 3.75
+				}
+			}
+			else_if = {
+				limit = {
+					check_variable = {
+						which = acemod_var_country_acemod_lib_army_strength_modifier
+						value = 3.75
+					}
+				}
+				set_variable = {
+					which = acemod_var_country_acemod_lib_army_strength_modifier					# 4x
+					value = 4
+				}
+			}
+			else_if = {
+				limit = {
+					check_variable = {
+						which = acemod_var_country_acemod_lib_army_strength_modifier
+						value = 4
+					}
+				}
+				set_variable = {
+					which = acemod_var_country_acemod_lib_army_strength_modifier					# 4.25x
+					value = 4.25
+				}
+			}
+			else_if = {
+				limit = {
+					check_variable = {
+						which = acemod_var_country_acemod_lib_army_strength_modifier
+						value = 4.25
+					}
+				}
+				set_variable = {
+					which = acemod_var_country_acemod_lib_army_strength_modifier					# 4.5x
+					value = 4.5
+				}
+			}
+			else_if = {
+				limit = {
+					check_variable = {
+						which = acemod_var_country_acemod_lib_army_strength_modifier
+						value = 4.5
+					}
+				}
+				set_variable = {
+					which = acemod_var_country_acemod_lib_army_strength_modifier					# 4.75x
+					value = 4.75
+				}
+			}
+			else_if = {
+				limit = {
+					check_variable = {
+						which = acemod_var_country_acemod_lib_army_strength_modifier
+						value = 4.75
+					}
+				}
+				set_variable = {
+					which = acemod_var_country_acemod_lib_army_strength_modifier					# 5x
+					value = 5
+				}
+			}
+			else_if = {
+				limit = {
+					check_variable = {
+						which = acemod_var_country_acemod_lib_army_strength_modifier
+						value = 5
+					}
+				}
+				set_variable = {
+					which = acemod_var_country_acemod_lib_army_strength_modifier					# 10x
+					value = 10
+				}
+			}
+			else_if = {
+				limit = {
+					check_variable = {
+						which = acemod_var_country_acemod_lib_army_strength_modifier
+						value = 10
+					}
+				}
+				set_variable = {
+					which = acemod_var_country_acemod_lib_army_strength_modifier					# 25x
+					value = 25
+				}
+			}
+			else_if = {
+				limit = {
+					check_variable = {
+						which = acemod_var_country_acemod_lib_army_strength_modifier
+						value = 25
+					}
+				}
+				set_variable = {
 					which = acemod_var_country_acemod_lib_army_strength_modifier					# Default, use crisis strength.
 					value = 0
 				}
 			}
-			set_variable = {
-				which = acemod_var_country_acemod_lib_army_strength_modifier				# OFF
-				value = 101
-			}
-		}
-		else_if = {
-			limit = {
-				check_variable = {
-					which = acemod_var_country_acemod_lib_army_strength_modifier
-					value = 101
+			else = {
+				set_variable = {
+					which = acemod_var_country_acemod_lib_army_strength_modifier					# Fallback to Default, use crisis strength.
+					value = 0
 				}
 			}
-			set_variable = {
-				which = acemod_var_country_acemod_lib_army_strength_modifier				# 1.25x
-				value = 1.25
-			}
-		}
-		else_if = {
-			limit = {
-				check_variable = {
-					which = acemod_var_country_acemod_lib_army_strength_modifier
-					value = 1.25
+			root = {
+				set_variable = {
+					which = acemod_var_country_acemod_lib_army_strength_modifier					# Save to root country so that variables can be displayed via scripted_loc.
+					value = prev
 				}
-			}
-			set_variable = {
-				which = acemod_var_country_acemod_lib_army_strength_modifier				# 1.5x
-				value = 1.5
-			}
-		}
-		else_if = {
-			limit = {
-				check_variable = {
-					which = acemod_var_country_acemod_lib_army_strength_modifier
-					value = 1.5
-				}
-			}
-			set_variable = {
-				which = acemod_var_country_acemod_lib_army_strength_modifier				# 1.75x
-				value = 1.75
-			}
-		}
-		else_if = {
-			limit = {
-				check_variable = {
-					which = acemod_var_country_acemod_lib_army_strength_modifier
-					value = 1.75
-				}
-			}
-			set_variable = {
-				which = acemod_var_country_acemod_lib_army_strength_modifier				# 2x
-				value = 2
-			}
-		}
-		else_if = {
-			limit = {
-				check_variable = {
-					which = acemod_var_country_acemod_lib_army_strength_modifier
-					value = 2
-				}
-			}
-			set_variable = {
-				which = acemod_var_country_acemod_lib_army_strength_modifier				# 2.25x
-				value = 2.25
-			}
-		}
-		else_if = {
-			limit = {
-				check_variable = {
-					which = acemod_var_country_acemod_lib_army_strength_modifier
-					value = 2.25
-				}
-			}
-			set_variable = {
-				which = acemod_var_country_acemod_lib_army_strength_modifier				# 2.5x
-				value = 2.5
-			}
-		}
-		else_if = {
-			limit = {
-				check_variable = {
-					which = acemod_var_country_acemod_lib_army_strength_modifier
-					value = 2.5
-				}
-			}
-			set_variable = {
-				which = acemod_var_country_acemod_lib_army_strength_modifier				# 2.75x
-				value = 2.75
-			}
-		}
-		else_if = {
-			limit = {
-				check_variable = {
-					which = acemod_var_country_acemod_lib_army_strength_modifier
-					value = 2.75
-				}
-			}
-			set_variable = {
-				which = acemod_var_country_acemod_lib_army_strength_modifier				# 3x
-				value = 3
-			}
-		}
-		else_if = {
-			limit = {
-				check_variable = {
-					which = acemod_var_country_acemod_lib_army_strength_modifier
-					value = 3
-				}
-			}
-			set_variable = {
-				which = acemod_var_country_acemod_lib_army_strength_modifier				# 3.25x
-				value = 3.25
-			}
-		}
-		else_if = {
-			limit = {
-				check_variable = {
-					which = acemod_var_country_acemod_lib_army_strength_modifier
-					value = 3.25
-				}
-			}
-			set_variable = {
-				which = acemod_var_country_acemod_lib_army_strength_modifier				# 3.5x
-				value = 3.5
-			}
-		}
-		else_if = {
-			limit = {
-				check_variable = {
-					which = acemod_var_country_acemod_lib_army_strength_modifier
-					value = 3.5
-				}
-			}
-			set_variable = {
-				which = acemod_var_country_acemod_lib_army_strength_modifier				# 3.75x
-				value = 3.75
-			}
-		}
-		else_if = {
-			limit = {
-				check_variable = {
-					which = acemod_var_country_acemod_lib_army_strength_modifier
-					value = 3.75
-				}
-			}
-			set_variable = {
-				which = acemod_var_country_acemod_lib_army_strength_modifier				# 4x
-				value = 4
-			}
-		}
-		else_if = {
-			limit = {
-				check_variable = {
-					which = acemod_var_country_acemod_lib_army_strength_modifier
-					value = 4
-				}
-			}
-			set_variable = {
-				which = acemod_var_country_acemod_lib_army_strength_modifier				# 4.25x
-				value = 4.25
-			}
-		}
-		else_if = {
-			limit = {
-				check_variable = {
-					which = acemod_var_country_acemod_lib_army_strength_modifier
-					value = 4.25
-				}
-			}
-			set_variable = {
-				which = acemod_var_country_acemod_lib_army_strength_modifier				# 4.5x
-				value = 4.5
-			}
-		}
-		else_if = {
-			limit = {
-				check_variable = {
-					which = acemod_var_country_acemod_lib_army_strength_modifier
-					value = 4.5
-				}
-			}
-			set_variable = {
-				which = acemod_var_country_acemod_lib_army_strength_modifier				# 4.75x
-				value = 4.75
-			}
-		}
-		else_if = {
-			limit = {
-				check_variable = {
-					which = acemod_var_country_acemod_lib_army_strength_modifier
-					value = 4.75
-				}
-			}
-			set_variable = {
-				which = acemod_var_country_acemod_lib_army_strength_modifier				# 5x
-				value = 5
-			}
-		}
-		else_if = {
-			limit = {
-				check_variable = {
-					which = acemod_var_country_acemod_lib_army_strength_modifier
-					value = 5
-				}
-			}
-			set_variable = {
-				which = acemod_var_country_acemod_lib_army_strength_modifier				# 10x
-				value = 10
-			}
-		}
-		else_if = {
-			limit = {
-				check_variable = {
-					which = acemod_var_country_acemod_lib_army_strength_modifier
-					value = 10
-				}
-			}
-			set_variable = {
-				which = acemod_var_country_acemod_lib_army_strength_modifier				# 25x
-				value = 25
-			}
-		}
-		else_if = {
-			limit = {
-				check_variable = {
-					which = acemod_var_country_acemod_lib_army_strength_modifier
-					value = 25
-				}
-			}
-			set_variable = {
-				which = acemod_var_country_acemod_lib_army_strength_modifier				# Default, use crisis strength.
-				value = 0
-			}
-		}
-		else = {
-			set_variable = {
-				which = acemod_var_country_acemod_lib_army_strength_modifier				# Fallback to Default, use crisis strength.
-				value = 0
-			}
-		}
-		root = {
-			set_variable = {
-				which = acemod_var_country_acemod_lib_army_strength_modifier				# Save to root country so that variables can be displayed via scripted_loc.
-				value = prev
 			}
 		}
 	}
