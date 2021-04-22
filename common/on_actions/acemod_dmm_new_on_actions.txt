@@ -1,6 +1,7 @@
 on_game_start = {
 	events = {
 		acemod_dmm_new.1		# New Dynamic Mod Menu support.
+		acemod_dmm_new.3		# Hide Dynamic Mod Menu button in a multiplayer-started game for all except orginal game host country. Execute event again to enable for all.
 	}
 }
 
