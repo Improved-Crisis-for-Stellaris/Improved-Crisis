@@ -78,7 +78,7 @@ Effects are listed in /events/acemod_fleet_events.txt (always up to date) and in
 [h1]List of overwrites[/h1]
 [b]CRITICAL:[/b]
 
-[b]00_country_types.txt (keys):[/b]
+[b]00_country_types.txt (keys) - disables vanilla AI:[/b]
 swarm
 extradimensional
 extradimensional_2
@@ -87,15 +87,7 @@ ai_empire
 
 [b]OPTIONAL:[/b]
 
-[b]global_ship_designs.txt (keys):[/b]
-NAME_Unbidden_Anchor
-NAME_Vehement_Anchor
-NAME_Aberrant_Anchor
-
-[b]00_starbases.txt (keys):[/b]
-starbase_exd
-
-[b]00_starbase_levels.txt (keys)[/b]
+[b]00_starbase_levels.txt (keys) - allows for Dimensional Anchors to be marked on galactic map.[/b]
 starbase_level_exd
 
 ---
