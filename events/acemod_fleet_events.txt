@@ -991,62 +991,98 @@ country_event = {
 		if = {
 			limit = {
 				has_global_flag = acemod_activated
-				NOT = {
-					has_country_flag = acemod_country_flag_starbase_defensive_protocol_disabled					# Response mechanism is now a core fleet AI functionality and is enabled on default.
-				}
-				FROMFROM = {
-					OR = {
-						is_ship_size = starbase_exd
-						is_ship_size = starbase_exd_0
-						is_ship_size = starbase_ai
-						is_ship_size = starbase_swarm
-						has_fleet_flag = acemod_fleet_flag_starbase_defensive_protocol						# Only fleets marked with this flag or ship sizes listed above will trigger response if defeated.
-					}
-				}
 			}
-			fromfrom = {
-				solar_system = {
-					set_timed_star_flag = {
-						flag = acemod_star_flag_response_trigger						# Marking system where incident happened for debugging purposes.
-						days = 540
+			if = {
+				limit = {
+					NOT = {
+						has_country_flag = acemod_country_flag_starbase_defensive_protocol_disabled						# Response mechanism is now a core fleet AI functionality and is enabled on default.
 					}
-					every_fleet_in_system = {
-						limit = {
-							is_ship_class = shipclass_military
-							owner = {
-								is_hostile = root.owner								# Marking all enemy fleets in the system as perpetrators.
-							}
+					FROMFROM = {
+						OR = {
+							is_ship_size = starbase_exd
+							is_ship_size = starbase_exd_0
+							is_ship_size = starbase_ai
+							is_ship_size = starbase_swarm
+							has_fleet_flag = acemod_fleet_flag_starbase_defensive_protocol							# Only fleets marked with this flag or ship sizes listed above will trigger response if defeated.
 						}
-						if = {
+					}
+				}
+				fromfrom = {
+					solar_system = {
+						set_timed_star_flag = {
+							flag = acemod_star_flag_response_trigger							# Marking system where incident happened for debugging purposes.
+							days = 540
+						}
+						every_fleet_in_system = {
 							limit = {
-								NOT = {
-									has_fleet_flag = acemod_fleet_flag_response_target_candidate@root									# Fleet is marked with defeated fleet's owner's ID.
+								is_ship_class = shipclass_military
+								owner = {
+									is_hostile = root.owner									# Marking all enemy fleets in the system as perpetrators.
 								}
 							}
-							set_timed_fleet_flag = {
-								flag = acemod_fleet_flag_response_target_candidate@root
-								days = 540
+							if = {
+								limit = {
+									NOT = {
+										has_fleet_flag = acemod_fleet_flag_response_target_candidate@root										# Fleet is marked with defeated fleet's owner's ID.
+									}
+								}
+								set_timed_fleet_flag = {
+									flag = acemod_fleet_flag_response_target_candidate@root
+									days = 540
+								}
+							}
+							else = {
+								set_timed_fleet_flag = {
+									flag = acemod_fleet_flag_response_target_candidate@root									# Account for possibly already dispatched response.
+									days = 540
+								}
+							}
+							change_variable = {
+								which = acemod_var_fleet_defensive_protocol_kill_count								# Keeping kill count on fleets, possibly for future features.
+								value = 1
 							}
 						}
-						else = {
-							set_timed_fleet_flag = {
-								flag = acemod_fleet_flag_response_target_candidate@root								# Account for possibly already dispatched response.
-								days = 540
-							}
-						}
-						change_variable = {
-							which = acemod_var_fleet_defensive_protocol_kill_count							# Keeping kill count on fleets, possibly for future features.
-							value = 1
+					}
+				}
+				# from = {
+				# 	change_variable = {
+				# 		which = acemod_var_country_defensive_protocol_kill_count	# Need to account for multiple owners' fleets. Will allow to evaluate how dangerous specific galactic empires are.
+				# 		value = 1
+				# 	}
+				# }
+			}
+			if = {
+				limit = {
+					NOT = {
+						has_global_flag = acemod_fleet_mergers_disabled
+					}
+					FROMFROM = {
+						is_ship_class = shipclass_military
+					}
+				}
+				if = {
+					limit = {
+						# always = yes						# WIP
+						always = no						# WIP
+					}
+					# Original scopes:
+					# This = owner of fleet 1 (loser - crisis fleet)
+					# From = owner of fleet 2 (winner - anti-crisis fleet)
+					# FromFrom = fleet 1
+					# FromFromFrom = fleet 2
+					# WIP, scopes work
+					fire_on_action = {
+						on_action = acemod_custom_on_action_merge_fleets
+						scopes = {
+							# root/this = owner of fleet 1 (loser - crisis fleet 1)
+							from = root.from							# owner of fleet 2 (winner - anti-crisis fleet 2)
+							fromfrom = root.fromfrom.solar_system							# solar_system of engagement
+							fromfromfrom = root.FromFromFrom							# fleet 2 (winner - anti-crisis fleet 2)
+							# fromfromfromfrom = fromfrom.solar_system	# (Optional) Rendezvous system for fleet merger
 						}
 					}
 				}
 			}
-			# from = {
-			# 	change_variable = {
-			# 		which = acemod_var_country_defensive_protocol_kill_count	# Need to account for multiple owners' fleets. Will allow to evaluate how dangerous specific galactic empires are.
-			# 		value = 1
-			# 	}
-			# }
 		}
 	}
 }
@@ -3906,7 +3942,18 @@ fleet_event = {
 	}
 }
 
-# Merge fleets on_action event.
+# WIP
+# Fleet merge chain, triggers a few days after territorial defense actions (acemod_fleet.130 and acemod_fleet.132) to make sure interceptor fleets merge if own fleet was lost to superior forces.
+# Fired from acemod_custom_on_action_merge_fleets custom on_action.
+#
+# scopes = {
+# 	# root/this = owner of fleet 1 (loser - crisis fleet 1)
+# 	from = From	# owner of fleet 2 (winner - anti-crisis fleet 2)
+# 	fromfrom = FromFrom.solar_system # solar_system of engagement
+# 	fromfromfrom = FromFromFrom # fleet 2 (winner - anti-crisis fleet 2)
+# 	fromfromfromfrom = root	# (Optional) Rendezvous system for fleet merger
+# }
+#
 # Original scopes:
 # This = owner of fleet 1 (loser - crisis fleet)
 # From = owner of fleet 2 (winner - anti-crisis fleet)
@@ -3916,18 +3963,32 @@ country_event = {
 	id = acemod_fleet.650
 	hide_window = yes
 	is_triggered_only = yes
-	trigger = {
-		has_country_flag = acemod_assisted_ai
-	}
 	immediate = {
-		if = {
-			limit = {
-				NOT = {
-					has_global_flag = acemod_fleet_mergers_disabled
-				}
-			}
-			break = yes # WIP
+		set_global_flag = test111
+		from = {
+			set_country_flag = test1from
 		}
+		fromfrom = {
+			set_star_flag = test2fromfrom
+		}
+		fromfromfrom = {
+			set_fleet_flag = test3fromfromfrom
+		}
+		country_event = {
+			id = acemod_fleet.651			# Delay event.
+			days = 5
+		}
+	}
+}
+
+country_event = {
+	id = acemod_fleet.651
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		# event_target:acemod_fromfrom = {
+		# 	set_star_flag = test1
+		# }
 	}
 }
 
