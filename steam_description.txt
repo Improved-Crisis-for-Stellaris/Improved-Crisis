@@ -12,15 +12,10 @@ Galactic empires receive initial massive damage penalty against crisis factions.
 [h1]Load order[/h1]
 At the very bottom. Aggressive Crisis Engine overwrites very little but what is does is crucial for it to work.
 
-[h1]Hotfix[/h1]
-There is an optional  [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2363424291]Modifiers Hotfix for Aggressive Crisis Engine[/url] which will make empire modifiers like Enemy Unknown (damage penalty to crisis factions) work again. It is not essential for ACEMOD to work, this is only needed if you want damage modifiers working until Paradox fixes LIOS overwrite bug.
-
-***[url=https://steamcommunity.com/sharedfiles/filedetails/?id=2365404400]Starnet version can be found here[/url]***
-
 [h1]Additional mod support[/h1]
 ACEMOD configuration menu opens on game start. In order to access menu after start of the game you can use one or more of the following mods:
-- [url=https://steamcommunity.com/sharedfiles/filedetails/?id=1087781345]Mod Menu[/url] by [url=https://steamcommunity.com/profiles/76561198051778636/myworkshopfiles/]had[/url].
 - [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2458024521]Dynamic Mod Menu (3.0.*)[/url] by [url=https://steamcommunity.com/profiles/76561198091339328/myworkshopfiles/?appid=281990]Erdnuss[/url] ([url=https://steamcommunity.com/sharedfiles/filedetails/?id=2054717582]SLEX[/url]).
+- [url=https://steamcommunity.com/sharedfiles/filedetails/?id=1087781345]Mod Menu[/url] by [url=https://steamcommunity.com/profiles/76561198051778636/myworkshopfiles/]had[/url].
 - [url=https://steamcommunity.com/sharedfiles/filedetails/?id=1840010432]Dynamic Mod Menu[/url] by [url=https://steamcommunity.com/profiles/76561198074894335/myworkshopfiles/]mario0244[/url].
 - [url=https://steamcommunity.com/sharedfiles/filedetails/?id=1943060017]Infinite Stellaris Framework[/url] by [url=https://steamcommunity.com/id/INFINI7E/myworkshopfiles/]小傘INFINI7E[/url].
 You can also fire mod menu with an [b]event acemod_menu.1[/b] console command.

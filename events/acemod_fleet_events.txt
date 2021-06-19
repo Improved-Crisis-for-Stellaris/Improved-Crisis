@@ -3906,6 +3906,31 @@ fleet_event = {
 	}
 }
 
+# Merge fleets on_action event.
+# Original scopes:
+# This = owner of fleet 1 (loser - crisis fleet)
+# From = owner of fleet 2 (winner - anti-crisis fleet)
+# FromFrom = fleet 1
+# FromFromFrom = fleet 2
+country_event = {
+	id = acemod_fleet.650
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		has_country_flag = acemod_assisted_ai
+	}
+	immediate = {
+		if = {
+			limit = {
+				NOT = {
+					has_global_flag = acemod_fleet_mergers_disabled
+				}
+			}
+			break = yes # WIP
+		}
+	}
+}
+
 # Disables crisis colossi by default to avoid player meltdown.
 country_event = {
 	id = acemod_fleet.799
