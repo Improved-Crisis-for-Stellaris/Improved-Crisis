@@ -1062,8 +1062,7 @@ country_event = {
 				}
 				if = {
 					limit = {
-						# always = yes						# WIP
-						always = no						# WIP
+						always = yes						# WIP
 					}
 					# Original scopes:
 					# This = owner of fleet 1 (loser - crisis fleet)
@@ -3942,8 +3941,7 @@ fleet_event = {
 	}
 }
 
-# WIP
-# Fleet merge chain, triggers a few days after territorial defense actions (acemod_fleet.130 and acemod_fleet.132) to make sure interceptor fleets merge if own fleet was lost to superior forces.
+# Fleet merge chain.
 # Fired from acemod_custom_on_action_merge_fleets custom on_action.
 #
 # scopes = {
@@ -3964,31 +3962,502 @@ country_event = {
 	hide_window = yes
 	is_triggered_only = yes
 	immediate = {
-		set_global_flag = test111
 		from = {
-			set_country_flag = test1from
+			set_timed_country_flag = {
+				flag = acemod_country_flag_fleet_merger_engagement_perpetrator_country
+				days = 100
+			}
+			save_event_target_as = acemod_event_target_fleet_merger_engagement_perpetrator_country
 		}
 		fromfrom = {
-			set_star_flag = test2fromfrom
+			set_timed_star_flag = {
+				flag = acemod_star_flag_fleet_merger_engagement_system
+				days = 100
+			}
+			save_event_target_as = acemod_event_target_fleet_merger_engagement_system
 		}
 		fromfromfrom = {
-			set_fleet_flag = test3fromfromfrom
+			set_timed_fleet_flag = {
+				flag = acemod_fleet_flag_fleet_merger_engagement_perpetrator_fleet
+				days = 100
+			}
+			save_event_target_as = acemod_event_target_fleet_merger_engagement_perpetrator_fleet
 		}
-		country_event = {
-			id = acemod_fleet.651			# Delay event.
-			days = 5
+		random_owned_fleet = {
+			limit = {
+				distance = {
+					source = event_target:acemod_event_target_fleet_merger_engagement_system
+					max_jumps = 1
+					use_bypasses = no
+				}
+				is_ship_class = shipclass_military
+				is_in_combat = no
+			}
+			save_event_target_as = acemod_acemod_event_target_fleet_merger_fleet
 		}
-	}
-}
-
-country_event = {
-	id = acemod_fleet.651
-	hide_window = yes
-	is_triggered_only = yes
-	immediate = {
-		# event_target:acemod_fromfrom = {
-		# 	set_star_flag = test1
-		# }
+		if = {
+			limit = {
+				NOT = {
+					exists = event_target:acemod_acemod_event_target_fleet_merger_fleet
+				}
+			}
+			random_owned_fleet = {
+				limit = {
+					distance = {
+						source = event_target:acemod_event_target_fleet_merger_engagement_system
+						max_jumps = 2
+						use_bypasses = no
+					}
+					is_ship_class = shipclass_military
+					is_in_combat = no
+				}
+				save_event_target_as = acemod_acemod_event_target_fleet_merger_fleet
+			}
+			if = {
+				limit = {
+					NOT = {
+						exists = event_target:acemod_acemod_event_target_fleet_merger_fleet
+					}
+				}
+				random_owned_fleet = {
+					limit = {
+						distance = {
+							source = event_target:acemod_event_target_fleet_merger_engagement_system
+							max_jumps = 3
+							use_bypasses = no
+						}
+						is_ship_class = shipclass_military
+						is_in_combat = no
+					}
+					save_event_target_as = acemod_acemod_event_target_fleet_merger_fleet
+				}
+				if = {
+					limit = {
+						NOT = {
+							exists = event_target:acemod_acemod_event_target_fleet_merger_fleet
+						}
+					}
+					random_owned_fleet = {
+						limit = {
+							distance = {
+								source = event_target:acemod_event_target_fleet_merger_engagement_system
+								max_jumps = 4
+								use_bypasses = no
+							}
+							is_ship_class = shipclass_military
+							is_in_combat = no
+						}
+						save_event_target_as = acemod_acemod_event_target_fleet_merger_fleet
+					}
+					if = {
+						limit = {
+							NOT = {
+								exists = event_target:acemod_acemod_event_target_fleet_merger_fleet
+							}
+						}
+						random_owned_fleet = {
+							limit = {
+								distance = {
+									source = event_target:acemod_event_target_fleet_merger_engagement_system
+									max_jumps = 5
+									use_bypasses = no
+								}
+								is_ship_class = shipclass_military
+								is_in_combat = no
+							}
+							save_event_target_as = acemod_acemod_event_target_fleet_merger_fleet
+						}
+						if = {
+							limit = {
+								NOT = {
+									exists = event_target:acemod_acemod_event_target_fleet_merger_fleet
+								}
+							}
+							random_owned_fleet = {
+								limit = {
+									distance = {
+										source = event_target:acemod_event_target_fleet_merger_engagement_system
+										max_jumps = 6
+										use_bypasses = no
+									}
+									is_ship_class = shipclass_military
+									is_in_combat = no
+								}
+								save_event_target_as = acemod_acemod_event_target_fleet_merger_fleet
+							}
+							if = {
+								limit = {
+									NOT = {
+										exists = event_target:acemod_acemod_event_target_fleet_merger_fleet
+									}
+								}
+								random_owned_fleet = {
+									limit = {
+										distance = {
+											source = event_target:acemod_event_target_fleet_merger_engagement_system
+											max_jumps = 7
+											use_bypasses = no
+										}
+										is_ship_class = shipclass_military
+										is_in_combat = no
+									}
+									save_event_target_as = acemod_acemod_event_target_fleet_merger_fleet
+								}
+								if = {
+									limit = {
+										NOT = {
+											exists = event_target:acemod_acemod_event_target_fleet_merger_fleet
+										}
+									}
+									random_owned_fleet = {
+										limit = {
+											distance = {
+												source = event_target:acemod_event_target_fleet_merger_engagement_system
+												max_jumps = 8
+												use_bypasses = no
+											}
+											is_ship_class = shipclass_military
+											is_in_combat = no
+										}
+										save_event_target_as = acemod_acemod_event_target_fleet_merger_fleet
+									}
+									if = {
+										limit = {
+											NOT = {
+												exists = event_target:acemod_acemod_event_target_fleet_merger_fleet
+											}
+										}
+										random_owned_fleet = {
+											limit = {
+												distance = {
+													source = event_target:acemod_event_target_fleet_merger_engagement_system
+													max_jumps = 9
+													use_bypasses = no
+												}
+												is_ship_class = shipclass_military
+												is_in_combat = no
+											}
+											save_event_target_as = acemod_acemod_event_target_fleet_merger_fleet
+										}
+										if = {
+											limit = {
+												NOT = {
+													exists = event_target:acemod_acemod_event_target_fleet_merger_fleet
+												}
+											}
+											random_owned_fleet = {
+												limit = {
+													distance = {
+														source = event_target:acemod_event_target_fleet_merger_engagement_system
+														max_jumps = 10
+														use_bypasses = no
+													}
+													is_ship_class = shipclass_military
+													is_in_combat = no
+												}
+												save_event_target_as = acemod_acemod_event_target_fleet_merger_fleet
+											}
+											break = yes											# Enough for now.
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				exists = event_target:acemod_acemod_event_target_fleet_merger_fleet
+			}
+			random_owned_fleet = {
+				limit = {
+					NOT = {
+						is_same_value = event_target:acemod_acemod_event_target_fleet_merger_fleet
+					}
+					distance = {
+						source = event_target:acemod_acemod_event_target_fleet_merger_fleet
+						max_jumps = 1
+						use_bypasses = no
+					}
+					is_ship_class = shipclass_military
+					is_in_combat = no
+				}
+				save_event_target_as = acemod_acemod_event_target_fleet_merger_target
+				event_target:acemod_acemod_event_target_fleet_merger_fleet = {
+					clear_orders = yes
+					clear_fleet_actions = this
+					queue_actions = {
+						merge_fleet = {
+							target = prev
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					exists = event_target:acemod_acemod_event_target_fleet_merger_fleet
+				}
+				random_owned_fleet = {
+					limit = {
+						NOT = {
+							is_same_value = event_target:acemod_acemod_event_target_fleet_merger_fleet
+						}
+						distance = {
+							source = event_target:acemod_acemod_event_target_fleet_merger_fleet
+							max_jumps = 2
+							use_bypasses = no
+						}
+						is_ship_class = shipclass_military
+						is_in_combat = no
+					}
+					save_event_target_as = acemod_acemod_event_target_fleet_merger_target
+					event_target:acemod_acemod_event_target_fleet_merger_fleet = {
+						clear_orders = yes
+						clear_fleet_actions = this
+						queue_actions = {
+							merge_fleet = {
+								target = prev
+							}
+						}
+					}
+				}
+				if = {
+					limit = {
+						exists = event_target:acemod_acemod_event_target_fleet_merger_fleet
+					}
+					random_owned_fleet = {
+						limit = {
+							NOT = {
+								is_same_value = event_target:acemod_acemod_event_target_fleet_merger_fleet
+							}
+							distance = {
+								source = event_target:acemod_acemod_event_target_fleet_merger_fleet
+								max_jumps = 3
+								use_bypasses = no
+							}
+							is_ship_class = shipclass_military
+							is_in_combat = no
+						}
+						save_event_target_as = acemod_acemod_event_target_fleet_merger_target
+						event_target:acemod_acemod_event_target_fleet_merger_fleet = {
+							clear_orders = yes
+							clear_fleet_actions = this
+							queue_actions = {
+								merge_fleet = {
+									target = prev
+								}
+							}
+						}
+					}
+					if = {
+						limit = {
+							exists = event_target:acemod_acemod_event_target_fleet_merger_fleet
+						}
+						random_owned_fleet = {
+							limit = {
+								NOT = {
+									is_same_value = event_target:acemod_acemod_event_target_fleet_merger_fleet
+								}
+								distance = {
+									source = event_target:acemod_acemod_event_target_fleet_merger_fleet
+									max_jumps = 4
+									use_bypasses = no
+								}
+								is_ship_class = shipclass_military
+								is_in_combat = no
+							}
+							save_event_target_as = acemod_acemod_event_target_fleet_merger_target
+							event_target:acemod_acemod_event_target_fleet_merger_fleet = {
+								clear_orders = yes
+								clear_fleet_actions = this
+								queue_actions = {
+									merge_fleet = {
+										target = prev
+									}
+								}
+							}
+						}
+						if = {
+							limit = {
+								exists = event_target:acemod_acemod_event_target_fleet_merger_fleet
+							}
+							random_owned_fleet = {
+								limit = {
+									NOT = {
+										is_same_value = event_target:acemod_acemod_event_target_fleet_merger_fleet
+									}
+									distance = {
+										source = event_target:acemod_acemod_event_target_fleet_merger_fleet
+										max_jumps = 5
+										use_bypasses = no
+									}
+									is_ship_class = shipclass_military
+									is_in_combat = no
+								}
+								save_event_target_as = acemod_acemod_event_target_fleet_merger_target
+								event_target:acemod_acemod_event_target_fleet_merger_fleet = {
+									clear_orders = yes
+									clear_fleet_actions = this
+									queue_actions = {
+										merge_fleet = {
+											target = prev
+										}
+									}
+								}
+							}
+							if = {
+								limit = {
+									exists = event_target:acemod_acemod_event_target_fleet_merger_fleet
+								}
+								random_owned_fleet = {
+									limit = {
+										NOT = {
+											is_same_value = event_target:acemod_acemod_event_target_fleet_merger_fleet
+										}
+										distance = {
+											source = event_target:acemod_acemod_event_target_fleet_merger_fleet
+											max_jumps = 6
+											use_bypasses = no
+										}
+										is_ship_class = shipclass_military
+										is_in_combat = no
+									}
+									save_event_target_as = acemod_acemod_event_target_fleet_merger_target
+									event_target:acemod_acemod_event_target_fleet_merger_fleet = {
+										clear_orders = yes
+										clear_fleet_actions = this
+										queue_actions = {
+											merge_fleet = {
+												target = prev
+											}
+										}
+									}
+								}
+								if = {
+									limit = {
+										exists = event_target:acemod_acemod_event_target_fleet_merger_fleet
+									}
+									random_owned_fleet = {
+										limit = {
+											NOT = {
+												is_same_value = event_target:acemod_acemod_event_target_fleet_merger_fleet
+											}
+											distance = {
+												source = event_target:acemod_acemod_event_target_fleet_merger_fleet
+												max_jumps = 7
+												use_bypasses = no
+											}
+											is_ship_class = shipclass_military
+											is_in_combat = no
+										}
+										save_event_target_as = acemod_acemod_event_target_fleet_merger_target
+										event_target:acemod_acemod_event_target_fleet_merger_fleet = {
+											clear_orders = yes
+											clear_fleet_actions = this
+											queue_actions = {
+												merge_fleet = {
+													target = prev
+												}
+											}
+										}
+									}
+									if = {
+										limit = {
+											exists = event_target:acemod_acemod_event_target_fleet_merger_fleet
+										}
+										random_owned_fleet = {
+											limit = {
+												NOT = {
+													is_same_value = event_target:acemod_acemod_event_target_fleet_merger_fleet
+												}
+												distance = {
+													source = event_target:acemod_acemod_event_target_fleet_merger_fleet
+													max_jumps = 8
+													use_bypasses = no
+												}
+												is_ship_class = shipclass_military
+												is_in_combat = no
+											}
+											save_event_target_as = acemod_acemod_event_target_fleet_merger_target
+											event_target:acemod_acemod_event_target_fleet_merger_fleet = {
+												clear_orders = yes
+												clear_fleet_actions = this
+												queue_actions = {
+													merge_fleet = {
+														target = prev
+													}
+												}
+											}
+										}
+										if = {
+											limit = {
+												exists = event_target:acemod_acemod_event_target_fleet_merger_fleet
+											}
+											random_owned_fleet = {
+												limit = {
+													NOT = {
+														is_same_value = event_target:acemod_acemod_event_target_fleet_merger_fleet
+													}
+													distance = {
+														source = event_target:acemod_acemod_event_target_fleet_merger_fleet
+														max_jumps = 9
+														use_bypasses = no
+													}
+													is_ship_class = shipclass_military
+													is_in_combat = no
+												}
+												save_event_target_as = acemod_acemod_event_target_fleet_merger_target
+												event_target:acemod_acemod_event_target_fleet_merger_fleet = {
+													clear_orders = yes
+													clear_fleet_actions = this
+													queue_actions = {
+														merge_fleet = {
+															target = prev
+														}
+													}
+												}
+											}
+											if = {
+												limit = {
+													exists = event_target:acemod_acemod_event_target_fleet_merger_fleet
+												}
+												random_owned_fleet = {
+													limit = {
+														NOT = {
+															is_same_value = event_target:acemod_acemod_event_target_fleet_merger_fleet
+														}
+														distance = {
+															source = event_target:acemod_acemod_event_target_fleet_merger_fleet
+															max_jumps = 10
+															use_bypasses = no
+														}
+														is_ship_class = shipclass_military
+														is_in_combat = no
+													}
+													save_event_target_as = acemod_acemod_event_target_fleet_merger_target
+													event_target:acemod_acemod_event_target_fleet_merger_fleet = {
+														clear_orders = yes
+														clear_fleet_actions = this
+														queue_actions = {
+															merge_fleet = {
+																target = prev
+															}
+														}
+													}
+												}
+												break = yes												# Enough for now.
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
 	}
 }
 
