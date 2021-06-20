@@ -1077,7 +1077,7 @@ country_event = {
 							from = root.from							# owner of fleet 2 (winner - anti-crisis fleet 2)
 							fromfrom = root.fromfrom.solar_system							# solar_system of engagement
 							fromfromfrom = root.FromFromFrom							# fleet 2 (winner - anti-crisis fleet 2)
-							# fromfromfromfrom = fromfrom.solar_system	# (Optional) Rendezvous system for fleet merger
+							# fromfromfromfrom = fromfrom.solar_system	# (Optional) Rendezvous system for fleet merger. NOTE: Defaults to one of fleets even if not defined so it doesn't work.
 						}
 					}
 				}
@@ -3983,6 +3983,19 @@ country_event = {
 			}
 			save_event_target_as = acemod_event_target_fleet_merger_engagement_perpetrator_fleet
 		}
+		# Will exist even if not defined in fire_on_action and point to one of fleets in the system, therefore does not work.
+		# if = {
+		# 	limit = {
+		# 		exists = fromfromfromfrom
+		# 	}
+		# 	fromfromfromfrom = {
+		# 		set_timed_star_flag = {
+		# 			flag = acemod_star_flag_fleet_merger_rendezvous_system
+		# 			days = 100
+		# 		}
+		# 		save_event_target_as = acemod_event_target_fleet_merger_rendezvous_system
+		# 	}
+		# }
 		random_owned_fleet = {
 			limit = {
 				distance = {
@@ -4193,6 +4206,10 @@ country_event = {
 							target = prev
 						}
 					}
+					set_timed_fleet_flag = {
+						flag = acemod_fleet_flag_response_team										# Make sure it is not getting snatched for other order.
+						days = 100
+					}
 				}
 			}
 			if = {
@@ -4222,6 +4239,10 @@ country_event = {
 							merge_fleet = {
 								target = prev
 							}
+						}
+						set_timed_fleet_flag = {
+							flag = acemod_fleet_flag_response_team										# Make sure it is not getting snatched for other order.
+							days = 100
 						}
 					}
 				}
@@ -4253,6 +4274,10 @@ country_event = {
 									target = prev
 								}
 							}
+							set_timed_fleet_flag = {
+								flag = acemod_fleet_flag_response_team										# Make sure it is not getting snatched for other order.
+								days = 100
+							}
 						}
 					}
 					if = {
@@ -4282,6 +4307,10 @@ country_event = {
 									merge_fleet = {
 										target = prev
 									}
+								}
+								set_timed_fleet_flag = {
+									flag = acemod_fleet_flag_response_team										# Make sure it is not getting snatched for other order.
+									days = 100
 								}
 							}
 						}
@@ -4313,6 +4342,10 @@ country_event = {
 											target = prev
 										}
 									}
+									set_timed_fleet_flag = {
+										flag = acemod_fleet_flag_response_team										# Make sure it is not getting snatched for other order.
+										days = 100
+									}
 								}
 							}
 							if = {
@@ -4342,6 +4375,10 @@ country_event = {
 											merge_fleet = {
 												target = prev
 											}
+										}
+										set_timed_fleet_flag = {
+											flag = acemod_fleet_flag_response_team										# Make sure it is not getting snatched for other order.
+											days = 100
 										}
 									}
 								}
@@ -4373,6 +4410,10 @@ country_event = {
 													target = prev
 												}
 											}
+											set_timed_fleet_flag = {
+												flag = acemod_fleet_flag_response_team										# Make sure it is not getting snatched for other order.
+												days = 100
+											}
 										}
 									}
 									if = {
@@ -4402,6 +4443,10 @@ country_event = {
 													merge_fleet = {
 														target = prev
 													}
+												}
+												set_timed_fleet_flag = {
+													flag = acemod_fleet_flag_response_team										# Make sure it is not getting snatched for other order.
+													days = 100
 												}
 											}
 										}
@@ -4433,6 +4478,10 @@ country_event = {
 															target = prev
 														}
 													}
+													set_timed_fleet_flag = {
+														flag = acemod_fleet_flag_response_team										# Make sure it is not getting snatched for other order.
+														days = 100
+													}
 												}
 											}
 											if = {
@@ -4463,6 +4512,10 @@ country_event = {
 																target = prev
 															}
 														}
+														set_timed_fleet_flag = {
+															flag = acemod_fleet_flag_response_team										# Make sure it is not getting snatched for other order.
+															days = 100
+														}
 													}
 												}
 												break = yes												# Enough for now.
@@ -4476,6 +4529,130 @@ country_event = {
 				}
 			}
 		}
+		if = {
+			limit = {
+				exists = event_target:acemod_acemod_event_target_fleet_merger_fleet
+				exists = event_target:acemod_acemod_event_target_fleet_merger_target
+			}
+			set_variable = {
+				which = acemod_var_fleet_power_for_last_merger
+				value = 0
+			}
+			event_target:acemod_acemod_event_target_fleet_merger_fleet = {
+				export_trigger_value_to_variable = {
+					trigger = fleet_power
+					variable = acemod_var_fleet_power_for_last_merger
+				}
+				root = {
+					change_variable = {
+						which = acemod_var_fleet_power_for_last_merger
+						value = prev
+					}
+				}
+			}
+			event_target:acemod_acemod_event_target_fleet_merger_target = {
+				export_trigger_value_to_variable = {
+					trigger = fleet_power
+					variable = acemod_var_fleet_power_for_last_merger
+				}
+				root = {
+					change_variable = {
+						which = acemod_var_fleet_power_for_last_merger
+						value = prev
+					}
+				}
+			}
+			event_target:acemod_acemod_event_target_fleet_merger_target = {
+				solar_system = {
+					every_neighbor_system = {
+						every_fleet_in_system = {
+							limit = {
+								exists = owner
+								owner = {
+									is_hostile = root
+								}
+								is_ship_class = shipclass_military
+							}
+							export_trigger_value_to_variable = {
+								trigger = fleet_power
+								variable = acemod_var_fleet_power_for_last_merger_perpetrator
+							}
+							event_target:acemod_acemod_event_target_fleet_merger_target = {
+								change_variable = {
+									which = acemod_var_fleet_power_for_last_merger_perpetrator
+									value = prev
+								}
+							}
+						}
+					}
+				}
+				if = {
+					limit = {
+						is_variable_set = acemod_var_fleet_power_for_last_merger_perpetrator
+					}
+					if = {
+						limit = {
+							NOT = {
+								is_variable_set = acemod_var_fleet_power_desired_engagement_ratio
+							}
+						}
+						set_variable = {
+							which = acemod_var_fleet_power_desired_engagement_ratio
+							value = 1.50
+						}
+					}
+					if = {
+						limit = {
+							check_variable_arithmetic = {
+								which = acemod_var_fleet_power_for_last_merger
+								by = acemod_var_fleet_power_for_last_merger_perpetrator
+								value < acemod_var_fleet_power_desired_engagement_ratio
+								mode = divide
+							}
+						}
+						event_target:acemod_acemod_event_target_fleet_merger_fleet = {
+							solar_system = {
+								save_event_target_as = event_target:acemod_event_target_fleet_merger_rendezvous_system
+								set_timed_star_flag = {
+									flag = acemod_star_flag_fleet_merger_rendezvous_system
+									days = 100
+								}
+								event_target:acemod_acemod_event_target_fleet_merger_target = {
+									clear_orders = yes
+									clear_fleet_actions = this
+									queue_actions = {
+										move_to = prev
+									}
+									set_timed_fleet_flag = {
+										flag = acemod_fleet_flag_response_team										# Make sure it is not getting snatched for other order.
+										days = 100
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		# Is not getting called for whatever reason, moved up.
+		# if = {
+		# 	limit = {
+		# 		exists = event_target:acemod_event_target_fleet_merger_rendezvous_system				# Note: If for whatever reason using global_event_target make sure to erase it a day after script is called. Defining fromfromfromfrom scope in acemod_custom_on_action_merge_fleets is safer.
+		# 	}
+		# 	if = {
+		# 		limit = {
+		# 			exists = event_target:acemod_acemod_event_target_fleet_merger_fleet
+		# 			exists = event_target:acemod_acemod_event_target_fleet_merger_target
+		# 		}
+		# 		event_target:acemod_acemod_event_target_fleet_merger_target = {
+		# 			clear_orders = yes
+		# 			clear_fleet_actions = this
+		# 			queue_actions = {
+		# 				move_to = event_target:acemod_event_target_fleet_merger_rendezvous_system
+		# 			}
+		# 		}
+		# 	}
+		# }
 	}
 }
 
