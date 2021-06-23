@@ -1203,6 +1203,7 @@ fleet_event = {
 			solar_system = {
 				every_fleet_in_system = {
 					limit = {
+						is_ship_class = shipclass_military
 						owner = {
 							NOT = {
 								is_same_value = root.owner
@@ -1210,7 +1211,6 @@ fleet_event = {
 							has_country_flag = acemod_assisted_ai
 							is_hostile = root.owner
 						}
-						is_ship_class = shipclass_military
 						NOT = {
 							has_fleet_flag = acemod_fleet_flag_solar_response_team
 						}
@@ -1806,6 +1806,63 @@ fleet_event = {
 									acemod_response_effect = yes
 									break = yes
 								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+# Recalculate targets for inbound fleets if system is taken.
+# on_system_gained
+# From = system
+# FromFrom = country (previous owner)
+# This = country (new owner)
+country_event = {
+	id = acemod_fleet.140
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		has_country_flag = acemod_assisted_ai
+	}
+	immediate = {
+		if = {
+			limit = {
+				has_global_flag = acemod_activated
+			}
+			every_owned_fleet = {
+				limit = {
+					root.from = {
+						has_star_flag = acemod_star_flag_solar_system_target@prev
+					}
+				}
+				if = {
+					limit = {
+						NOT = {
+							check_variable = {
+								which = acemod_var_fleet_piloted_exclusion
+								value = 1
+							}
+						}
+					}
+					root.from = {
+						remove_star_flag = acemod_star_flag_solar_system_target@prev
+					}
+					locked_random_list = {
+						80 = {
+							fleet_event = {
+								id = acemod_fleet.105
+								days = 3
+								random = 10
+							}
+						}
+						20 = {
+							fleet_event = {
+								id = acemod_fleet.150								# Pinging systems to indicate potential high value targets.
+								days = 3
+								random = 10
 							}
 						}
 					}
@@ -2426,7 +2483,7 @@ fleet_event = {
 					}
 					NOR = {
 						any_fleet_in_system = {
-							# exists = this		# Oops.
+							exists = owner
 							OR = {
 								AND = {
 									owner = {
@@ -3765,7 +3822,7 @@ event = {
 							limit = {
 								check_variable = {
 									which = acemod_var_num_wormhole_station_spawned
-									value >= 4
+									value >= 5
 								}
 							}
 							set_global_flag = acemod_all_wormhole_station_spawned
@@ -4207,7 +4264,7 @@ country_event = {
 						}
 					}
 					set_timed_fleet_flag = {
-						flag = acemod_fleet_flag_response_team										# Make sure it is not getting snatched for other order.
+						flag = acemod_fleet_flag_response_team						# Make sure it is not getting snatched for other order.
 						days = 100
 					}
 				}
@@ -4241,7 +4298,7 @@ country_event = {
 							}
 						}
 						set_timed_fleet_flag = {
-							flag = acemod_fleet_flag_response_team										# Make sure it is not getting snatched for other order.
+							flag = acemod_fleet_flag_response_team							# Make sure it is not getting snatched for other order.
 							days = 100
 						}
 					}
@@ -4275,7 +4332,7 @@ country_event = {
 								}
 							}
 							set_timed_fleet_flag = {
-								flag = acemod_fleet_flag_response_team										# Make sure it is not getting snatched for other order.
+								flag = acemod_fleet_flag_response_team								# Make sure it is not getting snatched for other order.
 								days = 100
 							}
 						}
@@ -4309,7 +4366,7 @@ country_event = {
 									}
 								}
 								set_timed_fleet_flag = {
-									flag = acemod_fleet_flag_response_team										# Make sure it is not getting snatched for other order.
+									flag = acemod_fleet_flag_response_team									# Make sure it is not getting snatched for other order.
 									days = 100
 								}
 							}
@@ -4377,7 +4434,7 @@ country_event = {
 											}
 										}
 										set_timed_fleet_flag = {
-											flag = acemod_fleet_flag_response_team										# Make sure it is not getting snatched for other order.
+											flag = acemod_fleet_flag_response_team											# Make sure it is not getting snatched for other order.
 											days = 100
 										}
 									}
@@ -4411,7 +4468,7 @@ country_event = {
 												}
 											}
 											set_timed_fleet_flag = {
-												flag = acemod_fleet_flag_response_team										# Make sure it is not getting snatched for other order.
+												flag = acemod_fleet_flag_response_team												# Make sure it is not getting snatched for other order.
 												days = 100
 											}
 										}
@@ -4445,7 +4502,7 @@ country_event = {
 													}
 												}
 												set_timed_fleet_flag = {
-													flag = acemod_fleet_flag_response_team										# Make sure it is not getting snatched for other order.
+													flag = acemod_fleet_flag_response_team													# Make sure it is not getting snatched for other order.
 													days = 100
 												}
 											}
@@ -4479,7 +4536,7 @@ country_event = {
 														}
 													}
 													set_timed_fleet_flag = {
-														flag = acemod_fleet_flag_response_team										# Make sure it is not getting snatched for other order.
+														flag = acemod_fleet_flag_response_team														# Make sure it is not getting snatched for other order.
 														days = 100
 													}
 												}
@@ -4513,7 +4570,7 @@ country_event = {
 															}
 														}
 														set_timed_fleet_flag = {
-															flag = acemod_fleet_flag_response_team										# Make sure it is not getting snatched for other order.
+															flag = acemod_fleet_flag_response_team															# Make sure it is not getting snatched for other order.
 															days = 100
 														}
 													}
@@ -4598,7 +4655,7 @@ country_event = {
 						}
 						set_variable = {
 							which = acemod_var_fleet_power_desired_engagement_ratio
-							value = 1.50
+							value = 1.5
 						}
 					}
 					if = {

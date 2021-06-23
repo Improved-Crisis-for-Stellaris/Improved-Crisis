@@ -65,6 +65,12 @@ on_system_lost = {
 	}
 }
 
+on_system_gained = {
+	events = {
+		acemod_fleet.140		# Recalculate targets for inbound fleets if system is taken.
+	}
+}
+
 on_planet_attackers_win = {
 	events = {
 		acemod_fleet.450		# Fix crisis country taking over planet controlled by another crisis country.
