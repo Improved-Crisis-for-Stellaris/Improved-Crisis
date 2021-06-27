@@ -802,6 +802,16 @@ fleet_event = {
 				}
 			}
 		}
+		else_if = {
+			limit = {
+				is_fleet_idle = yes
+			}
+			# log = "ACEMOD_log: acemod.111.e2 Military fleet failed to find system via standard script and executed fallback script."
+			fleet_event = {
+				id = acemod_fleet.112
+				days = 5
+			}
+		}
 	}
 }
 
@@ -904,62 +914,250 @@ fleet_event = {
 	hide_window = yes
 	is_triggered_only = yes
 	immediate = {
-		queue_actions = {
-			find_random_system = {
-				trigger = {
-					id = "acemod.113.t1"
+		if = {
+			limit = {
+				solar_system = {
 					has_star_flag = lcluster
-					has_access_fleet = root.owner
-					any_fleet_in_system = {
-						owner = {
-							is_hostile = root.owner
-						}
-						fleet_power > 0
-					}
-					NOT = {
-						has_star_flag = acemod_star_flag_solar_system_target
-					}
 				}
-				found_system = {
-					effect = {
-						id = "acemod.113.e1"
-						set_timed_star_flag = {
-							flag = acemod_star_flag_solar_system_target
-							days = 120
+			}
+			queue_actions = {
+				find_random_system = {
+					trigger = {
+						id = "acemod.113.t5"
+						has_star_flag = lgate
+						NOT = {
+							has_star_flag = lcluster
 						}
-					}
-					move_to = this
-				}
-				failed = {
-					effect = {
-						id = "acemod.113.e3"
-						queue_actions = {
-							find_random_system = {
-								trigger = {
-									id = "acemod.113.t3"
-									exists = owner
-									owner = {
-										NOR = {
-											is_same_value = root.owner
-											is_country_type = fallen_empire
-										}
-										is_hostile = root.owner
-									}
-									NOR = {
-										has_star_flag = lcluster
-										has_star_flag = acemod_star_flag_solar_system_target
-									}
-									has_access_fleet = root.owner
+						has_access_fleet = root.owner
+						OR = {
+							owner = {
+								NOR = {
+									is_same_value = root.owner
+									is_country_type = fallen_empire
 								}
-								found_system = {
-									effect = {
-										id = "acemod.113.e4"
-										set_timed_star_flag = {
-											flag = acemod_star_flag_solar_system_target
-											days = 120
-										}
+								is_hostile = root.owner
+							}
+							AND = {
+								owner = {
+									is_same_value = root.owner
+								}
+								NOT = {
+									exists = starbase									# Shortcut to check if system is under siege without iterating through planets.
+								}
+								distance = {
+									source = prev
+									max_jumps = 3
+									use_bypasses = yes
+								}
+								any_system_planet = {
+									has_orbital_bombardment = yes									# Relieve besieged colonies.
+								}
+							}
+							NOT = {
+								exists = owner
+							}
+						}
+						NOT = {
+							has_star_flag = acemod_star_flag_solar_system_target
+						}
+					}
+					found_system = {
+						effect = {
+							id = "acemod.113.e5"
+							set_timed_star_flag = {
+								flag = acemod_star_flag_solar_system_target
+								days = 120
+							}
+						}
+						move_to = this
+					}
+					failed = {
+						effect = {
+							id = "acemod.113.e6"
+							queue_actions = {
+								find_random_system = {
+									trigger = {
+										id = "acemod.113.t6"
+										has_star_flag = lcluster_lgate
+										has_access_fleet = root.owner
 									}
-									move_to = this
+									found_system = {
+										effect = {
+											id = "acemod.113.e7"
+											set_timed_star_flag = {
+												flag = acemod_star_flag_solar_system_target
+												days = 120
+											}
+										}
+										move_to = this
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				solar_system = {
+					count_system = {
+						limit = {
+							distance = {
+								source = prev
+								use_bypasses = no
+								min_jumps >= 1
+								max_jumps <= 7
+								type = hyperlane
+								# bypass_empire = root.owner
+							}
+						}
+						count < 12						# Trying to identify isolated clusters.
+					}
+				}
+			}
+			queue_actions = {
+				find_closest_system = {
+					trigger = {
+						id = "acemod.113.t8"
+						distance = {
+							source = prev
+							type = hyperlane
+							min_jumps >= 1
+							max_jumps <= 5
+							use_bypasses = yes
+							bypass_empire = root.owner
+						}
+						has_access_fleet = root.owner
+						OR = {
+							exists = owner
+							owner = {
+								NOR = {
+									is_same_value = root.owner
+									is_country_type = fallen_empire
+								}
+								is_hostile = root.owner
+							}
+							# Commented out for performance.
+							# AND = {
+							# 	owner = {
+							# 		is_same_value = root.owner
+							# 	}
+							# 	NOT = {
+							# 		exists = starbase									# Shortcut to check if system is under siege without iterating through planets.
+							# 	}
+							# 	distance = {
+							# 		source = prev
+							# 		max_jumps = 3
+							# 		use_bypasses = yes
+							# 	}
+							# 	any_system_planet = {
+							# 		has_orbital_bombardment = yes									# Relieve besieged colonies.
+							# 	}
+							# }
+							NOT = {
+								exists = owner
+							}
+						}
+						NOT = {
+							has_star_flag = acemod_star_flag_solar_system_target
+						}
+					}
+					found_system = {
+						effect = {
+							id = "acemod.113.e8"
+							set_timed_star_flag = {
+								flag = acemod_star_flag_solar_system_target
+								days = 120
+							}
+						}
+						move_to = this
+					}
+					failed = {
+						effect = {
+							id = "acemod.113.e9"
+							queue_actions = {
+								find_random_system = {
+									trigger = {
+										id = "acemod.113.t9"
+										has_star_flag = lcluster_lgate
+										has_access_fleet = root.owner
+									}
+									found_system = {
+										effect = {
+											id = "acemod.113.e10"
+											set_timed_star_flag = {
+												flag = acemod_star_flag_solar_system_target
+												days = 120
+											}
+										}
+										move_to = this
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		else = {
+			queue_actions = {
+				find_random_system = {
+					trigger = {
+						id = "acemod.113.t1"
+						has_star_flag = lcluster
+						has_access_fleet = root.owner
+						any_fleet_in_system = {
+							owner = {
+								is_hostile = root.owner
+							}
+							fleet_power > 0
+						}
+						NOT = {
+							has_star_flag = acemod_star_flag_solar_system_target
+						}
+					}
+					found_system = {
+						effect = {
+							id = "acemod.113.e1"
+							set_timed_star_flag = {
+								flag = acemod_star_flag_solar_system_target
+								days = 120
+							}
+						}
+						move_to = this
+					}
+					failed = {
+						effect = {
+							id = "acemod.113.e3"
+							queue_actions = {
+								find_random_system = {
+									trigger = {
+										id = "acemod.113.t3"
+										exists = owner
+										owner = {
+											NOR = {
+												is_same_value = root.owner
+												is_country_type = fallen_empire
+											}
+											is_hostile = root.owner
+										}
+										NOR = {
+											has_star_flag = lcluster
+											has_star_flag = acemod_star_flag_solar_system_target
+										}
+										has_access_fleet = root.owner
+									}
+									found_system = {
+										effect = {
+											id = "acemod.113.e4"
+											set_timed_star_flag = {
+												flag = acemod_star_flag_solar_system_target
+												days = 120
+											}
+										}
+										move_to = this
+									}
 								}
 							}
 						}
@@ -1827,74 +2025,74 @@ fleet_event = {
 									break = yes
 								}
 							}
-							if = {
-								limit = {
-									root.from = {
-										NOT = {
-											has_star_flag = acemod_star_flag_response_issued
-										}
-									}
-								}
-								random_owned_fleet = {
-									limit = {
-										distance = {
-											source = root.from
-											# min_distance = 0
-											# max_distance = 3
-											# type = hyperlane
-											use_bypasses = no
-											bypass_empire = owner
-											min_jumps = 0
-											max_jumps = 7
-											# ignore_hyperlanes = no
-										}
-										is_ship_class = shipclass_military
-										NOR = {
-											has_fleet_flag = acemod_fleet_flag_response_team
-											check_variable = {
-												which = acemod_var_fleet_piloted_exclusion
-												value = 1
-											}
-										}
-									}
-									acemod_response_effect = yes
-									break = yes
-								}
-							}
-							if = {
-								limit = {
-									root.from = {
-										NOT = {
-											has_star_flag = acemod_star_flag_response_issued
-										}
-									}
-								}
-								random_owned_fleet = {
-									limit = {
-										distance = {
-											source = root.from
-											# min_distance = 0
-											# max_distance = 3
-											# type = hyperlane
-											use_bypasses = no
-											bypass_empire = owner
-											min_jumps = 0
-											max_jumps = 8
-											# ignore_hyperlanes = no
-										}
-										is_ship_class = shipclass_military
-										NOR = {
-											has_fleet_flag = acemod_fleet_flag_response_team
-											check_variable = {
-												which = acemod_var_fleet_piloted_exclusion
-												value = 1
-											}
-										}
-									}
-									acemod_response_effect = yes
-									break = yes
-								}
-							}
+							# if = {
+							# 	limit = {
+							# 		root.from = {
+							# 			NOT = {
+							# 				has_star_flag = acemod_star_flag_response_issued
+							# 			}
+							# 		}
+							# 	}
+							# 	random_owned_fleet = {
+							# 		limit = {
+							# 			distance = {
+							# 				source = root.from
+							# 				# min_distance = 0
+							# 				# max_distance = 3
+							# 				# type = hyperlane
+							# 				use_bypasses = no
+							# 				bypass_empire = owner
+							# 				min_jumps = 0
+							# 				max_jumps = 7
+							# 				# ignore_hyperlanes = no
+							# 			}
+							# 			is_ship_class = shipclass_military
+							# 			NOR = {
+							# 				has_fleet_flag = acemod_fleet_flag_response_team
+							# 				check_variable = {
+							# 					which = acemod_var_fleet_piloted_exclusion
+							# 					value = 1
+							# 				}
+							# 			}
+							# 		}
+							# 		acemod_response_effect = yes
+							# 		break = yes
+							# 	}
+							# }
+							# if = {
+							# 	limit = {
+							# 		root.from = {
+							# 			NOT = {
+							# 				has_star_flag = acemod_star_flag_response_issued
+							# 			}
+							# 		}
+							# 	}
+							# 	random_owned_fleet = {
+							# 		limit = {
+							# 			distance = {
+							# 				source = root.from
+							# 				# min_distance = 0
+							# 				# max_distance = 3
+							# 				# type = hyperlane
+							# 				use_bypasses = no
+							# 				bypass_empire = owner
+							# 				min_jumps = 0
+							# 				max_jumps = 8
+							# 				# ignore_hyperlanes = no
+							# 			}
+							# 			is_ship_class = shipclass_military
+							# 			NOR = {
+							# 				has_fleet_flag = acemod_fleet_flag_response_team
+							# 				check_variable = {
+							# 					which = acemod_var_fleet_piloted_exclusion
+							# 					value = 1
+							# 				}
+							# 			}
+							# 		}
+							# 		acemod_response_effect = yes
+							# 		break = yes
+							# 	}
+							# }
 						}
 					}
 				}
