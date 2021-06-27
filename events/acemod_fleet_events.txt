@@ -407,65 +407,36 @@ fleet_event = {
 	hide_window = yes
 	is_triggered_only = yes
 	immediate = {
-		# solar_system = {
-		# 	random_system_planet = {
-		# 		limit = {
-		# 			has_planet_flag = acemod_planet_flag_bombardment_target_ignore					# Hotfix for akeean's Shielded World origin homeworlds. We will need a bigger boat.
-		# 		}
-		# 		prev = {
-		# 			random_list = {
-		# 				20 = {
-		# 					set_timed_star_flag = {
-		# 						flag = acemod_star_flag_bombardment_target_ignore
-		# 						years = 1
-		# 					}
-		# 				}
-		# 				20 = {
-		# 					set_timed_star_flag = {
-		# 						flag = acemod_star_flag_bombardment_target_ignore
-		# 						years = 2
-		# 					}
-		# 				}
-		# 				20 = {
-		# 					set_timed_star_flag = {
-		# 						flag = acemod_star_flag_bombardment_target_ignore
-		# 						years = 3
-		# 					}
-		# 				}
-		# 				20 = {
-		# 					set_timed_star_flag = {
-		# 						flag = acemod_star_flag_bombardment_target_ignore
-		# 						years = 4
-		# 					}
-		# 				}
-		# 				20 = {
-		# 					set_timed_star_flag = {
-		# 						flag = acemod_star_flag_bombardment_target_ignore
-		# 						years = 5
-		# 					}
-		# 				}
-		# 			}
-		# 		}
-		# 	}
-		# }
 		if = {
 			limit = {
-				NOR = {
-					AND = {
-						OR = {
-							has_fleet_flag = acemod_fleet_flag_response_team							# Failsafe if special orders were issued during event delay.
-							has_fleet_flag = acemod_fleet_flag_solar_response_team							# Failsafe if special orders were issued during event delay.
-						}
-						NOT = {
-							has_fleet_order = aggressive_stance_fleet_order							# Unstucks fleet if response target is out of reach.
+				OR = {
+					has_fleet_flag = acemod_fleet_flag_response_team
+					has_fleet_flag = acemod_fleet_flag_solar_response_team
+				}
+			}
+			if = {
+				limit = {
+					NOT = {
+						solar_system = {
+							exists = owner
+							any_system_planet = {
+								has_orbital_bombardment = yes
+								any_fleet_in_orbit = {
+									is_same_value = root
+								}
+							}
 						}
 					}
 				}
+				remove_fleet_flag = acemod_fleet_flag_response_team
+				remove_fleet_flag = acemod_fleet_flag_solar_response_team
+				clear_orders = yes				# Unstucks fleet if caught in a queued actions loop.
+				clear_fleet_actions = this				# Unstucks fleet if caught in a queued actions loop.
 			}
-			clear_orders = yes			# Unstucks fleet if caught in a queued actions loop.
-			clear_fleet_actions = this			# Unstucks fleet if caught in a queued actions loop.
-			if = {
-				limit = {
+		}
+		if = {
+			limit = {
+				NOT = {
 					solar_system = {
 						exists = owner
 						any_system_planet = {
@@ -476,104 +447,120 @@ fleet_event = {
 						}
 					}
 				}
-				break = yes
 			}
 			if = {
 				limit = {
-					solar_system = {
-						exists = owner
-						any_system_planet = {
+					NOR = {
+						AND = {
 							OR = {
-								is_colony = yes
-								is_under_colonization = yes
-							}
-							NOR = {
-								has_planet_flag = acemod_planet_flag_bombardment_target
-								has_planet_flag = acemod_planet_flag_bombardment_target_ignore								# Hotfix for akeean's Shielded World origin homeworlds. We will need a bigger boat.
-								has_orbital_bombardment = yes
-							}
-							# NOR = {
-							# 	is_owned_by = root.owner
-							# 	is_controlled_by = root.owner
-							# }
-							owner = {
-								is_hostile = root.owner
+								has_fleet_flag = acemod_fleet_flag_response_team								# Failsafe if special orders were issued during event delay.
+								has_fleet_flag = acemod_fleet_flag_solar_response_team								# Failsafe if special orders were issued during event delay.
 							}
 							NOT = {
-								is_controlled_by = root.owner
+								has_fleet_order = aggressive_stance_fleet_order								# Unstucks fleet if response target is out of reach.
 							}
 						}
 					}
 				}
-				queue_actions = {
-					find_closest_planet = {
-						trigger = {
-							id = "acemod.105.t1"
-							OR = {
-								is_colony = yes
-								is_under_colonization = yes
+				clear_orders = yes				# Unstucks fleet if caught in a queued actions loop.
+				clear_fleet_actions = this				# Unstucks fleet if caught in a queued actions loop.
+				if = {
+					limit = {
+						solar_system = {
+							exists = owner
+							any_system_planet = {
+								OR = {
+									is_colony = yes
+									is_under_colonization = yes
+								}
+								NOR = {
+									has_planet_flag = acemod_planet_flag_bombardment_target
+									has_planet_flag = acemod_planet_flag_bombardment_target_ignore									# Hotfix for akeean's Shielded World origin homeworlds. We will need a bigger boat.
+									has_orbital_bombardment = yes
+								}
+								# NOR = {
+								# 	is_owned_by = root.owner
+								# 	is_controlled_by = root.owner
+								# }
+								owner = {
+									is_hostile = root.owner
+								}
+								NOT = {
+									is_controlled_by = root.owner
+								}
 							}
-							NOR = {
-								has_planet_flag = acemod_planet_flag_bombardment_target
-								has_planet_flag = acemod_planet_flag_bombardment_target_ignore
-							}
-							# NOR = {
-							# 	is_owned_by = root.owner
-							# 	is_controlled_by = root.owner
-							# }
-							owner = {
-								is_hostile = root.owner
-							}
-							NOT = {
-								is_controlled_by = root.owner
-							}
-							# is_same_value = event_target:acemod_event_target_invader_bombardment_target
 						}
-						found_planet = {
-							effect = {
-								id = "acemod.105.e1"
-								save_event_target_as = acemod_event_target_invader_bombardment_target
-								set_timed_planet_flag = {
-									flag = acemod_planet_flag_bombardment_target
-									days = 120
+					}
+					queue_actions = {
+						find_closest_planet = {
+							trigger = {
+								id = "acemod.105.t1"
+								OR = {
+									is_colony = yes
+									is_under_colonization = yes
 								}
-								set_timed_planet_flag = {
-									flag = acemod_planet_flag_bombardment_target@root									# Assigns planet to a fleet in case bombing is interrupted by special order.
-									days = 360
+								NOR = {
+									has_planet_flag = acemod_planet_flag_bombardment_target
+									has_planet_flag = acemod_planet_flag_bombardment_target_ignore
 								}
-								solar_system = {
-									set_timed_star_flag = {
-										flag = acemod_star_flag_solar_system_target										# System already has a fleet, keep it reserved for a bit longer.
+								# NOR = {
+								# 	is_owned_by = root.owner
+								# 	is_controlled_by = root.owner
+								# }
+								owner = {
+									is_hostile = root.owner
+								}
+								NOT = {
+									is_controlled_by = root.owner
+								}
+								# is_same_value = event_target:acemod_event_target_invader_bombardment_target
+							}
+							found_planet = {
+								effect = {
+									id = "acemod.105.e1"
+									save_event_target_as = acemod_event_target_invader_bombardment_target
+									set_timed_planet_flag = {
+										flag = acemod_planet_flag_bombardment_target
 										days = 120
 									}
-								}
-							}
-							move_to = this
-							wait = 5
-							orbit_planet = this
-						}
-						failed = {
-							effect = {
-								id = "acemod.105.e2"
-								solar_system = {
-									set_timed_star_flag = {
-										flag = acemod_star_flag_solar_system_target										# System without targets, keep fleets away for a while.
-										days = 60
+									set_timed_planet_flag = {
+										flag = acemod_planet_flag_bombardment_target@root										# Assigns planet to a fleet in case bombing is interrupted by special order.
+										days = 360
+									}
+									solar_system = {
+										set_timed_star_flag = {
+											flag = acemod_star_flag_solar_system_target											# System already has a fleet, keep it reserved for a bit longer.
+											days = 120
+										}
 									}
 								}
-								root = {
-									fleet_event = {
-										id = acemod_fleet.110
+								move_to = this
+								wait = 5
+								orbit_planet = this
+							}
+							failed = {
+								effect = {
+									id = "acemod.105.e2"
+									solar_system = {
+										set_timed_star_flag = {
+											flag = acemod_star_flag_solar_system_target											# System without targets, keep fleets away for a while.
+											days = 60
+										}
+									}
+									root = {
+										fleet_event = {
+											id = acemod_fleet.110
+										}
 									}
 								}
 							}
 						}
 					}
 				}
-			}
-			else = {
-				fleet_event = {
-					id = acemod_fleet.110
+				else = {
+					fleet_event = {
+						id = acemod_fleet.110
+					}
 				}
 			}
 		}
