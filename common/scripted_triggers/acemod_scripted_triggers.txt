@@ -7,3 +7,9 @@ acemod_is_active_bypass = {
 		}
 	}
 }
+
+# Allows to build Contingency colossus.
+acemod_can_build_crisis_ai_colossus = {
+	has_country_flag = acemod_country_flag_can_build_crisis_ai_colossus
+	host_has_dlc = Apocalypse
+}

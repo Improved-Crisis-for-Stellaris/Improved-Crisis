@@ -22,6 +22,7 @@ namespace = acemod_fleet
 # set_country_flag = acemod_country_flag_disabled_constructor_ai				country				Disables ACEMOD AI for constructor fleets.
 # set_country_flag = acemod_country_flag_disabled_army_ai						country				Disables ACEMOD AI for army fleets.
 # set_country_flag = acemod_country_flag_disabled_colonizer_ai					country				Disables ACEMOD AI for colonizer fleets.
+# set_country_flag = acemod_country_flag_disabled_colossus_ai					country				Disables ACEMOD AI for colossus fleets.
 #
 # set_global_flag = acemod_constructor_reinforcements_disabled					global				Disables constructor reinforcements for all countries.
 # set_country_flag = acemod_constructor_reinforcements							country				Enables constructor reinforcements for given country. Vanilla crisis countries receive them by default. Requires acemod_assisted_ai country flag.
@@ -54,6 +55,7 @@ namespace = acemod_fleet
 # set_planet_flag = acemod_planet_flag_bombardment_target_ignore				planet				Marks planet as excluded from being targeted for bombardment.
 # set_planet_flag = acemod_planet_flag_army_target_ignore						planet				Marks planet as excluded from being targeted for invasion.
 # set_planet_flag = acemod_planet_flag_colonizer_target_ignore					planet				Marks planet as excluded from being targeted for colonization or infestation.
+# set_planet_flag = acemod_planet_flag_colossus_target_ignore					planet				Marks planet as excluded from being targeted for colossus kill.
 #
 # set_global_flag = acemod_advanced_ai_disabled									global				Disables some of the fleet events which might require high amount of checks, like reaction to enemy movements. Do not use unless you really want to.
 #
@@ -5128,13 +5130,194 @@ country_event = {
 	}
 }
 
-# Disables crisis colossi by default to avoid player meltdown.
-country_event = {
+# Main colossus hunter-seeker event.
+event = {
+	id = acemod_fleet.700
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		has_global_flag = acemod_activated
+	}
+	immediate = {
+		every_country = {
+			limit = {
+				has_country_flag = acemod_assisted_ai				# Only countries with this flag will have their fleets piloted by ACEMOD.
+				NOT = {
+					has_country_flag = acemod_country_flag_disabled_colossus_ai
+				}
+				# OR = {
+				# 	is_country_type = swarm
+				# 	is_country_type = extradimensional
+				# 	is_country_type = extradimensional_2
+				# 	is_country_type = extradimensional_3
+				# 	is_country_type = ai_empire
+				# 	is_country_type = gray
+				# 	is_country_type = gray_goo					# A Deadly Tempest mod.
+				# }
+			}
+			every_owned_fleet = {
+				limit = {
+					is_ship_class = shipclass_military_special
+					is_fleet_idle = yes
+					NOT = {
+						check_variable = {
+							which = acemod_var_fleet_piloted_exclusion
+							value = 1
+						}
+					}
+				}
+				fleet_event = {
+					id = acemod_fleet.705
+					days = 2
+					random = 10
+				}
+			}
+		}
+	}
+}
+
+# Seeks valid target planet to kill, skips if not found.
+fleet_event = {
+	id = acemod_fleet.705
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		if = {
+			limit = {
+				NOR = {
+					has_fleet_order = destroy_planet_order
+					has_fleet_order = planet_killer_weapon_windup_order
+					has_fleet_order = planet_killer_weapon_fire_order
+				}
+			}
+			clear_orders = yes			# Unstucks fleet if caught in a queued actions loop.
+			clear_fleet_actions = this			# Unstucks fleet if caught in a queued actions loop.
+			if = {
+				limit = {
+					solar_system = {
+						exists = owner
+						any_system_planet = {
+							is_colony = yes
+							owner = {
+								NOT = {
+									is_same_value = root.owner
+								}
+								# OR = {
+								is_hostile = root.owner
+								# is_primitive = yes	# Sweeping primitives would require overwriting can_destroy_planet_with_PLANET_KILLER_NEUTRON trigger.
+								# }
+							}
+							NOT = {
+								is_controlled_by = root.owner
+							}
+							# is_under_colonization =  yes	#	Cannot be invaded.
+							# Sweeping crisis worlds should be allowed.
+							# NOR = {
+							# 	is_planet_class = pc_infested
+							# 	is_planet_class = pc_ai
+							# }
+							NOT = {
+								has_planet_flag = acemod_planet_flag_colossus_target_ignore
+							}
+						}
+					}
+				}
+				save_event_target_as = acemod_event_target_invader_colossus
+				if = {
+					limit = {
+						exists = event_target:acemod_event_target_invader_colossus
+					}
+					queue_actions = {
+						find_closest_planet = {
+							trigger = {
+								id = "acemod.705.t1"
+								is_colony = yes
+								# is_under_colonization =  yes	#	Cannot be invaded.
+								NOT = {
+									has_planet_flag = acemod_planet_flag_colossus_target
+								}
+								NOT = {
+									is_owned_by = root.owner
+								}
+								NOT = {
+									is_controlled_by = root.owner
+								}
+								owner = {
+									# OR = {
+									is_hostile = root.owner
+									# is_primitive = yes	# Sweeping primitives would require overwriting can_destroy_planet_with_PLANET_KILLER_NEUTRON trigger.
+									# }
+								}
+								# Sweeping crisis worlds should be allowed.
+								# NOR = {
+								# 	is_planet_class = pc_infested
+								# 	is_planet_class = pc_ai
+								# }
+								NOT = {
+									has_planet_flag = acemod_planet_flag_colossus_target_ignore
+								}
+							}
+							found_planet = {
+								effect = {
+									id = "acemod.705.e1"
+									save_event_target_as = acemod_event_target_invader_colossus_target
+									set_timed_planet_flag = {
+										flag = acemod_planet_flag_colossus_target
+										days = 120
+									}
+								}
+								move_to = this
+								wait = 5
+								destroy_planet = {
+									target = this
+								}
+							}
+							failed = {
+								effect = {
+									id = "acemod.705.e3"
+									root = {
+										fleet_event = {
+											id = acemod_fleet.710
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+				else = {
+					fleet_event = {
+						id = acemod_fleet.710
+					}
+				}
+			}
+			else = {
+				fleet_event = {
+					id = acemod_fleet.710
+				}
+			}
+		}
+	}
+}
+
+fleet_event = {
+	id = acemod_fleet.710
+	is_triggered_only = yes
+	hide_window = yes
+	immediate = {
+		break = yes		# WIP
+	}
+}
+
+# Disables crisis colossi if Apocalypse DLC is not present.
+event = {
 	id = acemod_fleet.799
 	hide_window = yes
-	fire_only_once = yes
+	is_triggered_only = yes
 	trigger = {
-		is_ai = no
+		NOT = {
+			host_has_dlc = Apocalypse
+		}
 	}
 	immediate = {
 		set_global_flag = acemod_crisis_colossus_disabled

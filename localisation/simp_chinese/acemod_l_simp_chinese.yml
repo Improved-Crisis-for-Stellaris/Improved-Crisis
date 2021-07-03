@@ -96,3 +96,9 @@
  acemod_menu.2.b.tooltip:0 "Enables or disables fleet merging.\nDefault: §G$ACTIVE$§!\n\nCrisis fleets merge under certain conditions, such as when they start losing."
  acemod_menu.2.z:0 "§Y$SAVE$§!"
  acemod_menu.2.z.tooltip:0 "Back to main menu."
+
+ # Colossus-----------------------------------
+ NAME_ACEMOD_AI_COLOSSUS:0 "$CRISIS_TYPE_CONTINGENCY$ $colossus$"
+ acemod_ai_colossus:0 "$colossus$"
+ acemod_ai_colossus_plural:0 "$colossus_plural$"
+ SHIP_ACEMOD_AI_COLOSSUS_KEY:0 "$CRISIS_TYPE_CONTINGENCY$ $colossus$"

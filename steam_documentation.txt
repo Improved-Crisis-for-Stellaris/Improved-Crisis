@@ -172,3 +172,6 @@ This is a functionality always enabled for main crisis factions but any critial 
 
 [h2]Pinging nearby systems[/h2]
 Fleets will ping at random chance nearby systems in order to find valuable targets which happen to be too close. This can be disabled via country flag (acemod_country_flag_system_pings_disabled) or global flag (acemod_advanced_ai_disabled). Refer to list of effects.
+
+[h2]Merging fleets[/h2]
+Fleets will merge under certain conditions. Action invoked by acemod_custom_on_action_merge_fleets custom on_action.

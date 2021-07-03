@@ -247,7 +247,7 @@ country_event = {
 				limit = {
 					host_has_dlc = Apocalypse					# Check for DLC presence to access this content is legally required.
 				}
-				# remove_global_flag = acemod_crisis_colossus_disabled				# Work in Progress.
+				remove_global_flag = acemod_crisis_colossus_disabled
 				country_event = {
 					id = acemod_menu.1
 					days = 0
