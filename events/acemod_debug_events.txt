@@ -405,6 +405,26 @@ event = {
 	}
 }
 
+# Allows to spawn Contingency colossus (acemod_fleet.751).
+event = {
+	id = acemod_debug.422
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		set_country_flag = acemod_country_flag_can_spawn_crisis_ai_colossus
+	}
+}
+
+# Allows planet spawn Contingency colossus (acemod_fleet.751).
+event = {
+	id = acemod_debug.423
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		set_planet_flag = acemod_planet_flag_can_spawn_crisis_ai_colossus
+	}
+}
+
 # Dummy flag setup to clean error.log. DO NOT USE THIS EVENT.
 event = {
 	id = acemod_debug.499

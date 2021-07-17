@@ -9,6 +9,8 @@ namespace = acemod_fleet
 # 
 # Note 2: Vanilla crisis countries are piloted by default. See instructions on how to exclude countries, including vanilla crisis countries.
 #
+# Note 3: In order to allow crisis factions use vanilla planet killer weapons this mod overwrites planet_is_hostile_or_crisis scripted trigger key in 01_scripted_triggers_planet_killers.txt.
+#
 # Instructions:
 # 
 # set_global_flag = acemod_activated											global				Activates ACEMOD fleet AI.
@@ -64,6 +66,13 @@ namespace = acemod_fleet
 # set_country_flag = acemod_country_flag_starbase_defensive_protocol_disabled	country				Disables territorial defense for given country.
 # set_country_flag = acemod_country_flag_starbase_defensive_protocol_fallback_event_disabled	country	Disables fallback event (acemod_fleet.132). Use if issues from triggering both 130 132 arise (should not).
 #
+# set_country_flag = acemod_country_flag_can_spawn_crisis_colossus				country				Enables automatic Colossus spawns for a given country. Requires specific Colossus type flag and planet flag as well.
+# set_country_flag = acemod_country_flag_can_spawn_crisis_ai_colossus			country				Automatic Colossus spawns are of Contingency type. Required for above to work.
+# set_planet_flag = acemod_planet_flag_can_spawn_crisis_ai_colossus				planet				Sets planet to spawn Contingency Colossus on. Required for above to work if pc_ai is not present.
+# set_variable = { which = acemod_var_country_colossus_spawn_limit value = 4 }	country				Sets game limit of automatic Colossus spawns for a given country (default 4).
+# set_country_flag = acemod_can_build_crisis_ai_colossus						country				Allows given country to build Contingency Colossus.
+# acemod_spawn_ai_colossus = yes		root = country this = planet, fleet, ship, ambient_object	Spawns Contingency Colossus on this scope for root scope country.
+#
 # set_country_flag = acemod_country_flag_system_pings_disabled					country				Disables pinging systems to indicate potential high value targets.
 # 
 # set_country_flag = acemod_lib_country_flag_army_strength_modifier_assisted_ai	country				swarm, ai_empire, and countries with this flag receive Crisis Army Strength multiplier.
@@ -113,6 +122,7 @@ event = {
 			}
 			set_global_flag = acemod_activated
 			set_country_flag = acemod_assisted_ai
+			set_country_flag = acemod_country_flag_can_spawn_crisis_colossus
 			if = {
 				limit = {
 					NOR = {
@@ -5579,6 +5589,177 @@ fleet_event = {
 											attack_fleet = no
 										}
 									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+# Spawn colossus root event.
+event = {
+	id = acemod_fleet.750
+	is_triggered_only = yes
+	hide_window = yes
+	trigger = {
+		has_global_flag = acemod_activated
+		NOT = {
+			has_global_flag = acemod_crisis_colossus_disabled
+		}
+	}
+	immediate = {
+		every_country = {
+			limit = {
+				has_country_flag = acemod_country_flag_can_spawn_crisis_colossus
+			}
+			if = {
+				limit = {
+					NOT = {
+						is_variable_set = acemod_var_country_colossus_spawn_limit
+					}
+				}
+				event_target:global_event_country = {
+					if = {
+						limit = {
+							NOT = {
+								is_variable_set = acemod_var_country_colossus_spawn_limit
+							}
+						}
+						set_variable = {
+							which = acemod_var_country_colossus_spawn_limit
+							value = 4
+						}
+					}
+				}
+				set_variable = {
+					which = acemod_var_country_colossus_spawn_limit
+					value = {
+						scope = event_target:global_event_country
+						variable = acemod_var_country_colossus_spawn_limit
+					}
+				}
+			}
+			if = {
+				limit = {
+					check_variable = {
+						which = acemod_var_country_colossus_spawn_limit
+						value > acemod_var_country_num_colossus_spawned
+					}
+				}
+				country_event = {
+					id = acemod_fleet.751
+					days = 5
+					random = 10
+				}
+			}
+		}
+	}
+}
+
+# Spawn colossus
+country_event = {
+	id = acemod_fleet.751
+	is_triggered_only = yes
+	hide_window = yes
+	immediate = {
+		if = {
+			limit = {
+				OR = {
+					is_country_type = ai_empire
+					has_country_flag = acemod_country_flag_can_spawn_crisis_ai_colossus
+				}
+			}
+			random_owned_planet = {
+				limit = {
+					OR = {
+						is_planet_class = pc_ai
+						has_planet_flag = acemod_planet_flag_can_spawn_crisis_ai_colossus
+					}
+					check_variable = {
+						which = acemod_var_planet_num_ai_colossus_spawned
+						value = 0
+					}
+				}
+				change_variable = {
+					which = acemod_var_planet_num_ai_colossus_spawned
+					value = 1
+				}
+				save_event_target_as = acemod_event_target_colossus_spawn_point
+			}
+			if = {
+				limit = {
+					exists = event_target:acemod_event_target_colossus_spawn_point
+				}
+				acemod_spawn_ai_colossus = yes				# Scope: planet, fleet, ship, ambient_object
+				if = {
+					limit = {
+						exists = event_target:acemod_event_target_ai_colossus
+					}
+					event_target:acemod_event_target_ai_colossus = {
+						if = {
+							limit = {
+								owner = {
+									has_country_flag = acemod_assisted_ai
+									NOT = {
+										has_country_flag = acemod_country_flag_disabled_colossus_ai
+									}
+								}
+								NOT = {
+									check_variable = {
+										which = acemod_var_fleet_piloted_exclusion
+										value = 1
+									}
+								}
+							}
+							fleet_event = {
+								id = acemod_fleet.705
+								days = 5
+							}
+						}
+					}
+				}
+			}
+			else = {
+				random_owned_planet = {
+					limit = {
+						is_planet_class = pc_ai
+						check_variable = {
+							which = acemod_var_planet_num_ai_colossus_spawned
+							value > 0
+						}
+					}
+					change_variable = {
+						which = acemod_var_planet_num_ai_colossus_spawned
+						value = 1
+					}
+					save_event_target_as = acemod_event_target_colossus_spawn_point
+					acemod_spawn_ai_colossus = yes					# Scope: planet, fleet, ship, ambient_object
+					if = {
+						limit = {
+							exists = event_target:acemod_event_target_ai_colossus
+						}
+						event_target:acemod_event_target_ai_colossus = {
+							if = {
+								limit = {
+									owner = {
+										has_country_flag = acemod_assisted_ai
+										NOT = {
+											has_country_flag = acemod_country_flag_disabled_colossus_ai
+										}
+									}
+									NOT = {
+										check_variable = {
+											which = acemod_var_fleet_piloted_exclusion
+											value = 1
+										}
+									}
+								}
+								fleet_event = {
+									id = acemod_fleet.705
+									days = 5
 								}
 							}
 						}

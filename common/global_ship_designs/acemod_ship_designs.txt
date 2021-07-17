@@ -176,7 +176,8 @@ ship_design = {
 	required_component="HYPER_DRIVE_3"
 	required_component="COLOSSUS_ZERO_POINT_REACTOR"
 	required_component="SHIP_THRUSTER_4"
-	required_component="COMBAT_COMPUTER_ARTILLERY_SAPIENT"
+	# required_component="COMBAT_COMPUTER_ARTILLERY_SAPIENT"
+	required_component="COMBAT_COMPUTER_COLOSSUS"
 	
 	# For special buildable
 	is_special_buildable = yes

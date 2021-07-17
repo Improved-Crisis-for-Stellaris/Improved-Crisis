@@ -1,7 +1,7 @@
 acemod_ai_colossus = {
 	formation_priority = @colossus_formation_priority
 	# max_speed = @speed_very_slow
-	max_speed = @speed_slow
+	max_speed = @speed_default
 	acceleration = 0.2
 	rotation_speed = 0.15
 	collision_radius = @colossus_collision_radius
