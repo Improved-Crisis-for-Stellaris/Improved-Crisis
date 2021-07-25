@@ -75,10 +75,10 @@ acemod_ai_colossus = {
 			}
 		}
 	}
-	
-	empire_limit = {
-		base = 1
-	}
+	# Commented out as it causes ship size construction limit to appear in naval capacity tooltip.
+	# empire_limit = {
+	# 	base = 1
+	# }
 
 	resources = {
 		category = ships

@@ -158,6 +158,22 @@
  acemod_crisis_manager.1.w:0 "$RESET_DEFAULT$"
  acemod_crisis_manager.1.w.tooltip:0 "§B$acemod_crisis_manager_name_singular$§!:\n$RESET_DEFAULT_TOOLTIP$."
 
+  # Immediate crisis spawn menu------------------------------------
+ acemod_crisis_manager.1.m:0 "§E$acemod_crisis_manager.1.m_plain$§!"
+ acemod_crisis_manager.1.m.tooltip:0 "$START$ $CRISIS_FACTOR$ event chain."
+ acemod_crisis_manager.1.m_plain:0 "$START$ $CRISIS_FACTOR$"
+ acemod_crisis_manager.12.name:0 "$acemod_crisis_manager.1.m_plain$"
+ acemod_crisis_manager.12.desc:0 "Instant spawn options for §R$CRISIS_FACTOR$§!. You can §Bforce trigger§! more than one crisis type but each one only once."
+ acemod_crisis_manager.12.a:0 "§G$name_list_Prethoryn$: $crisis.11.name$§!"
+ acemod_crisis_manager.12.a.tooltip:0 "$START$ §G$name_list_Prethoryn$§! $CRISIS_FACTOR$. $acemod_crisis_manager.1.h.tooltip$"
+ acemod_crisis_manager.12.b:0 "§R$CRISIS_TYPE_CONTINGENCY$: $crisis.2010.name$§!"
+ acemod_crisis_manager.12.b.tooltip:0 "$START$ §R$CRISIS_TYPE_CONTINGENCY$§! $CRISIS_FACTOR$."
+ acemod_crisis_manager.12.c:0 "§M$name_list_Extradimensional$: $crisis.1008.name$§!"
+ acemod_crisis_manager.12.c.tooltip:0 "$START$ §M$name_list_Extradimensional$§! $CRISIS_FACTOR$."
+
+ acemod_crisis_manager.12.z:0 "§YBack to $acemod_crisis_manager_name_singular$ menu§!"
+ acemod_crisis_manager.12.z.tooltip:0 "Back to $acemod_crisis_manager.1.name$"
+
 # Crisis Manager Advanced Options menu.------------------------------------
  acemod_crisis_manager.1.x:0 "§E$acemod_crisis_manager.1.x_plain$§!"
  acemod_crisis_manager.1.x.tooltip:0 "Shows $acemod_menu.1.x$. Usually not needed."

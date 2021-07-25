@@ -22,13 +22,15 @@ You can also fire mod menu with an [b]event acemod_menu.1[/b] console command.
 
 [h1]Improvements[/h1]
 
-[IMG]https://i.imgur.com/QAE3eRY.png[/IMG]
+[IMG]https://i.imgur.com/SYMJrYD.png[/IMG]
 
 ACEMOD is flexible and modular. Users are able to switch individual components on and off on game start.
 
 Modders can use ACEMOD AI for their own custom country_types and exclude individual fleets from ACEMOD AI for their own events. Current list of effects for modders to use is inside [b]acemod_fleet_events.txt[/b]. See [url=https://steamcommunity.com/workshop/filedetails/discussion/2268189539/3011179244472319574/]AI framework documentation (modders)[/url] for details.
 
-[IMG]https://i.imgur.com/lxgj781.png[/IMG]
+[IMG]https://i.imgur.com/Ggv3zZW.png[/IMG]
+
+[IMG]https://i.imgur.com/Ei2tkeA.png[/IMG]
 
 [h1]Compatibility[/h1]
 This mod is highly compatible but requires disabling vanilla crisis AI. For this reason put ACEMOD below any mod which changes crises (this includes Starnet AI and Glavius AI which overwrite crisis definitions without actually making changes to them).
