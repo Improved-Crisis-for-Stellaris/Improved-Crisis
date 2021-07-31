@@ -107,6 +107,11 @@ ai_empire
 [b]01_scripted_triggers_planet_killers.txt (keys) - allow crisis factions use vanilla planet killer weapons. Required to make ACE crisis colossi work.[/b]
 planet_is_hostile_or_crisis
 
+[b]crisis_events_2.txt (keys) - fixes Extradimensional reinforcements spawning on RANDOM Dimensional Portals.[/b]
+crisis.1265
+crisis.1266
+crisis.1267
+
 [b]OPTIONAL:[/b]
 
 [b]00_starbase_levels.txt (keys) - allows for Dimensional Anchors to be marked on galactic map.[/b]
@@ -200,3 +205,59 @@ Fleets will ping at random chance nearby systems in order to find valuable targe
 
 [h2]Merging fleets[/h2]
 Fleets will merge under certain conditions. Action invoked by acemod_custom_on_action_merge_fleets custom on_action.
+
+---
+
+[h1]Harmless error.log entries (do not report):[/h1]
+[code][22:29:02][pdx_entity.cpp:2653]: State 'moving' in animated entity 'acemod_ai_colossus_core_entity' is missing an animation!
+[22:29:02][pdx_entity.cpp:2653]: State 'death' in animated entity 'acemod_ai_colossus_core_entity' is missing an animation!
+
+[22:29:03][game_singleobjectdatabase.h:147]: Object with key: swarm already exists
+[22:29:03][game_singleobjectdatabase.h:147]: Object with key: extradimensional already exists
+[22:29:03][game_singleobjectdatabase.h:147]: Object with key: extradimensional_2 already exists
+[22:29:03][game_singleobjectdatabase.h:147]: Object with key: extradimensional_3 already exists
+[22:29:03][game_singleobjectdatabase.h:147]: Object with key: ai_empire already exists
+
+[22:29:04][game_singleobjectdatabase.h:147]: Object with key: planet_is_hostile_or_crisis already exists
+
+[22:29:04][effect_impl.cpp:6827]: Failed to read key reference fe_omnimech from database  file: events/acemod_fleet_events.txt line: 3386
+
+[22:29:04][fleet_actions.cpp:227]: Error: "Malformed token: prev, near line: 4691
+" in file: "events/acemod_fleet_events.txt" near line: 4692
+[22:29:04][fleet_actions.cpp:227]: Error: "Malformed token: prev, near line: 4725
+" in file: "events/acemod_fleet_events.txt" near line: 4726
+[22:29:04][fleet_actions.cpp:227]: Error: "Malformed token: prev, near line: 4759
+" in file: "events/acemod_fleet_events.txt" near line: 4760
+[22:29:04][fleet_actions.cpp:227]: Error: "Malformed token: prev, near line: 4793
+" in file: "events/acemod_fleet_events.txt" near line: 4794
+[22:29:04][fleet_actions.cpp:227]: Error: "Malformed token: prev, near line: 4827
+" in file: "events/acemod_fleet_events.txt" near line: 4828
+[22:29:04][fleet_actions.cpp:227]: Error: "Malformed token: prev, near line: 4861
+" in file: "events/acemod_fleet_events.txt" near line: 4862
+[22:29:04][fleet_actions.cpp:227]: Error: "Malformed token: prev, near line: 4895
+" in file: "events/acemod_fleet_events.txt" near line: 4896
+[22:29:04][fleet_actions.cpp:227]: Error: "Malformed token: prev, near line: 4929
+" in file: "events/acemod_fleet_events.txt" near line: 4930
+[22:29:04][fleet_actions.cpp:227]: Error: "Malformed token: prev, near line: 4963
+" in file: "events/acemod_fleet_events.txt" near line: 4964
+[22:29:04][fleet_actions.cpp:227]: Error: "Malformed token: prev, near line: 4997
+" in file: "events/acemod_fleet_events.txt" near line: 4998
+
+[22:29:04][eventmanager.cpp:355]: an event with id [crisis.1265] already exists!  file: events/crisis_events_2.txt line: 2664
+[22:29:04][eventmanager.cpp:355]: an event with id [crisis.1266] already exists!  file: events/crisis_events_2.txt line: 2962
+[22:29:04][eventmanager.cpp:355]: an event with id [crisis.1267] already exists!  file: events/crisis_events_2.txt line: 3076
+
+[22:29:04][game_singleobjectdatabase.h:147]: Object with key: starbase_level_exd already exists
+
+[22:29:06][trigger_impl.cpp:15435]: Error in [is_country_type] trigger, cannot find country type with key: ascended_empire in, file: events/acemod_crisis_manager_vanilla_substitute_events.txt line: 443
+[22:29:06][trigger_impl.cpp:15435]: Error in [is_country_type] trigger, cannot find country type with key: lost_empire in, file: events/acemod_crisis_manager_vanilla_substitute_events.txt line: 444
+
+[22:29:06][metascript.cpp:148]: Compiling source for  failed for missing args: DMM_NAME, DMM_FLAG
+[22:29:06][metascript.cpp:148]: Compiling source for  failed for missing args: DMM_FLAG
+[22:29:06][effect_impl.cpp:811]: Script Error: Invalid scripted effect: dmm_register_mod at  file: events/acemod_dmm_new_events.txt line: 8
+[22:29:06][effect_impl.cpp:811]: Script Error: Invalid scripted effect: dmm_hide_button_all at  file: events/acemod_dmm_new_events.txt line: 50
+[22:29:06][effect_impl.cpp:811]: Script Error: Invalid scripted effect: dmm_add_button_exception at  file: events/acemod_dmm_new_events.txt line: 65
+[22:29:06][effect_impl.cpp:811]: Script Error: Invalid scripted effect: dmm_show_button_all at  file: events/acemod_dmm_new_events.txt line: 75
+[22:29:06][effect_impl.cpp:811]: Script Error: Invalid scripted effect: dmm_remove_button_exception at  file: events/acemod_dmm_new_events.txt line: 82
+
+[22:29:06][effect_impl.cpp:6897]: create_army: missing or invalid army type file: events/acemod_fleet_events.txt line: 3383[/code]

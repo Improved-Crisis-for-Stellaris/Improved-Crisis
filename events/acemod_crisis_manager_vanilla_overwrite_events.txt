@@ -65,6 +65,268 @@ country_event = {
 		owner_species = { save_event_target_as = extradimensional_species }
 		country_event = { id = crisis.1260 } # Restart spawn cycle
 
+		if = {
+			limit = { has_global_flag = acot_override_activated NOT = { has_global_flag = acemod_crisis_manager_acot_override_support_disabled } }
+
+		# Extradimensionals 1
+		if = {
+			limit = { is_country_type = extradimensional exists = event_target:dimensional_portal }
+
+			# Create Admiral
+			random_list = {
+				25 = {
+					create_leader = {
+						class = admiral
+						species = event_target:extradimensional_species
+						name = random
+						skill = 3
+						traits = {
+							trait = leader_trait_ethereal
+						}
+					}
+				}
+				25 = {
+					create_leader = {
+						class = admiral
+						species = event_target:extradimensional_species
+						name = random
+						skill = 3
+						traits = {
+							trait = leader_trait_dimensional_stutter
+						}
+					}
+				}
+				50 = {
+					create_leader = {
+						class = admiral
+						species = event_target:extradimensional_species
+						name = random
+						skill = 3
+					}
+				}
+			}
+
+			# Create Fleet
+			create_fleet = {
+				effect = {
+					set_owner = ROOT
+					create_ship = {
+						name = random
+						design = "NAME_Spectre"							# ACOT Override
+						graphical_culture = "extra_dimensional_01"
+					}
+					assign_leader = last_created_leader
+					while = {
+						count = 5
+						create_ship = {
+							name = random
+							design = "NAME_Revenant"
+							graphical_culture = "extra_dimensional_01"
+						}
+					}
+					while = {
+						count = 8
+						create_ship = {
+							name = random
+							design = "NAME_Phantom"
+							graphical_culture = "extra_dimensional_01"
+						}
+					}
+					while = {
+						count = 15
+						create_ship = {
+							name = random
+							design = "NAME_Wraith"
+							graphical_culture = "extra_dimensional_01"
+						}
+					}
+					set_location = {
+						target = event_target:dimensional_portal
+						distance = 5
+						angle = random
+					}
+					set_fleet_stance = aggressive
+					set_aggro_range = 500
+					set_aggro_range_measure_from = self
+					set_fleet_bombardment_stance = armageddon
+				}
+			}
+		}
+
+		# Extradimensionals 2
+		else_if = {
+			limit = { is_country_type = extradimensional_2 exists = event_target:dimensional_portal }
+
+			# Create Admiral
+			random_list = {
+				25 = {
+					create_leader = {
+						class = admiral
+						species = event_target:extradimensional_species
+						name = random
+						skill = 3
+						traits = {
+							trait = leader_trait_ethereal
+						}
+					}
+				}
+				25 = {
+					create_leader = {
+						class = admiral
+						species = event_target:extradimensional_species
+						name = random
+						skill = 3
+						traits = {
+							trait = leader_trait_dimensional_stutter
+						}
+					}
+				}
+				50 = {
+					create_leader = {
+						class = admiral
+						species = event_target:extradimensional_species
+						name = random
+						skill = 3
+					}
+				}
+			}
+
+			# Create Fleet
+			create_fleet = {
+				effect = {
+					set_owner = ROOT
+					create_ship = {
+						name = random
+						design = "NAME_Shadowstalker"							# ACOT Override
+						graphical_culture = "extra_dimensional_02"
+					}
+					assign_leader = last_created_leader
+					while = {
+						count = 5
+						create_ship = {
+							name = random
+							design = "NAME_Huntress"
+							graphical_culture = "extra_dimensional_02"
+						}
+					}
+					while = {
+						count = 8
+						create_ship = {
+							name = random
+							design = "NAME_Assassin"
+							graphical_culture = "extra_dimensional_02"
+						}
+					}
+					while = {
+						count = 15
+						create_ship = {
+							name = random
+							design = "NAME_Predator"
+							graphical_culture = "extra_dimensional_02"
+						}
+					}
+					set_location = {
+						target = event_target:dimensional_portal
+						distance = 5
+						angle = random
+					}
+					set_fleet_stance = aggressive
+					set_aggro_range = 500
+					set_aggro_range_measure_from = self
+					set_fleet_bombardment_stance = armageddon
+				}
+			}
+		}
+
+		# Extradimensionals 3
+		else_if = {
+			limit = { is_country_type = extradimensional_3 exists = event_target:dimensional_portal }
+
+			# Create Admiral
+			random_list = {
+				25 = {
+					create_leader = {
+						class = admiral
+						species = event_target:extradimensional_species
+						name = random
+						skill = 3
+						traits = {
+							trait = leader_trait_ethereal
+						}
+					}
+				}
+				25 = {
+					create_leader = {
+						class = admiral
+						species = event_target:extradimensional_species
+						name = random
+						skill = 3
+						traits = {
+							trait = leader_trait_dimensional_stutter
+						}
+					}
+				}
+				50 = {
+					create_leader = {
+						class = admiral
+						species = event_target:extradimensional_species
+						name = random
+						skill = 3
+					}
+				}
+			}
+
+			# Create Fleet
+			create_fleet = {
+				effect = {
+					set_owner = ROOT
+					create_ship = {
+						name = random
+						design = "NAME_Exterminator"							# ACOT Override
+						graphical_culture = "extra_dimensional_03"
+					}
+					assign_leader = last_created_leader
+					while = {
+						count = 5
+						create_ship = {
+							name = random
+							design = "NAME_Eradicator"
+							graphical_culture = "extra_dimensional_03"
+						}
+					}
+					while = {
+						count = 8
+						create_ship = {
+							name = random
+							design = "NAME_Annihilator"
+							graphical_culture = "extra_dimensional_03"
+						}
+					}
+					while = {
+						count = 15
+						create_ship = {
+							name = random
+							design = "NAME_Obliterator"
+							graphical_culture = "extra_dimensional_03"
+						}
+					}
+					set_location = {
+						target = event_target:dimensional_portal
+						distance = 5
+						angle = random
+					}
+					set_fleet_stance = aggressive
+					set_aggro_range = 500
+					set_aggro_range_measure_from = self
+					set_fleet_bombardment_stance = armageddon
+				}
+			}
+		}
+
+		}
+
+		else = {
+
 		# Extradimensionals 1
 		if = {
 			limit = { is_country_type = extradimensional exists = event_target:dimensional_portal }
@@ -319,6 +581,7 @@ country_event = {
 				}
 			}
 		}
+		}
 	}
 }
 
@@ -539,6 +802,268 @@ ship_event = {
 				save_event_target_as = dimensional_portal
 			}
 			owner_species = { save_event_target_as = extradimensional_species }
+
+			if = {
+				limit = { has_global_flag = acot_override_activated NOT = { has_global_flag = acemod_crisis_manager_acot_override_support_disabled } }
+			
+				# Extradimensionals 1
+			if = {
+				limit = { is_country_type = extradimensional exists = event_target:dimensional_portal }
+
+				# Create Admiral
+				random_list = {
+					25 = {
+						create_leader = {
+							class = admiral
+							species = event_target:extradimensional_species
+							name = random
+							skill = 3
+							traits = {
+								trait = leader_trait_ethereal
+							}
+						}
+					}
+					25 = {
+						create_leader = {
+							class = admiral
+							species = event_target:extradimensional_species
+							name = random
+							skill = 3
+							traits = {
+								trait = leader_trait_dimensional_stutter
+							}
+						}
+					}
+					50 = {
+						create_leader = {
+							class = admiral
+							species = event_target:extradimensional_species
+							name = random
+							skill = 3
+						}
+					}
+				}
+
+				# Create Fleet
+				create_fleet = {
+					effect = {
+						set_owner = ROOT.owner
+						create_ship = {
+							name = random
+							design = "NAME_Spectre"							# ACOT Override
+							graphical_culture = "extra_dimensional_01"
+						}
+						assign_leader = last_created_leader
+						while = {
+							count = 5
+							create_ship = {
+								name = random
+								design = "NAME_Revenant"
+								graphical_culture = "extra_dimensional_01"
+							}
+						}
+						while = {
+							count = 8
+							create_ship = {
+								name = random
+								design = "NAME_Phantom"
+								graphical_culture = "extra_dimensional_01"
+							}
+						}
+						while = {
+							count = 15
+							create_ship = {
+								name = random
+								design = "NAME_Wraith"
+								graphical_culture = "extra_dimensional_01"
+							}
+						}
+						set_location = {
+							target = event_target:dimensional_portal
+							distance = 5
+							angle = random
+						}
+						set_fleet_stance = aggressive
+						set_aggro_range = 500
+						set_aggro_range_measure_from = self
+						set_fleet_bombardment_stance = armageddon
+					}
+				}
+			}
+
+			# Extradimensionals 2
+			else_if = {
+				limit = { is_country_type = extradimensional_2 exists = event_target:dimensional_portal }
+
+				# Create Admiral
+				random_list = {
+					25 = {
+						create_leader = {
+							class = admiral
+							species = event_target:extradimensional_species
+							name = random
+							skill = 3
+							traits = {
+								trait = leader_trait_ethereal
+							}
+						}
+					}
+					25 = {
+						create_leader = {
+							class = admiral
+							species = event_target:extradimensional_species
+							name = random
+							skill = 3
+							traits = {
+								trait = leader_trait_dimensional_stutter
+							}
+						}
+					}
+					50 = {
+						create_leader = {
+							class = admiral
+							species = event_target:extradimensional_species
+							name = random
+							skill = 3
+						}
+					}
+				}
+
+				# Create Fleet
+				create_fleet = {
+					effect = {
+						set_owner = ROOT.owner
+						create_ship = {
+							name = random
+							design = "NAME_Shadowstalker"							# ACOT Override
+							graphical_culture = "extra_dimensional_02"
+						}
+						assign_leader = last_created_leader
+						while = {
+							count = 5
+							create_ship = {
+								name = random
+								design = "NAME_Huntress"
+								graphical_culture = "extra_dimensional_02"
+							}
+						}
+						while = {
+							count = 8
+							create_ship = {
+								name = random
+								design = "NAME_Assassin"
+								graphical_culture = "extra_dimensional_02"
+							}
+						}
+						while = {
+							count = 15
+							create_ship = {
+								name = random
+								design = "NAME_Predator"
+								graphical_culture = "extra_dimensional_02"
+							}
+						}
+						set_location = {
+							target = event_target:dimensional_portal
+							distance = 5
+							angle = random
+						}
+						set_fleet_stance = aggressive
+						set_aggro_range = 500
+						set_aggro_range_measure_from = self
+						set_fleet_bombardment_stance = armageddon
+					}
+				}
+			}
+
+			# Extradimensionals 3
+			else_if = {
+				limit = { is_country_type = extradimensional_3 exists = event_target:dimensional_portal }
+
+				# Create Admiral
+				random_list = {
+					25 = {
+						create_leader = {
+							class = admiral
+							species = event_target:extradimensional_species
+							name = random
+							skill = 3
+							traits = {
+								trait = leader_trait_ethereal
+							}
+						}
+					}
+					25 = {
+						create_leader = {
+							class = admiral
+							species = event_target:extradimensional_species
+							name = random
+							skill = 3
+							traits = {
+								trait = leader_trait_dimensional_stutter
+							}
+						}
+					}
+					50 = {
+						create_leader = {
+							class = admiral
+							species = event_target:extradimensional_species
+							name = random
+							skill = 3
+						}
+					}
+				}
+
+				# Create Fleet
+				create_fleet = {
+					effect = {
+						set_owner = ROOT.owner
+						create_ship = {
+							name = random
+							design = "NAME_Exterminator"							# ACOT Override
+							graphical_culture = "extra_dimensional_03"
+						}
+						assign_leader = last_created_leader
+						while = {
+							count = 5
+							create_ship = {
+								name = random
+								design = "NAME_Eradicator"
+								graphical_culture = "extra_dimensional_03"
+							}
+						}
+						while = {
+							count = 8
+							create_ship = {
+								name = random
+								design = "NAME_Annihilator"
+								graphical_culture = "extra_dimensional_03"
+							}
+						}
+						while = {
+							count = 15
+							create_ship = {
+								name = random
+								design = "NAME_Obliterator"
+								graphical_culture = "extra_dimensional_03"
+							}
+						}
+						set_location = {
+							target = event_target:dimensional_portal
+							distance = 5
+							angle = random
+						}
+						set_fleet_stance = aggressive
+						set_aggro_range = 500
+						set_aggro_range_measure_from = self
+						set_fleet_bombardment_stance = armageddon
+					}
+				}
+			}
+				
+			}
+
+			else = {
 
 			# Extradimensionals 1
 			if = {
@@ -793,6 +1318,7 @@ ship_event = {
 						set_fleet_bombardment_stance = armageddon
 					}
 				}
+			}
 			}
 		}
 	}
