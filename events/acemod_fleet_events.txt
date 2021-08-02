@@ -373,6 +373,40 @@ event = {
 				# 	is_country_type = gray_goo					# A Deadly Tempest mod.
 				# }
 			}
+			if = {
+				limit = {
+					NOT = {
+						has_country_flag = acemod_country_flag_prioritise_galactic_empires_checked
+					}
+				}
+				if = {
+					limit = {
+						is_country_type = extradimensional
+					}
+					country_event = {
+						id = acemod_fleet.104						# Counting Dimensional Anchors
+						days = 0
+					}
+				}
+				if = {
+					limit = {
+						is_country_type = extradimensional_2
+					}
+					country_event = {
+						id = acemod_fleet.104						# Counting Dimensional Anchors
+						days = 1
+					}
+				}
+				if = {
+					limit = {
+						is_country_type = extradimensional_3
+					}
+					country_event = {
+						id = acemod_fleet.104						# Counting Dimensional Anchors
+						days = 2
+					}
+				}
+			}
 			every_owned_fleet = {
 				limit = {
 					is_fleet_idle = yes
@@ -409,6 +443,33 @@ event = {
 					}
 				}
 			}
+		}
+	}
+}
+
+# Counting Dimensional Anchors. Target galactic empires first over other extradimensional factions if any nearby.
+country_event = {
+	id = acemod_fleet.104
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		if = {
+			limit = {
+				count_owned_fleet = {
+					limit = {
+						is_ship_size = starbase_exd						# Counting Dimensional Anchors.
+					}
+					count > 3
+				}
+			}
+			set_timed_country_flag = {
+				flag = acemod_country_flag_prioritise_galactic_empires_checked
+				days = 360
+			}
+			set_country_flag = acemod_country_flag_prioritise_galactic_empires			# Target galactic empires first over other extradimensional factions if any nearby. 
+		}
+		else = {
+			remove_country_flag = acemod_country_flag_prioritise_galactic_empires
 		}
 	}
 }
@@ -679,72 +740,175 @@ fleet_event = {
 	hide_window = yes
 	is_triggered_only = yes
 	immediate = {
-		solar_system = {
-			closest_system = {
-				min_steps = 1
-				max_steps = 20
-				use_bypasses = no
-				limit = {
-					exists = owner
-					has_access_fleet = root.owner
-					OR = {
-						owner = {
-							NOR = {
-								is_same_value = root.owner
-								is_country_type = fallen_empire
-							}
-							is_hostile = root.owner
-						}
-						AND = {
+		if = {
+			limit = {
+				owner = {
+					has_country_flag = acemod_country_flag_prioritise_galactic_empires					# Target galactic empires first over other extradimensional factions if any nearby.
+				}
+			}
+			solar_system = {
+				closest_system = {
+					min_steps = 1
+					max_steps = 10					# Short range seeking.
+					use_bypasses = no
+					limit = {
+						exists = owner
+						has_access_fleet = root.owner
+						OR = {
 							owner = {
-								is_same_value = root.owner
+								NOR = {
+									is_same_value = root.owner
+									is_country_type = fallen_empire
+								}
+								is_hostile = root.owner
 							}
-							NOT = {
-								exists = starbase								# Shortcut to check if system is under siege without iterating through planets.
+							AND = {
+								owner = {
+									is_same_value = root.owner
+								}
+								NOT = {
+									exists = starbase									# Shortcut to check if system is under siege without iterating through planets.
+								}
+								distance = {
+									source = prev
+									max_jumps = 4
+									use_bypasses = no
+								}
+								any_system_planet = {
+									has_orbital_bombardment = yes									# Relieve besieged colonies.
+								}
 							}
-							distance = {
-								source = prev
-								max_jumps = 4
-								use_bypasses = no
+						}
+						NOR = {
+							has_star_flag = acemod_star_flag_solar_system_target
+							AND = {
+								has_star_flag = extradimensional_origin_system								# Unbidden don't need to target own portal system.
+								owner = {
+									is_same_value = root.owner
+									# has_country_flag = unbidden
+								}
 							}
-							any_system_planet = {
-								has_orbital_bombardment = yes								# Relieve besieged colonies.
+							AND = {
+								has_star_flag = extradimensional_second_portal_system								# Aberrant don't need to target own portal system.
+								owner = {
+									is_same_value = root.owner
+									# has_country_flag = aberrant
+								}
+							}
+							AND = {
+								has_star_flag = extradimensional_third_portal_system								# Vehement don't need to target own portal system.
+								owner = {
+									is_same_value = root.owner
+									# has_country_flag = vehement
+								}
+							}
+							# Prioritise galactic empires over extradimensional systems when seeking in short range.
+							# Vanilla scripts assume only one country of each extradimensional type exists, so does ACE.
+							# Extradimensionals do not have colonies so colony relieve script does not apply.
+							AND = {
+								owner = {
+									OR = {
+										is_country_type = extradimensional
+										is_country_type = extradimensional_2
+										is_country_type = extradimensional_3
+									}
+								}
+								root.owner = {
+									OR = {
+										is_country_type = extradimensional
+										is_country_type = extradimensional_2
+										is_country_type = extradimensional_3
+									}
+									# has_country_flag = acemod_country_flag_prioritise_galactic_empires									# Trigger moved up.
+								}
 							}
 						}
 					}
-					NOR = {
-						has_star_flag = acemod_star_flag_solar_system_target
-						AND = {
-							has_star_flag = extradimensional_origin_system							# Unbidden don't need to target own portal system.
+					save_event_target_as = acemod_event_target_invader_target
+					set_timed_star_flag = {
+						flag = acemod_star_flag_solar_system_target
+						days = 120
+					}
+					set_timed_star_flag = {
+						flag = acemod_star_flag_solar_system_target@root						# Assigns solar system to a fleet in case bombing is interrupted by special order.
+						days = 360
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				NOT = {
+					exists = event_target:acemod_event_target_invader_target
+				}
+			}
+			solar_system = {
+				closest_system = {
+					min_steps = 1
+					max_steps = 20					# Medium range seeking.
+					use_bypasses = no
+					limit = {
+						exists = owner
+						has_access_fleet = root.owner
+						OR = {
 							owner = {
-								is_same_value = root.owner
-								# has_country_flag = unbidden
+								NOR = {
+									is_same_value = root.owner
+									is_country_type = fallen_empire
+								}
+								is_hostile = root.owner
+							}
+							AND = {
+								owner = {
+									is_same_value = root.owner
+								}
+								NOT = {
+									exists = starbase									# Shortcut to check if system is under siege without iterating through planets.
+								}
+								distance = {
+									source = prev
+									max_jumps = 4
+									use_bypasses = no
+								}
+								any_system_planet = {
+									has_orbital_bombardment = yes									# Relieve besieged colonies.
+								}
 							}
 						}
-						AND = {
-							has_star_flag = extradimensional_second_portal_system							# Aberrant don't need to target own portal system.
-							owner = {
-								is_same_value = root.owner
-								# has_country_flag = aberrant
+						NOR = {
+							has_star_flag = acemod_star_flag_solar_system_target
+							AND = {
+								has_star_flag = extradimensional_origin_system								# Unbidden don't need to target own portal system.
+								owner = {
+									is_same_value = root.owner
+									# has_country_flag = unbidden
+								}
 							}
-						}
-						AND = {
-							has_star_flag = extradimensional_third_portal_system							# Vehement don't need to target own portal system.
-							owner = {
-								is_same_value = root.owner
-								# has_country_flag = vehement
+							AND = {
+								has_star_flag = extradimensional_second_portal_system								# Aberrant don't need to target own portal system.
+								owner = {
+									is_same_value = root.owner
+									# has_country_flag = aberrant
+								}
+							}
+							AND = {
+								has_star_flag = extradimensional_third_portal_system								# Vehement don't need to target own portal system.
+								owner = {
+									is_same_value = root.owner
+									# has_country_flag = vehement
+								}
 							}
 						}
 					}
-				}
-				save_event_target_as = acemod_event_target_invader_target
-				set_timed_star_flag = {
-					flag = acemod_star_flag_solar_system_target
-					days = 120
-				}
-				set_timed_star_flag = {
-					flag = acemod_star_flag_solar_system_target@root					# Assigns solar system to a fleet in case bombing is interrupted by special order.
-					days = 360
+					save_event_target_as = acemod_event_target_invader_target
+					set_timed_star_flag = {
+						flag = acemod_star_flag_solar_system_target
+						days = 120
+					}
+					set_timed_star_flag = {
+						flag = acemod_star_flag_solar_system_target@root						# Assigns solar system to a fleet in case bombing is interrupted by special order.
+						days = 360
+					}
 				}
 			}
 		}
@@ -2870,7 +3034,7 @@ country_event = {
 		if = {
 			limit = {
 				is_country_type = swarm
-				count_owned_ship = {
+				count_owned_fleet = {
 					limit = {
 						is_ship_size = construction_ship_swarm
 					}
@@ -2938,7 +3102,7 @@ country_event = {
 					is_country_type = extradimensional_2
 					is_country_type = extradimensional_3
 				}
-				count_owned_ship = {
+				count_owned_fleet = {
 					limit = {
 						is_ship_size = construction_ship_ed
 					}
@@ -3115,7 +3279,7 @@ planet_event = {
 		if = {
 			limit = {
 				event_target:acemod_AI_crisis = {
-					count_owned_ship = {
+					count_owned_fleet = {
 						limit = {
 							is_ship_size = construction_ship_ai
 						}
