@@ -13,3 +13,8 @@ acemod_can_build_crisis_ai_colossus = {
 	has_country_flag = acemod_country_flag_can_build_crisis_ai_colossus
 	host_has_dlc = Apocalypse
 }
+
+# Reduces error.log and CWTools spam.
+acemod_dmm_display_exception_for_ = {
+	has_leader_flag = dmm_display_exception_for_@prevprev
+}

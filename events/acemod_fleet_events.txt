@@ -2433,7 +2433,7 @@ fleet_event = {
 		clear_fleet_actions = this		# Unstucks fleet if caught in a queued actions loop.
 		if = {
 			limit = {
-				has_fleet_flag = acemod_planet_flag_starbase_construction_fleet
+				has_fleet_flag = acemod_fleet_flag_starbase_construction_fleet
 			}
 			break = yes
 		}
@@ -2443,12 +2443,13 @@ fleet_event = {
 					NOR = {
 						exists = owner
 						has_star_flag = acemod_star_flag_starbase_construction_system
+						is_star_class = sc_dn						# Wild Space 3.0
 					}
 					NOT = {
 						any_fleet_in_system = {
 							OR = {
 								is_constructing = starbase
-								has_fleet_flag = acemod_planet_flag_starbase_construction_fleet
+								has_fleet_flag = acemod_fleet_flag_starbase_construction_fleet
 							}
 							owner = {
 								is_same_value = root.owner
@@ -2477,7 +2478,7 @@ fleet_event = {
 							}
 							root = {
 								set_timed_fleet_flag = {
-									flag = acemod_planet_flag_starbase_construction_fleet
+									flag = acemod_fleet_flag_starbase_construction_fleet
 									days = 100
 								}
 								fleet_event = {
@@ -2801,7 +2802,7 @@ fleet_event = {
 	immediate = {
 		if = {
 			limit = {
-				has_fleet_flag = acemod_planet_flag_starbase_construction_fleet
+				has_fleet_flag = acemod_fleet_flag_starbase_construction_fleet
 			}
 			break = yes
 		}
@@ -2845,8 +2846,9 @@ fleet_event = {
 									acemod_is_active_bypass = yes
 								}
 								has_access_fleet = root.owner
-								NOT = {
+								NOR = {
 									has_star_flag = acemod_star_flag_starbase_construction_system
+									is_star_class = sc_dn									# Wild Space 3.0
 								}
 								NOT = {
 									exists = owner
@@ -2856,7 +2858,7 @@ fleet_event = {
 									any_fleet_in_system = {
 										OR = {
 											is_constructing = starbase
-											has_fleet_flag = acemod_planet_flag_starbase_construction_fleet
+											has_fleet_flag = acemod_fleet_flag_starbase_construction_fleet
 										}
 										owner = {
 											is_same_value = root.owner
@@ -2926,6 +2928,7 @@ fleet_event = {
 					NOR = {
 						has_star_flag = acemod_star_flag_solar_system_constructor_target
 						has_star_flag = acemod_star_flag_starbase_construction_system
+						is_star_class = sc_dn						# Wild Space 3.0
 					}
 					NOT = {
 						exists = owner
@@ -2943,7 +2946,7 @@ fleet_event = {
 								AND = {
 									OR = {
 										is_constructing = starbase
-										has_fleet_flag = acemod_planet_flag_starbase_construction_fleet
+										has_fleet_flag = acemod_fleet_flag_starbase_construction_fleet
 									}
 									owner = {
 										is_same_value = root.owner
