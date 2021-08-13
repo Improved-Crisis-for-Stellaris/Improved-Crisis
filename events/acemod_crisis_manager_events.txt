@@ -138,10 +138,6 @@ country_event = {
 					}
 				}
 				root = {
-					set_variable = {
-						which = acemod_crisis_manager_var_country_prethoryn_spawn_time
-						value = prev
-					}
 					country_event = {
 						id = acemod_crisis_manager.1
 						days = 0
@@ -200,10 +196,6 @@ country_event = {
 					}
 				}
 				root = {
-					set_variable = {
-						which = acemod_crisis_manager_var_country_contingency_spawn_time
-						value = prev
-					}
 					country_event = {
 						id = acemod_crisis_manager.1
 						days = 0
@@ -262,10 +254,6 @@ country_event = {
 					}
 				}
 				root = {
-					set_variable = {
-						which = acemod_crisis_manager_var_country_extradimensional_spawn_time
-						value = prev
-					}
 					country_event = {
 						id = acemod_crisis_manager.1
 						days = 0
@@ -324,10 +312,6 @@ country_event = {
 					}
 				}
 				root = {
-					set_variable = {
-						which = acemod_crisis_manager_var_country_aberrant_spawn_time
-						value = prev
-					}
 					country_event = {
 						id = acemod_crisis_manager.1
 						days = 0
@@ -386,10 +370,6 @@ country_event = {
 					}
 				}
 				root = {
-					set_variable = {
-						which = acemod_crisis_manager_var_country_vehement_spawn_time
-						value = prev
-					}
 					country_event = {
 						id = acemod_crisis_manager.1
 						days = 0
@@ -496,10 +476,6 @@ country_event = {
 					}
 				}
 				root = {
-					set_variable = {
-						which = acemod_crisis_manager_var_country_spawn_time_variable
-						value = prev
-					}
 					country_event = {
 						id = acemod_crisis_manager.1
 						days = 0
@@ -704,13 +680,6 @@ country_event = {
 						value = 1
 					}
 				}
-				root = {
-					# Save to root country so that variables can be displayed on Debug window via scripted_loc.
-					set_variable = {
-						which = acemod_crisis_manager_var_country_is_checksum_modified
-						value = prev
-					}
-				}
 			}
 			event_target:global_event_country = {
 				# global_event country is always around
@@ -730,13 +699,6 @@ country_event = {
 						value = 0
 					}
 				}
-				root = {
-					# Save to root country so that variables can be displayed on Debug window via scripted_loc.
-					set_variable = {
-						which = acemod_crisis_manager_var_country_is_ironman
-						value = prev
-					}
-				}
 			}
 			event_target:global_event_country = {
 				# global_event country is always around
@@ -754,13 +716,6 @@ country_event = {
 					set_variable = {
 						which = acemod_crisis_manager_var_country_is_multiplayer
 						value = 0
-					}
-				}
-				root = {
-					# Save to root country so that variables can be displayed on Debug window via scripted_loc.
-					set_variable = {
-						which = acemod_crisis_manager_var_country_is_multiplayer
-						value = prev
 					}
 				}
 			}
@@ -797,13 +752,6 @@ country_event = {
 						value = 0
 					}
 				}
-				root = {
-					# Save to root country so that variables can be displayed on Debug window via scripted_loc.
-					set_variable = {
-						which = acemod_crisis_manager_var_country_achievements_disabled
-						value = prev
-					}
-				}
 			}
 			event_target:global_event_country = {
 				# global_event country is always around
@@ -821,13 +769,6 @@ country_event = {
 							which = acemod_crisis_manager_var_country_num_systems
 							value = 1
 						}
-					}
-				}
-				root = {
-					# Save to root country so that variables can be displayed on Debug window via scripted_loc.
-					set_variable = {
-						which = acemod_crisis_manager_var_country_num_systems
-						value = prev
 					}
 				}
 			}
@@ -849,13 +790,6 @@ country_event = {
 						}
 					}
 				}
-				root = {
-					# Save to root country so that variables can be displayed on Debug window via scripted_loc.
-					set_variable = {
-						which = acemod_crisis_manager_var_country_num_human_players_live
-						value = prev
-					}
-				}
 			}
 			# Counts number of human players on_game_start (since this is post start count number is unknown).
 			if = {
@@ -869,13 +803,6 @@ country_event = {
 					set_variable = {
 						which = acemod_crisis_manager_var_country_num_human_players_start
 						value = 404
-					}
-					root = {
-						# Save to root country so that variables can be displayed on Debug window via scripted_loc.
-						set_variable = {
-							which = acemod_crisis_manager_var_country_num_human_players_start
-							value = prev
-						}
 					}
 				}
 			}
@@ -941,65 +868,6 @@ country_event = {
 				get_galaxy_setup_value = {
 					which = acemod_crisis_manager_var_country_tech_costs_scale
 					setting = tech_costs_scale
-				}
-				root = {
-					# Save to root country so that variables can be displayed on Debug window via scripted_loc.
-					set_variable = {
-						which = acemod_crisis_manager_var_country_num_empires
-						value = prev
-					}
-					set_variable = {
-						which = acemod_crisis_manager_var_country_num_advanced_empires
-						value = prev
-					}
-					set_variable = {
-						which = acemod_crisis_manager_var_country_num_fallen_empires
-						value = prev
-					}
-					set_variable = {
-						which = acemod_crisis_manager_var_country_num_marauder_empires
-						value = prev
-					}
-					set_variable = {
-						which = acemod_crisis_manager_var_country_mid_game_year
-						value = prev
-					}
-					set_variable = {
-						which = acemod_crisis_manager_var_country_end_game_year
-						value = prev
-					}
-					set_variable = {
-						which = acemod_crisis_manager_var_country_victory_year
-						value = prev
-					}
-					set_variable = {
-						which = acemod_crisis_manager_var_country_num_guaranteed_colonies
-						value = prev
-					}
-					set_variable = {
-						which = acemod_crisis_manager_var_country_num_wormhole_pairs
-						value = prev
-					}
-					set_variable = {
-						which = acemod_crisis_manager_var_country_num_hyperlanes
-						value = prev
-					}
-					set_variable = {
-						which = acemod_crisis_manager_var_country_habitable_worlds_scale
-						value = prev
-					}
-					set_variable = {
-						which = acemod_crisis_manager_var_country_primitive_worlds_scale
-						value = prev
-					}
-					set_variable = {
-						which = acemod_crisis_manager_var_country_crisis_strength_scale
-						value = prev
-					}
-					set_variable = {
-						which = acemod_crisis_manager_var_country_tech_costs_scale
-						value = prev
-					}
 				}
 			}
 			event_target:global_event_country = {
@@ -1071,26 +939,12 @@ country_event = {
 						value = 404
 					}
 				}
-				root = {
-					# Save to root country so that variables can be displayed on Debug window via scripted_loc.
-					set_variable = {
-						which = acemod_crisis_manager_var_country_is_difficulty
-						value = prev
-					}
-				}
 			}
 			# GALAXY_SHAPE - unobtainable
 			event_target:global_event_country = {
 				set_variable = {
 					which = acemod_crisis_manager_var_country_setup_scenario
 					value = 404
-				}
-				root = {
-					# Save to root country so that variables can be displayed on Debug window via scripted_loc.
-					set_variable = {
-						which = acemod_crisis_manager_var_country_setup_scenario
-						value = prev
-					}
 				}
 			}
 			# FE_SCALING_DIFFICULTY - unobtainable
@@ -1099,26 +953,12 @@ country_event = {
 					which = acemod_crisis_manager_var_country_scaling_difficulty
 					value = 404
 				}
-				root = {
-					# Save to root country so that variables can be displayed on Debug window via scripted_loc.
-					set_variable = {
-						which = acemod_crisis_manager_var_country_scaling_difficulty
-						value = prev
-					}
-				}
 			}
 			# FE_AGGRESSIVENESS - unobtainable
 			event_target:global_event_country = {
 				set_variable = {
 					which = acemod_crisis_manager_var_country_aggressiveness
 					value = 404
-				}
-				root = {
-					# Save to root country so that variables can be displayed on Debug window via scripted_loc.
-					set_variable = {
-						which = acemod_crisis_manager_var_country_aggressiveness
-						value = prev
-					}
 				}
 			}
 			# FE_ADVANCED_NEAR_PLAYER - unobtainable
@@ -1127,26 +967,12 @@ country_event = {
 					which = acemod_crisis_manager_var_country_advanced_neighbors
 					value = 404
 				}
-				root = {
-					# Save to root country so that variables can be displayed on Debug window via scripted_loc.
-					set_variable = {
-						which = acemod_crisis_manager_var_country_advanced_neighbors
-						value = prev
-					}
-				}
 			}
 			# FE_CLUSTERED_STARTS - unobtainable
 			event_target:global_event_country = {
 				set_variable = {
 					which = acemod_crisis_manager_var_country_empire_placement
 					value = 404
-				}
-				root = {
-					# Save to root country so that variables can be displayed on Debug window via scripted_loc.
-					set_variable = {
-						which = acemod_crisis_manager_var_country_empire_placement
-						value = prev
-					}
 				}
 			}
 			# CARAVANEERS_LABEL
@@ -1166,13 +992,6 @@ country_event = {
 						value = 0
 					}
 				}
-				root = {
-					# Save to root country so that variables can be displayed on Debug window via scripted_loc.
-					set_variable = {
-						which = acemod_crisis_manager_var_country_caravaneers_enabled
-						value = prev
-					}
-				}
 			}
 			# XENO_COMPATIBILITY_LABEL
 			event_target:global_event_country = {
@@ -1189,13 +1008,6 @@ country_event = {
 					set_variable = {
 						which = acemod_crisis_manager_var_country_xeno_compatibility_enabled
 						value = 0
-					}
-				}
-				root = {
-					# Save to root country so that variables can be displayed on Debug window via scripted_loc.
-					set_variable = {
-						which = acemod_crisis_manager_var_country_xeno_compatibility_enabled
-						value = prev
 					}
 				}
 			}
@@ -1752,13 +1564,6 @@ country_event = {
 						which = acemod_crisis_manager_var_country_manual_prethoryn_spawned_year
 						value = acemod_crisis_manager_var_current_game_year
 					}
-					root = {
-						set_variable = {
-							which = acemod_crisis_manager_var_country_manual_prethoryn_spawned_year
-							value = prev
-						}
-						clear_variable = acemod_crisis_manager_var_current_game_year
-					}
 					clear_variable = acemod_crisis_manager_var_current_game_year
 				}
 			}
@@ -1802,13 +1607,6 @@ country_event = {
 						which = acemod_crisis_manager_var_country_manual_contingency_spawned_year
 						value = acemod_crisis_manager_var_current_game_year
 					}
-					root = {
-						set_variable = {
-							which = acemod_crisis_manager_var_country_manual_contingency_spawned_year
-							value = prev
-						}
-						clear_variable = acemod_crisis_manager_var_current_game_year
-					}
 					clear_variable = acemod_crisis_manager_var_current_game_year
 				}
 			}
@@ -1841,13 +1639,6 @@ country_event = {
 					set_variable = {
 						which = acemod_crisis_manager_var_country_manual_extradimensional_spawned_year
 						value = acemod_crisis_manager_var_current_game_year
-					}
-					root = {
-						set_variable = {
-							which = acemod_crisis_manager_var_country_manual_extradimensional_spawned_year
-							value = prev
-						}
-						clear_variable = acemod_crisis_manager_var_current_game_year
 					}
 					clear_variable = acemod_crisis_manager_var_current_game_year
 				}
@@ -1940,13 +1731,6 @@ country_event = {
 						}
 					}
 				}
-				# Save to root country so that variables can be displayed on Debug window via scripted_loc.
-				root = {
-					set_variable = {
-						which = acemod_crisis_manager_var_country_num_human_players_start
-						value = prev
-					}
-				}
 			}
 		}
 	}
@@ -1968,15 +1752,6 @@ country_event = {
 			# global_event country is always around
 			set_variable = {
 				which = acemod_var_country_acemod_lib_army_strength_modifier				# OFF
-				value = 101
-			}
-		}
-		every_country = {
-			limit = {
-				is_ai = no
-			}
-			set_variable = {
-				which = acemod_var_country_acemod_lib_army_strength_modifier				# Save to root country so that variables can be displayed on Debug window via scripted_loc.
 				value = 101
 			}
 		}

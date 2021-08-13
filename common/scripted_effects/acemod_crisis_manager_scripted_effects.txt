@@ -13426,13 +13426,6 @@ acemod_crisis_manager_calculate_current_end_game_year = {
 				}
 			}
 		}
-		root = {
-			# Save to root country so that variables can be displayed on Debug window via scripted_loc.
-			set_variable = {
-				which = acemod_crisis_manager_var_current_end_game_year
-				value = prev
-			}
-		}
 	}
 }
 
@@ -19451,13 +19444,6 @@ acemod_crisis_manager_calculate_current_game_year = {
 					which = acemod_crisis_manager_var_current_game_year
 					value = 404404
 				}
-			}
-		}
-		root = {
-			# Save to root country so that variables can be displayed on Debug window via scripted_loc.
-			set_variable = {
-				which = acemod_crisis_manager_var_current_game_year
-				value = prev
 			}
 		}
 	}
