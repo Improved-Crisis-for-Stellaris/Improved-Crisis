@@ -132,14 +132,29 @@ country_event = {
 							graphical_culture = "extra_dimensional_01"
 						}
 					}
-					while = {
-						count = 15
-						create_ship = {
-							name = random
-							design = "NAME_Wraith"
-							graphical_culture = "extra_dimensional_01"
+					if = {
+						limit = {
+							has_global_flag = acg_active				# Aesthetic Cinematic Gameplay
+						}
+						while = {
+							count = 30
+							create_ship = {
+								name = random
+								design = "NAME_Wraith"
+								graphical_culture = "extra_dimensional_01"
+							}
 						}
 					}
+					else = {
+						while = {
+							count = 15
+							create_ship = {
+								name = random
+								design = "NAME_Wraith"
+								graphical_culture = "extra_dimensional_01"
+							}
+						}
+					}		
 					set_location = {
 						target = event_target:dimensional_portal
 						distance = 5
@@ -217,12 +232,27 @@ country_event = {
 							graphical_culture = "extra_dimensional_02"
 						}
 					}
-					while = {
-						count = 15
-						create_ship = {
-							name = random
-							design = "NAME_Predator"
-							graphical_culture = "extra_dimensional_02"
+					if = {
+						limit = {
+							has_global_flag = acg_active				# Aesthetic Cinematic Gameplay
+						}
+						while = {
+							count = 30
+							create_ship = {
+								name = random
+								design = "NAME_Predator"
+								graphical_culture = "extra_dimensional_02"
+							}
+						}
+					}
+					else = {
+						while = {
+							count = 15
+							create_ship = {
+								name = random
+								design = "NAME_Predator"
+								graphical_culture = "extra_dimensional_02"
+							}
 						}
 					}
 					set_location = {
@@ -302,12 +332,27 @@ country_event = {
 							graphical_culture = "extra_dimensional_03"
 						}
 					}
-					while = {
-						count = 15
-						create_ship = {
-							name = random
-							design = "NAME_Obliterator"
-							graphical_culture = "extra_dimensional_03"
+					if = {
+						limit = {
+							has_global_flag = acg_active				# Aesthetic Cinematic Gameplay
+						}
+						while = {
+							count = 30
+							create_ship = {
+								name = random
+								design = "NAME_Obliterator"
+								graphical_culture = "extra_dimensional_03"
+							}
+						}
+					}
+					else = {
+						while = {
+							count = 15
+							create_ship = {
+								name = random
+								design = "NAME_Obliterator"
+								graphical_culture = "extra_dimensional_03"
+							}
 						}
 					}
 					set_location = {
@@ -391,12 +436,27 @@ country_event = {
 							graphical_culture = "extra_dimensional_01"
 						}
 					}
-					while = {
-						count = 15
-						create_ship = {
-							name = random
-							design = "NAME_Wraith"
-							graphical_culture = "extra_dimensional_01"
+					if = {
+						limit = {
+							has_global_flag = acg_active				# Aesthetic Cinematic Gameplay
+						}
+						while = {
+							count = 30
+							create_ship = {
+								name = random
+								design = "NAME_Wraith"
+								graphical_culture = "extra_dimensional_01"
+							}
+						}
+					}
+					else = {
+						while = {
+							count = 15
+							create_ship = {
+								name = random
+								design = "NAME_Wraith"
+								graphical_culture = "extra_dimensional_01"
+							}
 						}
 					}
 					set_location = {
@@ -476,12 +536,27 @@ country_event = {
 							graphical_culture = "extra_dimensional_02"
 						}
 					}
-					while = {
-						count = 15
-						create_ship = {
-							name = random
-							design = "NAME_Predator"
-							graphical_culture = "extra_dimensional_02"
+					if = {
+						limit = {
+							has_global_flag = acg_active				# Aesthetic Cinematic Gameplay
+						}
+						while = {
+							count = 30
+							create_ship = {
+								name = random
+								design = "NAME_Predator"
+								graphical_culture = "extra_dimensional_02"
+							}
+						}
+					}
+					else = {
+						while = {
+							count = 15
+							create_ship = {
+								name = random
+								design = "NAME_Predator"
+								graphical_culture = "extra_dimensional_02"
+							}
 						}
 					}
 					set_location = {
@@ -561,12 +636,27 @@ country_event = {
 							graphical_culture = "extra_dimensional_03"
 						}
 					}
-					while = {
-						count = 15
-						create_ship = {
-							name = random
-							design = "NAME_Obliterator"
-							graphical_culture = "extra_dimensional_03"
+					if = {
+						limit = {
+							has_global_flag = acg_active				# Aesthetic Cinematic Gameplay
+						}
+						while = {
+							count = 30
+							create_ship = {
+								name = random
+								design = "NAME_Obliterator"
+								graphical_culture = "extra_dimensional_03"
+							}
+						}
+					}
+					else = {
+						while = {
+							count = 15
+							create_ship = {
+								name = random
+								design = "NAME_Obliterator"
+								graphical_culture = "extra_dimensional_03"
+							}
 						}
 					}
 					set_location = {
@@ -870,12 +960,27 @@ ship_event = {
 								graphical_culture = "extra_dimensional_01"
 							}
 						}
-						while = {
-							count = 15
-							create_ship = {
-								name = random
-								design = "NAME_Wraith"
-								graphical_culture = "extra_dimensional_01"
+						if = {
+							limit = {
+								has_global_flag = acg_active				# Aesthetic Cinematic Gameplay
+							}
+							while = {
+								count = 30
+								create_ship = {
+									name = random
+									design = "NAME_Wraith"
+									graphical_culture = "extra_dimensional_01"
+								}
+							}
+						}
+						else = {
+							while = {
+								count = 15
+								create_ship = {
+									name = random
+									design = "NAME_Wraith"
+									graphical_culture = "extra_dimensional_01"
+								}
 							}
 						}
 						set_location = {
@@ -955,12 +1060,27 @@ ship_event = {
 								graphical_culture = "extra_dimensional_02"
 							}
 						}
-						while = {
-							count = 15
-							create_ship = {
-								name = random
-								design = "NAME_Predator"
-								graphical_culture = "extra_dimensional_02"
+						if = {
+							limit = {
+								has_global_flag = acg_active				# Aesthetic Cinematic Gameplay
+							}
+							while = {
+								count = 30
+								create_ship = {
+									name = random
+									design = "NAME_Predator"
+									graphical_culture = "extra_dimensional_02"
+								}
+							}
+						}
+						else = {
+							while = {
+								count = 15
+								create_ship = {
+									name = random
+									design = "NAME_Predator"
+									graphical_culture = "extra_dimensional_02"
+								}
 							}
 						}
 						set_location = {
@@ -1040,12 +1160,27 @@ ship_event = {
 								graphical_culture = "extra_dimensional_03"
 							}
 						}
-						while = {
-							count = 15
-							create_ship = {
-								name = random
-								design = "NAME_Obliterator"
-								graphical_culture = "extra_dimensional_03"
+						if = {
+							limit = {
+								has_global_flag = acg_active				# Aesthetic Cinematic Gameplay
+							}
+							while = {
+								count = 30
+								create_ship = {
+									name = random
+									design = "NAME_Obliterator"
+									graphical_culture = "extra_dimensional_03"
+								}
+							}
+						}
+						else = {
+							while = {
+								count = 15
+								create_ship = {
+									name = random
+									design = "NAME_Obliterator"
+									graphical_culture = "extra_dimensional_03"
+								}
 							}
 						}
 						set_location = {
@@ -1129,12 +1264,27 @@ ship_event = {
 								graphical_culture = "extra_dimensional_01"
 							}
 						}
-						while = {
-							count = 15
-							create_ship = {
-								name = random
-								design = "NAME_Wraith"
-								graphical_culture = "extra_dimensional_01"
+						if = {
+							limit = {
+								has_global_flag = acg_active				# Aesthetic Cinematic Gameplay
+							}
+							while = {
+								count = 30
+								create_ship = {
+									name = random
+									design = "NAME_Wraith"
+									graphical_culture = "extra_dimensional_01"
+								}
+							}
+						}
+						else = {
+							while = {
+								count = 15
+								create_ship = {
+									name = random
+									design = "NAME_Wraith"
+									graphical_culture = "extra_dimensional_01"
+								}
 							}
 						}
 						set_location = {
@@ -1214,12 +1364,27 @@ ship_event = {
 								graphical_culture = "extra_dimensional_02"
 							}
 						}
-						while = {
-							count = 15
-							create_ship = {
-								name = random
-								design = "NAME_Predator"
-								graphical_culture = "extra_dimensional_02"
+						if = {
+							limit = {
+								has_global_flag = acg_active				# Aesthetic Cinematic Gameplay
+							}
+							while = {
+								count = 30
+								create_ship = {
+									name = random
+									design = "NAME_Predator"
+									graphical_culture = "extra_dimensional_02"
+								}
+							}
+						}
+						else = {
+							while = {
+								count = 15
+								create_ship = {
+									name = random
+									design = "NAME_Predator"
+									graphical_culture = "extra_dimensional_02"
+								}
 							}
 						}
 						set_location = {
@@ -1299,12 +1464,27 @@ ship_event = {
 								graphical_culture = "extra_dimensional_03"
 							}
 						}
-						while = {
-							count = 15
-							create_ship = {
-								name = random
-								design = "NAME_Obliterator"
-								graphical_culture = "extra_dimensional_03"
+						if = {
+							limit = {
+								has_global_flag = acg_active				# Aesthetic Cinematic Gameplay
+							}
+							while = {
+								count = 30
+								create_ship = {
+									name = random
+									design = "NAME_Obliterator"
+									graphical_culture = "extra_dimensional_03"
+								}
+							}
+						}
+						else = {
+							while = {
+								count = 15
+								create_ship = {
+									name = random
+									design = "NAME_Obliterator"
+									graphical_culture = "extra_dimensional_03"
+								}
 							}
 						}
 						set_location = {
