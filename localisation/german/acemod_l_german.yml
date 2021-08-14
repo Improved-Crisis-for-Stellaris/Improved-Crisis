@@ -1,49 +1,49 @@
 ﻿l_german:
 
- # Original English text by Rodahtnov
+ # Original English text by Rodahtnov. Translation into German by Fiiral
 
  # Prethoryn Scourge ------------------------------------
- tech_acemod_crisis_swarm_1:0 "Prethoryn Lifeform Analysis"
- tech_acemod_crisis_swarm_1_desc:0 "By remotely probing and extracting Prethoryn tissue we can gain more insight on how that strange exogalactic lifeform works and how to remove its infestation.\n\n"
+ tech_acemod_crisis_swarm_1:0 "Prethoryn Lebensformen Analyse"
+ tech_acemod_crisis_swarm_1_desc:0 "Durch geplanets Entfernen von Gewebe der exogalaktischen Lebenformen können wir unser wissen über den Schwarm erweitern und lernen wir man deren Infektionen entfernt.\n\n"
 
- tech_acemod_crisis_swarm_2:0 "Anti-Prethoryn Spores Solvent"
- tech_acemod_crisis_swarm_2_desc:0 "When they attack or move around systems, Prethoryn uses microorganism to corrode and corrupt nearby organism and technology; with a series of nanodispensers that damage can be mitigated and reverted before it is too late.\n\n"
+ tech_acemod_crisis_swarm_2:0 "Anti-Prethoryn Nanoroboter"
+ tech_acemod_crisis_swarm_2_desc:0 "Wenn der Schwarm angreift oder sich in System bewegt, benutzt dieser Mikroorganismen um unser Technology und Bilogy zu beschätigen oder sogar zerstören. Mit geplaneten aussetzen von Nanorobotern kann dieser schaden verhindert oder zumindest verzögert werden.\n\n"
 
- tech_acemod_crisis_swarm_3:0 "Anti-Prethoryn Viral Charges"
- tech_acemod_crisis_swarm_3_desc:0 "Using a specially designed mix of nanobots and a biological virus, we can eradicate any Prethoryn organism without countermeasures or organic reparation, damage on their vessels would be complete and impossible to heal and planet cleansing would be easier.\n\n"
+ tech_acemod_crisis_swarm_3:0 "Schwarm Hive Giftstoffe"
+ tech_acemod_crisis_swarm_3_desc:0 "Mit einem Mix aus Nanorobotern und biologischen Viren können wir Prethoryn Organismen zerstören, welches Schaden so verursacht, dass es nahezu unmöglich ist in Zeit zu heilen. Dies würde extremen Schaden an den Schiffen verursachen und orbitale Angriffe erleichtern.\n\n"
 
- # Extradimensional Invaders (Unbidden) ------------------------------------
- tech_acemod_crisis_extradimensional_1:0 "Extradimensional Creatures Analysys"
- tech_acemod_crisis_extradimensional_1_desc:0 "While attempts to read energy signatures may interfere with our calculations, we must know how these things work; a double effort should be made to understand from where and what they are, and what is their composition.\n\n"
+# Extradimensional Invaders (Unbidden) ------------------------------------
+ tech_acemod_crisis_extradimensional_1:0 "Überdimensionale Analyse"
+ tech_acemod_crisis_extradimensional_1_desc:0 "Momentan werden Sensoren und Waffen von den hochen Energiesignaturen der Invasoren gestört; diese Forschung wird es uns erlauben zu verstehen voraus deren Schiffe bestehen.\n\n"
 
- tech_acemod_crisis_extradimensional_2:0 "Anti-Extradimensional Overloading"
- tech_acemod_crisis_extradimensional_2_desc:0 "The properties of energy-composed extradimensional crafts make them absorb any matter and convert it into energy, and thus revealing their weak point and giving us a clear advantage; we can overload their absorption capacities by creating random energy peaks that will phase-out their components and solidify their atomic composition, making them vulnerable to regular attacks.\n\n"
+ tech_acemod_crisis_extradimensional_2:0 "Überdimensionales Überladen"
+ tech_acemod_crisis_extradimensional_2_desc:0 "Die Eigenschaften ihrer Schiffe erlauben es Materie aufzunehmen und in Energy umzuwandeln, allerdings hat dies auch einen Nachteil, da es theoretisch möglich ist diese Kapazitäten zu überladen und die Schiffe so zu stören und zerstören.\n\n"
 
- tech_acemod_crisis_extradimensional_3:0 "Anti-Extradimensional Entropic Energy"
- tech_acemod_crisis_extradimensional_3_desc:0 "By adapting our equipment to overload the energy composition of extradimensional creatures, we can create entropic explosions at a microenergetic level that will destabilize anything they craft or throw at our reality.\n\n"
+ tech_acemod_crisis_extradimensional_3:0 "Überdimensionale Entropie"
+ tech_acemod_crisis_extradimensional_3_desc:0 "Gezieltes Anpassen and die Frequenz der Invasoren, würde un erlauben entropische Explosionen auf dem Femto-Skaler zu verursachen, die die Schiffe destabilisiern würde oder sogar direkt aus unser Realität schmeißt (wortwörtlich..).\n\n"
 
- # Contingency ------------------------------------
- tech_acemod_crisis_extradimensional_ai_empire_1:0 "Contingency Protocols Hacking"
- tech_acemod_crisis_extradimensional_ai_empire_1_desc:0 "As any machine or construct, Contingency units have a base code we can read, check and hack, finding any possible backdoors in the process.\n\n"
+  # Contingency ------------------------------------
+ tech_acemod_crisis_extradimensional_ai_empire_1:0 "Contingency Protokoll Analyse"
+ tech_acemod_crisis_extradimensional_ai_empire_1_desc:0 "So wie jede Maschien hat auch 'Die Contingency' einen Grundcode den wir finden, kontrollieren und häcken können.\n\n"
 
- tech_acemod_crisis_extradimensional_ai_empire_2:0 "Anti-Contingency Malware"
- tech_acemod_crisis_extradimensional_ai_empire_2_desc:0 "The intricacy of Contingency code is owed to a poly-organic mimic array of quantum computers, but there are some weaknesses that can be exploited if we inject an AI virus that will spam and stature their autonomous programming threads with redundant orders and false predictive analysis base data.\n\n"
+ tech_acemod_crisis_extradimensional_ai_empire_2:0 "Anti-Contingency KI"
+ tech_acemod_crisis_extradimensional_ai_empire_2_desc:0 "Die Grundlage 'Der Contingency''s Code is ein Poly-organische Annäherung die einen Quanten Zustant enthält, allerding gibt es mehrer Schwachstellen wenn man einen KI Virus in den Grund einspeißt der permanent falsche Mitteilungen ausgibt und irrefürende Simulationen macht.\n\n"
 
- tech_acemod_crisis_extradimensional_ai_empire_3:0 "Anti-Contingency Quantic Disruption"
- tech_acemod_crisis_extradimensional_ai_empire_3_desc:0 "By isolating and scrambling the communications of Contingency vessels at a root level, we will reduce their effectiveness. Coupled with the lag induced by previous malware and spam, their fleets and stations will become extremely vulnerable to concentrated attacks due to being unable o properly react or manoeuvre.\n\n"
+ tech_acemod_crisis_extradimensional_ai_empire_3:0 "Contingency Quanten-Kommuniationstörung"
+ tech_acemod_crisis_extradimensional_ai_empire_3_desc:0 "Bei Zerstörung der Kommunikation zwischen verschidenen Schiffen, wird deren Effektivität weiter verringert. Zusammen mit den berseits getroffenen Sicherheits Massnahmen werden Schiffe und Stationen lahmgelegt und werden zu einfachen Zielen.\n\n"
 
  # Gray Goo (Gray Tempest)------------------------------------
- tech_acemod_crisis_goo:0 "Anti-Tempest De-nanocompositor"
- tech_acemod_crisis_goo_desc:0 "Thanks to observations of how the Gray Tempest manages the nanites in an automated and semi-predictive way, we can effectively mitigate how much their ships auto-repair themselves by rendering any detached nanite useless and unable to be reprocessed. This will result in substantial hull breaches and composition imbalance in their ships, which will be unable to recompose into their predesigned shape.\n\n"
+ tech_acemod_crisis_goo:0 "De-Nanokompisirung"
+ tech_acemod_crisis_goo_desc:0 "Durch Beobachtung der Nanitenschiffe wurde festgestellt, dass dieselben sich in einen vorhersagberen weg reparieren.  Durch Zerstörung wenigen Naniten kann daher dieser Kreislauf zerstört werden, was Schifsbrüche und Inbalanzen in der Hülle zur Folge hat .\n\n"
 
  # End of the Cycle ------------------------------------
- tech_acemod_crisis_eotc:0 "Chaotic Entity Cleansing"
- tech_acemod_crisis_eotc_desc:0 "While most of us may not understand how Shroud plane and entities work, we know that anything manifested in our reality is susceptible to its laws; The Shroud cannot be an exception. Specifically designed weapons will cause its entities' composition to destabilize and be banished to the Void from where they will never come back.\n\n"
+ tech_acemod_crisis_eotc:0 "Shroud Auflösung"
+ tech_acemod_crisis_eotc_desc:0 "Obwohl niemand genau wieß wie die Shroud und deren Wesen funktionieren, wissen wir aber das alles in unser Realität unseren Regeln unterliegt; Die Schroud ist keine Ausnahme. Speziele Waffen können die Wesen der Schroud destabilizeren und dahin zurück schicken, wo sie her gekommen sind.\n\n"
 
  # Fallen Empires (Awakened Empires)------------------------------------
- tech_acemod_crisis_fe:0 "Fallen Empires Dark Secret"
- tech_acemod_crisis_fe_desc:0 "Driven by excessive proud and ego, the old inhabitants of this galaxy use arcane and theoretically impossible to reverse-engineer technology. There is, however, a way to render it useless. Their extensive use of dark matter just barely within safe limits is both effective and dangerous, and we can use it to our advantage.\n\n"
- 
+ tech_acemod_crisis_fe:0 "Dunkle Geheimnisse"
+ tech_acemod_crisis_fe_desc:0 "Von den gewaltigen Stolz und Hochmut  getrieben, benutzen die gefallen Imperien geheimnissvolle und theoretisch unmögliche Technologien. Allerdings laufen diese wegen der jahrtausenden Jahren alten Automatiken auf Höchstleistung, was wir ausnutzen können.\n\n"
+
   # Debuffs------------------------------------
  acemod_crisis_debuff_modifier:0 "Enemy Unknown"
  acemod_crisis_debuff_modifier_desc:0 "Galactic threats require dedicated research of efficient containment methods."
