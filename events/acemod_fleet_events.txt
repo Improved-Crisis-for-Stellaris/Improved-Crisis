@@ -3901,6 +3901,82 @@ country_event = {
 	}
 }
 
+# Fix for colony not being destroyed on Contingency Worlds when last pop was killed by bombardment.
+# Planet has reached 0 pops from orbital bombardment
+# This = Planet
+# From = Bombarder
+planet_event = {
+	id = acemod_fleet.460
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		has_designation = col_contingency
+	}
+	immediate = {
+		planet_event = {
+			id = acemod_fleet.461			# Delay to allow other fixes act first, be it vanilla or other mods.
+			days = 1
+		}
+	}
+}
+
+planet_event = {
+	id = acemod_fleet.461
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		is_colony = yes
+		NOT = {
+			is_planet_class = pc_ai
+		}
+	}
+	immediate = {
+		set_planet_flag = acemod_planet_flag_destroy_col_contingency_effect_fix
+		every_owned_pop = {
+			kill_pop = yes			# Just to be sure.
+		}
+		destroy_colony = yes
+		every_country = {
+			limit = {
+				has_event_chain = "ai_crisis_chain"
+			}
+			add_event_chain_counter = {
+				event_chain = "ai_crisis_chain"
+				counter = "assimilated_worlds"
+				amount = -1
+			}
+		}
+	}
+}
+
+# For bugged planets in ongoing games. Fix for colony not being destroyed on Contingency Worlds when last pop was killed by bombardment.
+# on_single_player_save_game_load
+event = {
+	id = acemod_fleet.462
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		every_country = {
+			limit = {
+				is_country_type = ai_empire
+			}
+			every_owned_planet = {
+				limit = {
+					has_designation = col_contingency
+					is_colony = yes
+					NOT = {
+						is_planet_class = pc_ai
+					}
+					num_pops = 0
+				}
+				planet_event = {
+					id = acemod_fleet.461
+				}
+			}
+		}
+	}
+}
+
 # Main colonizer event.
 event = {
 	id = acemod_fleet.500

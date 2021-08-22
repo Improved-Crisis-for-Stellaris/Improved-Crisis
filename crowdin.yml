@@ -1,0 +1,9 @@
+files:
+  - source: /localisation/english/*_l_english.yml
+    translation: /localisation/%language%/%file_name%_%language%.yml
+    translation_replace:
+      _english: ''
+  - source: /localisation/english/replace/*_l_english.yml
+    translation: /localisation/%language%/replace/%file_name%_%language%.yml
+    translation_replace:
+      _english: ''

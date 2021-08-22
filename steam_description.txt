@@ -5,12 +5,23 @@
 [URL=https://www.youtube.com/watch?v=_kA0QkxCjmE&feature=emb_title&ab_channel=GeneralPol][IMG]https://i.imgur.com/EBb3etY.png[/IMG][/URL]
 [i]Comparison of Vanilla and ACE AI under the same conditions (2.8.1, x10, Commodore). Video courtesy of [url=https://www.youtube.com/channel/UCKInflPaHost0EU5Q7ALK_A]General Pol[/url].[/i]
 
-Vanilla AI is off for main crises and all fleet movements are mod scripted, this includes military fleets, constructors, army transports and swarm infestors.
+Vanilla AI is off for main crises and all fleet movements are mod scripted, this includes military fleets, constructors, army transports, swarm infestors and colossi.
 
-Galactic empires receive initial massive damage penalty against crisis factions. New technologies are required to be obtained in order to mitigate this.
+Dimensional Anchors are visible on galactic map.
+
+- Full support for Contingency, Prethoryn Scourge, Unbidden, Aberrant and Vehement. Optional for Gray Tempest, Katzenartig Imperium and other custom crises.
+- New custom pathfinding accounting for wormholes and gateways
+- Fleets are relentless and always seek targets.
+- Defensive fleet recall for Contingency worlds (optional).
+- Crisis Manager (optional).
+- Galactic empires receive initial massive damage penalty against crisis factions so new technologies need to be obtained in order to mitigate this (optional).
+- Crisis colossi (optional).
+- Dynamic Mod Menu support with menu access permission management for multiplayer.
+- Various fixes to related to crises.
+List of features is subject to change.
 
 [h1]Load order[/h1]
-At the very bottom. Aggressive Crisis Engine overwrites very little but what is does is crucial for it to work.
+The mod is load order independent as it uses LIOS/FIOS overwrite methods where needed, but preferably at the bottom. Aggressive Crisis Engine overwrites very little but what is does is crucial for it to work.
 
 [h1]Additional mod support[/h1]
 ACEMOD configuration menu opens on game start. In order to access menu after start of the game you can use one or more of the following mods:
@@ -20,9 +31,20 @@ ACEMOD configuration menu opens on game start. In order to access menu after sta
 - [url=https://steamcommunity.com/sharedfiles/filedetails/?id=1943060017]Infinite Stellaris Framework[/url] by [url=https://steamcommunity.com/id/INFINI7E/myworkshopfiles/]小傘INFINI7E[/url].
 You can also fire mod menu with an [b]event acemod_menu.1[/b] console command.
 
+[h1]Language support[/h1]
+English (native)
+Deutsch - German (native)
+Polski - Polish (native)
+汉语 - Chinese (native - also see [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2131014154]Chinese translation project for mods[/url])
+Русский - Russian (native)
+日本語 - Japanese ([url=https://steamcommunity.com/sharedfiles/filedetails/?id=2497205234]external mod[/url])
+한국어 - Korean ([url=https://github.com/Stellaris-Mod-Translate/Aggressive-Crisis-Engine]external mod[/url])
+
+We invite you to contribute translations into your own language on [url=https://crwd.in/stellaris-aggressive-crisis-engine]ACE Crowdin translation project[/url]. If your language is not on the list feel free to drop a note and it will be added.
+
 [h1]Improvements[/h1]
 
-[IMG]https://i.imgur.com/SYMJrYD.png[/IMG]
+[IMG]https://i.imgur.com/Qsf8oBs.png[/IMG]
 
 ACEMOD is flexible and modular. Users are able to switch individual components on and off on game start.
 
@@ -33,21 +55,11 @@ Modders can use ACEMOD AI for their own custom country_types and exclude individ
 [IMG]https://i.imgur.com/Ei2tkeA.png[/IMG]
 
 [h1]Compatibility[/h1]
-This mod is highly compatible but requires disabling vanilla crisis AI. For this reason put ACEMOD below any mod which changes crises (this includes Starnet AI and Glavius AI which overwrite crisis definitions without actually making changes to them).
-
-ACEMOD gives Dimensional Anchors FTL inhibitors and makes them visible on a galactic map. Position ACEMOD below any mod which adds components or ship types.
+This mod is highly compatible but requires disabling vanilla crisis AI. For this reason make sure ACEMOD overwrites any mods which change crises (this includes Starnet AI and Glavius AI).
 
 See [url=https://steamcommunity.com/workshop/filedetails/discussion/2268189539/3011179244472319574/]AI framework documentation (modders)[/url] if you want to get technical.
 
-[h1]Crisis AI[/h1]
-- Full support for Contingency, Prethoryn Scourge, Unbidden, Aberrant and Vehement.
-- New custom pathfinding accounting for wormholes and gateways. Begone loops.
-- Aggressive not only in the name. Fleets are relentless and always seek targets.
-- Defensive fleet recall for Contingency worlds.
-- Extended crisis options, including "fixed vanilla", hard mode and brutal setting. You will not survive (WIP).
-- New crisis-related technologies.
-- Various fixes like changing crisis bombardment stance and making unarmed crisis ships flee when in danger.
-List of features is subject to change.
+[h1]Timelapses[/h1]
 
 [URL=https://www.youtube.com/watch?v=02WjfX9Rne0][IMG]https://i.imgur.com/165j5Dq.png[/IMG][/URL]
 [i]Overnight test run of ACEMOD AI crisis on Stellaris 2.7.2. Default settings but technology cost on x0.25. All empires were on repeatables. Crisis on x1 strength was squashed, this is a x5 Scourge.[/i]
@@ -71,7 +83,7 @@ When merging mods for personal use by [url=https://bcssov.github.io/IronyModMana
 [h1]Credits[/h1]
 [url=https://steamcommunity.com/profiles/76561198873489312/myworkshopfiles/]Fiiral[/url], [url=https://steamcommunity.com/id/oldent/myworkshopfiles/?appid=281990]OldEnt[/url] and [url=https://steamcommunity.com/profiles/76561198394015599/myworkshopfiles/]Rodahtnov[/url] hope you will enjoy this mod.
 
-Thank you to 150 players who decided to try the mod in [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2254550964]beta stage[/url].
+Thank you to 150 players who decided to try the mod in beta stage.
 
 [h1]Support[/h1]
 Please post bug reports in the [url=https://steamcommunity.com/workshop/filedetails/discussion/2268189539/3011179244472328564/]dedicated comments section[/url] or on [url=https://github.com/Fiiral/Improved-Crisis]GitHub[/url].

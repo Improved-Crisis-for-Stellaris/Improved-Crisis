@@ -85,3 +85,18 @@ on_planet_attackers_win = {
 		acemod_fleet.450		# Fix crisis country taking over planet controlled by another crisis country.
 	}
 }
+
+# Planet has reached 0 pops from orbital bombardment
+# This = Planet
+# From = Bombarder
+on_planet_zero_pops = {
+	events = {
+		acemod_fleet.460		# Fix for colony not being destroyed on Contingency Worlds when last pop was killed by bombardment.
+	}
+}
+
+on_single_player_save_game_load = {
+	events = {
+		acemod_fleet.462		# For bugged planets in ongoing games. Fix for colony not being destroyed on Contingency Worlds when last pop was killed by bombardment.
+	}
+}

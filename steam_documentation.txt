@@ -261,3 +261,14 @@ Fleets will merge under certain conditions. Action invoked by acemod_custom_on_a
 [22:29:06][effect_impl.cpp:811]: Script Error: Invalid scripted effect: dmm_remove_button_exception at  file: events/acemod_dmm_new_events.txt line: 82
 
 [22:29:06][effect_impl.cpp:6897]: create_army: missing or invalid army type file: events/acemod_fleet_events.txt line: 3383[/code]
+
+---
+
+[h1]Known additional crises support:[/h1]
+
+[b]Gray Tempest:[/b]
+Execute the following console command once Gray Tempest spawned:
+[code]effect every_country = { limit = { is_country_type = gray_goo } set_country_flag = acemod_assisted_ai } set_global_flag = acemod_activated every_system = { limit = { has_star_flag = graygoo_factory_system } set_star_flag = acemod_star_flag_starbase_defensive_protocol every_neighbor_system = { set_star_flag = acemod_star_flag_starbase_defensive_protocol } every_fleet_in_system = { limit = { owner = { is_country_type = gray_goo } } acemod_set_fleet_piloted_exclusion_on = yes } }[/code]
+
+[b]Katzenartig Imperium (Gigastructural Engineering & More):[/b]
+Use [url=https://steamcommunity.com/workshop/filedetails/?id=2394377758]KACE patch[/url].
