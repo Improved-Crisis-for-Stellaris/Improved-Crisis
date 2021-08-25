@@ -37,6 +37,7 @@ Deutsch - German (native)
 Polski - Polish (native)
 汉语 - Chinese (native - also see [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2131014154]Chinese translation project for mods[/url])
 Русский - Russian (native)
+Español - Spanish (native)
 日本語 - Japanese ([url=https://steamcommunity.com/sharedfiles/filedetails/?id=2497205234]external mod[/url])
 한국어 - Korean ([url=https://github.com/Stellaris-Mod-Translate/Aggressive-Crisis-Engine]external mod[/url])
 
