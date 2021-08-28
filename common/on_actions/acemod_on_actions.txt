@@ -37,6 +37,8 @@ on_yearly_pulse = {
 		acemod_fleet.605		# Spawns wormhole station for Contingency worlds.
 		acemod_fleet.799		# Disables crisis colossi if Apocalypse DLC is not present.
 		acemod_fleet.750		# Spawn colossus root event.
+		acemod_fleet.462		# For bugged planets in ongoing games. Fix for colony not being destroyed on Contingency Worlds when last pop was killed by bombardment.
+		acemod_fleet.470		# For bugged planets in ongoing games. Fix for Cybrex worlds not being conquered.
 	}
 }
 
@@ -98,5 +100,16 @@ on_planet_zero_pops = {
 on_single_player_save_game_load = {
 	events = {
 		acemod_fleet.462		# For bugged planets in ongoing games. Fix for colony not being destroyed on Contingency Worlds when last pop was killed by bombardment.
+		acemod_fleet.470		# For bugged planets in ongoing games. Fix for Cybrex worlds not being conquered.
+	}
+}
+
+# Triggers when ground combat starts
+# This = planet
+# From = country attacking
+on_ground_combat_started = {
+	events = {
+		acemod_fleet.465		# For bugged planets in ongoing games.
+		acemod_fleet.460		# Fix for colony not being destroyed on Contingency Worlds when last pop was killed by bombardment.
 	}
 }

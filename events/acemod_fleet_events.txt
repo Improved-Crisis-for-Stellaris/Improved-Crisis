@@ -3915,7 +3915,7 @@ planet_event = {
 	immediate = {
 		planet_event = {
 			id = acemod_fleet.461			# Delay to allow other fixes act first, be it vanilla or other mods.
-			days = 1
+			days = 2
 		}
 	}
 }
@@ -3925,9 +3925,22 @@ planet_event = {
 	hide_window = yes
 	is_triggered_only = yes
 	trigger = {
+		exists = owner
 		is_colony = yes
+		owner = {
+			is_country_type = ai_empire
+		}
 		NOT = {
 			is_planet_class = pc_ai
+		}
+		num_pops = 0
+		count_planet_army = {
+			count = 0
+			limit = {
+				owner = {
+					is_country_type = ai_empire
+				}
+			}
 		}
 	}
 	immediate = {
@@ -3972,6 +3985,86 @@ event = {
 				planet_event = {
 					id = acemod_fleet.461
 				}
+			}
+		}
+	}
+}
+
+# Triggers when ground combat starts
+# This = planet
+# From = country attacking
+# For bugged planets in ongoing games.
+planet_event = {
+	id = acemod_fleet.465
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		owner = {
+			is_country_type = cybrex_empire
+		}
+	}
+	immediate = {
+		planet_event = {
+			id = acemod_fleet.466			# Need delay to allow invader armies to spawn...
+			days = 1
+		}
+	}
+}
+
+planet_event = {
+	id = acemod_fleet.466
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		if = {
+			limit = {
+				count_planet_army = {
+					count = 0
+				}
+			}
+			set_planet_flag = acemod_planet_flag_destroy_col_cybrex_effect_fix
+			every_owned_pop = {
+				kill_pop = yes				# Just to be sure.
+			}
+			destroy_colony = yes
+			change_pc = pc_ringworld_habitable
+			reset_planet = yes
+		}
+	}
+}
+
+# For bugged planets in ongoing games. Fix for Cybrex worlds not being conquered.
+# on_single_player_save_game_load
+event = {
+	id = acemod_fleet.470
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		every_country = {
+			limit = {
+				is_country_type = cybrex_empire
+			}
+			every_owned_planet = {
+				limit = {
+					is_planet_class = pc_cybrex
+					has_ground_combat = yes
+					is_colony = yes
+					count_planet_army = {
+						count = 0
+						limit = {
+							owner = {
+								is_country_type = cybrex_empire
+							}
+						}
+					}
+				}
+				set_planet_flag = acemod_planet_flag_destroy_col_cybrex_effect_fix
+				every_owned_pop = {
+					kill_pop = yes					# Just to be sure.
+				}
+				destroy_colony = yes
+				change_pc = pc_ringworld_habitable
+				reset_planet = yes
 			}
 		}
 	}

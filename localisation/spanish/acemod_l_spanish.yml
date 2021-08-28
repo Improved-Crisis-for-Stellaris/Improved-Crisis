@@ -41,7 +41,7 @@
   acemod_menu.1.name: "$acemod_menu_name$: $GALAXY_SETTINGS$"
   acemod_menu.1.desc: "Selecciona módulos adicionales de §RAggressive Crisis Engine§! para su activación. Solo el creador de la partida puede usar estos ajustes en modo Multijugador."
   acemod_menu.1.a: "£job_researcher£ $TECHNOLOGY$ - [global_event_country.GetName_acemod_technology_disabled]"
-  acemod_menu.1.a.tooltip: "Tecnologías de §RACEMOD§! adicionales pueden añadirse a la lista de tecnologías:\\n§G+25%§! daño a las crisis por nivel, hasta un §G+75%§! total."
+  acemod_menu.1.a.tooltip: "Tecnologías de §RACEMOD§! adicionales pueden añadirse a la lista de tecnologías:\n§G+25%§! daño a las crisis por nivel, hasta un §G+75%§! total."
   acemod_menu.1.b: "£mod_ship_damage_mult£ $acemod_crisis_debuff_modifier$ - [global_event_country.GetName_acemod_crisis_debuff_disabled]"
   acemod_menu.1.b.tooltip: "§G$GALAXY_EMPIRE_VIEW$§!:\n\n$CRISIS_FACTOR$ $COUNTRY_MODIFIER$:\n£mod_ship_damage_mult£ §H$acemod_crisis_debuff_modifier$§!:\n$mod_damage_vs_country_type_swarm_mult$: §R-75%§!\n$mod_damage_vs_country_type_ai_empire_mult$: §R-75%§!\n$mod_damage_vs_country_type_extradimensional_mult$: §R-75%§!\n$mod_damage_vs_country_type_extradimensional_2_mult$: §R-75%§!\n$mod_damage_vs_country_type_extradimensional_3_mult$: §R-75%§!\n$mod_damage_vs_country_type_gray_goo_mult$: §R-25%§!\n---------------\n$acemod_crisis_debuff_modifier_desc$"
   acemod_menu.1.c: "£acemod_mod_fallen_awakened_empire_debuff_modifier£ $acemod_fallen_awakened_empire_debuff_modifier$ - [global_event_country.GetName_acemod_fallen_awakened_empire_debuff_disabled]"
