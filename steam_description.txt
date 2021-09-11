@@ -17,7 +17,7 @@ Dimensional Anchors are visible on galactic map.
 - Galactic empires receive initial massive damage penalty against crisis factions so new technologies need to be obtained in order to mitigate this (optional).
 - Crisis colossi (optional).
 - Dynamic Mod Menu support with menu access permission management for multiplayer.
-- Various fixes to related to crises.
+- Various fixes related to crises.
 List of features is subject to change.
 
 [h1]Load order[/h1]

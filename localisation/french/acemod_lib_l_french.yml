@@ -1,7 +1,7 @@
 ﻿l_french:
 #acemod_lib files are shared between acemod mods.
 
-  #Menus-----------------------------------
+  #Menusl_french:--------------------------------
   acemod_lib_menu_can_disable: "$CHANGE$ $MATCHMAKING_SERVER_STATUS_RUNNING$ $GAME$"
   acemod_lib_menu.1.g: "£mod_army_damage_mult£ [global_event_country.GetName_acemod_lib_army_strength_modifier]"
   acemod_lib_menu.1.g.tooltip: "§R$CRISIS_FACTOR$§!:\n\n$CRISIS_FACTOR$ $COUNTRY_MODIFIER$:\n£mod_army_damage_mult£ [global_event_country.GetName_acemod_lib_army_strength_modifier]\n\nDefault: §G$FE_CRISES$§!\nVanilla: §R$NOT_ACTIVE$§!\n\n$acemod_lib_menu_can_disable$"
