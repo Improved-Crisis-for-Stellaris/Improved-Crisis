@@ -35,7 +35,7 @@ country_event = {
 					}
 					change_variable = {
 						which = acemod_crisis_manager_crisis_var_country_aberrant_spawn_attempts_num
-						value = prev
+						value = prev.acemod_crisis_manager_crisis_var_country_aberrant_spawn_attempts_num
 					}
 				}
 			}
@@ -68,7 +68,7 @@ country_event = {
 					}
 					change_variable = {
 						which = acemod_crisis_manager_crisis_var_country_aberrant_spawn_attempts_num
-						value = prev
+						value = prev.acemod_crisis_manager_crisis_var_country_aberrant_spawn_attempts_num
 					}
 				}
 			}
@@ -104,7 +104,7 @@ country_event = {
 					}
 					change_variable = {
 						which = acemod_crisis_manager_crisis_var_country_aberrant_spawn_attempts_num
-						value = prev
+						value = prev.acemod_crisis_manager_crisis_var_country_aberrant_spawn_attempts_num
 					}
 				}
 			}
@@ -128,7 +128,7 @@ country_event = {
 					}
 					change_variable = {
 						which = acemod_crisis_manager_crisis_var_country_aberrant_spawn_attempts_num
-						value = prev
+						value = prev.acemod_crisis_manager_crisis_var_country_aberrant_spawn_attempts_num
 					}
 				}
 			}
@@ -700,7 +700,7 @@ country_event = {
 					}
 					change_variable = {
 						which = acemod_crisis_manager_var_country_vehement_spawned_year
-						value = prev
+						value = prev.acemod_crisis_manager_var_country_vehement_spawned_year
 					}
 				}
 			}

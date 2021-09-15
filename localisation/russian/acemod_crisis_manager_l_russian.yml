@@ -1,6 +1,6 @@
 ﻿l_russian:
 
-  #Menul_russian:---------------------------------
+  #Menu------------------------------------
   acemod_crisis_manager_name: "Aggressive Crisis Engine"
   acemod_crisis_manager.1.name: "$acemod_crisis_manager_name$: $acemod_crisis_manager_name_singular$"
   acemod_crisis_manager.1.desc: "$SETTINGS$ §RГалактического Кризиса§! могут быть изменены в любой момент игры в этом меню.\n\n§BКризис Менеджер§! не меняет игровые файлы и должен быть §G$ON$§! чтобы работать. §W£mod_army_damage_mult£ $ARMY_POWER_HEADER$ $MODIFIER$§! и §W$DISABLE$ $GAME_SPEED_4$ $CRISIS_FACTOR$§! настроек, которые всегда §G$ON$$§!.\n\nДанные из Менеджера и инструменты его диагностики записаны в файле сохранения, большинство из них доступны через §WИнструменты отладки§!. Менеджер записывает когда и какой кризис появился."

@@ -1719,7 +1719,7 @@ fleet_event = {
 								limit = {
 									check_variable = {
 										which = acemod_var_fleet_power_response_comparison
-										value > root
+										value > root.acemod_var_fleet_power_response_comparison
 									}
 								}
 								acemod_response_effect = yes
@@ -1764,7 +1764,7 @@ fleet_event = {
 									limit = {
 										check_variable = {
 											which = acemod_var_fleet_power_response_comparison
-											value > root
+											value > root.acemod_var_fleet_power_response_comparison
 										}
 									}
 									acemod_response_effect = yes
@@ -1810,7 +1810,7 @@ fleet_event = {
 									limit = {
 										check_variable = {
 											which = acemod_var_fleet_power_response_comparison
-											value > root
+											value > root.acemod_var_fleet_power_response_comparison
 										}
 									}
 									acemod_response_effect = yes
@@ -1856,7 +1856,7 @@ fleet_event = {
 									limit = {
 										check_variable = {
 											which = acemod_var_fleet_power_response_comparison
-											value > root
+											value > root.acemod_var_fleet_power_response_comparison
 										}
 									}
 									acemod_response_effect = yes
@@ -1902,7 +1902,7 @@ fleet_event = {
 									limit = {
 										check_variable = {
 											which = acemod_var_fleet_power_response_comparison
-											value > root
+											value > root.acemod_var_fleet_power_response_comparison
 										}
 									}
 									acemod_response_effect = yes
@@ -4673,7 +4673,7 @@ country_event = {
 				root = {
 					change_variable = {
 						which = acemod_var_fleet_power_for_last_merger_quickcheck
-						value = prev
+						value = prev.acemod_var_fleet_power_for_last_merger_quickcheck
 					}
 				}
 			}
@@ -4716,7 +4716,7 @@ country_event = {
 				limit = {
 					check_variable = {
 						which = acemod_var_fleet_power_for_last_merger_quickcheck
-						value < root
+						value < root.acemod_var_fleet_power_for_last_merger_quickcheck
 					}
 				}
 				save_event_target_as = acemod_acemod_event_target_fleet_merger_fleet
@@ -4746,7 +4746,7 @@ country_event = {
 					limit = {
 						check_variable = {
 							which = acemod_var_fleet_power_for_last_merger_quickcheck
-							value < root
+							value < root.acemod_var_fleet_power_for_last_merger_quickcheck
 						}
 					}
 					save_event_target_as = acemod_acemod_event_target_fleet_merger_fleet
@@ -4776,7 +4776,7 @@ country_event = {
 						limit = {
 							check_variable = {
 								which = acemod_var_fleet_power_for_last_merger_quickcheck
-								value < root
+								value < root.acemod_var_fleet_power_for_last_merger_quickcheck
 							}
 						}
 						save_event_target_as = acemod_acemod_event_target_fleet_merger_fleet
@@ -4806,7 +4806,7 @@ country_event = {
 							limit = {
 								check_variable = {
 									which = acemod_var_fleet_power_for_last_merger_quickcheck
-									value < root
+									value < root.acemod_var_fleet_power_for_last_merger_quickcheck
 								}
 							}
 							save_event_target_as = acemod_acemod_event_target_fleet_merger_fleet
@@ -4836,7 +4836,7 @@ country_event = {
 								limit = {
 									check_variable = {
 										which = acemod_var_fleet_power_for_last_merger_quickcheck
-										value < root
+										value < root.acemod_var_fleet_power_for_last_merger_quickcheck
 									}
 								}
 								save_event_target_as = acemod_acemod_event_target_fleet_merger_fleet
@@ -4866,7 +4866,7 @@ country_event = {
 									limit = {
 										check_variable = {
 											which = acemod_var_fleet_power_for_last_merger_quickcheck
-											value < root
+											value < root.acemod_var_fleet_power_for_last_merger_quickcheck
 										}
 									}
 									save_event_target_as = acemod_acemod_event_target_fleet_merger_fleet
@@ -5367,7 +5367,7 @@ country_event = {
 				root = {
 					change_variable = {
 						which = acemod_var_fleet_power_for_last_merger
-						value = prev
+						value = prev.acemod_var_fleet_power_for_last_merger
 					}
 				}
 			}
@@ -5379,7 +5379,7 @@ country_event = {
 				root = {
 					change_variable = {
 						which = acemod_var_fleet_power_for_last_merger
-						value = prev
+						value = prev.acemod_var_fleet_power_for_last_merger
 					}
 				}
 			}
@@ -5401,7 +5401,7 @@ country_event = {
 							event_target:acemod_acemod_event_target_fleet_merger_target = {
 								change_variable = {
 									which = acemod_var_fleet_power_for_last_merger_perpetrator
-									value = prev
+									value = prev.acemod_var_fleet_power_for_last_merger_perpetrator
 								}
 							}
 						}
@@ -5426,9 +5426,8 @@ country_event = {
 						limit = {
 							check_variable_arithmetic = {
 								which = acemod_var_fleet_power_for_last_merger
-								by = acemod_var_fleet_power_for_last_merger_perpetrator
+								divide = acemod_var_fleet_power_for_last_merger_perpetrator
 								value < acemod_var_fleet_power_desired_engagement_ratio
-								mode = divide
 							}
 						}
 						event_target:acemod_acemod_event_target_fleet_merger_fleet = {
@@ -5972,10 +5971,7 @@ event = {
 				}
 				set_variable = {
 					which = acemod_var_country_colossus_spawn_limit
-					value = {
-						scope = event_target:global_event_country
-						variable = acemod_var_country_colossus_spawn_limit
-					}
+					value = event_target:global_event_country.acemod_var_country_colossus_spawn_limit
 				}
 			}
 			if = {

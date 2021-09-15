@@ -1,6 +1,6 @@
 ﻿l_polish:
 
-  #Menul_polish:---------------------------------
+  #Menu------------------------------------
   acemod_crisis_manager_name: "System Agresywnych Kryzysów"
   acemod_crisis_manager.1.name: "$acemod_crisis_manager_name$: $acemod_crisis_manager_name_singular$"
   acemod_crisis_manager.1.desc: "$SETTINGS$ dla Kryzysów galaktycznych. Można je zmienić w każdym momencie gry z tego menu.\n\nTen §B$acemod_crisis_manager_name_singular$§! nie modyfikuje plików gry i musi być §Gaktywny§! żeby działał. Ustawienia w opcjach §W£mod_army_damage_mult£ $ARMY_POWER_HEADER$ $MODIFIER$§! oraz §W$DISABLE$ szybki $CRISIS_FACTOR$§! są zawsze aplikowane do bierzącej gry.\n\nDane z Menedżera i jego narzędzi diagnostycznych są składowane w zapisie gry. Większość z nich jest dostępna bezpośrednio z okien §WNarzędzi diagnostycznych§!. Menedżer zapisuje kiedy i jakiego typu §R$CRISIS_FACTOR$§! on wymusił."
