@@ -113,3 +113,12 @@ on_ground_combat_started = {
 		acemod_fleet.460		# Fix for colony not being destroyed on Contingency Worlds when last pop was killed by bombardment.
 	}
 }
+
+# Root = Fleet
+# From = TARGET System - does not work in 3.1.1
+# FromFrom = ORIGIN System - does not work in 3.1.1
+acemod_sfex_on_jumpdrive_order_complete = {
+	events = {
+		acemod_fleet.107		# Seeks valuable valid target to bombard, skips if not found.
+	}
+}

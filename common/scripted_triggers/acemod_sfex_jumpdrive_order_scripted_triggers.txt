@@ -1,3 +1,12 @@
+acemod_sfex_max_distance_interstellar_scripted_trigger = {
+	distance = {
+		source = $SOURCE$		# must be scope
+		max_distance <= $MAX_DISTANCE$		# must be scope
+		type = euclidean
+		same_solar_system = no
+	}
+}
+
 acemod_sfex_jumpdrive_order_has_ftl_drive_scripted_trigger = {
 	OR = {
 		has_global_flag = acemod_sfex_jumpdrive_order_global_flag_has_ftl_drive_disabled
