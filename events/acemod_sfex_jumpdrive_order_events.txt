@@ -111,6 +111,12 @@ fleet_event = {
 					days = 1
 				}
 			}
+				else = {
+					set_variable = {
+						which = acemod_var_fleet_piloted_exclusion					# acemod_set_fleet_piloted_exclusion_off = yes
+						value = 0
+					}
+				}
 		}
 		else = {
 			log = "acemod_sfex_jumpdrive_order.3: event_target:acemod_sfex_core_event_target_1 does not exist."

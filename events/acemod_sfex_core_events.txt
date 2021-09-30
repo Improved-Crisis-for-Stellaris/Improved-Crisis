@@ -70,6 +70,10 @@ country_event = {
 				flag = acemod_sfex_core_cancelled_by_combat
 				days = 14				# To do build_order
 			}
+			set_variable = {
+				which = acemod_var_fleet_piloted_exclusion
+				value = 0
+			}
 			remove_fleet_flag = acemod_sfex_fleet_flag_jumpdrive_windup
 			solar_system = {
 				every_system_ambient_object = {

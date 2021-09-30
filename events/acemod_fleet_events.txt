@@ -906,7 +906,7 @@ fleet_event = {
 			solar_system = {
 				set_timed_star_flag = {
 					flag = acemod_star_flag_solar_system_target					# System already has a fleet, keep it reserved for a bit longer.
-					days = 120
+					days = 180
 				}
 			}
 			queue_actions = {
@@ -933,7 +933,7 @@ fleet_event = {
 				save_event_target_as = acemod_event_target_invader_bombardment_target
 				set_timed_planet_flag = {
 					flag = acemod_planet_flag_bombardment_target
-					days = 120
+					days = 180
 				}
 				set_timed_planet_flag = {
 					flag = acemod_planet_flag_bombardment_target@root					# Assigns planet to a fleet in case bombing is interrupted by special order.
@@ -942,7 +942,7 @@ fleet_event = {
 				solar_system = {
 					set_timed_star_flag = {
 						flag = acemod_star_flag_solar_system_target						# System already has a fleet, keep it reserved for a bit longer.
-						days = 120
+						days = 180
 					}
 				}
 				root = {
@@ -992,7 +992,7 @@ fleet_event = {
 					save_event_target_as = acemod_event_target_invader_bombardment_target
 					set_timed_planet_flag = {
 						flag = acemod_planet_flag_bombardment_target
-						days = 120
+						days = 180
 					}
 					set_timed_planet_flag = {
 						flag = acemod_planet_flag_bombardment_target@root						# Assigns planet to a fleet in case bombing is interrupted by special order.
@@ -1001,7 +1001,7 @@ fleet_event = {
 					solar_system = {
 						set_timed_star_flag = {
 							flag = acemod_star_flag_solar_system_target							# System already has a fleet, keep it reserved for a bit longer.
-							days = 120
+							days = 180
 						}
 					}
 					root = {
