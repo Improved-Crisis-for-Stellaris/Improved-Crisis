@@ -137,6 +137,8 @@
   acemod_menu.2.a.tooltip: "启用或停用高级危机AI\n默认：§G$ACTIVE$§!\n\n舰队对其周围环境和领土入侵做出反应。可能会影响较慢电脑的性能。通常舰队的清除速度比生成快，所以收益是最小的。"
   acemod_menu.2.b: "$MERGE$ $crisis_empire_base$ $FLEETS$ - [global_event_country.GetName_acemod_fleet_mergers_disabled]"
   acemod_menu.2.b.tooltip: "启用或禁用舰队合并。\n默认：§G$ACTIVE$§!\n\n危机舰队在某些情况下会合并，比如当它们开始折损时。"
+  acemod_menu.2.c: "$JUMP_DRIVE_1$ - [global_event_country.GetName_acemod_global_flag_jumpdrive_order_disabled]"
+  acemod_menu.2.c.tooltip: "Enables or disables crisis use of $JUMP_DRIVE_1$.\nDefault: §G$ACTIVE$§!\n\n§M$name_list_Extradimensional$§! fleets use Jump Drives to attack valuable targets."
   acemod_menu.2.z: "§Y$SAVE$§!"
   acemod_menu.2.z.tooltip: "返回主菜单。"
   #Colossus-----------------------------------

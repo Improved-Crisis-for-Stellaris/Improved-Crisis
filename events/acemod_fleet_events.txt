@@ -753,7 +753,7 @@ fleet_event = {
 					limit = {
 						acemod_sfex_max_distance_interstellar_scripted_trigger = {
 							SOURCE = prev
-							MAX_DISTANCE = 150							# Default for Extradimesnionals. Variable import WIP.
+							MAX_DISTANCE = 150							# Default for Extradimensionals. Variable import WIP.
 						}
 						exists = owner
 						owner = {

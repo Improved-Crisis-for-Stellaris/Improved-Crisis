@@ -155,6 +155,8 @@
  acemod_menu.2.a.tooltip: "Enables or disables Advanced Crisis AI.\nDefault: §G$ACTIVE$§!\n\nFleets react to their surroundings and territorial incursions. This may or may not affect performance on slower machines. Usually fleets purge faster than they spawn so the gain is minimal."
  acemod_menu.2.b: "$MERGE$ $crisis_empire_base$ $FLEETS$ - [global_event_country.GetName_acemod_fleet_mergers_disabled]"
  acemod_menu.2.b.tooltip: "Enables or disables fleet merging.\nDefault: §G$ACTIVE$§!\n\nCrisis fleets merge under certain conditions, such as when they start losing."
+ acemod_menu.2.c: "$JUMP_DRIVE_1$ - [global_event_country.GetName_acemod_global_flag_jumpdrive_order_disabled]"
+ acemod_menu.2.c.tooltip: "Enables or disables crisis use of $JUMP_DRIVE_1$.\nDefault: §G$ACTIVE$§!\n\n§M$name_list_Extradimensional$§! fleets use Jump Drives to attack valuable targets."
  acemod_menu.2.z: "§Y$SAVE$§!"
  acemod_menu.2.z.tooltip: "Back to main menu."
 

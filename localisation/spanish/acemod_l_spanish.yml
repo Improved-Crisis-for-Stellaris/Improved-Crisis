@@ -137,6 +137,8 @@
   acemod_menu.2.a.tooltip: "Activa o desactiva la IA de Crisis Avanzada.\nPor defecto: §G$ACTIVE$§!\n\nLas flotas reaccionan a sus alrededores e incursiones territoriales. Esto puede, o no, afectar a ordenadores de baja gama. Generalmente las flotas purgan mas rápido de lo que son creadas, por lo que la ganancia es mínima."
   acemod_menu.2.b: "$MERGE$ $crisis_empire_base$ $FLEETS$ - [global_event_country.GetName_acemod_fleet_mergers_disabled]"
   acemod_menu.2.b.tooltip: "Activa o desactiva la fusión de flotas.\nPor defecto: §G$ACTIVE$§!\n\nLas flotas de las Crisis se fusionan bajo ciertas condiciones, como indicios de estar perdiendo."
+  acemod_menu.2.c: "$JUMP_DRIVE_1$ - [global_event_country.GetName_acemod_global_flag_jumpdrive_order_disabled]"
+  acemod_menu.2.c.tooltip: "Enables or disables crisis use of $JUMP_DRIVE_1$.\nDefault: §G$ACTIVE$§!\n\n§M$name_list_Extradimensional$§! fleets use Jump Drives to attack valuable targets."
   acemod_menu.2.z: "§Y$SAVE$§!"
   acemod_menu.2.z.tooltip: "Menú Principal."
   #Colossus-----------------------------------

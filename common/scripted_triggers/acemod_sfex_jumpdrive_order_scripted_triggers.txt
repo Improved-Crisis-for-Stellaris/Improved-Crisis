@@ -1,7 +1,7 @@
 acemod_sfex_max_distance_interstellar_scripted_trigger = {
 	distance = {
 		source = $SOURCE$		# must be scope
-		max_distance <= $MAX_DISTANCE$		# must be scope
+		max_distance <= $MAX_DISTANCE$		# must be integer
 		type = euclidean
 		same_solar_system = no
 	}

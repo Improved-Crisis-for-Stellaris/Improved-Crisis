@@ -137,6 +137,8 @@
   acemod_menu.2.a.tooltip: "Włącza lub wyłącza zaawansowane funkcje sztucznej inteligencji kryzysu.\nDomyślne: §G$ACTIVE$§!\n\nFloty reagują na zmiany w ich otoczeniu oraz ataki na terytorium kryzysu. Może mieć to minimalny efekt na szybkość gry na wolniejszych maszynach. Zazwyczaj kryzys niszczy populację galaktyki na tyle szybko, że jest to bez znaczenia."
   acemod_menu.2.b: "Łączenie flot kryzysu - [global_event_country.GetName_acemod_fleet_mergers_disabled]"
   acemod_menu.2.b.tooltip: "Włącza lub wyłacza łączenie flot kryzysu.\nDomyślne: §G$ACTIVE$§!\n\nFloty kryzysu łączą się kiedy określone warunki zostałą spełnione, np. kiedy zaczynają przegrywać."
+  acemod_menu.2.c: "$JUMP_DRIVE_1$ - [global_event_country.GetName_acemod_global_flag_jumpdrive_order_disabled]"
+  acemod_menu.2.c.tooltip: "Enables or disables crisis use of $JUMP_DRIVE_1$.\nDefault: §G$ACTIVE$§!\n\n§M$name_list_Extradimensional$§! fleets use Jump Drives to attack valuable targets."
   acemod_menu.2.z: "§Y$SAVE$§!"
   acemod_menu.2.z.tooltip: "Powrót do menu głównego."
   #Colossus-----------------------------------

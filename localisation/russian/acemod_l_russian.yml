@@ -137,6 +137,8 @@
   acemod_menu.2.a.tooltip: "Включает или выключает Улучшенный ИИ Кризиса.\nПо умолчанию: §G$ACTIVE$§!\n\nФлоты реагируют на их окружение и нападение на их территорию. Это может почти не влияет на производительность. Обычно флоты кризиса уничтожают население достаточно быстро, так что предыдущий параметр не влияет на производительность."
   acemod_menu.2.b: "$MERGE$ $crisis_empire_base$ $FLEETS$ - [global_event_country.GetName_acemod_fleet_mergers_disabled]"
   acemod_menu.2.b.tooltip: "Включает или выключает объединение флота.\nПо умолчанию: §G$ACTIVE$§!\n\nФлоты кризиса объединяются при определённых условиях, например если начинают проигрывать."
+  acemod_menu.2.c: "$JUMP_DRIVE_1$ - [global_event_country.GetName_acemod_global_flag_jumpdrive_order_disabled]"
+  acemod_menu.2.c.tooltip: "Enables or disables crisis use of $JUMP_DRIVE_1$.\nDefault: §G$ACTIVE$§!\n\n§M$name_list_Extradimensional$§! fleets use Jump Drives to attack valuable targets."
   acemod_menu.2.z: "§Y$SAVE$§!"
   acemod_menu.2.z.tooltip: "Вернуться в главное меню."
   #Colossus-----------------------------------

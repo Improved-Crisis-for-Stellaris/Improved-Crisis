@@ -143,6 +143,24 @@ defined_text = {
 }
 
 defined_text = {
+	name = GetName_acemod_global_flag_jumpdrive_order_disabled
+	text = {
+		trigger = {
+			NOT = {
+				has_global_flag = acemod_global_flag_jumpdrive_order_disabled
+			}
+		}
+		localization_key = acemod_trigger_yes
+	}
+	text = {
+		trigger = {
+			has_global_flag = acemod_global_flag_jumpdrive_order_disabled
+		}
+		localization_key = acemod_trigger_no
+	}
+}
+
+defined_text = {
 	name = GetName_acemod_dmm_display_exception_for_1
 	text = {
 		trigger = {
