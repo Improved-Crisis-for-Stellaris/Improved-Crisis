@@ -1,6 +1,6 @@
 ﻿l_simp_chinese:
 
-  #Menu------------------------------------
+  #Menul_simp_chinese:---------------------------------
   acemod_crisis_manager_name: "强力危机工具"
   acemod_crisis_manager.1.name: "$acemod_crisis_manager_name$：$acemod_crisis_manager_name_singular$"
   acemod_crisis_manager.1.desc: "§R$CRISIS_FACTOR$§!的$SETTINGS$。可在游戏任何时间到本菜单更改。\n\n本§B危机管理器§!不修改游戏文件，除§W£mod_army_damage_mult£ $ARMY_POWER_HEADER$ $MODIFIER$§!和§W$DISABLE$ $GAME_SPEED_4$ $CRISIS_FACTOR$§!设置为固定§G$ACTIVE$§!外，均需设置为§G$ACTIVE$§!才生效。\n\n管理器及其诊断工具数据储存于同一存档中，大部分可通过§W调试工具§!窗口访问。管理器记录了何种危机在何时生成。"

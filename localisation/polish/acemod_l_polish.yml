@@ -1,7 +1,7 @@
 ﻿l_polish:
 
   #Original English text by Rodahtnov
-  #Prethoryn Scourge ------------------------------------
+  #Prethoryn Scourge l_polish:---------------------------------
   tech_acemod_crisis_swarm_1: "Analiza pretorynowych form życia"
   tech_acemod_crisis_swarm_1_desc: "Dzięki zdalnemu badaniu i pobieraniu tkanek pretorynów możemy nie tylko poznać działanie tych pozagalaktycznych form życia lecz również nauczyć się jak można się ich pozbyć.  \n\n"
   tech_acemod_crisis_swarm_2: "Zobojętniacze pretorynowych wydzielin"
@@ -138,7 +138,7 @@
   acemod_menu.2.b: "Łączenie flot kryzysu - [global_event_country.GetName_acemod_fleet_mergers_disabled]"
   acemod_menu.2.b.tooltip: "Włącza lub wyłacza łączenie flot kryzysu.\nDomyślne: §G$ACTIVE$§!\n\nFloty kryzysu łączą się kiedy określone warunki zostałą spełnione, np. kiedy zaczynają przegrywać."
   acemod_menu.2.c: "$JUMP_DRIVE_1$ - [global_event_country.GetName_acemod_global_flag_jumpdrive_order_disabled]"
-  acemod_menu.2.c.tooltip: "Enables or disables crisis use of $JUMP_DRIVE_1$.\nDefault: §G$ACTIVE$§!\n\n§M$name_list_Extradimensional$§! fleets use Jump Drives to attack valuable targets."
+  acemod_menu.2.c.tooltip: "Ta opcja włącza/wyłącza $JUMP_DRIVE_1$ dla flot kryzysów.\nDomyślne: §G$ACTIVE$§!\n\nFloty §MPozawymiarowców§! używają Napędów Skokowych aby atakować cele strategiczne."
   acemod_menu.2.z: "§Y$SAVE$§!"
   acemod_menu.2.z.tooltip: "Powrót do menu głównego."
   #Colossus-----------------------------------
