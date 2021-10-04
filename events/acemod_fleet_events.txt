@@ -611,6 +611,10 @@ fleet_event = {
 											days = 120
 										}
 									}
+									root = {
+										set_aggro_range = 0										# Prevents baiting.
+										set_fleet_stance = passive
+									}
 								}
 								move_to = this
 								wait = 5
@@ -727,145 +731,195 @@ fleet_event = {
 	immediate = {
 		if = {
 			limit = {
-				owner = {
-					OR = {
-						AND = {
-							OR = {
-								is_country_type = extradimensional
-								is_country_type = extradimensional_2
-								is_country_type = extradimensional_3
-							}
-							has_country_flag = acemod_country_flag_prioritise_galactic_empires							# Make sure Extradimensionals do not leave their portal undefended.
-						}
-						has_country_flag = acemod_country_flag_jumpdrive_order_enabled
-					}
-				}
-				acemod_sfex_jumpdrive_order_has_ftl_drive_scripted_trigger = yes				# We assume Extradimensionals are always capable of jump.
 				NOT = {
-					any_owned_ship = {
-						has_modifier = acemod_sfex_jump_drive_order_cooldown
-					}
-				}
-			}
-			# acemod_sfex_jumpdrive_order_calculate_effective_range_effect = yes
-			solar_system = {
-				closest_system = {
-					limit = {
-						acemod_sfex_max_distance_interstellar_scripted_trigger = {
-							SOURCE = prev
-							MAX_DISTANCE = 150							# Default for Extradimensionals. Variable import WIP.
-						}
+					solar_system = {
 						exists = owner
-						owner = {
-							is_hostile = root.owner
-							OR = {
-								NOT = {
-									is_country_type = fallen_empire
-								}
-								AND = {
-									is_country_type = fallen_empire
-									solar_system = {
-										check_variable = {
-											which = acemod_var_star_fallback_target_countdown
-											value >= 50
-										}
-									}
-								}
+						any_system_planet = {
+							has_orbital_bombardment = yes
+							any_fleet_in_orbit = {
+								is_same_value = root
 							}
-						}
-						acemod_sfex_jumpdrive_order_can_enter_system_by_jump_scripted_trigger = yes
-						NOT = {
-							has_star_flag = acemod_star_flag_solar_system_target
-						}
-						OR = {
-							AND = {
-								has_any_megastructure = yes
-								owner = {
-									is_crisis_faction = no
-								}
-							}
-							any_system_planet = {
-								OR = {
-									is_colony = yes
-									is_under_colonization = yes
-								}
-								NOR = {
-									has_planet_flag = acemod_planet_flag_bombardment_target
-									has_planet_flag = acemod_planet_flag_bombardment_target_ignore									# Hotfix for akeean's Shielded World origin homeworlds. We will need a bigger boat.
-									has_orbital_bombardment = yes
-								}
-								# NOR = {
-								# 	is_owned_by = root.owner
-								# 	is_controlled_by = root.owner
-								# }
-								owner = {
-									is_hostile = root.owner
-								}
-								NOT = {
-									is_controlled_by = root.owner
-								}
-								OR = {
-									is_capital = yes
-									num_pops >= 55
-									planet_resource_compare = {
-										resource = alloys
-										value >= 200
-										type = produces
-									}
-									count_owned_pop = {
-										count > 20
-										limit = {
-											OR = {
-												has_job_category = specialist
-												has_job_category = complex_drone
-											}
-										}
-									}
-								}
-							}
-						}
-					}
-					save_event_target_as = event_target:acemod_event_target_jumpdrive_order_target
-					root = {
-						owner = {
-							if = {
-								limit = {
-									NOT = {
-										is_variable_set = acemod_var_country_jumpdrive_order_num_attempted
-									}
-								}
-								set_variable = {
-									which = acemod_var_country_jumpdrive_order_num_attempted
-									value = 1
-								}
-							}
-							change_variable = {
-								which = acemod_var_country_jumpdrive_order_num_attempted								# Debug.
-								value = 1
-							}
-						}
-						acemod_sfex_set_fleet_order = {
-							ORDER = jumpdrive
-							TARGET = prev
-							MODNAME = acemod_menu_name
 						}
 					}
 				}
 			}
 			if = {
 				limit = {
+					owner = {
+						OR = {
+							AND = {
+								OR = {
+									is_country_type = extradimensional
+									is_country_type = extradimensional_2
+									is_country_type = extradimensional_3
+								}
+								OR = {
+									has_country_flag = acemod_country_flag_prioritise_galactic_empires									# Make sure Extradimensionals do not leave their portal undefended.
+									# Special routine if Extradimensionals spawned in a system with bypass.
+									AND = {
+										OR = {
+											is_country_type = extradimensional
+											is_country_type = extradimensional_2
+											is_country_type = extradimensional_3
+										}
+										prevprev = {
+											solar_system = {
+												OR = {
+													has_star_flag = extradimensional_origin_system
+													has_star_flag = extradimensional_third_portal_system
+													has_star_flag = extradimensional_second_portal_system
+												}
+												OR = {
+													has_natural_wormhole = yes
+													any_system_megastructure = {
+														OR = {
+															is_megastructure_type = gateway_final
+															is_megastructure_type = gateway_restored
+															is_megastructure_type = lgate_base
+														}
+													}
+													acemod_is_active_bypass = yes
+												}
+											}
+										}
+									}
+								}
+							}
+							has_country_flag = acemod_country_flag_jumpdrive_order_enabled
+						}
+					}
+					acemod_sfex_jumpdrive_order_has_ftl_drive_scripted_trigger = yes					# We assume Extradimensionals are always capable of jump.
 					NOT = {
-						has_fleet_flag = acemod_sfex_fleet_flag_jumpdrive_order
+						any_owned_ship = {
+							has_modifier = acemod_sfex_jump_drive_order_cooldown
+						}
 					}
 				}
+				# acemod_sfex_jumpdrive_order_calculate_effective_range_effect = yes
+				solar_system = {
+					closest_system = {
+						limit = {
+							acemod_sfex_max_distance_interstellar_scripted_trigger = {
+								SOURCE = prev
+								MAX_DISTANCE = 150								# Default for Extradimensionals. Variable import WIP.
+							}
+							exists = owner
+							owner = {
+								is_hostile = root.owner
+								OR = {
+									NOT = {
+										is_country_type = fallen_empire
+									}
+									AND = {
+										is_country_type = fallen_empire
+										solar_system = {
+											check_variable = {
+												which = acemod_var_star_fallback_target_countdown
+												value >= 50
+											}
+										}
+									}
+								}
+							}
+							acemod_sfex_jumpdrive_order_can_enter_system_by_jump_scripted_trigger = yes
+							NOT = {
+								has_star_flag = acemod_star_flag_solar_system_target
+							}
+							OR = {
+								AND = {
+									has_any_megastructure = yes
+									owner = {
+										is_crisis_faction = no
+									}
+								}
+								any_system_planet = {
+									OR = {
+										is_colony = yes
+										is_under_colonization = yes
+									}
+									NOR = {
+										has_planet_flag = acemod_planet_flag_bombardment_target
+										has_planet_flag = acemod_planet_flag_bombardment_target_ignore										# Hotfix for akeean's Shielded World origin homeworlds. We will need a bigger boat.
+										has_orbital_bombardment = yes
+									}
+									# NOR = {
+									# 	is_owned_by = root.owner
+									# 	is_controlled_by = root.owner
+									# }
+									owner = {
+										is_hostile = root.owner
+									}
+									NOT = {
+										is_controlled_by = root.owner
+									}
+									OR = {
+										is_capital = yes
+										num_pops >= 50
+										planet_resource_compare = {
+											resource = alloys
+											value >= 200
+											type = produces
+										}
+										planet_resource_compare = {
+											resource = consumer_goods
+											value >= 200
+											type = produces
+										}
+										count_owned_pop = {
+											count > 20
+											limit = {
+												OR = {
+													has_job_category = specialist
+													has_job_category = complex_drone
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+						save_event_target_as = event_target:acemod_event_target_jumpdrive_order_target
+						root = {
+							owner = {
+								if = {
+									limit = {
+										NOT = {
+											is_variable_set = acemod_var_country_jumpdrive_order_num_attempted
+										}
+									}
+									set_variable = {
+										which = acemod_var_country_jumpdrive_order_num_attempted
+										value = 1
+									}
+								}
+								change_variable = {
+									which = acemod_var_country_jumpdrive_order_num_attempted									# Debug.
+									value = 1
+								}
+							}
+							acemod_sfex_set_fleet_order = {
+								ORDER = jumpdrive
+								TARGET = prev
+								MODNAME = acemod_menu_name
+							}
+						}
+					}
+				}
+				if = {
+					limit = {
+						NOT = {
+							has_fleet_flag = acemod_sfex_fleet_flag_jumpdrive_order
+						}
+					}
+					fleet_event = {
+						id = acemod_fleet.110
+					}
+				}
+			}
+			else = {
 				fleet_event = {
 					id = acemod_fleet.110
 				}
-			}
-		}
-		else = {
-			fleet_event = {
-				id = acemod_fleet.110
 			}
 		}
 	}
@@ -895,14 +949,20 @@ fleet_event = {
 				value = 1
 			}
 		}
-		clear_orders = yes		# Unstucks fleet if caught in a queued actions loop.
-		clear_fleet_actions = this		# Unstucks fleet if caught in a queued actions loop.
 		if = {
 			limit = {
 				solar_system = {
 					exists = starbase
+					starbase = {
+						exists = owner
+						owner = {
+							is_hostile = root.owner
+						}
+					}
 				}
 			}
+			clear_orders = yes			# Unstucks fleet if caught in a queued actions loop.
+			clear_fleet_actions = this			# Unstucks fleet if caught in a queued actions loop.
 			solar_system = {
 				set_timed_star_flag = {
 					flag = acemod_star_flag_solar_system_target					# System already has a fleet, keep it reserved for a bit longer.
@@ -910,116 +970,14 @@ fleet_event = {
 				}
 			}
 			queue_actions = {
-				move_to = solar_system.starbase
+				attack_fleet = {
+					target = solar_system.starbase.fleet
+				}
 			}
 		}
-		solar_system = {
-			random_system_planet = {
-				limit = {
-					exists = owner
-					owner = {
-						is_hostile = root.owner
-					}
-					NOT = {
-						is_controlled_by = root.owner
-					}
-					is_capital = yes
-					NOR = {
-						has_planet_flag = acemod_planet_flag_bombardment_target
-						has_planet_flag = acemod_planet_flag_bombardment_target_ignore						# Hotfix for akeean's Shielded World origin homeworlds. We will need a bigger boat.
-						has_orbital_bombardment = yes
-					}
-				}
-				save_event_target_as = acemod_event_target_invader_bombardment_target
-				set_timed_planet_flag = {
-					flag = acemod_planet_flag_bombardment_target
-					days = 180
-				}
-				set_timed_planet_flag = {
-					flag = acemod_planet_flag_bombardment_target@root					# Assigns planet to a fleet in case bombing is interrupted by special order.
-					days = 360
-				}
-				solar_system = {
-					set_timed_star_flag = {
-						flag = acemod_star_flag_solar_system_target						# System already has a fleet, keep it reserved for a bit longer.
-						days = 180
-					}
-				}
-				root = {
-					queue_actions = {
-						move_to = prev
-						wait = 5
-						orbit_planet = prev
-					}
-				}
-			}
-			if = {
-				limit = {
-					NOT = {
-						exists = event_target:acemod_event_target_invader_bombardment_target
-					}
-				}
-				random_system_planet = {
-					limit = {
-						exists = owner
-						owner = {
-							is_hostile = root.owner
-						}
-						NOT = {
-							is_controlled_by = root.owner
-						}
-						num_pops >= 55
-						planet_resource_compare = {
-							resource = alloys
-							value >= 200
-							type = produces
-						}
-						count_owned_pop = {
-							count > 20
-							limit = {
-								OR = {
-									has_job_category = specialist
-									has_job_category = complex_drone
-								}
-							}
-						}
-						NOR = {
-							has_planet_flag = acemod_planet_flag_bombardment_target
-							has_planet_flag = acemod_planet_flag_bombardment_target_ignore							# Hotfix for akeean's Shielded World origin homeworlds. We will need a bigger boat.
-							has_orbital_bombardment = yes
-						}
-					}
-					save_event_target_as = acemod_event_target_invader_bombardment_target
-					set_timed_planet_flag = {
-						flag = acemod_planet_flag_bombardment_target
-						days = 180
-					}
-					set_timed_planet_flag = {
-						flag = acemod_planet_flag_bombardment_target@root						# Assigns planet to a fleet in case bombing is interrupted by special order.
-						days = 360
-					}
-					solar_system = {
-						set_timed_star_flag = {
-							flag = acemod_star_flag_solar_system_target							# System already has a fleet, keep it reserved for a bit longer.
-							days = 180
-						}
-					}
-					root = {
-						queue_actions = {
-							move_to = prev
-							wait = 5
-							orbit_planet = prev
-						}
-					}
-				}
-			}
-			else = {
-				root = {
-					fleet_event = {
-						id = acemod_fleet.105
-						days = 5
-					}
-				}
+		else = {
+			fleet_event = {
+				id = acemod_fleet.105
 			}
 		}
 	}
@@ -1037,16 +995,18 @@ fleet_event = {
 					OR = {
 						has_natural_wormhole = yes
 						any_system_megastructure = {
-							is_megastructure_type = gateway_final
-							is_megastructure_type = gateway_restored
-							is_megastructure_type = lgate_base
+							OR = {
+								is_megastructure_type = gateway_final
+								is_megastructure_type = gateway_restored
+								is_megastructure_type = lgate_base
+							}
 						}
 						acemod_is_active_bypass = yes
 					}
 				}
 			}
 			random_list = {
-				100 = {
+				75 = {
 					queue_actions = {
 						find_random_system = {
 							trigger = {
@@ -1064,9 +1024,11 @@ fleet_event = {
 								OR = {
 									has_natural_wormhole = yes
 									any_system_megastructure = {
-										is_megastructure_type = gateway_final
-										is_megastructure_type = gateway_restored
-										is_megastructure_type = lgate_base
+										OR = {
+											is_megastructure_type = gateway_final
+											is_megastructure_type = gateway_restored
+											is_megastructure_type = lgate_base
+										}
 									}
 									acemod_is_active_bypass = yes
 								}
@@ -1101,7 +1063,7 @@ fleet_event = {
 						}
 					}
 				}
-				0 = {
+				25 = {
 					# hidden_effect = {
 					# 	log = "ACEMOD_log: acemod_fleet.110 Military fleet entered bypass system but rolled via bypass script to proceeded with standard script."
 					# }
@@ -1242,6 +1204,97 @@ fleet_event = {
 									is_country_type = fallen_empire
 								}
 								is_hostile = root.owner
+								is_crisis_faction = no								# Prioritise galactic empires over medium range.
+							}
+							AND = {
+								owner = {
+									is_same_value = root.owner
+								}
+								NOT = {
+									exists = starbase									# Shortcut to check if system is under siege without iterating through planets.
+								}
+								distance = {
+									source = prev
+									max_jumps = 4
+									use_bypasses = no
+								}
+								any_system_planet = {
+									has_orbital_bombardment = yes									# Relieve besieged colonies.
+								}
+							}
+						}
+						NOR = {
+							has_star_flag = acemod_star_flag_solar_system_target
+							AND = {
+								has_star_flag = extradimensional_origin_system								# Unbidden don't need to target own portal system.
+								owner = {
+									is_same_value = root.owner
+									# has_country_flag = unbidden
+								}
+							}
+							AND = {
+								has_star_flag = extradimensional_second_portal_system								# Aberrant don't need to target own portal system.
+								owner = {
+									is_same_value = root.owner
+									# has_country_flag = aberrant
+								}
+							}
+							AND = {
+								has_star_flag = extradimensional_third_portal_system								# Vehement don't need to target own portal system.
+								owner = {
+									is_same_value = root.owner
+									# has_country_flag = vehement
+								}
+							}
+						}
+					}
+					save_event_target_as = acemod_event_target_invader_target
+					set_timed_star_flag = {
+						flag = acemod_star_flag_solar_system_target
+						days = 120
+					}
+					set_timed_star_flag = {
+						flag = acemod_star_flag_solar_system_target@root						# Assigns solar system to a fleet in case bombing is interrupted by special order.
+						days = 360
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				NOT = {
+					exists = event_target:acemod_event_target_invader_target
+				}
+				# Below ignore FTL inhibitors since 3.1 so won't get stuck.
+				owner = {
+					OR = {
+						is_country_type = extradimensional
+						is_country_type = extradimensional_2
+						is_country_type = extradimensional_3
+						is_country_type = ai_empire
+						has_country_flag = acemod_country_flag_ignores_ftl_inhibitor						# In case other country types ignore it.
+					}
+					NOT = {
+						has_country_flag = acemod_country_flag_ignores_ftl_inhibitor_disable
+					}
+				}
+			}
+			solar_system = {
+				closest_system = {
+					min_steps = 1
+					max_steps = 20					# Medium range seeking with bypasses.
+					use_bypasses = yes
+					limit = {
+						exists = owner
+						has_access_fleet = root.owner
+						OR = {
+							owner = {
+								NOR = {
+									is_same_value = root.owner
+									is_country_type = fallen_empire
+								}
+								is_hostile = root.owner
+								is_crisis_faction = no								# Prioritise galactic empires over medium range.
 							}
 							AND = {
 								owner = {
@@ -1314,23 +1367,6 @@ fleet_event = {
 					}
 					found_system = {
 						move_to = this
-						# effect = {
-						# 	id = "acemod.111.e1"
-						# 	if = {
-						# 		limit = {
-						# 			OR = {
-						# 				has_natural_wormhole = yes
-						# 				any_system_megastructure = {
-						# 					is_megastructure_type = gateway_final
-						# 					is_megastructure_type = gateway_restored
-						# 					is_megastructure_type = lgate_base
-						# 				}
-						# 				acemod_is_active_bypass = yes
-						# 			}
-						# 		}
-						# 		log = "ACEMOD_log: acemod.111.e1 Military fleet found bypass system via standard script."
-						# 	}
-						# }
 					}
 				}
 				effect = {
@@ -1412,23 +1448,6 @@ fleet_event = {
 				}
 				found_system = {
 					move_to = this
-					# effect = {
-					# 	id = "acemod.112.e1"
-					# 	if = {
-					# 		limit = {
-					# 			OR = {
-					# 				has_natural_wormhole = yes
-					# 				any_system_megastructure = {
-					# 					is_megastructure_type = gateway_final
-					# 					is_megastructure_type = gateway_restored
-					# 					is_megastructure_type = lgate_base
-					# 				}
-					# 				acemod_is_active_bypass = yes
-					# 			}
-					# 		}
-					# 		log = "ACEMOD_log: acemod.112.e1 Military fleet found bypass system via fallback script."
-					# 	}
-					# }
 				}
 				# failed = {
 				# 	effect = {
@@ -2684,7 +2703,7 @@ country_event = {
 					root.from = {
 						remove_star_flag = acemod_star_flag_solar_system_target@prev
 					}
-					locked_random_list = {
+					random_list = {
 						80 = {
 							fleet_event = {
 								id = acemod_fleet.105
@@ -3197,9 +3216,11 @@ fleet_event = {
 					OR = {
 						has_natural_wormhole = yes
 						any_system_megastructure = {
-							is_megastructure_type = gateway_final
-							is_megastructure_type = gateway_restored
-							is_megastructure_type = lgate_base
+							OR = {
+								is_megastructure_type = gateway_final
+								is_megastructure_type = gateway_restored
+								is_megastructure_type = lgate_base
+							}
 						}
 						acemod_is_active_bypass = yes
 					}
@@ -3224,9 +3245,11 @@ fleet_event = {
 								OR = {
 									has_natural_wormhole = yes
 									any_system_megastructure = {
-										is_megastructure_type = gateway_final
-										is_megastructure_type = gateway_restored
-										is_megastructure_type = lgate_base
+										OR = {
+											is_megastructure_type = gateway_final
+											is_megastructure_type = gateway_restored
+											is_megastructure_type = lgate_base
+										}
 									}
 									acemod_is_active_bypass = yes
 								}
@@ -4048,9 +4071,11 @@ fleet_event = {
 					OR = {
 						has_natural_wormhole = yes
 						any_system_megastructure = {
-							is_megastructure_type = gateway_final
-							is_megastructure_type = gateway_restored
-							is_megastructure_type = lgate_base
+							OR = {
+								is_megastructure_type = gateway_final
+								is_megastructure_type = gateway_restored
+								is_megastructure_type = lgate_base
+							}
 						}
 						acemod_is_active_bypass = yes
 					}
@@ -4075,9 +4100,11 @@ fleet_event = {
 								OR = {
 									has_natural_wormhole = yes
 									any_system_megastructure = {
-										is_megastructure_type = gateway_final
-										is_megastructure_type = gateway_restored
-										is_megastructure_type = lgate_base
+										OR = {
+											is_megastructure_type = gateway_final
+											is_megastructure_type = gateway_restored
+											is_megastructure_type = lgate_base
+										}
 									}
 									acemod_is_active_bypass = yes
 								}

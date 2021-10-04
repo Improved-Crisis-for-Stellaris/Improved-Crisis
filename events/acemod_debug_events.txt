@@ -425,6 +425,7 @@ event = {
 	}
 }
 
+# Dummy flag setup to clean error.log. DO NOT USE THIS EVENT.
 event = {
 	id = acemod_debug.498
 	hide_window = yes
@@ -434,6 +435,8 @@ event = {
 		set_country_flag = acemod_country_flag_jumpdrive_order_disabled
 		set_global_flag = acemod_global_flag_jumpdrive_order_disabled
 		set_fleet_flag = acemod_fleet_flag_jumpdrive_order_disabled
+		set_country_flag = acemod_country_flag_ignores_ftl_inhibitor
+		set_country_flag = acemod_country_flag_ignores_ftl_inhibitor_di
 	}
 }
 

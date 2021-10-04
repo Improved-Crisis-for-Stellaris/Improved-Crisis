@@ -91,6 +91,11 @@ Effects are listed in /events/acemod_fleet_events.txt (always up to date) and in
 # 
 # set_country_flag = acemod_lib_country_flag_army_strength_modifier_assisted_ai	country				swarm, ai_empire, and countries with this flag receive Crisis Army Strength multiplier.
 # set_country_flag = acemod_lib_country_flag_army_strength_modifier_disabled	country				Disables automatic Crisis Army Strength multiplier recalculation for given country (usefulf for disabling swarm or ai_empire bonus).
+#
+# set_country_flag = acemod_country_flag_jumpdrive_order_enabled				country				Enables use of jumpdrives for a specific country.
+# set_global_flag = acemod_global_flag_jumpdrive_order_disabled					global				Disables globally use of jumpdrives by ACE.
+# set_country_flag = acemod_country_flag_jumpdrive_order_disabled				country				Disables use of jumpdrives for a specific country, overrides acemod_country_flag_jumpdrive_order_enabled.
+# set_fleet_flag = acemod_fleet_flag_jumpdrive_order_disabled					fleet				Disables use of jumpdrives for a specific fleet.
 
 ---
 
