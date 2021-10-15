@@ -1559,3 +1559,80 @@ defined_text = {
 		localization_key = BLANK_STRING
 	}
 }
+
+defined_text = {
+	name = GetName_acemod_supplements_active
+	text = {
+		trigger = {
+			event_target:global_event_country = {
+				OR = {
+					NOT = {
+						is_variable_set = acemod_var_supplements_ship_num
+					}
+					check_variable = {
+						which = acemod_var_supplements_ship_num
+						value = 0
+					}
+				}
+			}
+		}
+		localization_key = acemod_trigger_no
+	}
+	text = {
+		trigger = {
+			event_target:global_event_country = {
+				NOT = {
+					OR = {
+						NOT = {
+							is_variable_set = acemod_var_supplements_ship_num
+						}
+						check_variable = {
+							which = acemod_var_supplements_ship_num
+							value = 0
+						}
+					}
+				}
+			}
+		}
+		localization_key = acemod_menu.4.a_var_supplements_ship_num
+	}
+}
+
+defined_text = {
+	name = GetName_acemod_supplements_buff
+	text = {
+		trigger = {
+			has_global_flag = acemod_supplements_buff_0
+		}
+		localization_key = acemod_menu.4.b_buff_0
+	}
+	text = {
+		trigger = {
+			has_global_flag = acemod_supplements_buff_1
+		}
+		localization_key = acemod_menu.4.b_buff_1
+	}
+	text = {
+		trigger = {
+			has_global_flag = acemod_supplements_buff_2
+		}
+		localization_key = acemod_menu.4.b_buff_2
+	}
+	text = {
+		trigger = {
+			has_global_flag = acemod_supplements_buff_3
+		}
+		localization_key = acemod_menu.4.b_buff_3
+	}
+	text = {
+		trigger = {
+			NOR = {
+				has_global_flag = acemod_supplements_buff_0
+				has_global_flag = acemod_supplements_buff_1
+				has_global_flag = acemod_supplements_buff_2
+				has_global_flag = acemod_supplements_buff_3
+			}
+		}
+		localization_key = acemod_menu.4.b_buff_0
+	}
+}

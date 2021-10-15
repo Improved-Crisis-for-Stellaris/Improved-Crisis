@@ -6532,6 +6532,191 @@ event = {
 	}
 }
 
+# Fleet Supplements
+event = {
+	id = acemod_fleet.800
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		event_target:global_event_country = {
+			is_variable_set = acemod_var_supplements_ship_num
+			check_variable = {
+				which = acemod_var_supplements_ship_num
+				value > 0
+			}
+		}
+	}
+	immediate = {
+		every_country = {
+			if = {
+				limit = {
+					is_country_type = swarm
+				}
+				switch = {
+					trigger = has_global_flag
+					acemod_supplements_buff_0 = {
+						acemod_supplements_spawn_swarm = {
+							DESIGN = NAME_ACEMOD_Swarm_Spinal
+						}
+					}
+					acemod_supplements_buff_1 = {
+						acemod_supplements_spawn_swarm = {
+							DESIGN = NAME_ACEMOD_Swarm_Spinal_B1
+						}
+					}
+					acemod_supplements_buff_2 = {
+						acemod_supplements_spawn_swarm = {
+							DESIGN = NAME_ACEMOD_Swarm_Spinal_B2
+						}
+					}
+					acemod_supplements_buff_3 = {
+						acemod_supplements_spawn_swarm = {
+							DESIGN = NAME_ACEMOD_Swarm_Spinal_B3
+						}
+					}
+					default = {
+						acemod_supplements_spawn_swarm = {
+							DESIGN = NAME_ACEMOD_Swarm_Spinal
+						}
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					is_country_type = ai_empire
+				}
+				switch = {
+					trigger = has_global_flag
+					acemod_supplements_buff_0 = {
+						acemod_supplements_spawn_ai_empire = {
+							DESIGN = NAME_ACEMOD_Contingency_Cleanser
+						}
+					}
+					acemod_supplements_buff_1 = {
+						acemod_supplements_spawn_ai_empire = {
+							DESIGN = NAME_ACEMOD_Contingency_Cleanser_B1
+						}
+					}
+					acemod_supplements_buff_2 = {
+						acemod_supplements_spawn_ai_empire = {
+							DESIGN = NAME_ACEMOD_Contingency_Cleanser_B2
+						}
+					}
+					acemod_supplements_buff_3 = {
+						acemod_supplements_spawn_ai_empire = {
+							DESIGN = NAME_ACEMOD_Contingency_Cleanser_B3
+						}
+					}
+					default = {
+						acemod_supplements_spawn_ai_empire = {
+							DESIGN = NAME_ACEMOD_Contingency_Cleanser
+						}
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					is_country_type = extradimensional
+				}
+				switch = {
+					trigger = has_global_flag
+					acemod_supplements_buff_0 = {
+						acemod_supplements_spawn_extradimensional = {
+							DESIGN = NAME_ACEMOD_Unbidden_Spectre
+						}
+					}
+					acemod_supplements_buff_1 = {
+						acemod_supplements_spawn_extradimensional = {
+							DESIGN = NAME_ACEMOD_Unbidden_Spectre_B1
+						}
+					}
+					acemod_supplements_buff_2 = {
+						acemod_supplements_spawn_extradimensional = {
+							DESIGN = NAME_ACEMOD_Unbidden_Spectre_B2
+						}
+					}
+					acemod_supplements_buff_3 = {
+						acemod_supplements_spawn_extradimensional = {
+							DESIGN = NAME_ACEMOD_Unbidden_Spectre_B3
+						}
+					}
+					default = {
+						acemod_supplements_spawn_extradimensional = {
+							DESIGN = NAME_ACEMOD_Unbidden_Spectre
+						}
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					is_country_type = extradimensional_2
+				}
+				switch = {
+					trigger = has_global_flag
+					acemod_supplements_buff_0 = {
+						acemod_supplements_spawn_extradimensional_2 = {
+							DESIGN = NAME_ACEMOD_Aberrant_Chaser
+						}
+					}
+					acemod_supplements_buff_1 = {
+						acemod_supplements_spawn_extradimensional_2 = {
+							DESIGN = NAME_ACEMOD_Aberrant_Chaser_B1
+						}
+					}
+					acemod_supplements_buff_2 = {
+						acemod_supplements_spawn_extradimensional_2 = {
+							DESIGN = NAME_ACEMOD_Aberrant_Chaser_B2
+						}
+					}
+					acemod_supplements_buff_3 = {
+						acemod_supplements_spawn_extradimensional_2 = {
+							DESIGN = NAME_ACEMOD_Aberrant_Chaser_B3
+						}
+					}
+					default = {
+						acemod_supplements_spawn_extradimensional_2 = {
+							DESIGN = NAME_ACEMOD_Aberrant_Chaser
+						}
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					is_country_type = extradimensional_3
+				}
+				switch = {
+					trigger = has_global_flag
+					acemod_supplements_buff_0 = {
+						acemod_supplements_spawn_extradimensional_3 = {
+							DESIGN = NAME_ACEMOD_Vehement_Exterminator
+						}
+					}
+					acemod_supplements_buff_1 = {
+						acemod_supplements_spawn_extradimensional_3 = {
+							DESIGN = NAME_ACEMOD_Vehement_Exterminator_B1
+						}
+					}
+					acemod_supplements_buff_2 = {
+						acemod_supplements_spawn_extradimensional_3 = {
+							DESIGN = NAME_ACEMOD_Vehement_Exterminator_B2
+						}
+					}
+					acemod_supplements_buff_3 = {
+						acemod_supplements_spawn_extradimensional_3 = {
+							DESIGN = NAME_ACEMOD_Vehement_Exterminator_B3
+						}
+					}
+					default = {
+						acemod_supplements_spawn_extradimensional_3 = {
+							DESIGN = NAME_ACEMOD_Vehement_Exterminator
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
 ########
 # Obsolete events to be deleteted. Keeping for the time being to assure players won't CTD if game tries to fire non-existent delayed event.
 # # Fix for start_colony effect which broke in 2.8 but was working just fine in 2.7... (ceaseless colonisation bug).

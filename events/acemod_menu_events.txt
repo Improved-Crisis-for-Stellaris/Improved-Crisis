@@ -36,6 +36,17 @@ country_event = {
 		}
 	}
 	option = {
+		name = acemod_menu.1.h
+		custom_tooltip = acemod_menu.1.h.tooltip
+		hidden_effect = {
+			country_event = {
+				id = acemod_menu.4				# Closes main menu window and redirects to Fleet Supplements.
+				days = 0
+				random = 0
+			}
+		}
+	}
+	option = {
 		name = acemod_menu.1.a
 		custom_tooltip = acemod_menu.1.a.tooltip
 		hidden_effect = {
@@ -1491,6 +1502,137 @@ country_event = {
 		hidden_effect = {
 			country_event = {
 				id = acemod_menu.1				# Closes Advanced Options window and redirects to main menu.
+				days = 0
+				random = 0
+			}
+		}
+	}
+}
+
+country_event = {
+	id = acemod_menu.4
+	title = acemod_menu.4.name
+	desc = acemod_menu.4.desc
+	picture = GFX_evt_burning_city
+	is_triggered_only = yes
+	immediate = {
+		event_target:global_event_country = {
+			if = {
+				limit = {
+					NOR = {
+						has_global_flag = acemod_supplements_buff_0
+						has_global_flag = acemod_supplements_buff_1
+						has_global_flag = acemod_supplements_buff_2
+						has_global_flag = acemod_supplements_buff_3
+					}
+				}
+				set_global_flag = acemod_supplements_buff_0
+			}
+			if = {
+				limit = {
+					NOT = {
+						is_variable_set = acemod_var_supplements_ship_num
+					}
+				}
+				set_variable = {
+					which = acemod_var_supplements_ship_num
+					value = 0
+				}
+			}
+		}
+	}
+	option = {
+		name = acemod_menu.4.a
+		custom_tooltip = acemod_menu.4.a.tooltip
+		hidden_effect = {
+			event_target:global_event_country = {
+				if = {
+					limit = {
+						NOT = {
+							check_variable = {
+								which = acemod_var_supplements_ship_num
+								value >= 100
+							}
+						}
+					}
+					change_variable = {
+						which = acemod_var_supplements_ship_num
+						value = 10
+					}
+				}
+				else = {
+					set_variable = {
+						which = acemod_var_supplements_ship_num
+						value = 0
+					}
+				}
+			}
+			country_event = {
+				id = acemod_menu.4
+				days = 0
+				random = 0
+			}
+		}
+	}
+	option = {
+		name = acemod_menu.4.b
+		custom_tooltip = acemod_menu.4.b.tooltip
+		hidden_effect = {
+			switch = {
+				trigger = has_global_flag
+				acemod_supplements_buff_0 = {
+					remove_global_flag = acemod_supplements_buff_0
+					set_global_flag = acemod_supplements_buff_1
+					country_event = {
+						id = acemod_menu.4
+						days = 0
+						random = 0
+					}
+				}
+				acemod_supplements_buff_1 = {
+					remove_global_flag = acemod_supplements_buff_1
+					set_global_flag = acemod_supplements_buff_2
+					country_event = {
+						id = acemod_menu.4
+						days = 0
+						random = 0
+					}
+				}
+				acemod_supplements_buff_2 = {
+					remove_global_flag = acemod_supplements_buff_2
+					set_global_flag = acemod_supplements_buff_3
+					country_event = {
+						id = acemod_menu.4
+						days = 0
+						random = 0
+					}
+				}
+				acemod_supplements_buff_3 = {
+					remove_global_flag = acemod_supplements_buff_3
+					set_global_flag = acemod_supplements_buff_0
+					country_event = {
+						id = acemod_menu.4
+						days = 0
+						random = 0
+					}
+				}
+				default = {
+					set_global_flag = acemod_supplements_buff_0
+					country_event = {
+						id = acemod_menu.4
+						days = 0
+						random = 0
+					}
+				}
+			}
+		}
+	}
+	option = {
+		name = acemod_menu.4.z
+		custom_tooltip = acemod_menu.4.z.tooltip
+		hidden_effect = {
+			country_event = {
+				id = acemod_menu.1				# Closes Fleet Supplements window and redirects to main menu.
 				days = 0
 				random = 0
 			}
