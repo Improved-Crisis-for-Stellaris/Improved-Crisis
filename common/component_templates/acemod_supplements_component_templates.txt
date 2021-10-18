@@ -70,6 +70,7 @@ utility_component_template = {
 	icon = "GFX_ship_part_computer_platform_advanced"
 	icon_frame = 1
 	power = 0
+	hidden = yes
 	
 	modifier = {
 		ship_hull_damage_mult = 0.70
@@ -90,6 +91,7 @@ utility_component_template = {
 	icon = "GFX_ship_part_computer_platform_advanced"
 	icon_frame = 1
 	power = 0
+	hidden = yes
 	
 	modifier = {
 		ship_hull_damage_mult = 2.85
@@ -110,6 +112,7 @@ utility_component_template = {
 	icon = "GFX_ship_part_computer_platform_advanced"
 	icon_frame = 1
 	power = 0
+	hidden = yes
 	
 	modifier = {
 		ship_hull_damage_mult = 4.90
