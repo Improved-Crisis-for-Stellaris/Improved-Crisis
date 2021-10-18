@@ -6547,6 +6547,20 @@ event = {
 		}
 	}
 	immediate = {
+		event_target:global_event_country = {
+			country_event = {
+				id = acemod_fleet.801				# Delay to minimalise monthly pulse lag.
+				days = 3
+			}
+		}
+	}
+}
+
+country_event = {
+	id = acemod_fleet.801
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
 		every_country = {
 			if = {
 				limit = {

@@ -146,10 +146,10 @@
   acemod_ai_colossus: "$colossus$"
   acemod_ai_colossus_plural: "$colossus_plural$"
   SHIP_ACEMOD_AI_COLOSSUS_KEY: "$CRISIS_TYPE_CONTINGENCY$ $colossus$"
-  # Supplements-----------------------------------
+  #Supplements-----------------------------------
   acemod_menu.1.h: "£mod_country_federation_naval_cap_contribution_mult£ §E$acemod_menu.1.h_plain$§! - [global_event_country.GetName_acemod_supplements_active]"
   acemod_menu.1.h.tooltip: "Opens §EFleet Supplements§! menu where additional ships for crisis fleets can be activated and configured."
-  acemod_menu.1.h_plain: "Fleet Supplements"
+  acemod_menu.1.h_plain: "Flottenverstärkungen"
   acemod_menu.4.name: "$acemod_menu_name$: $acemod_menu.1.h_plain$"
   acemod_menu.4.desc: "Additional ships for crisis fleets."
   acemod_menu.4.a: "$acemod_menu.1.h$"
