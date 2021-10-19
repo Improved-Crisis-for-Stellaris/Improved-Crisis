@@ -464,7 +464,7 @@ country_event = {
 					limit = {
 						is_ship_size = starbase_exd						# Counting Dimensional Anchors.
 					}
-					count > 3
+					count > 2
 				}
 			}
 			set_timed_country_flag = {
@@ -745,6 +745,9 @@ fleet_event = {
 			}
 			if = {
 				limit = {
+					NOT = {
+						has_fleet_flag = acemod_fleet_flag_garrison_team
+					}
 					owner = {
 						OR = {
 							AND = {
@@ -991,91 +994,175 @@ fleet_event = {
 	immediate = {
 		if = {
 			limit = {
-				solar_system = {
-					OR = {
-						has_natural_wormhole = yes
-						any_system_megastructure = {
-							OR = {
-								is_megastructure_type = gateway_final
-								is_megastructure_type = gateway_restored
-								is_megastructure_type = lgate_base
+				exists = event_target:portal_holder_1
+				owner = {
+					NOT = {
+						has_country_flag = acemod_country_flag_prioritise_galactic_empires
+					}
+				}
+				OR = {
+					AND = {
+						owner = {
+							is_country_type = extradimensional
+						}
+						NOT = {
+							has_global_flag = extradimensional_first_portal_destroyed
+						}
+						solar_system = {
+							has_star_flag = extradimensional_origin_system
+							count_fleet_in_system = {
+								count <= 1
+								limit = {
+									exists = owner
+									owner = {
+										is_same_value = prev.owner
+									}
+									is_ship_class = shipclass_military
+									is_fleet_idle = yes
+								}
 							}
 						}
-						acemod_is_active_bypass = yes
+					}
+					AND = {
+						owner = {
+							is_country_type = extradimensional_2
+						}
+						NOT = {
+							has_global_flag = extradimensional_second_portal_destroyed
+						}
+						solar_system = {
+							has_star_flag = extradimensional_second_portal_system
+							count_fleet_in_system = {
+								count <= 1
+								limit = {
+									exists = owner
+									owner = {
+										is_same_value = prev.owner
+									}
+									is_ship_class = shipclass_military
+									is_fleet_idle = yes
+								}
+							}
+						}
+					}
+					AND = {
+						owner = {
+							is_country_type = extradimensional_3
+						}
+						NOT = {
+							has_global_flag = extradimensional_third_portal_destroyed
+						}
+						solar_system = {
+							has_star_flag = extradimensional_third_portal_system
+							count_fleet_in_system = {
+								count <= 1
+								limit = {
+									exists = owner
+									owner = {
+										is_same_value = prev.owner
+									}
+									is_ship_class = shipclass_military
+									is_fleet_idle = yes
+								}
+							}
+						}
 					}
 				}
 			}
-			random_list = {
-				75 = {
-					queue_actions = {
-						find_random_system = {
-							trigger = {
-								id = "acemod.110.t1"
-								distance = {
-									source = root
-									#	max_distance <= 1000
-									#	min_distance >= 1
-									#	type = hyperlane
-									#	use_bypass = yes
-									bypass_empire = root.owner
-									min_jumps = 1
-									max_jumps = 1
-								}
-								OR = {
-									has_natural_wormhole = yes
-									any_system_megastructure = {
-										OR = {
-											is_megastructure_type = gateway_final
-											is_megastructure_type = gateway_restored
-											is_megastructure_type = lgate_base
-										}
-									}
-									acemod_is_active_bypass = yes
-								}
-								has_access_fleet = root.owner
-								exists = owner
-								owner = {
-									NOR = {
-										is_same_value = root.owner
-										is_country_type = fallen_empire
-									}
-									is_hostile = root.owner
-								}
-							}
-							found_system = {
-								move_to = this
-								# effect = {
-								# 	id = "acemod.110.e1"
-								# 	log = "ACEMOD_log: acemod.110.e1 Military fleet entered bypass system and found bypass system via bypass script."
-								# }
-							}
-							failed = {
-								effect = {
-									id = "acemod.110.e2"
-									# log = "ACEMOD_log: acemod.110.e2 Military fleet entered bypass system and failed to find bypass system via bypass script."
-									root = {
-										fleet_event = {
-											id = acemod_fleet.111
-										}
-									}
-								}
-							}
-						}
-					}
-				}
-				25 = {
-					# hidden_effect = {
-					# 	log = "ACEMOD_log: acemod_fleet.110 Military fleet entered bypass system but rolled via bypass script to proceeded with standard script."
-					# }
-					fleet_event = {
-						id = acemod_fleet.111
-					}
-				}
+			set_timed_fleet_flag = {
+				flag = acemod_fleet_flag_garrison_team
+				days = 30
 			}
 		}
 		else = {
-			fleet_event = {
-				id = acemod_fleet.111
+			if = {
+				limit = {
+					solar_system = {
+						OR = {
+							has_natural_wormhole = yes
+							any_system_megastructure = {
+								OR = {
+									is_megastructure_type = gateway_final
+									is_megastructure_type = gateway_restored
+									is_megastructure_type = lgate_base
+								}
+							}
+							acemod_is_active_bypass = yes
+						}
+					}
+				}
+				random_list = {
+					75 = {
+						queue_actions = {
+							find_random_system = {
+								trigger = {
+									id = "acemod.110.t1"
+									distance = {
+										source = root
+										#	max_distance <= 1000
+										#	min_distance >= 1
+										#	type = hyperlane
+										#	use_bypass = yes
+										bypass_empire = root.owner
+										min_jumps = 1
+										max_jumps = 1
+									}
+									OR = {
+										has_natural_wormhole = yes
+										any_system_megastructure = {
+											OR = {
+												is_megastructure_type = gateway_final
+												is_megastructure_type = gateway_restored
+												is_megastructure_type = lgate_base
+											}
+										}
+										acemod_is_active_bypass = yes
+									}
+									has_access_fleet = root.owner
+									exists = owner
+									owner = {
+										NOR = {
+											is_same_value = root.owner
+											is_country_type = fallen_empire
+										}
+										is_hostile = root.owner
+									}
+								}
+								found_system = {
+									move_to = this
+									# effect = {
+									# 	id = "acemod.110.e1"
+									# 	log = "ACEMOD_log: acemod.110.e1 Military fleet entered bypass system and found bypass system via bypass script."
+									# }
+								}
+								failed = {
+									effect = {
+										id = "acemod.110.e2"
+										# log = "ACEMOD_log: acemod.110.e2 Military fleet entered bypass system and failed to find bypass system via bypass script."
+										root = {
+											fleet_event = {
+												id = acemod_fleet.111
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+					25 = {
+						# hidden_effect = {
+						# 	log = "ACEMOD_log: acemod_fleet.110 Military fleet entered bypass system but rolled via bypass script to proceeded with standard script."
+						# }
+						fleet_event = {
+							id = acemod_fleet.111
+						}
+					}
+				}
+			}
+			else = {
+				fleet_event = {
+					id = acemod_fleet.111
+				}
 			}
 		}
 	}
