@@ -1,7 +1,7 @@
 ﻿l_german:
 
   #Original English text by Rodahtnov
-  #Prethoryn Scourge l_german:---------------------------------
+  #Prethoryn Scourge ------------------------------------
   tech_acemod_crisis_swarm_1: "Prethoryn Lebensformen Analyse"
   tech_acemod_crisis_swarm_1_desc: "Durch geplanets Entfernen von Gewebe der exogalaktischen Lebenformen können wir unser wissen über den Schwarm erweitern und lernen wir man deren Infektionen entfernt.\n\n"
   tech_acemod_crisis_swarm_2: "Anti-Prethoryn Nanoroboter"
@@ -138,7 +138,7 @@
   acemod_menu.2.b: "$MERGE$ $crisis_empire_base$ $FLEETS$ - [global_event_country.GetName_acemod_fleet_mergers_disabled]"
   acemod_menu.2.b.tooltip: "Aktiviert oder deaktiviert das Zusammenlegen von Flotten\nStandard: §G$ACTIVE$§!\n\nLegt Krisenflotten unter bestimmten Bedingungen zusammen; zum Beispiel wenn sie den Krieg verlieren."
   acemod_menu.2.c: "$JUMP_DRIVE_1$ - [global_event_country.GetName_acemod_global_flag_jumpdrive_order_disabled]"
-  acemod_menu.2.c.tooltip: "Enables or disables crisis use of $JUMP_DRIVE_1$.\nDefault: §G$ACTIVE$§!\n\n§M$name_list_Extradimensional$§! fleets use Jump Drives to attack valuable targets."
+  acemod_menu.2.c.tooltip: "Aktiviert oder deaktiviert die Benutzung von $JUMP_DRIVE_1$ für die Krise.\nStandard: §G$ACTIVE$§!\n\n§M$name_list_Extradimensional$§! Flotten verwenden Sprungantriebe, um hochrangige Ziele anzugreifen."
   acemod_menu.2.z: "§Y$SAVE$§!"
   acemod_menu.2.z.tooltip: "Zurück zum Hauptmenü."
   #Colossus-----------------------------------
@@ -148,16 +148,16 @@
   SHIP_ACEMOD_AI_COLOSSUS_KEY: "$CRISIS_TYPE_CONTINGENCY$ $colossus$"
   #Supplements-----------------------------------
   acemod_menu.1.h: "£mod_country_federation_naval_cap_contribution_mult£ §E$acemod_menu.1.h_plain$§! - [global_event_country.GetName_acemod_supplements_active]"
-  acemod_menu.1.h.tooltip: "Opens §EFleet Supplements§! menu where additional ships for crisis fleets can be activated and configured."
+  acemod_menu.1.h.tooltip: "Öffnet §Fleet Supplements§!-Menü, in dem zusätzliche Schiffe für Krisenflotten aktiviert und konfiguriert werden können."
   acemod_menu.1.h_plain: "Flottenverstärkungen"
   acemod_menu.4.name: "$acemod_menu_name$: $acemod_menu.1.h_plain$"
-  acemod_menu.4.desc: "Additional ships for crisis fleets."
+  acemod_menu.4.desc: "Zusätzliche Schiffe für Krisenflotten."
   acemod_menu.4.a: "$acemod_menu.1.h$"
-  acemod_menu.4.a.tooltip: "Number of ships added to each new crisis fleet.$acemod_menu.4.a.tooltip_designs$"
+  acemod_menu.4.a.tooltip: "Anzahl der Schiffe, die jeder neuen Krisenflotte hinzugefügt werden. $acemod_menu.4.a.tooltip_designs$"
   acemod_menu.4.a.tooltip_designs: "\n\n§G$name_list_Prethoryn$§!: $BATTLESHIP_BOW_M2S4$ $TAB_SHIPS$\n§R$CRISIS_TYPE_CONTINGENCY$§!: $BATTLESHIP_MID_S4LHB$ $TAB_SHIPS$\n§M$name_list_Extradimensional$§!: $point_defence$ $TAB_SHIPS$"
   acemod_menu.4.a_var_supplements_ship_num: "§G[global_event_country.acemod_var_supplements_ship_num] $TAB_SHIPS$§!"
-  acemod_menu.4.b: "£military_ship£ Supplements strength buff - [global_event_country.GetName_acemod_supplements_buff]"
-  acemod_menu.4.b.tooltip: "Each step increases strength of ships added to crisis fleets by an equivalent of two technology tiers.\n\n$SHIP_STATS$: \n$INTEL_LEVEL_LOW$ §R+70%§!\n$INTEL_LEVEL_MEDIUM$ §Y+285%§!\n$INTEL_LEVEL_HIGH$ §E+490%§!"
+  acemod_menu.4.b: "£military_ship£ Ergänzt Kraft-Buff - [global_event_country.GetName_acemod_supplements_buff]"
+  acemod_menu.4.b.tooltip: "Jeder Schritt erhöht die Stärke der Schiffe, die Krisenflotten hinzugefügt werden, um das Äquivalent von zwei Technologiestufen.\n\n$SHIP_STATS$: \n$INTEL_LEVEL_LOW$ §R+70%§!\n$INTEL_LEVEL_MEDIUM$ §Y+285%§!\n$INTEL_LEVEL_HIGH$ §E+490%§!"
   acemod_menu.4.b_buff_0: "§R$NOT_ACTIVE$§!"
   acemod_menu.4.b_buff_1: "$INTEL_LEVEL_LOW$"
   acemod_menu.4.b_buff_2: "$INTEL_LEVEL_MEDIUM$"
