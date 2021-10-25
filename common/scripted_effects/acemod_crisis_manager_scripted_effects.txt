@@ -19497,3 +19497,46 @@ acemod_crisis_manager_reset_settings_script = {
 		value = 0
 	}
 }
+
+acemod_crisis_manager_swap_play_as_crisis = {
+	set_player = prev
+	set_country_flag = acemod_crisis_manager_country_flag_swap_play_as_crisis@prev
+	prev = {
+		set_country_flag = acemod_crisis_manager_country_flag_swap_play_as_crisis
+	}
+	remove_country_flag = acemod_assisted_ai
+	if = {
+		limit = {
+			has_global_flag = acemod_installed
+		}
+		# acemod_dmm_add_button_exception = yes
+		if = {
+			limit = {
+				is_multiplayer = yes
+				NOT = {
+					is_same_value = root					# Prevents players from locking themselves out in a multiplayer game.
+				}
+			}
+			if = {
+				limit = {
+					NOT = {
+						event_target:dmm_global_country = {
+							any_owned_leader = {
+								has_leader_flag = acemod_aggressive_crisis_engine_menu_name_flag
+								has_leader_flag = dmm_display_exception_for_@prevprev
+							}
+						}
+					}
+				}
+				dmm_add_button_exception = {
+					DMM_FLAG = acemod_aggressive_crisis_engine_menu_name_flag
+				}
+			}
+			else = {
+				dmm_remove_button_exception = {
+					DMM_FLAG = acemod_aggressive_crisis_engine_menu_name_flag
+				}
+			}
+		}
+	}
+}

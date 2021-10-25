@@ -596,7 +596,18 @@ country_event = {
 		custom_tooltip = acemod_crisis_manager.1.x.tooltip
 		hidden_effect = {
 			country_event = {
-				id = acemod_crisis_manager.11				# Closes Crisis Manager window and opens Debugging tools menu.
+				id = acemod_crisis_manager.11				# Closes Crisis Manager window and opens Advanced options menu.
+				days = 0
+				random = 0
+			}
+		}
+	}
+	option = {
+		name = acemod_crisis_manager.1.n
+		custom_tooltip = acemod_crisis_manager.1.n.tooltip
+		hidden_effect = {
+			country_event = {
+				id = acemod_crisis_manager.13				# Closes Crisis Manager window and opens play as crisis menu.
 				days = 0
 				random = 0
 			}
@@ -1663,6 +1674,1379 @@ country_event = {
 		hidden_effect = {
 			country_event = {
 				id = acemod_crisis_manager.1				# Closes immediate crisis spawn menu and redirects to main menu.
+				days = 0
+				random = 0
+			}
+		}
+	}
+}
+
+# Play as crisis menu.
+country_event = {
+	id = acemod_crisis_manager.13
+	title = acemod_crisis_manager.13.name
+	desc = acemod_crisis_manager.13.desc
+	picture = GFX_evt_fleet_evil
+	is_triggered_only = yes
+	immediate = {
+		clear_global_event_target = acemod_crisis_manager_event_target_crisis_country_1
+		clear_global_event_target = acemod_crisis_manager_event_target_crisis_country_2
+		clear_global_event_target = acemod_crisis_manager_event_target_crisis_country_3
+		clear_global_event_target = acemod_crisis_manager_event_target_crisis_country_4
+		clear_global_event_target = acemod_crisis_manager_event_target_crisis_country_5
+		clear_global_event_target = acemod_crisis_manager_event_target_crisis_country_6
+		clear_global_event_target = acemod_crisis_manager_event_target_crisis_country_7
+		clear_global_event_target = acemod_crisis_manager_event_target_crisis_country_8
+		clear_global_event_target = acemod_crisis_manager_event_target_crisis_country_9
+		clear_global_event_target = acemod_crisis_manager_event_target_crisis_country_10
+		clear_global_event_target = acemod_crisis_manager_event_target_crisis_country_11
+		clear_global_event_target = acemod_crisis_manager_event_target_crisis_country_12
+		clear_global_event_target = acemod_crisis_manager_event_target_crisis_country_13
+		clear_global_event_target = acemod_crisis_manager_event_target_crisis_country_14
+		clear_global_event_target = acemod_crisis_manager_event_target_crisis_country_15
+		clear_global_event_target = acemod_crisis_manager_event_target_crisis_country_16
+		clear_global_event_target = acemod_crisis_manager_event_target_crisis_country_17
+		clear_global_event_target = acemod_crisis_manager_event_target_crisis_country_18
+		clear_global_event_target = acemod_crisis_manager_event_target_crisis_country_19
+		clear_global_event_target = acemod_crisis_manager_event_target_crisis_country_20
+		clear_global_event_target = acemod_crisis_manager_event_target_crisis_country_21
+		clear_global_event_target = acemod_crisis_manager_event_target_crisis_country_22
+		clear_global_event_target = acemod_crisis_manager_event_target_crisis_country_23
+		clear_global_event_target = acemod_crisis_manager_event_target_crisis_country_24
+		clear_global_event_target = acemod_crisis_manager_event_target_crisis_country_25
+		clear_global_event_target = acemod_crisis_manager_event_target_crisis_country_26
+		clear_global_event_target = acemod_crisis_manager_event_target_crisis_country_27
+		clear_global_event_target = acemod_crisis_manager_event_target_crisis_country_28
+		clear_global_event_target = acemod_crisis_manager_event_target_crisis_country_29
+		clear_global_event_target = acemod_crisis_manager_event_target_crisis_country_30
+		clear_global_event_target = acemod_crisis_manager_event_target_crisis_country_31
+		clear_global_event_target = acemod_crisis_manager_event_target_crisis_country_32
+		clear_global_event_target = acemod_crisis_manager_event_target_crisis_country_33
+		clear_global_event_target = acemod_crisis_manager_event_target_crisis_country_34
+		clear_global_event_target = acemod_crisis_manager_event_target_crisis_country_35
+		clear_global_event_target = acemod_crisis_manager_event_target_crisis_country_36
+		clear_global_event_target = acemod_crisis_manager_event_target_crisis_country_37
+		clear_global_event_target = acemod_crisis_manager_event_target_crisis_country_38
+		clear_global_event_target = acemod_crisis_manager_event_target_crisis_country_39
+		clear_global_event_target = acemod_crisis_manager_event_target_crisis_country_40
+		clear_global_event_target = acemod_crisis_manager_event_target_crisis_country_41
+		clear_global_event_target = acemod_crisis_manager_event_target_crisis_country_42
+		clear_global_event_target = acemod_crisis_manager_event_target_crisis_country_43
+		clear_global_event_target = acemod_crisis_manager_event_target_crisis_country_44
+		clear_global_event_target = acemod_crisis_manager_event_target_crisis_country_45
+		clear_global_event_target = acemod_crisis_manager_event_target_crisis_country_46
+		clear_global_event_target = acemod_crisis_manager_event_target_crisis_country_47
+		clear_global_event_target = acemod_crisis_manager_event_target_crisis_country_48
+		clear_global_event_target = acemod_crisis_manager_event_target_crisis_country_49
+		clear_global_event_target = acemod_crisis_manager_event_target_crisis_country_50
+		clear_global_event_target = acemod_crisis_manager_event_target_swap_play_as_crisis
+		every_country = {
+			limit = {
+				OR = {
+					is_crisis_faction = yes
+					has_country_flag = acemod_crisis_manager_is_crisis_faction
+				}
+			}
+			if = {
+				limit = {
+					NOT = {
+						exists = event_target:acemod_crisis_manager_event_target_crisis_country_1
+					}
+				}
+				save_global_event_target_as = acemod_crisis_manager_event_target_crisis_country_1
+			}
+			else_if = {
+				limit = {
+					NOT = {
+						exists = event_target:acemod_crisis_manager_event_target_crisis_country_2
+					}
+				}
+				save_global_event_target_as = acemod_crisis_manager_event_target_crisis_country_2
+			}
+			else_if = {
+				limit = {
+					NOT = {
+						exists = event_target:acemod_crisis_manager_event_target_crisis_country_3
+					}
+				}
+				save_global_event_target_as = acemod_crisis_manager_event_target_crisis_country_3
+			}
+			else_if = {
+				limit = {
+					NOT = {
+						exists = event_target:acemod_crisis_manager_event_target_crisis_country_4
+					}
+				}
+				save_global_event_target_as = acemod_crisis_manager_event_target_crisis_country_4
+			}
+			else_if = {
+				limit = {
+					NOT = {
+						exists = event_target:acemod_crisis_manager_event_target_crisis_country_5
+					}
+				}
+				save_global_event_target_as = acemod_crisis_manager_event_target_crisis_country_5
+			}
+			else_if = {
+				limit = {
+					NOT = {
+						exists = event_target:acemod_crisis_manager_event_target_crisis_country_6
+					}
+				}
+				save_global_event_target_as = acemod_crisis_manager_event_target_crisis_country_6
+			}
+			else_if = {
+				limit = {
+					NOT = {
+						exists = event_target:acemod_crisis_manager_event_target_crisis_country_7
+					}
+				}
+				save_global_event_target_as = acemod_crisis_manager_event_target_crisis_country_7
+			}
+			else_if = {
+				limit = {
+					NOT = {
+						exists = event_target:acemod_crisis_manager_event_target_crisis_country_8
+					}
+				}
+				save_global_event_target_as = acemod_crisis_manager_event_target_crisis_country_8
+			}
+			else_if = {
+				limit = {
+					NOT = {
+						exists = event_target:acemod_crisis_manager_event_target_crisis_country_9
+					}
+				}
+				save_global_event_target_as = acemod_crisis_manager_event_target_crisis_country_9
+			}
+			else_if = {
+				limit = {
+					NOT = {
+						exists = event_target:acemod_crisis_manager_event_target_crisis_country_10
+					}
+				}
+				save_global_event_target_as = acemod_crisis_manager_event_target_crisis_country_10
+			}
+			else_if = {
+				limit = {
+					NOT = {
+						exists = event_target:acemod_crisis_manager_event_target_crisis_country_11
+					}
+				}
+				save_global_event_target_as = acemod_crisis_manager_event_target_crisis_country_11
+			}
+			else_if = {
+				limit = {
+					NOT = {
+						exists = event_target:acemod_crisis_manager_event_target_crisis_country_12
+					}
+				}
+				save_global_event_target_as = acemod_crisis_manager_event_target_crisis_country_12
+			}
+			else_if = {
+				limit = {
+					NOT = {
+						exists = event_target:acemod_crisis_manager_event_target_crisis_country_13
+					}
+				}
+				save_global_event_target_as = acemod_crisis_manager_event_target_crisis_country_13
+			}
+			else_if = {
+				limit = {
+					NOT = {
+						exists = event_target:acemod_crisis_manager_event_target_crisis_country_14
+					}
+				}
+				save_global_event_target_as = acemod_crisis_manager_event_target_crisis_country_14
+			}
+			else_if = {
+				limit = {
+					NOT = {
+						exists = event_target:acemod_crisis_manager_event_target_crisis_country_15
+					}
+				}
+				save_global_event_target_as = acemod_crisis_manager_event_target_crisis_country_15
+			}
+			else_if = {
+				limit = {
+					NOT = {
+						exists = event_target:acemod_crisis_manager_event_target_crisis_country_16
+					}
+				}
+				save_global_event_target_as = acemod_crisis_manager_event_target_crisis_country_16
+			}
+			else_if = {
+				limit = {
+					NOT = {
+						exists = event_target:acemod_crisis_manager_event_target_crisis_country_17
+					}
+				}
+				save_global_event_target_as = acemod_crisis_manager_event_target_crisis_country_17
+			}
+			else_if = {
+				limit = {
+					NOT = {
+						exists = event_target:acemod_crisis_manager_event_target_crisis_country_18
+					}
+				}
+				save_global_event_target_as = acemod_crisis_manager_event_target_crisis_country_18
+			}
+			else_if = {
+				limit = {
+					NOT = {
+						exists = event_target:acemod_crisis_manager_event_target_crisis_country_19
+					}
+				}
+				save_global_event_target_as = acemod_crisis_manager_event_target_crisis_country_19
+			}
+			else_if = {
+				limit = {
+					NOT = {
+						exists = event_target:acemod_crisis_manager_event_target_crisis_country_20
+					}
+				}
+				save_global_event_target_as = acemod_crisis_manager_event_target_crisis_country_20
+			}
+			else_if = {
+				limit = {
+					NOT = {
+						exists = event_target:acemod_crisis_manager_event_target_crisis_country_21
+					}
+				}
+				save_global_event_target_as = acemod_crisis_manager_event_target_crisis_country_21
+			}
+			else_if = {
+				limit = {
+					NOT = {
+						exists = event_target:acemod_crisis_manager_event_target_crisis_country_22
+					}
+				}
+				save_global_event_target_as = acemod_crisis_manager_event_target_crisis_country_22
+			}
+			else_if = {
+				limit = {
+					NOT = {
+						exists = event_target:acemod_crisis_manager_event_target_crisis_country_23
+					}
+				}
+				save_global_event_target_as = acemod_crisis_manager_event_target_crisis_country_23
+			}
+			else_if = {
+				limit = {
+					NOT = {
+						exists = event_target:acemod_crisis_manager_event_target_crisis_country_24
+					}
+				}
+				save_global_event_target_as = acemod_crisis_manager_event_target_crisis_country_24
+			}
+			else_if = {
+				limit = {
+					NOT = {
+						exists = event_target:acemod_crisis_manager_event_target_crisis_country_25
+					}
+				}
+				save_global_event_target_as = acemod_crisis_manager_event_target_crisis_country_25
+			}
+			else_if = {
+				limit = {
+					NOT = {
+						exists = event_target:acemod_crisis_manager_event_target_crisis_country_26
+					}
+				}
+				save_global_event_target_as = acemod_crisis_manager_event_target_crisis_country_26
+			}
+			else_if = {
+				limit = {
+					NOT = {
+						exists = event_target:acemod_crisis_manager_event_target_crisis_country_27
+					}
+				}
+				save_global_event_target_as = acemod_crisis_manager_event_target_crisis_country_27
+			}
+			else_if = {
+				limit = {
+					NOT = {
+						exists = event_target:acemod_crisis_manager_event_target_crisis_country_28
+					}
+				}
+				save_global_event_target_as = acemod_crisis_manager_event_target_crisis_country_28
+			}
+			else_if = {
+				limit = {
+					NOT = {
+						exists = event_target:acemod_crisis_manager_event_target_crisis_country_29
+					}
+				}
+				save_global_event_target_as = acemod_crisis_manager_event_target_crisis_country_29
+			}
+			else_if = {
+				limit = {
+					NOT = {
+						exists = event_target:acemod_crisis_manager_event_target_crisis_country_30
+					}
+				}
+				save_global_event_target_as = acemod_crisis_manager_event_target_crisis_country_30
+			}
+			else_if = {
+				limit = {
+					NOT = {
+						exists = event_target:acemod_crisis_manager_event_target_crisis_country_31
+					}
+				}
+				save_global_event_target_as = acemod_crisis_manager_event_target_crisis_country_31
+			}
+			else_if = {
+				limit = {
+					NOT = {
+						exists = event_target:acemod_crisis_manager_event_target_crisis_country_32
+					}
+				}
+				save_global_event_target_as = acemod_crisis_manager_event_target_crisis_country_32
+			}
+			else_if = {
+				limit = {
+					NOT = {
+						exists = event_target:acemod_crisis_manager_event_target_crisis_country_33
+					}
+				}
+				save_global_event_target_as = acemod_crisis_manager_event_target_crisis_country_33
+			}
+			else_if = {
+				limit = {
+					NOT = {
+						exists = event_target:acemod_crisis_manager_event_target_crisis_country_34
+					}
+				}
+				save_global_event_target_as = acemod_crisis_manager_event_target_crisis_country_34
+			}
+			else_if = {
+				limit = {
+					NOT = {
+						exists = event_target:acemod_crisis_manager_event_target_crisis_country_35
+					}
+				}
+				save_global_event_target_as = acemod_crisis_manager_event_target_crisis_country_35
+			}
+			else_if = {
+				limit = {
+					NOT = {
+						exists = event_target:acemod_crisis_manager_event_target_crisis_country_36
+					}
+				}
+				save_global_event_target_as = acemod_crisis_manager_event_target_crisis_country_36
+			}
+			else_if = {
+				limit = {
+					NOT = {
+						exists = event_target:acemod_crisis_manager_event_target_crisis_country_37
+					}
+				}
+				save_global_event_target_as = acemod_crisis_manager_event_target_crisis_country_37
+			}
+			else_if = {
+				limit = {
+					NOT = {
+						exists = event_target:acemod_crisis_manager_event_target_crisis_country_38
+					}
+				}
+				save_global_event_target_as = acemod_crisis_manager_event_target_crisis_country_38
+			}
+			else_if = {
+				limit = {
+					NOT = {
+						exists = event_target:acemod_crisis_manager_event_target_crisis_country_39
+					}
+				}
+				save_global_event_target_as = acemod_crisis_manager_event_target_crisis_country_39
+			}
+			else_if = {
+				limit = {
+					NOT = {
+						exists = event_target:acemod_crisis_manager_event_target_crisis_country_40
+					}
+				}
+				save_global_event_target_as = acemod_crisis_manager_event_target_crisis_country_40
+			}
+			else_if = {
+				limit = {
+					NOT = {
+						exists = event_target:acemod_crisis_manager_event_target_crisis_country_41
+					}
+				}
+				save_global_event_target_as = acemod_crisis_manager_event_target_crisis_country_41
+			}
+			else_if = {
+				limit = {
+					NOT = {
+						exists = event_target:acemod_crisis_manager_event_target_crisis_country_42
+					}
+				}
+				save_global_event_target_as = acemod_crisis_manager_event_target_crisis_country_42
+			}
+			else_if = {
+				limit = {
+					NOT = {
+						exists = event_target:acemod_crisis_manager_event_target_crisis_country_43
+					}
+				}
+				save_global_event_target_as = acemod_crisis_manager_event_target_crisis_country_43
+			}
+			else_if = {
+				limit = {
+					NOT = {
+						exists = event_target:acemod_crisis_manager_event_target_crisis_country_44
+					}
+				}
+				save_global_event_target_as = acemod_crisis_manager_event_target_crisis_country_44
+			}
+			else_if = {
+				limit = {
+					NOT = {
+						exists = event_target:acemod_crisis_manager_event_target_crisis_country_45
+					}
+				}
+				save_global_event_target_as = acemod_crisis_manager_event_target_crisis_country_45
+			}
+			else_if = {
+				limit = {
+					NOT = {
+						exists = event_target:acemod_crisis_manager_event_target_crisis_country_46
+					}
+				}
+				save_global_event_target_as = acemod_crisis_manager_event_target_crisis_country_46
+			}
+			else_if = {
+				limit = {
+					NOT = {
+						exists = event_target:acemod_crisis_manager_event_target_crisis_country_47
+					}
+				}
+				save_global_event_target_as = acemod_crisis_manager_event_target_crisis_country_47
+			}
+			else_if = {
+				limit = {
+					NOT = {
+						exists = event_target:acemod_crisis_manager_event_target_crisis_country_48
+					}
+				}
+				save_global_event_target_as = acemod_crisis_manager_event_target_crisis_country_48
+			}
+			else_if = {
+				limit = {
+					NOT = {
+						exists = event_target:acemod_crisis_manager_event_target_crisis_country_49
+					}
+				}
+				save_global_event_target_as = acemod_crisis_manager_event_target_crisis_country_49
+			}
+			else_if = {
+				limit = {
+					NOT = {
+						exists = event_target:acemod_crisis_manager_event_target_crisis_country_50
+					}
+				}
+				save_global_event_target_as = acemod_crisis_manager_event_target_crisis_country_50
+			}
+		}
+		random_country = {
+			limit = {
+				is_crisis_faction = no
+				prev = {
+					has_country_flag = acemod_crisis_manager_country_flag_swap_play_as_crisis@prev
+				}
+			}
+			save_global_event_target_as = acemod_crisis_manager_event_target_swap_play_as_crisis
+		}
+		if = {
+			limit = {
+				NOT = {
+					exists = event_target:acemod_crisis_manager_event_target_swap_play_as_crisis
+				}
+			}
+			random_country = {
+				limit = {
+					is_crisis_faction = no
+					has_country_flag = acemod_crisis_manager_country_flag_swap_play_as_crisis
+				}
+				save_global_event_target_as = acemod_crisis_manager_event_target_swap_play_as_crisis
+			}
+		}
+	}
+	option = {
+		name = acemod_crisis_manager.13.swap_play_as_crisis
+		custom_tooltip = acemod_crisis_manager.13.z.tooltip
+		trigger = {
+			exists = event_target:acemod_crisis_manager_event_target_swap_play_as_crisis
+		}
+		allow = {
+			event_target:acemod_crisis_manager_event_target_swap_play_as_crisis = {
+				is_ai = yes
+			}
+		}
+		hidden_effect = {
+			event_target:acemod_crisis_manager_event_target_swap_play_as_crisis = {
+				set_player = prev
+				remove_country_flag = acemod_crisis_manager_country_flag_swap_play_as_crisis
+				remove_country_flag = acemod_crisis_manager_country_flag_swap_play_as_crisis@prev
+			}
+		}
+	}
+	option = {
+		name = acemod_crisis_manager.13.crisis_country_1
+		custom_tooltip = acemod_crisis_manager.13.z.tooltip
+		trigger = {
+			exists = event_target:acemod_crisis_manager_event_target_crisis_country_1
+		}
+		allow = {
+			event_target:acemod_crisis_manager_event_target_crisis_country_1 = {
+				is_ai = yes
+			}
+		}
+		hidden_effect = {
+			event_target:acemod_crisis_manager_event_target_crisis_country_1 = {
+				acemod_crisis_manager_swap_play_as_crisis = yes
+			}
+		}
+	}
+	option = {
+		name = acemod_crisis_manager.13.crisis_country_2
+		custom_tooltip = acemod_crisis_manager.13.z.tooltip
+		trigger = {
+			exists = event_target:acemod_crisis_manager_event_target_crisis_country_2
+		}
+		allow = {
+			event_target:acemod_crisis_manager_event_target_crisis_country_2 = {
+				is_ai = yes
+			}
+		}
+		hidden_effect = {
+			event_target:acemod_crisis_manager_event_target_crisis_country_2 = {
+				acemod_crisis_manager_swap_play_as_crisis = yes
+			}
+		}
+	}
+	option = {
+		name = acemod_crisis_manager.13.crisis_country_3
+		custom_tooltip = acemod_crisis_manager.13.z.tooltip
+		trigger = {
+			exists = event_target:acemod_crisis_manager_event_target_crisis_country_3
+		}
+		allow = {
+			event_target:acemod_crisis_manager_event_target_crisis_country_3 = {
+				is_ai = yes
+			}
+		}
+		hidden_effect = {
+			event_target:acemod_crisis_manager_event_target_crisis_country_3 = {
+				acemod_crisis_manager_swap_play_as_crisis = yes
+			}
+		}
+	}
+	option = {
+		name = acemod_crisis_manager.13.crisis_country_4
+		custom_tooltip = acemod_crisis_manager.13.z.tooltip
+		trigger = {
+			exists = event_target:acemod_crisis_manager_event_target_crisis_country_4
+		}
+		allow = {
+			event_target:acemod_crisis_manager_event_target_crisis_country_4 = {
+				is_ai = yes
+			}
+		}
+		hidden_effect = {
+			event_target:acemod_crisis_manager_event_target_crisis_country_4 = {
+				acemod_crisis_manager_swap_play_as_crisis = yes
+			}
+		}
+	}
+	option = {
+		name = acemod_crisis_manager.13.crisis_country_5
+		custom_tooltip = acemod_crisis_manager.13.z.tooltip
+		trigger = {
+			exists = event_target:acemod_crisis_manager_event_target_crisis_country_5
+		}
+		allow = {
+			event_target:acemod_crisis_manager_event_target_crisis_country_5 = {
+				is_ai = yes
+			}
+		}
+		hidden_effect = {
+			event_target:acemod_crisis_manager_event_target_crisis_country_5 = {
+				acemod_crisis_manager_swap_play_as_crisis = yes
+			}
+		}
+	}
+	option = {
+		name = acemod_crisis_manager.13.crisis_country_6
+		custom_tooltip = acemod_crisis_manager.13.z.tooltip
+		trigger = {
+			exists = event_target:acemod_crisis_manager_event_target_crisis_country_6
+		}
+		allow = {
+			event_target:acemod_crisis_manager_event_target_crisis_country_6 = {
+				is_ai = yes
+			}
+		}
+		hidden_effect = {
+			event_target:acemod_crisis_manager_event_target_crisis_country_6 = {
+				acemod_crisis_manager_swap_play_as_crisis = yes
+			}
+		}
+	}
+	option = {
+		name = acemod_crisis_manager.13.crisis_country_7
+		custom_tooltip = acemod_crisis_manager.13.z.tooltip
+		trigger = {
+			exists = event_target:acemod_crisis_manager_event_target_crisis_country_7
+		}
+		allow = {
+			event_target:acemod_crisis_manager_event_target_crisis_country_7 = {
+				is_ai = yes
+			}
+		}
+		hidden_effect = {
+			event_target:acemod_crisis_manager_event_target_crisis_country_7 = {
+				acemod_crisis_manager_swap_play_as_crisis = yes
+			}
+		}
+	}
+	option = {
+		name = acemod_crisis_manager.13.crisis_country_8
+		custom_tooltip = acemod_crisis_manager.13.z.tooltip
+		trigger = {
+			exists = event_target:acemod_crisis_manager_event_target_crisis_country_8
+		}
+		allow = {
+			event_target:acemod_crisis_manager_event_target_crisis_country_8 = {
+				is_ai = yes
+			}
+		}
+		hidden_effect = {
+			event_target:acemod_crisis_manager_event_target_crisis_country_8 = {
+				acemod_crisis_manager_swap_play_as_crisis = yes
+			}
+		}
+	}
+	option = {
+		name = acemod_crisis_manager.13.crisis_country_9
+		custom_tooltip = acemod_crisis_manager.13.z.tooltip
+		trigger = {
+			exists = event_target:acemod_crisis_manager_event_target_crisis_country_9
+		}
+		allow = {
+			event_target:acemod_crisis_manager_event_target_crisis_country_9 = {
+				is_ai = yes
+			}
+		}
+		hidden_effect = {
+			event_target:acemod_crisis_manager_event_target_crisis_country_9 = {
+				acemod_crisis_manager_swap_play_as_crisis = yes
+			}
+		}
+	}
+	option = {
+		name = acemod_crisis_manager.13.crisis_country_10
+		custom_tooltip = acemod_crisis_manager.13.z.tooltip
+		trigger = {
+			exists = event_target:acemod_crisis_manager_event_target_crisis_country_10
+		}
+		allow = {
+			event_target:acemod_crisis_manager_event_target_crisis_country_10 = {
+				is_ai = yes
+			}
+		}
+		hidden_effect = {
+			event_target:acemod_crisis_manager_event_target_crisis_country_10 = {
+				acemod_crisis_manager_swap_play_as_crisis = yes
+			}
+		}
+	}
+	option = {
+		name = acemod_crisis_manager.13.crisis_country_11
+		custom_tooltip = acemod_crisis_manager.13.z.tooltip
+		trigger = {
+			exists = event_target:acemod_crisis_manager_event_target_crisis_country_11
+		}
+		allow = {
+			event_target:acemod_crisis_manager_event_target_crisis_country_11 = {
+				is_ai = yes
+			}
+		}
+		hidden_effect = {
+			event_target:acemod_crisis_manager_event_target_crisis_country_11 = {
+				acemod_crisis_manager_swap_play_as_crisis = yes
+			}
+		}
+	}
+	option = {
+		name = acemod_crisis_manager.13.crisis_country_12
+		custom_tooltip = acemod_crisis_manager.13.z.tooltip
+		trigger = {
+			exists = event_target:acemod_crisis_manager_event_target_crisis_country_12
+		}
+		allow = {
+			event_target:acemod_crisis_manager_event_target_crisis_country_12 = {
+				is_ai = yes
+			}
+		}
+		hidden_effect = {
+			event_target:acemod_crisis_manager_event_target_crisis_country_12 = {
+				acemod_crisis_manager_swap_play_as_crisis = yes
+			}
+		}
+	}
+	option = {
+		name = acemod_crisis_manager.13.crisis_country_13
+		custom_tooltip = acemod_crisis_manager.13.z.tooltip
+		trigger = {
+			exists = event_target:acemod_crisis_manager_event_target_crisis_country_13
+		}
+		allow = {
+			event_target:acemod_crisis_manager_event_target_crisis_country_13 = {
+				is_ai = yes
+			}
+		}
+		hidden_effect = {
+			event_target:acemod_crisis_manager_event_target_crisis_country_13 = {
+				acemod_crisis_manager_swap_play_as_crisis = yes
+			}
+		}
+	}
+	option = {
+		name = acemod_crisis_manager.13.crisis_country_14
+		custom_tooltip = acemod_crisis_manager.13.z.tooltip
+		trigger = {
+			exists = event_target:acemod_crisis_manager_event_target_crisis_country_14
+		}
+		allow = {
+			event_target:acemod_crisis_manager_event_target_crisis_country_14 = {
+				is_ai = yes
+			}
+		}
+		hidden_effect = {
+			event_target:acemod_crisis_manager_event_target_crisis_country_14 = {
+				acemod_crisis_manager_swap_play_as_crisis = yes
+			}
+		}
+	}
+	option = {
+		name = acemod_crisis_manager.13.crisis_country_15
+		custom_tooltip = acemod_crisis_manager.13.z.tooltip
+		trigger = {
+			exists = event_target:acemod_crisis_manager_event_target_crisis_country_15
+		}
+		allow = {
+			event_target:acemod_crisis_manager_event_target_crisis_country_15 = {
+				is_ai = yes
+			}
+		}
+		hidden_effect = {
+			event_target:acemod_crisis_manager_event_target_crisis_country_15 = {
+				acemod_crisis_manager_swap_play_as_crisis = yes
+			}
+		}
+	}
+	option = {
+		name = acemod_crisis_manager.13.crisis_country_16
+		custom_tooltip = acemod_crisis_manager.13.z.tooltip
+		trigger = {
+			exists = event_target:acemod_crisis_manager_event_target_crisis_country_16
+		}
+		allow = {
+			event_target:acemod_crisis_manager_event_target_crisis_country_16 = {
+				is_ai = yes
+			}
+		}
+		hidden_effect = {
+			event_target:acemod_crisis_manager_event_target_crisis_country_16 = {
+				acemod_crisis_manager_swap_play_as_crisis = yes
+			}
+		}
+	}
+	option = {
+		name = acemod_crisis_manager.13.crisis_country_17
+		custom_tooltip = acemod_crisis_manager.13.z.tooltip
+		trigger = {
+			exists = event_target:acemod_crisis_manager_event_target_crisis_country_17
+		}
+		allow = {
+			event_target:acemod_crisis_manager_event_target_crisis_country_17 = {
+				is_ai = yes
+			}
+		}
+		hidden_effect = {
+			event_target:acemod_crisis_manager_event_target_crisis_country_17 = {
+				acemod_crisis_manager_swap_play_as_crisis = yes
+			}
+		}
+	}
+	option = {
+		name = acemod_crisis_manager.13.crisis_country_18
+		custom_tooltip = acemod_crisis_manager.13.z.tooltip
+		trigger = {
+			exists = event_target:acemod_crisis_manager_event_target_crisis_country_18
+		}
+		allow = {
+			event_target:acemod_crisis_manager_event_target_crisis_country_18 = {
+				is_ai = yes
+			}
+		}
+		hidden_effect = {
+			event_target:acemod_crisis_manager_event_target_crisis_country_18 = {
+				acemod_crisis_manager_swap_play_as_crisis = yes
+			}
+		}
+	}
+	option = {
+		name = acemod_crisis_manager.13.crisis_country_19
+		custom_tooltip = acemod_crisis_manager.13.z.tooltip
+		trigger = {
+			exists = event_target:acemod_crisis_manager_event_target_crisis_country_19
+		}
+		allow = {
+			event_target:acemod_crisis_manager_event_target_crisis_country_19 = {
+				is_ai = yes
+			}
+		}
+		hidden_effect = {
+			event_target:acemod_crisis_manager_event_target_crisis_country_19 = {
+				acemod_crisis_manager_swap_play_as_crisis = yes
+			}
+		}
+	}
+	option = {
+		name = acemod_crisis_manager.13.crisis_country_20
+		custom_tooltip = acemod_crisis_manager.13.z.tooltip
+		trigger = {
+			exists = event_target:acemod_crisis_manager_event_target_crisis_country_20
+		}
+		allow = {
+			event_target:acemod_crisis_manager_event_target_crisis_country_20 = {
+				is_ai = yes
+			}
+		}
+		hidden_effect = {
+			event_target:acemod_crisis_manager_event_target_crisis_country_20 = {
+				acemod_crisis_manager_swap_play_as_crisis = yes
+			}
+		}
+	}
+	option = {
+		name = acemod_crisis_manager.13.crisis_country_21
+		custom_tooltip = acemod_crisis_manager.13.z.tooltip
+		trigger = {
+			exists = event_target:acemod_crisis_manager_event_target_crisis_country_21
+		}
+		allow = {
+			event_target:acemod_crisis_manager_event_target_crisis_country_21 = {
+				is_ai = yes
+			}
+		}
+		hidden_effect = {
+			event_target:acemod_crisis_manager_event_target_crisis_country_21 = {
+				acemod_crisis_manager_swap_play_as_crisis = yes
+			}
+		}
+	}
+	option = {
+		name = acemod_crisis_manager.13.crisis_country_22
+		custom_tooltip = acemod_crisis_manager.13.z.tooltip
+		trigger = {
+			exists = event_target:acemod_crisis_manager_event_target_crisis_country_22
+		}
+		allow = {
+			event_target:acemod_crisis_manager_event_target_crisis_country_22 = {
+				is_ai = yes
+			}
+		}
+		hidden_effect = {
+			event_target:acemod_crisis_manager_event_target_crisis_country_22 = {
+				acemod_crisis_manager_swap_play_as_crisis = yes
+			}
+		}
+	}
+	option = {
+		name = acemod_crisis_manager.13.crisis_country_23
+		custom_tooltip = acemod_crisis_manager.13.z.tooltip
+		trigger = {
+			exists = event_target:acemod_crisis_manager_event_target_crisis_country_23
+		}
+		allow = {
+			event_target:acemod_crisis_manager_event_target_crisis_country_23 = {
+				is_ai = yes
+			}
+		}
+		hidden_effect = {
+			event_target:acemod_crisis_manager_event_target_crisis_country_23 = {
+				acemod_crisis_manager_swap_play_as_crisis = yes
+			}
+		}
+	}
+	option = {
+		name = acemod_crisis_manager.13.crisis_country_24
+		custom_tooltip = acemod_crisis_manager.13.z.tooltip
+		trigger = {
+			exists = event_target:acemod_crisis_manager_event_target_crisis_country_24
+		}
+		allow = {
+			event_target:acemod_crisis_manager_event_target_crisis_country_24 = {
+				is_ai = yes
+			}
+		}
+		hidden_effect = {
+			event_target:acemod_crisis_manager_event_target_crisis_country_24 = {
+				acemod_crisis_manager_swap_play_as_crisis = yes
+			}
+		}
+	}
+	option = {
+		name = acemod_crisis_manager.13.crisis_country_25
+		custom_tooltip = acemod_crisis_manager.13.z.tooltip
+		trigger = {
+			exists = event_target:acemod_crisis_manager_event_target_crisis_country_25
+		}
+		allow = {
+			event_target:acemod_crisis_manager_event_target_crisis_country_25 = {
+				is_ai = yes
+			}
+		}
+		hidden_effect = {
+			event_target:acemod_crisis_manager_event_target_crisis_country_25 = {
+				acemod_crisis_manager_swap_play_as_crisis = yes
+			}
+		}
+	}
+	option = {
+		name = acemod_crisis_manager.13.crisis_country_26
+		custom_tooltip = acemod_crisis_manager.13.z.tooltip
+		trigger = {
+			exists = event_target:acemod_crisis_manager_event_target_crisis_country_26
+		}
+		allow = {
+			event_target:acemod_crisis_manager_event_target_crisis_country_26 = {
+				is_ai = yes
+			}
+		}
+		hidden_effect = {
+			event_target:acemod_crisis_manager_event_target_crisis_country_26 = {
+				acemod_crisis_manager_swap_play_as_crisis = yes
+			}
+		}
+	}
+	option = {
+		name = acemod_crisis_manager.13.crisis_country_27
+		custom_tooltip = acemod_crisis_manager.13.z.tooltip
+		trigger = {
+			exists = event_target:acemod_crisis_manager_event_target_crisis_country_27
+		}
+		allow = {
+			event_target:acemod_crisis_manager_event_target_crisis_country_27 = {
+				is_ai = yes
+			}
+		}
+		hidden_effect = {
+			event_target:acemod_crisis_manager_event_target_crisis_country_27 = {
+				acemod_crisis_manager_swap_play_as_crisis = yes
+			}
+		}
+	}
+	option = {
+		name = acemod_crisis_manager.13.crisis_country_28
+		custom_tooltip = acemod_crisis_manager.13.z.tooltip
+		trigger = {
+			exists = event_target:acemod_crisis_manager_event_target_crisis_country_28
+		}
+		allow = {
+			event_target:acemod_crisis_manager_event_target_crisis_country_28 = {
+				is_ai = yes
+			}
+		}
+		hidden_effect = {
+			event_target:acemod_crisis_manager_event_target_crisis_country_28 = {
+				acemod_crisis_manager_swap_play_as_crisis = yes
+			}
+		}
+	}
+	option = {
+		name = acemod_crisis_manager.13.crisis_country_29
+		custom_tooltip = acemod_crisis_manager.13.z.tooltip
+		trigger = {
+			exists = event_target:acemod_crisis_manager_event_target_crisis_country_29
+		}
+		allow = {
+			event_target:acemod_crisis_manager_event_target_crisis_country_29 = {
+				is_ai = yes
+			}
+		}
+		hidden_effect = {
+			event_target:acemod_crisis_manager_event_target_crisis_country_29 = {
+				acemod_crisis_manager_swap_play_as_crisis = yes
+			}
+		}
+	}
+	option = {
+		name = acemod_crisis_manager.13.crisis_country_30
+		custom_tooltip = acemod_crisis_manager.13.z.tooltip
+		trigger = {
+			exists = event_target:acemod_crisis_manager_event_target_crisis_country_30
+		}
+		allow = {
+			event_target:acemod_crisis_manager_event_target_crisis_country_30 = {
+				is_ai = yes
+			}
+		}
+		hidden_effect = {
+			event_target:acemod_crisis_manager_event_target_crisis_country_30 = {
+				acemod_crisis_manager_swap_play_as_crisis = yes
+			}
+		}
+	}
+	option = {
+		name = acemod_crisis_manager.13.crisis_country_31
+		custom_tooltip = acemod_crisis_manager.13.z.tooltip
+		trigger = {
+			exists = event_target:acemod_crisis_manager_event_target_crisis_country_31
+		}
+		allow = {
+			event_target:acemod_crisis_manager_event_target_crisis_country_31 = {
+				is_ai = yes
+			}
+		}
+		hidden_effect = {
+			event_target:acemod_crisis_manager_event_target_crisis_country_31 = {
+				acemod_crisis_manager_swap_play_as_crisis = yes
+			}
+		}
+	}
+	option = {
+		name = acemod_crisis_manager.13.crisis_country_32
+		custom_tooltip = acemod_crisis_manager.13.z.tooltip
+		trigger = {
+			exists = event_target:acemod_crisis_manager_event_target_crisis_country_32
+		}
+		allow = {
+			event_target:acemod_crisis_manager_event_target_crisis_country_32 = {
+				is_ai = yes
+			}
+		}
+		hidden_effect = {
+			event_target:acemod_crisis_manager_event_target_crisis_country_32 = {
+				acemod_crisis_manager_swap_play_as_crisis = yes
+			}
+		}
+	}
+	option = {
+		name = acemod_crisis_manager.13.crisis_country_33
+		custom_tooltip = acemod_crisis_manager.13.z.tooltip
+		trigger = {
+			exists = event_target:acemod_crisis_manager_event_target_crisis_country_33
+		}
+		allow = {
+			event_target:acemod_crisis_manager_event_target_crisis_country_33 = {
+				is_ai = yes
+			}
+		}
+		hidden_effect = {
+			event_target:acemod_crisis_manager_event_target_crisis_country_33 = {
+				acemod_crisis_manager_swap_play_as_crisis = yes
+			}
+		}
+	}
+	option = {
+		name = acemod_crisis_manager.13.crisis_country_34
+		custom_tooltip = acemod_crisis_manager.13.z.tooltip
+		trigger = {
+			exists = event_target:acemod_crisis_manager_event_target_crisis_country_34
+		}
+		allow = {
+			event_target:acemod_crisis_manager_event_target_crisis_country_34 = {
+				is_ai = yes
+			}
+		}
+		hidden_effect = {
+			event_target:acemod_crisis_manager_event_target_crisis_country_34 = {
+				acemod_crisis_manager_swap_play_as_crisis = yes
+			}
+		}
+	}
+	option = {
+		name = acemod_crisis_manager.13.crisis_country_35
+		custom_tooltip = acemod_crisis_manager.13.z.tooltip
+		trigger = {
+			exists = event_target:acemod_crisis_manager_event_target_crisis_country_35
+		}
+		allow = {
+			event_target:acemod_crisis_manager_event_target_crisis_country_35 = {
+				is_ai = yes
+			}
+		}
+		hidden_effect = {
+			event_target:acemod_crisis_manager_event_target_crisis_country_35 = {
+				acemod_crisis_manager_swap_play_as_crisis = yes
+			}
+		}
+	}
+	option = {
+		name = acemod_crisis_manager.13.crisis_country_36
+		custom_tooltip = acemod_crisis_manager.13.z.tooltip
+		trigger = {
+			exists = event_target:acemod_crisis_manager_event_target_crisis_country_36
+		}
+		allow = {
+			event_target:acemod_crisis_manager_event_target_crisis_country_36 = {
+				is_ai = yes
+			}
+		}
+		hidden_effect = {
+			event_target:acemod_crisis_manager_event_target_crisis_country_36 = {
+				acemod_crisis_manager_swap_play_as_crisis = yes
+			}
+		}
+	}
+	option = {
+		name = acemod_crisis_manager.13.crisis_country_37
+		custom_tooltip = acemod_crisis_manager.13.z.tooltip
+		trigger = {
+			exists = event_target:acemod_crisis_manager_event_target_crisis_country_37
+		}
+		allow = {
+			event_target:acemod_crisis_manager_event_target_crisis_country_37 = {
+				is_ai = yes
+			}
+		}
+		hidden_effect = {
+			event_target:acemod_crisis_manager_event_target_crisis_country_37 = {
+				acemod_crisis_manager_swap_play_as_crisis = yes
+			}
+		}
+	}
+	option = {
+		name = acemod_crisis_manager.13.crisis_country_38
+		custom_tooltip = acemod_crisis_manager.13.z.tooltip
+		trigger = {
+			exists = event_target:acemod_crisis_manager_event_target_crisis_country_38
+		}
+		allow = {
+			event_target:acemod_crisis_manager_event_target_crisis_country_38 = {
+				is_ai = yes
+			}
+		}
+		hidden_effect = {
+			event_target:acemod_crisis_manager_event_target_crisis_country_38 = {
+				acemod_crisis_manager_swap_play_as_crisis = yes
+			}
+		}
+	}
+	option = {
+		name = acemod_crisis_manager.13.crisis_country_39
+		custom_tooltip = acemod_crisis_manager.13.z.tooltip
+		trigger = {
+			exists = event_target:acemod_crisis_manager_event_target_crisis_country_39
+		}
+		allow = {
+			event_target:acemod_crisis_manager_event_target_crisis_country_39 = {
+				is_ai = yes
+			}
+		}
+		hidden_effect = {
+			event_target:acemod_crisis_manager_event_target_crisis_country_39 = {
+				acemod_crisis_manager_swap_play_as_crisis = yes
+			}
+		}
+	}
+	option = {
+		name = acemod_crisis_manager.13.crisis_country_40
+		custom_tooltip = acemod_crisis_manager.13.z.tooltip
+		trigger = {
+			exists = event_target:acemod_crisis_manager_event_target_crisis_country_40
+		}
+		allow = {
+			event_target:acemod_crisis_manager_event_target_crisis_country_40 = {
+				is_ai = yes
+			}
+		}
+		hidden_effect = {
+			event_target:acemod_crisis_manager_event_target_crisis_country_40 = {
+				acemod_crisis_manager_swap_play_as_crisis = yes
+			}
+		}
+	}
+	option = {
+		name = acemod_crisis_manager.13.crisis_country_41
+		custom_tooltip = acemod_crisis_manager.13.z.tooltip
+		trigger = {
+			exists = event_target:acemod_crisis_manager_event_target_crisis_country_41
+		}
+		allow = {
+			event_target:acemod_crisis_manager_event_target_crisis_country_41 = {
+				is_ai = yes
+			}
+		}
+		hidden_effect = {
+			event_target:acemod_crisis_manager_event_target_crisis_country_41 = {
+				acemod_crisis_manager_swap_play_as_crisis = yes
+			}
+		}
+	}
+	option = {
+		name = acemod_crisis_manager.13.crisis_country_42
+		custom_tooltip = acemod_crisis_manager.13.z.tooltip
+		trigger = {
+			exists = event_target:acemod_crisis_manager_event_target_crisis_country_42
+		}
+		allow = {
+			event_target:acemod_crisis_manager_event_target_crisis_country_42 = {
+				is_ai = yes
+			}
+		}
+		hidden_effect = {
+			event_target:acemod_crisis_manager_event_target_crisis_country_42 = {
+				acemod_crisis_manager_swap_play_as_crisis = yes
+			}
+		}
+	}
+	option = {
+		name = acemod_crisis_manager.13.crisis_country_43
+		custom_tooltip = acemod_crisis_manager.13.z.tooltip
+		trigger = {
+			exists = event_target:acemod_crisis_manager_event_target_crisis_country_43
+		}
+		allow = {
+			event_target:acemod_crisis_manager_event_target_crisis_country_43 = {
+				is_ai = yes
+			}
+		}
+		hidden_effect = {
+			event_target:acemod_crisis_manager_event_target_crisis_country_43 = {
+				acemod_crisis_manager_swap_play_as_crisis = yes
+			}
+		}
+	}
+	option = {
+		name = acemod_crisis_manager.13.crisis_country_44
+		custom_tooltip = acemod_crisis_manager.13.z.tooltip
+		trigger = {
+			exists = event_target:acemod_crisis_manager_event_target_crisis_country_44
+		}
+		allow = {
+			event_target:acemod_crisis_manager_event_target_crisis_country_44 = {
+				is_ai = yes
+			}
+		}
+		hidden_effect = {
+			event_target:acemod_crisis_manager_event_target_crisis_country_44 = {
+				acemod_crisis_manager_swap_play_as_crisis = yes
+			}
+		}
+	}
+	option = {
+		name = acemod_crisis_manager.13.crisis_country_45
+		custom_tooltip = acemod_crisis_manager.13.z.tooltip
+		trigger = {
+			exists = event_target:acemod_crisis_manager_event_target_crisis_country_45
+		}
+		allow = {
+			event_target:acemod_crisis_manager_event_target_crisis_country_45 = {
+				is_ai = yes
+			}
+		}
+		hidden_effect = {
+			event_target:acemod_crisis_manager_event_target_crisis_country_45 = {
+				acemod_crisis_manager_swap_play_as_crisis = yes
+			}
+		}
+	}
+	option = {
+		name = acemod_crisis_manager.13.crisis_country_46
+		custom_tooltip = acemod_crisis_manager.13.z.tooltip
+		trigger = {
+			exists = event_target:acemod_crisis_manager_event_target_crisis_country_46
+		}
+		allow = {
+			event_target:acemod_crisis_manager_event_target_crisis_country_46 = {
+				is_ai = yes
+			}
+		}
+		hidden_effect = {
+			event_target:acemod_crisis_manager_event_target_crisis_country_46 = {
+				acemod_crisis_manager_swap_play_as_crisis = yes
+			}
+		}
+	}
+	option = {
+		name = acemod_crisis_manager.13.crisis_country_47
+		custom_tooltip = acemod_crisis_manager.13.z.tooltip
+		trigger = {
+			exists = event_target:acemod_crisis_manager_event_target_crisis_country_47
+		}
+		allow = {
+			event_target:acemod_crisis_manager_event_target_crisis_country_47 = {
+				is_ai = yes
+			}
+		}
+		hidden_effect = {
+			event_target:acemod_crisis_manager_event_target_crisis_country_47 = {
+				acemod_crisis_manager_swap_play_as_crisis = yes
+			}
+		}
+	}
+	option = {
+		name = acemod_crisis_manager.13.crisis_country_48
+		custom_tooltip = acemod_crisis_manager.13.z.tooltip
+		trigger = {
+			exists = event_target:acemod_crisis_manager_event_target_crisis_country_48
+		}
+		allow = {
+			event_target:acemod_crisis_manager_event_target_crisis_country_48 = {
+				is_ai = yes
+			}
+		}
+		hidden_effect = {
+			event_target:acemod_crisis_manager_event_target_crisis_country_48 = {
+				acemod_crisis_manager_swap_play_as_crisis = yes
+			}
+		}
+	}
+	option = {
+		name = acemod_crisis_manager.13.crisis_country_49
+		custom_tooltip = acemod_crisis_manager.13.z.tooltip
+		trigger = {
+			exists = event_target:acemod_crisis_manager_event_target_crisis_country_49
+		}
+		allow = {
+			event_target:acemod_crisis_manager_event_target_crisis_country_49 = {
+				is_ai = yes
+			}
+		}
+		hidden_effect = {
+			event_target:acemod_crisis_manager_event_target_crisis_country_49 = {
+				acemod_crisis_manager_swap_play_as_crisis = yes
+			}
+		}
+	}
+	option = {
+		name = acemod_crisis_manager.13.crisis_country_50
+		custom_tooltip = acemod_crisis_manager.13.z.tooltip
+		trigger = {
+			exists = event_target:acemod_crisis_manager_event_target_crisis_country_50
+		}
+		allow = {
+			event_target:acemod_crisis_manager_event_target_crisis_country_50 = {
+				is_ai = yes
+			}
+		}
+		hidden_effect = {
+			event_target:acemod_crisis_manager_event_target_crisis_country_50 = {
+				acemod_crisis_manager_swap_play_as_crisis = yes
+			}
+		}
+	}
+	option = {
+		name = acemod_crisis_manager.13.z
+		custom_tooltip = acemod_crisis_manager.13.z.tooltip
+		hidden_effect = {
+			country_event = {
+				id = acemod_crisis_manager.1				# Closes play as crisis window and redirects to main menu.
 				days = 0
 				random = 0
 			}
