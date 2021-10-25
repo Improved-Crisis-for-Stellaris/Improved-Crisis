@@ -1,7 +1,7 @@
 ﻿l_spanish:
 
   #Original English text by Rodahtnov
-  #Prethoryn Scourge l_spanish:l_spanish:------------------------------
+  #Prethoryn Scourge ------------------------------------
   tech_acemod_crisis_swarm_1: "Análisis de Xenobiología Prethoryn"
   tech_acemod_crisis_swarm_1_desc: "A través de un sondeo y extracción de tejido Prethoryn podemos ganar algo de conocimiento sobre la xenobiologia de esta forma de vida exogaláctica y como eliminar su infestación.\n\n"
   tech_acemod_crisis_swarm_2: "Solvente Anti-Esporas Prethoryn"
@@ -184,4 +184,3 @@
   acemod_ed_warship_point_defense_orange_section_template_key: "PLACEHOLDER"
   acemod_ed_warship_point_defense_green_section_template_key: "PLACEHOLDER"
   acemod_ai_carrier_warship_section_template_key: "PLACEHOLDER"
-  
