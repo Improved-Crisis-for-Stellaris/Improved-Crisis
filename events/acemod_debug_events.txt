@@ -438,6 +438,7 @@ event = {
 		set_country_flag = acemod_country_flag_ignores_ftl_inhibitor
 		set_country_flag = acemod_country_flag_ignores_ftl_inhibitor_di
 		set_country_flag = acemod_crisis_manager_is_crisis_faction
+		set_global_flag = acemod_edict_menu_enabled
 	}
 }
 

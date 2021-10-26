@@ -19501,8 +19501,26 @@ acemod_crisis_manager_reset_settings_script = {
 acemod_crisis_manager_swap_play_as_crisis = {
 	set_player = prev
 	set_country_flag = acemod_crisis_manager_country_flag_swap_play_as_crisis@prev
+	if = {
+		limit = {
+			OR = {
+				is_multiplayer = yes
+				has_global_flag = acemod_edict_menu_enabled
+			}
+			prev = {
+				OR = {
+					has_country_flag = acemod_crisis_manager_original_game_host
+					has_country_flag = acemod_country_flag_edict_menu_enabled
+				}
+			}
+		}
+		set_country_flag = acemod_country_flag_edict_menu_enabled		# Perpetual just in case.
+	}
 	prev = {
 		set_country_flag = acemod_crisis_manager_country_flag_swap_play_as_crisis
+		fire_on_action = {
+			on_action = acemod_crisis_manager_on_played_country_swapped			# This = previous played country.
+		}
 	}
 	remove_country_flag = acemod_assisted_ai
 	if = {

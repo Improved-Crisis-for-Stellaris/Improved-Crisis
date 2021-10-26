@@ -144,6 +144,8 @@
 
   # Mod Menu------------------------------------
  modmenu_acemod: "$acemod_menu_name$"
+ edict_acemod_edict_menu: "$acemod_menu.1.name$"
+ edict_acemod_edict_menu_desc: "$acemod_menu.1.desc$"
 
   # Advanced Options menu-----------------------------------
  acemod_menu.1.x: "§E$acemod_menu.1.x_plain$§!"

@@ -2189,6 +2189,10 @@ country_event = {
 				remove_country_flag = acemod_crisis_manager_country_flag_swap_play_as_crisis
 				remove_country_flag = acemod_crisis_manager_country_flag_swap_play_as_crisis@prev
 			}
+			remove_country_flag = acemod_country_flag_edict_menu_enabled
+			fire_on_action = {
+				on_action = acemod_crisis_manager_on_played_country_swapped				# This = previous played country. Useful for adding acemod_activated flag back. 
+			}
 		}
 	}
 	option = {
