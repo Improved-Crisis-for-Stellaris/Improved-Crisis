@@ -1,6 +1,6 @@
 ﻿l_german:
 
-  #Menu------------------------------------
+  #Menul_german:---------------------------------
   acemod_crisis_manager_name: "Aggressive Crisis Engine"
   acemod_crisis_manager.1.name: "$acemod_crisis_manager_name$: $acemod_crisis_manager_name_singular$"
   acemod_crisis_manager.1.desc: "$SETTINGS$ für §R$CRISIS_FACTOR$§!. Diese können jederzeit während des Spiels in diesem Menü geändert werden.\n\nDieser §BKrisenmanager§! ändert keine Spieldateien und muss §G$ACTIVE$§! sein damit er funktioniert, außer §W£mod_army_damage_mult£ $ARMY_POWER_HEADER$ $MODIFIER$§! und §W$DISABLE$ $GAME_SPEED_4$ $CRISIS_FACTOR$§! Einstellungen, die immer §G$ACTIVE$§! sind.\n\nDie Daten des Managers und seiner Diagnosetools werden im Spielstand gespeichert, der größte Teil davon ist über das §WDebugging-Tools§!-Fenster zugänglich. Der Manager zeichnet auf, wann und welche Krise er ausgelöst hat."
@@ -195,7 +195,7 @@
   #Play as crisis menu------------------------------------
   acemod_crisis_manager.1.n: "§E$acemod_crisis_manager.1.n_plain$§!"
   acemod_crisis_manager.1.n_plain: "$PLAY$ $CRISIS_FACTOR$"
-  acemod_crisis_manager.1.n.tooltip: "Switch play to a $CRISIS_FACTOR$."
+  acemod_crisis_manager.1.n.tooltip: "Wechsle das Spiel zu einer $CRISIS_FACTOR$."
   acemod_crisis_manager.13.z: "§Y$SAVE$§!"
   acemod_crisis_manager.13.z.tooltip: "$PLAY$."
   acemod_crisis_manager.13.name: "$acemod_menu_name$: $acemod_crisis_manager.1.n_plain$"

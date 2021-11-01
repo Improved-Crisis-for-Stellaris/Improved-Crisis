@@ -1,6 +1,6 @@
 ﻿l_french:
 
-  #Menu------------------------------------
+  #Menul_french:l_french:l_french:l_french:------------------------
   acemod_crisis_manager_name: "Aggressive Crisis Engine"
   acemod_crisis_manager.1.name: "$acemod_crisis_manager_name$: $acemod_crisis_manager_name_singular$"
   acemod_crisis_manager.1.desc: "$SETTINGS$ pour §R$CRISIS_FACTOR$§!. Ils peuvent être changés à tout moment en cours de jeu depuis ce menu.\n\nCe §BCrisis Manager§! ne change pas les fichiers du jeu et doit être §G$ACTIVE$§! pour fonctionner, sauf pour les paramètres §W£mod_army_damage_mult£ $ARMY_POWER_HEADER$ $MODIFIER$§! et §W$DISABLE$ $GAME_SPEED_4$ $CRISIS_FACTOR$§!, qui sont toujours §G$ACTIVE$§!.\n\nLes données du Gestionnaires et ses outils de diagnostics sont stockés dans la sauvegarde, la plupart étant accessible via la fenêtre des §WDebugging tools§!. Le Gestionnaire enregistre quand et quelle Crise est générée."

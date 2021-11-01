@@ -1,9 +1,9 @@
 ﻿l_german:
 
   #Original English text by Rodahtnov
-  #Prethoryn Scourge ------------------------------------
-  tech_acemod_crisis_swarm_1: "Prethoryn Lebensformen Analyse"
-  tech_acemod_crisis_swarm_1_desc: "Durch geplanets Entfernen von Gewebe der exogalaktischen Lebenformen können wir unser wissen über den Schwarm erweitern und lernen wir man deren Infektionen entfernt.\n\n"
+  #Prethoryn Scourge l_german:l_german:------------------------------
+  tech_acemod_crisis_swarm_1: "Prethoryn Lebensform-Analyse"
+  tech_acemod_crisis_swarm_1_desc: "Durch die Fernsondierung und Extraktion von Prethoryn-Gewebe können wir mehr Einblicke in die Funktionsweise dieser seltsamen exogalaktischen Lebensform gewinnen und ihren Befall beseitigen.\n\n"
   tech_acemod_crisis_swarm_2: "Anti-Prethoryn Nanoroboter"
   tech_acemod_crisis_swarm_2_desc: "Wenn der Schwarm angreift oder sich in System bewegt, benutzt dieser Mikroorganismen um unser Technology und Biology zu beschäftigen oder sogar zerstören. Mit geplanten aussetzen von Nanorobotern kann dieser Schaden verhindert oder zumindest verzögert werden.\n\n"
   tech_acemod_crisis_swarm_3: "Schwarm Hive Giftstoffe"
