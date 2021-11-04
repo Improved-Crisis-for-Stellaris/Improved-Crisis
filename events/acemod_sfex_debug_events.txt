@@ -35,6 +35,7 @@ event = {
 		set_star_flag = wg_psionic_systems
 		set_star_flag = ehof_compound_system
 		set_star_flag = giga_core_03
+		set_star_flag = maginot_anti_jump_star
 		set_global_flag = gigastructures_enabled
 		# cohesive_system = yes
 		# urmazin_system = yes

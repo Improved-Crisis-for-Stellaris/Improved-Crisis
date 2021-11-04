@@ -134,6 +134,7 @@ acemod_sfex_jumpdrive_order_can_enter_system_by_jump_scripted_trigger = {
 			# Gigastructures
 			has_star_flag = ehof_compound_system
 			has_star_flag = giga_core_03
+			has_star_flag = maginot_anti_jump_star
 			AND = {
 				has_global_flag = gigastructures_enabled
 				OR = {
