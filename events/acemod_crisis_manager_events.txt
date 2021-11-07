@@ -1245,8 +1245,26 @@ event = {
 			limit = {
 				# has_global_flag = acemod_crisis_manager_active				# (Settings active) - always. See acemod_crisis_manager.1.l
 				mid_game_years_passed >= 24
+				NOT = {
+					end_game_years_passed >= 50
+				}
 			}
 			set_global_flag = galactic_crisis_happened
+		}
+		else_if = {
+			limit = {
+				end_game_years_passed >= 50
+				NOR = {
+					has_global_flag = acemod_crisis_manager_active					# ACE Crisis Manager disables crisis spawn before end game starts and controls it on its own.
+					has_global_flag = prethoryn_invasion_happened
+					has_global_flag = extradimensional_invasion_happened
+					has_global_flag = ai_invasion_happened
+					exists = event_target:contingency_bot					# In case other mod makes stupid mistake of triggering Contingency via event crisis.2000 without setting proper flags.
+					has_global_flag = ai_invasion_ongoing
+					has_global_flag = ai_invasion_defeated
+				}
+			}
+			remove_global_flag = galactic_crisis_happened			# People should use one crisis manager anyway, and should not spawn crisis before end game start, or should just not use this option.
 		}
 	}
 }
