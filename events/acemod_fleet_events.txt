@@ -519,6 +519,7 @@ fleet_event = {
 		}
 		if = {
 			limit = {
+				exists = solar_system
 				NOT = {
 					solar_system = {
 						exists = owner
@@ -549,6 +550,7 @@ fleet_event = {
 				clear_fleet_actions = this				# Unstucks fleet if caught in a queued actions loop.
 				if = {
 					limit = {
+						exists = solar_system
 						solar_system = {
 							exists = owner
 							any_system_planet = {
@@ -684,6 +686,7 @@ fleet_event = {
 				else = {
 					if = {
 						limit = {
+							exists = solar_system
 							owner = {
 								OR = {
 									is_country_type = extradimensional
@@ -1082,6 +1085,7 @@ fleet_event = {
 		else = {
 			if = {
 				limit = {
+					exists = solar_system
 					solar_system = {
 						OR = {
 							has_natural_wormhole = yes
@@ -1164,7 +1168,10 @@ fleet_event = {
 					}
 				}
 			}
-			else = {
+			else_if = {
+				limit = {
+					exists = solar_system
+				}
 				fleet_event = {
 					id = acemod_fleet.111
 				}
@@ -1178,6 +1185,9 @@ fleet_event = {
 	id = acemod_fleet.111
 	hide_window = yes
 	is_triggered_only = yes
+	trigger = {
+		exists = solar_system
+	}
 	immediate = {
 		if = {
 			limit = {
@@ -4503,6 +4513,7 @@ planet_event = {
 	hide_window = yes
 	is_triggered_only = yes
 	trigger = {
+		is_planet_class = pc_cybrex
 		owner = {
 			is_country_type = cybrex_empire
 		}
@@ -4524,6 +4535,11 @@ planet_event = {
 			limit = {
 				count_planet_army = {
 					count = 0
+					limit = {
+						owner = {
+							is_country_type = cybrex_empire
+						}
+					}
 				}
 			}
 			set_planet_flag = acemod_planet_flag_destroy_col_cybrex_effect_fix

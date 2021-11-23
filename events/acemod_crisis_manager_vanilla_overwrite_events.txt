@@ -19,7 +19,10 @@ country_event = {
 				AND = {
 					is_country_type = portal_holder
 					count_owned_ship = {
-						limit = { is_ship_size = dimensional_portal_ed }
+						limit = {
+							is_ship_size = dimensional_portal_ed
+							is_within_borders_of = root
+						}
 						count > 0
 					}
 				}
@@ -694,7 +697,10 @@ country_event = {
 				AND = {
 					is_country_type = portal_holder
 					count_owned_ship = {
-						limit = { is_ship_size = dimensional_portal_ed }
+						limit = {
+							is_ship_size = dimensional_portal_ed
+							is_within_borders_of = root
+						}
 						count > 0
 					}
 				}
@@ -832,7 +838,10 @@ ship_event = {
 			# Must only trigger if portal is still alive
 			OR = {
 				count_owned_ship = {
-					limit = { is_ship_size = dimensional_portal_ed }
+					limit = {
+						is_ship_size = dimensional_portal_ed
+						is_within_borders_of = root.owner
+					}
 					count > 0
 				}
 				any_country = {
