@@ -36,6 +36,11 @@ tech_acemod_crisis_swarm_1 = {
 					which = acemod_var_country_technology_exclusion
 					value = 1
 				}
+				NOT = {
+					any_country = {
+						is_country_type = swarm
+					}
+				}
 			}
 		}
 		modifier = {
@@ -100,6 +105,11 @@ tech_acemod_crisis_swarm_2 = {
 					which = acemod_var_country_technology_exclusion
 					value = 1
 				}
+				NOT = {
+					any_country = {
+						is_country_type = swarm
+					}
+				}
 			}
 		}
 		modifier = {
@@ -163,6 +173,11 @@ tech_acemod_crisis_swarm_3 = {
 				check_variable = {
 					which = acemod_var_country_technology_exclusion
 					value = 1
+				}
+				NOT = {
+					any_country = {
+						is_country_type = swarm
+					}
 				}
 			}
 		}
@@ -230,6 +245,15 @@ tech_acemod_crisis_extradimensional_1 = {
 					which = acemod_var_country_technology_exclusion
 					value = 1
 				}
+				NOT = {
+					any_country = {
+						OR = {
+							is_country_type = extradimensional
+							is_country_type = extradimensional_2
+							is_country_type = extradimensional_3
+						}
+					}
+				}
 			}
 		}
 		modifier = {
@@ -295,6 +319,15 @@ tech_acemod_crisis_extradimensional_2 = {
 				check_variable = {
 					which = acemod_var_country_technology_exclusion
 					value = 1
+				}
+				NOT = {
+					any_country = {
+						OR = {
+							is_country_type = extradimensional
+							is_country_type = extradimensional_2
+							is_country_type = extradimensional_3
+						}
+					}
 				}
 			}
 		}
@@ -362,6 +395,15 @@ tech_acemod_crisis_extradimensional_3 = {
 					which = acemod_var_country_technology_exclusion
 					value = 1
 				}
+				NOT = {
+					any_country = {
+						OR = {
+							is_country_type = extradimensional
+							is_country_type = extradimensional_2
+							is_country_type = extradimensional_3
+						}
+					}
+				}
 			}
 		}
 		modifier = {
@@ -425,6 +467,11 @@ tech_acemod_crisis_extradimensional_ai_empire_1 = {
 				check_variable = {
 					which = acemod_var_country_technology_exclusion
 					value = 1
+				}
+				NOT = {
+					any_country = {
+						is_country_type = ai_empire
+					}
 				}
 			}
 		}
@@ -490,6 +537,11 @@ tech_acemod_crisis_extradimensional_ai_empire_2 = {
 					which = acemod_var_country_technology_exclusion
 					value = 1
 				}
+				NOT = {
+					any_country = {
+						is_country_type = ai_empire
+					}
+				}
 			}
 		}
 		modifier = {
@@ -553,6 +605,11 @@ tech_acemod_crisis_extradimensional_ai_empire_3 = {
 				check_variable = {
 					which = acemod_var_country_technology_exclusion
 					value = 1
+				}
+				NOT = {
+					any_country = {
+						is_country_type = ai_empire
+					}
 				}
 			}
 		}
@@ -623,6 +680,11 @@ tech_acemod_crisis_goo = {
 					which = acemod_var_country_technology_exclusion
 					value = 1
 				}
+				NOT = {
+					any_country = {
+						is_country_type = gray_goo
+					}
+				}
 			}
 		}
 		modifier = {
@@ -688,6 +750,11 @@ tech_acemod_crisis_goo = {
 # 					which = acemod_var_country_technology_exclusion
 # 					value = 1
 # 				}
+# 				NOT = {
+# 					any_country = {
+# 						is_country_type = shroud_spirits
+# 					}
+# 				}
 # 			}
 # 		}
 # 		modifier = {
@@ -699,7 +766,7 @@ tech_acemod_crisis_goo = {
 # 		}
 # 	}
 # 	ai_weight = {
-#		weight = @acemod_ai_weight_priority
+# 		weight = @acemod_ai_weight_priority
 # 		modifier = {
 # 			factor = 0
 # 			NOT = {
@@ -740,6 +807,7 @@ tech_acemod_crisis_fe = {
 		OR = {
 			is_country_type = default
 			has_country_flag = acemod_country_flag_technology_allowed
+			is_zofe_compatible = yes			# Merger of Rules
 		}
 	}
 	weight_modifier = {
