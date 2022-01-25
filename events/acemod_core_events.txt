@@ -30,6 +30,16 @@ country_event = {
 	}
 }
 
+# Marks Aggresive Crisis Engine mod as present. Other mods can check against this flag to see if ACEMOD is installed. is_triggered_only
+event = {
+	id = acemod_core.2
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		set_global_flag = acemod_installed
+	}
+}
+
 # Applies anti-crisis damage debuff to all playable empires.
 event = {
 	id = acemod_core.3

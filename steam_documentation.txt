@@ -271,6 +271,10 @@ Fleets will merge under certain conditions. Action invoked by acemod_custom_on_a
 
 [h1]Known additional crises support:[/h1]
 
+[b]Overgrowth (Fatal Foundations Story Pack)[/b]
+Native support. To disable ACE AI for Overgrowth execute while crisis is active:
+[code]effect every_country = { limit = { is_country_type = overgrowth_country } remove_country_flag = acemod_assisted_ai set_country_flag = acemod_do_not_set_assisted_ai }[/code] Wait until new year for the built-in AI to reactivate.
+
 [b]Gray Tempest:[/b]
 Execute the following console command once Gray Tempest spawned:
 [code]effect every_country = { limit = { is_country_type = gray_goo } set_country_flag = acemod_assisted_ai } set_global_flag = acemod_activated every_system = { limit = { has_star_flag = graygoo_factory_system } set_star_flag = acemod_star_flag_starbase_defensive_protocol every_neighbor_system = { set_star_flag = acemod_star_flag_starbase_defensive_protocol } every_fleet_in_system = { limit = { owner = { is_country_type = gray_goo } } acemod_set_fleet_piloted_exclusion_on = yes } }[/code]

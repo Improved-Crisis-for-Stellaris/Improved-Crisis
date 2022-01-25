@@ -626,6 +626,30 @@ fleet_event = {
 								move_to = this
 								wait = 5
 								orbit_planet = this
+								effect = {
+									id = "acemod.105.e2.fatal_foundations_compat"
+									if = {
+										limit = {
+											prevprev.owner = {
+												is_country_type = overgrowth_country
+											}
+										}
+										set_variable = {
+											which = army_count
+											value = 0
+										}
+										planet_event = {
+											id = fatalf.033
+										}
+										set_variable = {
+											which = blocker_count
+											value = 0
+										}
+										planet_event = {
+											id = fatalf.032
+										}
+									}
+								}
 							}
 							failed = {
 								effect = {
@@ -1230,6 +1254,7 @@ fleet_event = {
 						}
 						NOR = {
 							has_star_flag = acemod_star_flag_solar_system_target
+							has_star_flag = acemod_star_flag_solar_system_target@prevprev							# Avoid looping if systems are occupied.
 							AND = {
 								has_star_flag = extradimensional_origin_system								# Unbidden don't need to target own portal system.
 								owner = {
@@ -1327,6 +1352,7 @@ fleet_event = {
 						}
 						NOR = {
 							has_star_flag = acemod_star_flag_solar_system_target
+							has_star_flag = acemod_star_flag_solar_system_target@prevprev							# Avoid looping if systems are occupied.
 							AND = {
 								has_star_flag = extradimensional_origin_system								# Unbidden don't need to target own portal system.
 								owner = {
@@ -1417,6 +1443,7 @@ fleet_event = {
 						}
 						NOR = {
 							has_star_flag = acemod_star_flag_solar_system_target
+							has_star_flag = acemod_star_flag_solar_system_target@prevprev							# Avoid looping if systems are occupied.
 							AND = {
 								has_star_flag = extradimensional_origin_system								# Unbidden don't need to target own portal system.
 								owner = {
@@ -1523,6 +1550,7 @@ fleet_event = {
 					}
 					NOR = {
 						has_star_flag = acemod_star_flag_solar_system_target
+						has_star_flag = acemod_star_flag_solar_system_target@prevprev						# Avoid looping if systems are occupied.
 						has_star_flag = extradimensional_origin_system
 					}
 				}
@@ -1626,8 +1654,9 @@ fleet_event = {
 								exists = owner
 							}
 						}
-						NOT = {
+						NOR = {
 							has_star_flag = acemod_star_flag_solar_system_target
+							has_star_flag = acemod_star_flag_solar_system_target@prev							# Avoid looping if systems are occupied.
 						}
 					}
 					found_system = {
@@ -1728,8 +1757,9 @@ fleet_event = {
 								exists = owner
 							}
 						}
-						NOT = {
+						NOR = {
 							has_star_flag = acemod_star_flag_solar_system_target
+							has_star_flag = acemod_star_flag_solar_system_target@prev							# Avoid looping if systems are occupied.
 						}
 					}
 					found_system = {
@@ -1782,8 +1812,9 @@ fleet_event = {
 							}
 							fleet_power > 0
 						}
-						NOT = {
+						NOR = {
 							has_star_flag = acemod_star_flag_solar_system_target
+							has_star_flag = acemod_star_flag_solar_system_target@prev							# Avoid looping if systems are occupied.
 						}
 					}
 					found_system = {
@@ -1814,6 +1845,7 @@ fleet_event = {
 										NOR = {
 											has_star_flag = lcluster
 											has_star_flag = acemod_star_flag_solar_system_target
+											has_star_flag = acemod_star_flag_solar_system_target@prev											# Avoid looping if systems are occupied.
 										}
 										has_access_fleet = root.owner
 									}

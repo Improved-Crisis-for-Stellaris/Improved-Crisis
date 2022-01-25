@@ -123,3 +123,9 @@ acemod_sfex_on_jumpdrive_order_complete = {
 		acemod_fleet.107		# Seeks valuable valid target to bombard, skips if not found.
 	}
 }
+
+on_single_player_save_game_load = {
+	events = {
+		acemod_core.2		# Marks Aggresive Crisis Engine mod as present. Other mods can check against this flag to see if ACEMOD is installed. is_triggered_only
+	}
+}
