@@ -358,6 +358,51 @@ event = {
 # 	}
 # }
 #
+# Unstucks fleets caught in pathfinding loop bug.
+# on_entering_system_fleet
+fleet_event = {
+	id = acemod_fleet.90
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		has_global_flag = acemod_activated
+		owner = {
+			has_country_flag = acemod_assisted_ai
+			is_ai = yes
+		}
+	}
+	immediate = {
+		solar_system = {
+			if = {
+				limit = {
+					NOT = {
+						has_star_flag = acemod_star_flag_system_visited_by_fleet@prev
+					}
+				}
+				set_timed_star_flag = {
+					flag = acemod_star_flag_system_visited_by_fleet@prev
+					days = 40
+				}
+			}
+			else_if = {
+				limit = {
+					prev = {
+						NOR = {
+							has_fleet_flag = acemod_fleet_flag_response_team
+							has_fleet_flag = acemod_fleet_flag_solar_response_team
+						}
+					}
+				}
+				prev = {
+					clear_orders = yes					# Unstucks fleet caught in pathfinding loop bug.
+					clear_fleet_actions = this					# Unstucks caught in pathfinding loop bug.
+				}
+				remove_star_flag = acemod_star_flag_system_visited_by_fleet@prev
+			}
+		}
+	}
+}
+
 # Orders idle crisis fleets to seek target systems and move to them.
 event = {
 	id = acemod_fleet.100
@@ -2200,6 +2245,7 @@ fleet_event = {
 	immediate = {
 		if = {
 			limit = {
+				exists = from.owner
 				has_fleet_flag = acemod_fleet_flag_response_target_candidate@from.owner
 			}
 			if = {
@@ -2865,6 +2911,7 @@ fleet_event = {
 	hide_window = yes
 	is_triggered_only = yes
 	trigger = {
+		exists = solar_system
 		NOR = {
 			has_global_flag = acemod_advanced_ai_disabled
 			owner = {
@@ -4360,29 +4407,115 @@ fleet_event = {
 					}
 					found_system = {
 						move_to = this
-						# effect = {
-						# 	id = acemod.411.e1
-						# 	root = {
-						# 		fleet_event = {
-						# 			id = acemod_fleet.101
-						# 			days = 5
-						# 		}
-						# 	}
-						# }
+						effect = {
+							id = acemod.412.e1
+							root = {
+								fleet_event = {
+									id = acemod_fleet.412
+									days = 3
+								}
+							}
+						}
 					}
-					# Maybe increase seek range on failed.
-					# TO DO: set up event to move to nearby allied fleet if no target found.
-					# failed = {
-					# 	effect = {
-					# 		id = acemod.411.e2
-					# 		root = {
-					# 			fleet_event = {
-					# 				id = acemod_fleet.101
-					# 				days = 5
-					# 			}
-					# 		}
-					# 	}
-					# }
+					failed = {
+						effect = {
+							id = acemod.412.e2
+							root = {
+								fleet_event = {
+									id = acemod_fleet.412
+									days = 3
+								}
+							}
+						}
+					}
+				}
+			}
+			break = yes
+		}
+		# If idle move to a friendly fleet if none nearby.
+		else = {
+			fleet_event = {
+				id = acemod_fleet.412
+				days = 3
+			}
+		}
+	}
+}
+
+# If idle move to a friendly fleet if none nearby.
+fleet_event = {
+	id = acemod_fleet.412
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		is_fleet_idle = yes
+		NOT = {
+			has_fleet_flag = acemod_fleet_flag_relocating_army
+			solar_system = {
+				any_fleet_in_system = {
+					exists = owner
+					owner = {
+						is_same_value = root.owner
+					}
+					is_ship_class = shipclass_military
+				}
+			}
+		}
+	}
+	immediate = {
+		solar_system = {
+			closest_system = {
+				min_steps = 1
+				max_steps = 5
+				use_bypasses = no
+				limit = {
+					has_access_fleet = root.owner
+					NOT = {
+						has_star_flag = acemod_star_flag_solar_system_army_target
+					}
+					any_fleet_in_system = {
+						exists = owner
+						owner = {
+							is_same_value = root.owner
+						}
+						is_ship_class = shipclass_military
+					}
+					NOT = {
+						any_fleet_in_system = {
+							exists = owner
+							owner = {
+								is_hostile = root.owner
+							}
+							fleet_power > 0
+						}
+					}
+				}
+				save_event_target_as = acemod_event_target_invader_army_target
+				set_timed_star_flag = {
+					flag = acemod_star_flag_solar_system_army_target
+					days = 120
+				}
+			}
+		}
+		if = {
+			limit = {
+				exists = event_target:acemod_event_target_invader_army_target
+			}
+			set_timed_fleet_flag = {
+				flag = acemod_fleet_flag_relocating_army
+				days = 180
+			}
+			# clear_orders = yes			# Unstucks fleet if caught in a queued actions loop.
+			# clear_fleet_actions = this			# Unstucks fleet if caught in a queued actions loop.
+			queue_actions = {
+				find_closest_system = {
+					trigger = {
+						id = "acemod.412.t1"
+						is_same_value = event_target:acemod_event_target_invader_army_target
+					}
+					found_system = {
+						move_to = this
+					}
 				}
 			}
 			break = yes
