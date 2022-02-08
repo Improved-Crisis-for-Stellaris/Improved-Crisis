@@ -1063,6 +1063,37 @@ fleet_event = {
 	}
 }
 
+# acemod_custom_on_action_move_order_issued
+# root/this = fleet
+# from = target system
+fleet_event = {
+	id = acemod_fleet.108
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		# Seek alternative to walking (jumpdrive_order)
+		fleet_event = {
+			id = acemod_fleet.109
+			days = 1			# Needed to cancel move_to order in found_system
+			scopes = {
+				from = from
+			}
+		}
+	}
+}
+
+# Seek alternative to walking (jumpdrive_order)
+# acemod_custom_on_action_move_order_issued
+# root/this = fleet
+# from = target system
+fleet_event = {
+	id = acemod_fleet.109
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+	}
+}
+
 # Finds connected and accessible bypass system.
 fleet_event = {
 	id = acemod_fleet.110
@@ -1540,11 +1571,22 @@ fleet_event = {
 						is_same_value = event_target:acemod_event_target_invader_target
 					}
 					found_system = {
+						effect = {
+							id = "acemod.111.e1"
+							root = {
+								fire_on_action = {
+									on_action = acemod_custom_on_action_move_order_issued
+									scopes = {
+										from = prev										# Target system
+									}
+								}
+							}
+						}
 						move_to = this
 					}
 				}
 				effect = {
-					id = acemod.111.e2
+					id = "acemod.111.e2"
 					root = {
 						if = {
 							limit = {
@@ -1622,6 +1664,17 @@ fleet_event = {
 					}
 				}
 				found_system = {
+					effect = {
+						id = "acemod.112.e1"
+						root = {
+							fire_on_action = {
+								on_action = acemod_custom_on_action_move_order_issued
+								scopes = {
+									from = prev									# Target system
+								}
+							}
+						}
+					}
 					move_to = this
 				}
 				# failed = {
@@ -1632,7 +1685,7 @@ fleet_event = {
 				# }
 			}
 			effect = {
-				id = acemod.112.e3
+				id = "acemod.112.e3"
 				root = {
 					if = {
 						limit = {
@@ -1813,6 +1866,14 @@ fleet_event = {
 							set_timed_star_flag = {
 								flag = acemod_star_flag_solar_system_target
 								days = 120
+							}
+							root = {
+								fire_on_action = {
+									on_action = acemod_custom_on_action_move_order_issued
+									scopes = {
+										from = prev										# Target system
+									}
+								}
 							}
 						}
 						move_to = this
@@ -3570,7 +3631,7 @@ fleet_event = {
 					# TO DO: set up event to move to nearby allied fleet if no target found.
 					# failed = {
 					# 	effect = {
-					# 		id = acemod.311.e2
+					# 		id = "acemod.311.e2"
 					# 		root = {
 					# 			fleet_event = {
 					# 				id = acemod_fleet.101
@@ -4408,7 +4469,7 @@ fleet_event = {
 					found_system = {
 						move_to = this
 						effect = {
-							id = acemod.412.e1
+							id = "acemod.412.e1"
 							root = {
 								fleet_event = {
 									id = acemod_fleet.412
@@ -4419,7 +4480,7 @@ fleet_event = {
 					}
 					failed = {
 						effect = {
-							id = acemod.412.e2
+							id = "acemod.412.e2"
 							root = {
 								fleet_event = {
 									id = acemod_fleet.412
@@ -5046,7 +5107,7 @@ fleet_event = {
 					# Maybe increase seek range on failed.
 					# failed = {
 					# 	effect = {
-					# 		id = acemod.411.e2
+					# 		id = "acemod.411.e2"
 					# 		root = {
 					# 			fleet_event = {
 					# 				id = acemod_fleet.101

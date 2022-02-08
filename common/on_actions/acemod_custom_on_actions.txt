@@ -3,5 +3,13 @@ acemod_custom_on_action_merge_fleets = {
 	events = {
 		acemod_fleet.650
 	}
+}
 
+# Seek alternative to walking (jumpdrive_order)
+# root/this = fleet
+# from = target system
+acemod_custom_on_action_move_order_issued = {
+	events = {
+		acemod_fleet.108
+	}
 }
