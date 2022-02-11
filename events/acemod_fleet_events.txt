@@ -1092,6 +1092,9 @@ fleet_event = {
 			from = {
 				if = {
 					limit = {
+						owner = {
+							is_crisis_faction = no							# Crisis starbases are tough.
+						}
 						acemod_sfex_jumpdrive_order_can_enter_system_by_jump_scripted_trigger = yes
 						# acemod_sfex_jumpdrive_order_calculate_effective_range_effect = yes
 						acemod_sfex_max_distance_interstellar_scripted_trigger = {
