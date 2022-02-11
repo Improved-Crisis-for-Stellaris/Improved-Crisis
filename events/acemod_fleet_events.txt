@@ -1071,12 +1071,83 @@ fleet_event = {
 	hide_window = yes
 	is_triggered_only = yes
 	immediate = {
-		# Seek alternative to walking (jumpdrive_order)
-		fleet_event = {
-			id = acemod_fleet.109
-			days = 1			# Needed to cancel move_to order in found_system
-			scopes = {
-				from = from
+		if = {
+			limit = {
+				owner = {
+					OR = {
+						is_country_type = extradimensional
+						is_country_type = extradimensional_2
+						is_country_type = extradimensional_3
+						has_country_flag = acemod_country_flag_jumpdrive_order_enabled
+					}
+					NOT = {
+						has_country_flag = acemod_country_flag_jumpdrive_order_disabled
+					}
+				}
+				NOR = {
+					has_global_flag = acemod_global_flag_jumpdrive_order_disabled
+					has_fleet_flag = acemod_fleet_flag_jumpdrive_order_disabled
+				}
+			}
+			from = {
+				if = {
+					limit = {
+						acemod_sfex_jumpdrive_order_can_enter_system_by_jump_scripted_trigger = yes
+						# acemod_sfex_jumpdrive_order_calculate_effective_range_effect = yes
+						acemod_sfex_max_distance_interstellar_scripted_trigger = {
+							SOURCE = prev
+							MAX_DISTANCE = 150							# Default for Extradimensionals. Variable import WIP.
+						}
+					}
+					save_event_target_as = acemod_event_target_jumpdrive_order_target
+				}
+			}
+			if = {
+				limit = {
+					exists = event_target:acemod_event_target_jumpdrive_order_target
+					distance = {
+						source = from
+						type = hyperlane
+						min_jumps >= 2
+						max_jumps <= 30
+					}
+					acemod_sfex_jumpdrive_order_has_ftl_drive_scripted_trigger = yes					# We assume Extradimensionals are always capable of jump.
+				}
+				if = {
+					limit = {
+						is_in_combat = no
+						is_disabled = no
+						NOT = {
+							any_owned_ship = {
+								has_modifier = acemod_sfex_jump_drive_order_cooldown
+							}
+						}
+					}
+					# Seek alternative to walking (jumpdrive_order)
+					acemod_sfex_set_fleet_order = {
+						ORDER = jumpdrive
+						TARGET = from						# event_target:acemod_event_target_jumpdrive_order_target
+						MODNAME = acemod_menu_name
+					}
+				}
+				else_if = {
+					limit = {
+						from = {
+							has_star_flag = acemod_star_flag_solar_system_target@prev
+						}
+						NOR = {
+							has_fleet_flag = acemod_fleet_flag_response_team
+							has_fleet_flag = acemod_fleet_flag_solar_response_team
+						}
+					}
+					fleet_event = {
+						id = acemod_fleet.108
+						days = 50						# Try again later.
+						scopes = {
+							from = from
+						}
+					}
+				}
 			}
 		}
 	}
