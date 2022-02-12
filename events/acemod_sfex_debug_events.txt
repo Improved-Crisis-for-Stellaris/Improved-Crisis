@@ -26,6 +26,7 @@ event = {
 		set_fleet_flag = acemod_sfex_fleet_flag_jumpdrive_order
 		set_fleet_flag = acemod_sfex_fleet_flag_build_order
 		set_leader_flag = acemod_sfex_starbase
+		set_global_flag = acemod_aggressive_jumpdrive_protocol_disabled
 		# The Merger of Rules, see scripted_triggers
 		set_star_flag = ag_no_jump_out_system
 		set_star_flag = nep_whitegoo_1

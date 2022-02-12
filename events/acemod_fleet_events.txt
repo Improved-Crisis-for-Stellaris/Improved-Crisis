@@ -438,6 +438,7 @@ event = {
 					limit = {
 						is_country_type = extradimensional
 					}
+					set_country_flag = acemod_sfex_jumpdrive_order_country_flag_ignore_has_ftl_drive					# Do not count FTL components on ships. Performance tweak.
 					country_event = {
 						id = acemod_fleet.104						# Counting Dimensional Anchors
 						days = 0
@@ -447,6 +448,7 @@ event = {
 					limit = {
 						is_country_type = extradimensional_2
 					}
+					set_country_flag = acemod_sfex_jumpdrive_order_country_flag_ignore_has_ftl_drive					# Do not count FTL components on ships. Performance tweak.
 					country_event = {
 						id = acemod_fleet.104						# Counting Dimensional Anchors
 						days = 1
@@ -456,6 +458,7 @@ event = {
 					limit = {
 						is_country_type = extradimensional_3
 					}
+					set_country_flag = acemod_sfex_jumpdrive_order_country_flag_ignore_has_ftl_drive					# Do not count FTL components on ships. Performance tweak.
 					country_event = {
 						id = acemod_fleet.104						# Counting Dimensional Anchors
 						days = 2
@@ -1070,6 +1073,11 @@ fleet_event = {
 	id = acemod_fleet.108
 	hide_window = yes
 	is_triggered_only = yes
+	trigger = {
+		NOT = {
+			has_global_flag = acemod_aggressive_jumpdrive_protocol_disabled
+		}
+	}
 	immediate = {
 		if = {
 			limit = {
@@ -1092,8 +1100,9 @@ fleet_event = {
 			from = {
 				if = {
 					limit = {
+						exists = owner
 						owner = {
-							is_crisis_faction = no							# Crisis starbases are tough.
+							is_crisis_faction = no
 						}
 						acemod_sfex_jumpdrive_order_can_enter_system_by_jump_scripted_trigger = yes
 						# acemod_sfex_jumpdrive_order_calculate_effective_range_effect = yes
@@ -1115,6 +1124,17 @@ fleet_event = {
 						max_jumps <= 30
 					}
 					acemod_sfex_jumpdrive_order_has_ftl_drive_scripted_trigger = yes					# We assume Extradimensionals are always capable of jump.
+					NOT = {
+						solar_system = {
+							exists = owner
+							any_system_planet = {
+								has_orbital_bombardment = yes
+								any_fleet_in_orbit = {
+									is_same_value = prevprevprev									# Do not interrupt bombardment.
+								}
+							}
+						}
+					}
 				}
 				if = {
 					limit = {
@@ -6247,10 +6267,13 @@ country_event = {
 					}
 					if = {
 						limit = {
-							check_variable_arithmetic = {
-								which = acemod_var_fleet_power_for_last_merger
-								divide = acemod_var_fleet_power_for_last_merger_perpetrator
-								value < acemod_var_fleet_power_desired_engagement_ratio
+							OR = {
+								acemod_sfex_jumpdrive_order_has_ftl_drive_scripted_trigger = yes
+								check_variable_arithmetic = {
+									which = acemod_var_fleet_power_for_last_merger
+									divide = acemod_var_fleet_power_for_last_merger_perpetrator
+									value < acemod_var_fleet_power_desired_engagement_ratio
+								}
 							}
 						}
 						event_target:acemod_acemod_event_target_fleet_merger_fleet = {
@@ -6263,12 +6286,29 @@ country_event = {
 								event_target:acemod_acemod_event_target_fleet_merger_target = {
 									clear_orders = yes
 									clear_fleet_actions = this
-									queue_actions = {
-										move_to = prev
+									if = {
+										limit = {
+											acemod_sfex_jumpdrive_order_has_ftl_drive_scripted_trigger = yes
+										}
+										fire_on_action = {
+											on_action = acemod_custom_on_action_move_order_issued
+											scopes = {
+												from = prev.solar_system
+											}
+										}
+										# set_timed_fleet_flag = {
+										# 	flag = acemod_fleet_flag_response_team											# Make sure it is not getting snatched for other order.
+										# 	days = 100
+										# }
 									}
-									set_timed_fleet_flag = {
-										flag = acemod_fleet_flag_response_team										# Make sure it is not getting snatched for other order.
-										days = 100
+									else = {
+										queue_actions = {
+											move_to = prev
+										}
+										set_timed_fleet_flag = {
+											flag = acemod_fleet_flag_response_team											# Make sure it is not getting snatched for other order.
+											days = 100
+										}
 									}
 								}
 							}
