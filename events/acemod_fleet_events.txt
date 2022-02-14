@@ -776,14 +776,14 @@ fleet_event = {
 							}
 						}
 						random_list = {
-							70 = {
+							60 = {
 								fleet_event = {
 									id = acemod_fleet.110
 									days = 3
 									random = 10
 								}
 							}
-							30 = {
+							40 = {
 								fleet_event = {
 									id = acemod_fleet.106									# Use jumpdrive if applicable.
 									days = 3
@@ -1120,7 +1120,7 @@ fleet_event = {
 					distance = {
 						source = from
 						type = hyperlane
-						min_jumps >= 2
+						min_jumps >= 2						# 2 is max aggressive.
 						max_jumps <= 30
 					}
 					acemod_sfex_jumpdrive_order_has_ftl_drive_scripted_trigger = yes					# We assume Extradimensionals are always capable of jump.
@@ -1173,18 +1173,6 @@ fleet_event = {
 				}
 			}
 		}
-	}
-}
-
-# Seek alternative to walking (jumpdrive_order)
-# acemod_custom_on_action_move_order_issued
-# root/this = fleet
-# from = target system
-fleet_event = {
-	id = acemod_fleet.109
-	hide_window = yes
-	is_triggered_only = yes
-	immediate = {
 	}
 }
 
