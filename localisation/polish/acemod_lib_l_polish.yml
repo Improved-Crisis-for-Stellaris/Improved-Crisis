@@ -1,7 +1,7 @@
 ﻿l_polish:
 #acemod_lib files are shared between acemod mods.
 
-  #Menusl_polish:l_polish:l_polish:l_polish:-----------------------
+  #Menus-----------------------------------
   acemod_lib_menu_can_disable: "Zmienia bierzącą grę."
   acemod_lib_menu.1.g: "£mod_army_damage_mult£ [global_event_country.GetName_acemod_lib_army_strength_modifier]"
   acemod_lib_menu.1.g.tooltip: "§R$CRISIS_FACTOR$§!:\n\n$CRISIS_FACTOR$ $COUNTRY_MODIFIER$:\n£mod_army_damage_mult£ [global_event_country.GetName_acemod_lib_army_strength_modifier]\n\nDomyślne: §G$FE_CRISES$§!\nBazowe: §R$NOT_ACTIVE$§!\n\n$acemod_lib_menu_can_disable$"

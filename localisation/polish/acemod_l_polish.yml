@@ -141,6 +141,8 @@
   acemod_menu.2.b.tooltip: "Włącza lub wyłacza łączenie flot kryzysu.\nDomyślne: §G$ACTIVE$§!\n\nFloty kryzysu łączą się kiedy określone warunki zostałą spełnione, np. kiedy zaczynają przegrywać."
   acemod_menu.2.c: "$JUMP_DRIVE_1$ - [global_event_country.GetName_acemod_global_flag_jumpdrive_order_disabled]"
   acemod_menu.2.c.tooltip: "Ta opcja włącza/wyłącza $JUMP_DRIVE_1$ dla flot kryzysów.\nDomyślne: §G$ACTIVE$§!\n\nFloty §MPozawymiarowców§! używają Napędów Skokowych aby atakować cele strategiczne."
+  acemod_menu.2.d: "Agresywny $JUMP_DRIVE_1$ - [global_event_country.GetName_acemod_aggressive_jumpdrive_protocol_disabled]"
+  acemod_menu.2.d.tooltip: "Włącza lub wyłącza agresywne używanie Napędów Skokowych przez floty kryzysów.\nDomyślne: §G$ACTIVE$§!\n\n§M$name_list_Extradimensional$§! Floty §MPozawymiarowców§! używają Napędów Skokowych kiedy tylko to możliwe i efektywne.\n\n$TRIGGER_REQUIRES$ $JUMP_DRIVE_1$ - §G$ACTIVE$§!"
   acemod_menu.2.z: "§Y$SAVE$§!"
   acemod_menu.2.z.tooltip: "Powrót do menu głównego."
   #Colossus-----------------------------------
@@ -186,3 +188,6 @@
   acemod_ed_warship_point_defense_orange_section_template_key: "EGZEMPLIFIKACJA"
   acemod_ed_warship_point_defense_green_section_template_key: "EGZEMPLIFIKACJA"
   acemod_ai_carrier_warship_section_template_key: "EGZEMPLIFIKACJA"
+  #Map mode-----------------------------------
+  acemod_crises_map_mode: "Tryb mapy kryzysów"
+  acemod_crises_map_mode_desc: "Tylko kryzysy będą kolorowane."

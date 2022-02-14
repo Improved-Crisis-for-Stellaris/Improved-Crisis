@@ -1,7 +1,7 @@
 ﻿l_russian:
 
   #Original English text by Rodahtnov
-  #Prethoryn Scourge l_russian:l_russian:l_russian:---------------------------
+  #Prethoryn Scourge ------------------------------------
   tech_acemod_crisis_swarm_1: "Анализ Преторианцев"
   tech_acemod_crisis_swarm_1_desc: "Зондирование и экстракция образцов ткани Преторианцев мы можем узнать больше о том как эта странная экзогалактическая форма жизни функционирует и как обратить вспять заражение.\n\n"
   tech_acemod_crisis_swarm_2: "Анти-Преторианский растворитель спор"
@@ -141,6 +141,8 @@
   acemod_menu.2.b.tooltip: "Включает или выключает объединение флота.\nПо умолчанию: §G$ACTIVE$§!\n\nФлоты кризиса объединяются при определённых условиях, например если начинают проигрывать."
   acemod_menu.2.c: "$JUMP_DRIVE_1$ - [global_event_country.GetName_acemod_global_flag_jumpdrive_order_disabled]"
   acemod_menu.2.c.tooltip: "Разрешает или запрещает кризису использовать $JUMP_DRIVE_1$.\nСтандарт: §G$ACTIVE$§!\n\n§M$name_list_Extradimensional$§! использует прыжковые двигатели для нападения на ценные незащищённые цели."
+  acemod_menu.2.d: "$FLEET_STANCE_AGGRESSIVE$ $JUMP_DRIVE_1$ - [global_event_country.GetName_acemod_aggressive_jumpdrive_protocol_disabled]"
+  acemod_menu.2.d.tooltip: "Enables or disables aggressive use of $JUMP_DRIVE_1$ by crises.\nDefault: §G$ACTIVE$§!\n\n§M$name_list_Extradimensional$§! fleets utilise Jump Drives to the full potential, whenever possible and suitable.\n\n$TRIGGER_REQUIRES$ $JUMP_DRIVE_1$ - §G$ACTIVE$§!"
   acemod_menu.2.z: "§Y$SAVE$§!"
   acemod_menu.2.z.tooltip: "Вернуться в главное меню."
   #Colossus-----------------------------------
@@ -150,16 +152,16 @@
   SHIP_ACEMOD_AI_COLOSSUS_KEY: "$CRISIS_TYPE_CONTINGENCY$ $colossus$"
   #Supplements-----------------------------------
   acemod_menu.1.h: "£mod_country_federation_naval_cap_contribution_mult£ §E$acemod_menu.1.h_plain$§! - [global_event_country.GetName_acemod_supplements_active]"
-  acemod_menu.1.h.tooltip: "Opens §EFleet Supplements§! menu where additional ships for crisis fleets can be activated and configured."
-  acemod_menu.1.h_plain: "Fleet Supplements"
+  acemod_menu.1.h.tooltip: "Открывает §EОснащение Флота§! , где можно добавить дополнительные корабли для кризиса."
+  acemod_menu.1.h_plain: "Оснащение Флота"
   acemod_menu.4.name: "$acemod_menu_name$: $acemod_menu.1.h_plain$"
-  acemod_menu.4.desc: "Additional ships for crisis fleets."
+  acemod_menu.4.desc: "Дополнительные корабли для кризиса."
   acemod_menu.4.a: "$acemod_menu.1.h$"
-  acemod_menu.4.a.tooltip: "Number of ships added to each new crisis fleet.$acemod_menu.4.a.tooltip_designs$"
+  acemod_menu.4.a.tooltip: "Количество кораблей добавленных к каждому новому флоту.$acemod_menu.4.a.tooltip_designs$"
   acemod_menu.4.a.tooltip_designs: "\n\n§G$name_list_Prethoryn$§!: $BATTLESHIP_BOW_M2S4$ $TAB_SHIPS$\n§R$CRISIS_TYPE_CONTINGENCY$§!: $BATTLESHIP_MID_S4LHB$ $TAB_SHIPS$\n§M$name_list_Extradimensional$§!: $point_defence$ $TAB_SHIPS$"
   acemod_menu.4.a_var_supplements_ship_num: "§G[global_event_country.acemod_var_supplements_ship_num] $TAB_SHIPS$§!"
-  acemod_menu.4.b: "£military_ship£ Supplements strength buff - [global_event_country.GetName_acemod_supplements_buff]"
-  acemod_menu.4.b.tooltip: "Each step increases strength of ships added to crisis fleets by an equivalent of two technology tiers.\n\n$SHIP_STATS$: \n$INTEL_LEVEL_LOW$ §R+70%§!\n$INTEL_LEVEL_MEDIUM$ §Y+285%§!\n$INTEL_LEVEL_HIGH$ §E+490%§!"
+  acemod_menu.4.b: "£military_ship£ Дополнительных кораблей- [global_event_country.GetName_acemod_supplements_buff]"
+  acemod_menu.4.b.tooltip: "Каждая ступень увеличивает мощь кораблей, добавленых к флотам кризиса эквивалентные двум тирам технологии.\n\n$SHIP_STATS$: \n$INTEL_LEVEL_LOW$ §R+70%§!\n$INTEL_LEVEL_MEDIUM$ §Y+285%§!\n$INTEL_LEVEL_HIGH$ §E+490%§!"
   acemod_menu.4.b_buff_0: "§R$NOT_ACTIVE$§!"
   acemod_menu.4.b_buff_1: "$INTEL_LEVEL_LOW$"
   acemod_menu.4.b_buff_2: "$INTEL_LEVEL_MEDIUM$"
@@ -186,3 +188,6 @@
   acemod_ed_warship_point_defense_orange_section_template_key: "PLACEHOLDER"
   acemod_ed_warship_point_defense_green_section_template_key: "PLACEHOLDER"
   acemod_ai_carrier_warship_section_template_key: "PLACEHOLDER"
+  #Map mode-----------------------------------
+  acemod_crises_map_mode: "$CRISIS_TYPE_LABEL$ Map Mode"
+  acemod_crises_map_mode_desc: "Only crises will be colored."

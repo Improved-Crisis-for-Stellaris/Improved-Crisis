@@ -1,7 +1,7 @@
 ﻿l_braz_por:
 
   #Original English text by Rodahtnov
-  #Prethoryn Scourge l_braz_por:l_braz_por:l_braz_por:---------------------------
+  #Prethoryn Scourge ------------------------------------
   tech_acemod_crisis_swarm_1: "Prethoryn Lifeform Analysis"
   tech_acemod_crisis_swarm_1_desc: "By remotely probing and extracting Prethoryn tissue we can gain more insight on how that strange exogalactic lifeform works and how to remove its infestation.\n\n"
   tech_acemod_crisis_swarm_2: "Anti-Prethoryn Spores Solvent"
@@ -141,6 +141,8 @@
   acemod_menu.2.b.tooltip: "Enables or disables fleet merging.\nDefault: §G$ACTIVE$§!\n\nCrisis fleets merge under certain conditions, such as when they start losing."
   acemod_menu.2.c: "$JUMP_DRIVE_1$ - [global_event_country.GetName_acemod_global_flag_jumpdrive_order_disabled]"
   acemod_menu.2.c.tooltip: "Enables or disables crisis use of $JUMP_DRIVE_1$.\nDefault: §G$ACTIVE$§!\n\n§M$name_list_Extradimensional$§! fleets use Jump Drives to attack valuable targets."
+  acemod_menu.2.d: "$FLEET_STANCE_AGGRESSIVE$ $JUMP_DRIVE_1$ - [global_event_country.GetName_acemod_aggressive_jumpdrive_protocol_disabled]"
+  acemod_menu.2.d.tooltip: "Enables or disables aggressive use of $JUMP_DRIVE_1$ by crises.\nDefault: §G$ACTIVE$§!\n\n§M$name_list_Extradimensional$§! fleets utilise Jump Drives to the full potential, whenever possible and suitable.\n\n$TRIGGER_REQUIRES$ $JUMP_DRIVE_1$ - §G$ACTIVE$§!"
   acemod_menu.2.z: "§Y$SAVE$§!"
   acemod_menu.2.z.tooltip: "Back to main menu."
   #Colossus-----------------------------------
@@ -186,3 +188,6 @@
   acemod_ed_warship_point_defense_orange_section_template_key: "PLACEHOLDER"
   acemod_ed_warship_point_defense_green_section_template_key: "PLACEHOLDER"
   acemod_ai_carrier_warship_section_template_key: "PLACEHOLDER"
+  #Map mode-----------------------------------
+  acemod_crises_map_mode: "$CRISIS_TYPE_LABEL$ Map Mode"
+  acemod_crises_map_mode_desc: "Only crises will be colored."
