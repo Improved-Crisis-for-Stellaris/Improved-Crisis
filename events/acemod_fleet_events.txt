@@ -438,7 +438,6 @@ event = {
 					limit = {
 						is_country_type = extradimensional
 					}
-					set_country_flag = acemod_sfex_jumpdrive_order_country_flag_ignore_has_ftl_drive					# Do not count FTL components on ships. Performance tweak.
 					country_event = {
 						id = acemod_fleet.104						# Counting Dimensional Anchors
 						days = 0
@@ -448,7 +447,6 @@ event = {
 					limit = {
 						is_country_type = extradimensional_2
 					}
-					set_country_flag = acemod_sfex_jumpdrive_order_country_flag_ignore_has_ftl_drive					# Do not count FTL components on ships. Performance tweak.
 					country_event = {
 						id = acemod_fleet.104						# Counting Dimensional Anchors
 						days = 1
@@ -458,7 +456,6 @@ event = {
 					limit = {
 						is_country_type = extradimensional_3
 					}
-					set_country_flag = acemod_sfex_jumpdrive_order_country_flag_ignore_has_ftl_drive					# Do not count FTL components on ships. Performance tweak.
 					country_event = {
 						id = acemod_fleet.104						# Counting Dimensional Anchors
 						days = 2
@@ -776,14 +773,14 @@ fleet_event = {
 							}
 						}
 						random_list = {
-							60 = {
+							70 = {
 								fleet_event = {
 									id = acemod_fleet.110
 									days = 3
 									random = 10
 								}
 							}
-							40 = {
+							30 = {
 								fleet_event = {
 									id = acemod_fleet.106									# Use jumpdrive if applicable.
 									days = 3
@@ -1073,106 +1070,27 @@ fleet_event = {
 	id = acemod_fleet.108
 	hide_window = yes
 	is_triggered_only = yes
-	trigger = {
-		NOT = {
-			has_global_flag = acemod_aggressive_jumpdrive_protocol_disabled
+	immediate = {
+		# Seek alternative to walking (jumpdrive_order)
+		fleet_event = {
+			id = acemod_fleet.109
+			days = 1			# Needed to cancel move_to order in found_system
+			scopes = {
+				from = from
+			}
 		}
 	}
+}
+
+# Seek alternative to walking (jumpdrive_order)
+# acemod_custom_on_action_move_order_issued
+# root/this = fleet
+# from = target system
+fleet_event = {
+	id = acemod_fleet.109
+	hide_window = yes
+	is_triggered_only = yes
 	immediate = {
-		if = {
-			limit = {
-				owner = {
-					OR = {
-						is_country_type = extradimensional
-						is_country_type = extradimensional_2
-						is_country_type = extradimensional_3
-						has_country_flag = acemod_country_flag_jumpdrive_order_enabled
-					}
-					NOT = {
-						has_country_flag = acemod_country_flag_jumpdrive_order_disabled
-					}
-				}
-				NOR = {
-					has_global_flag = acemod_global_flag_jumpdrive_order_disabled
-					has_fleet_flag = acemod_fleet_flag_jumpdrive_order_disabled
-				}
-			}
-			from = {
-				if = {
-					limit = {
-						exists = owner
-						owner = {
-							is_crisis_faction = no
-						}
-						acemod_sfex_jumpdrive_order_can_enter_system_by_jump_scripted_trigger = yes
-						# acemod_sfex_jumpdrive_order_calculate_effective_range_effect = yes
-						acemod_sfex_max_distance_interstellar_scripted_trigger = {
-							SOURCE = prev
-							MAX_DISTANCE = 150							# Default for Extradimensionals. Variable import WIP.
-						}
-					}
-					save_event_target_as = acemod_event_target_jumpdrive_order_target
-				}
-			}
-			if = {
-				limit = {
-					exists = event_target:acemod_event_target_jumpdrive_order_target
-					distance = {
-						source = from
-						type = hyperlane
-						min_jumps >= 2						# 2 is max aggressive.
-						max_jumps <= 30
-					}
-					acemod_sfex_jumpdrive_order_has_ftl_drive_scripted_trigger = yes					# We assume Extradimensionals are always capable of jump.
-					NOT = {
-						solar_system = {
-							exists = owner
-							any_system_planet = {
-								has_orbital_bombardment = yes
-								any_fleet_in_orbit = {
-									is_same_value = prevprevprev									# Do not interrupt bombardment.
-								}
-							}
-						}
-					}
-				}
-				if = {
-					limit = {
-						is_in_combat = no
-						is_disabled = no
-						NOT = {
-							any_owned_ship = {
-								has_modifier = acemod_sfex_jump_drive_order_cooldown
-							}
-						}
-					}
-					# Seek alternative to walking (jumpdrive_order)
-					acemod_sfex_set_fleet_order = {
-						ORDER = jumpdrive
-						TARGET = from						# event_target:acemod_event_target_jumpdrive_order_target
-						MODNAME = acemod_menu_name
-					}
-				}
-				else_if = {
-					limit = {
-						from = {
-							has_star_flag = acemod_star_flag_solar_system_target@prev
-						}
-						NOR = {
-							has_fleet_flag = acemod_fleet_flag_response_team
-							has_fleet_flag = acemod_fleet_flag_solar_response_team
-						}
-					}
-					fleet_event = {
-						id = acemod_fleet.108
-						days = 50						# Try again later.
-						scopes = {
-							from = from
-						}
-					}
-				}
-			}
-		}
 	}
 }
 
@@ -6255,13 +6173,10 @@ country_event = {
 					}
 					if = {
 						limit = {
-							OR = {
-								acemod_sfex_jumpdrive_order_has_ftl_drive_scripted_trigger = yes
-								check_variable_arithmetic = {
-									which = acemod_var_fleet_power_for_last_merger
-									divide = acemod_var_fleet_power_for_last_merger_perpetrator
-									value < acemod_var_fleet_power_desired_engagement_ratio
-								}
+							check_variable_arithmetic = {
+								which = acemod_var_fleet_power_for_last_merger
+								divide = acemod_var_fleet_power_for_last_merger_perpetrator
+								value < acemod_var_fleet_power_desired_engagement_ratio
 							}
 						}
 						event_target:acemod_acemod_event_target_fleet_merger_fleet = {
@@ -6274,29 +6189,12 @@ country_event = {
 								event_target:acemod_acemod_event_target_fleet_merger_target = {
 									clear_orders = yes
 									clear_fleet_actions = this
-									if = {
-										limit = {
-											acemod_sfex_jumpdrive_order_has_ftl_drive_scripted_trigger = yes
-										}
-										fire_on_action = {
-											on_action = acemod_custom_on_action_move_order_issued
-											scopes = {
-												from = prev.solar_system
-											}
-										}
-										# set_timed_fleet_flag = {
-										# 	flag = acemod_fleet_flag_response_team											# Make sure it is not getting snatched for other order.
-										# 	days = 100
-										# }
+									queue_actions = {
+										move_to = prev
 									}
-									else = {
-										queue_actions = {
-											move_to = prev
-										}
-										set_timed_fleet_flag = {
-											flag = acemod_fleet_flag_response_team											# Make sure it is not getting snatched for other order.
-											days = 100
-										}
+									set_timed_fleet_flag = {
+										flag = acemod_fleet_flag_response_team										# Make sure it is not getting snatched for other order.
+										days = 100
 									}
 								}
 							}

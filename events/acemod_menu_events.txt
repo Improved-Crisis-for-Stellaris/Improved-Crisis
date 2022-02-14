@@ -429,6 +429,9 @@ country_event = {
 	option = {
 		name = acemod_menu.2.d
 		custom_tooltip = acemod_menu.2.d.tooltip
+		allow = {
+			always = no
+		}
 		hidden_effect = {
 			if = {
 				limit = {

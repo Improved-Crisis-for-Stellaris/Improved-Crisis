@@ -74,15 +74,15 @@ defined_text = {
 	name = GetName_acemod_aggressive_jumpdrive_protocol_disabled
 	text = {
 		trigger = {
-			NOT = {
-				has_global_flag = acemod_aggressive_jumpdrive_protocol_disabled
-			}
+			has_global_flag = acemod_aggressive_jumpdrive_protocol_disabled
 		}
 		localization_key = acemod_trigger_yes
 	}
 	text = {
 		trigger = {
-			has_global_flag = acemod_aggressive_jumpdrive_protocol_disabled
+			NOT = {
+				has_global_flag = acemod_aggressive_jumpdrive_protocol_disabled
+			}
 		}
 		localization_key = acemod_trigger_no
 	}
