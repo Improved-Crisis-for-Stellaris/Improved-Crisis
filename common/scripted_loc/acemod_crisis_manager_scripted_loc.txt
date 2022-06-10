@@ -509,6 +509,24 @@ defined_text = {
 	}
 }
 
+defined_text = {
+	name = GetName_acemod_acemod_crisis_manager_dlc_check_host_overlord
+	text = {
+		trigger = {
+			host_has_dlc = "Overlord"
+		}
+		localization_key = acemod_crisis_manager_trigger_pass
+	}
+	text = {
+		trigger = {
+			NOT = {
+				host_has_dlc = "Overlord"
+			}
+		}
+		localization_key = acemod_crisis_manager_trigger_fail
+	}
+}
+
 # Substitutes for variable when galaxy setting is off.
 defined_text = {
 	name = GetName_acemod_crisis_manager_var_country_num_empires

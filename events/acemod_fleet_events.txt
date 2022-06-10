@@ -3789,19 +3789,34 @@ country_event = {
 				random_owned_ship = {
 					save_event_target_as = acemod_constructor_respawn_system
 				}
-				create_fleet = {
-					name = "NAME_Prethoryn_Constructor"
-					effect = {
-						set_owner = event_target:acemod_prethoryn
-						create_ship = {
-							name = random
-							design = "NAME_Swarm_Constructor"
-							graphical_culture = "swarm_01"
+				if = {
+					limit = {
+						NOT = {
+							exists = event_target:acemod_constructor_respawn_system
 						}
-						set_location = {
-							target = event_target:acemod_constructor_respawn_system
-							distance = 5
-							angle = random
+					}
+					random_owned_planet = {
+						save_event_target_as = acemod_constructor_respawn_system
+					}
+				}
+				if = {
+					limit = {
+						exists = event_target:acemod_constructor_respawn_system
+					}
+					create_fleet = {
+						name = "NAME_Prethoryn_Constructor"
+						effect = {
+							set_owner = event_target:acemod_prethoryn
+							create_ship = {
+								name = random
+								design = "NAME_Swarm_Constructor"
+								graphical_culture = "swarm_01"
+							}
+							set_location = {
+								target = event_target:acemod_constructor_respawn_system
+								distance = 5
+								angle = random
+							}
 						}
 					}
 				}
@@ -3860,20 +3875,25 @@ country_event = {
 							save_event_target_as = acemod_unbidden_portal
 						}
 					}
-					while = {
-						count = 2
-						create_fleet = {
-							effect = {
-								set_owner = ROOT
-								create_ship = {
-									name = random
-									design = "NAME_Void_Shaper"
-									graphical_culture = "extra_dimensional_01"
-								}
-								set_location = {
-									target = event_target:acemod_unbidden_portal
-									distance = 5
-									angle = random
+					if = {
+						limit = {
+							exists = event_target:acemod_unbidden_portal
+						}
+						while = {
+							count = 2
+							create_fleet = {
+								effect = {
+									set_owner = ROOT
+									create_ship = {
+										name = random
+										design = "NAME_Void_Shaper"
+										graphical_culture = "extra_dimensional_01"
+									}
+									set_location = {
+										target = event_target:acemod_unbidden_portal
+										distance = 5
+										angle = random
+									}
 								}
 							}
 						}
@@ -3897,20 +3917,25 @@ country_event = {
 							save_event_target_as = acemod_aberrant_portal
 						}
 					}
-					while = {
-						count = 2
-						create_fleet = {
-							effect = {
-								set_owner = ROOT
-								create_ship = {
-									name = random
-									design = "NAME_Void_Former"
-									graphical_culture = "extra_dimensional_02"
-								}
-								set_location = {
-									target = event_target:acemod_aberrant_portal
-									distance = 5
-									angle = random
+					if = {
+						limit = {
+							exists = event_target:acemod_aberrant_portal
+						}
+						while = {
+							count = 2
+							create_fleet = {
+								effect = {
+									set_owner = ROOT
+									create_ship = {
+										name = random
+										design = "NAME_Void_Former"
+										graphical_culture = "extra_dimensional_02"
+									}
+									set_location = {
+										target = event_target:acemod_aberrant_portal
+										distance = 5
+										angle = random
+									}
 								}
 							}
 						}
@@ -3934,20 +3959,25 @@ country_event = {
 							save_event_target_as = acemod_vehement_portal
 						}
 					}
-					while = {
-						count = 2
-						create_fleet = {
-							effect = {
-								set_owner = ROOT
-								create_ship = {
-									name = random
-									design = "NAME_Void_Weaver"
-									graphical_culture = "extra_dimensional_03"
-								}
-								set_location = {
-									target = event_target:acemod_vehement_portal
-									distance = 5
-									angle = random
+					if = {
+						limit = {
+							exists = event_target:acemod_vehement_portal
+						}
+						while = {
+							count = 2
+							create_fleet = {
+								effect = {
+									set_owner = ROOT
+									create_ship = {
+										name = random
+										design = "NAME_Void_Weaver"
+										graphical_culture = "extra_dimensional_03"
+									}
+									set_location = {
+										target = event_target:acemod_vehement_portal
+										distance = 5
+										angle = random
+									}
 								}
 							}
 						}

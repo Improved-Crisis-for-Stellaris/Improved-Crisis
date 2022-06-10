@@ -74,7 +74,7 @@
   acemod_crisis_manager_dlc_horizon_signal: "Horizon Signal"
   acemod_crisis_manager_dlc_horizon_signal_trigger: "412 Osiągalne kiedy wydarzenie jest aktywne"
   #Continuation for DLCs released in 2021 and later
-  acemod_crisis_manager_dlc_check_post_2020: "\ndlc025 $NEMESIS_TITLE$ [global_event_country.GetName_acemod_acemod_crisis_manager_dlc_check_host_nemesis]\ndlc026 $AQUATICS_TITLE$ [global_event_country.GetName_acemod_acemod_crisis_manager_dlc_check_host_aquatics]"
+ acemod_crisis_manager_dlc_check_post_2020: "\ndlc025 $NEMESIS_TITLE$ [global_event_country.GetName_acemod_acemod_crisis_manager_dlc_check_host_nemesis]\ndlc026 $AQUATICS_TITLE$ [global_event_country.GetName_acemod_acemod_crisis_manager_dlc_check_host_aquatics]\ndlc027 $OVERLORD_TITLE$ [global_event_country.GetName_acemod_acemod_crisis_manager_dlc_check_host_overlord]"
   #Game Debugging tool------------------------------------
   acemod_crisis_manager_degug_non: "Debugowanie gry"
   acemod_crisis_manager.7.name: "Debugowanie gry"
